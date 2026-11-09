@@ -1,6 +1,6 @@
 {
   "app_version": "1.8.0",
-  "compiled_on": "2026-11-08",
+  "compiled_on": "2026-11-09",
   "policy": "对外数字只从本文件读取。每条指标必须给出 source.file 与 source.path，并由 backend/tests/test_metrics_truth_table.py 复核；无直接测量值的指标标为 unmeasured，不用近似值顶替。",
   "metrics": [
     {
@@ -988,6 +988,357 @@
         "path": "live_avg_llm_calls"
       },
       "scope": "按 30 个执行用例的 llm_calls 求均值。"
+    },
+    {
+      "id": "agent_v18_revised_answer_accuracy",
+      "label": "改造后严格完整作答率（26 题分母）",
+      "value": 0.34615384615384615,
+      "unit": "ratio",
+      "status": "measured",
+      "tracked": true,
+      "source": {
+        "file": "docs/evaluation_agent_v1.8_revised_live.json",
+        "path": "live_answer_accuracy"
+      },
+      "scope": "同一人工确认 30 题分层黄金集、同一判据、同一三份固定材料、同一模型；题集与分母与改造前基线完全一致，仅系统输出侧改造。accuracy 只计 correct；改造前为 0.192（5/26），改造后 9/26。与 v1.7 的 12 题结果非同口径，禁止画趋势线。"
+    },
+    {
+      "id": "agent_v18_revised_answer_acceptable_rate",
+      "label": "改造后答案可接受率（26 题分母）",
+      "value": 0.6538461538461539,
+      "unit": "ratio",
+      "status": "measured",
+      "tracked": true,
+      "source": {
+        "file": "docs/evaluation_agent_v1.8_revised_live.json",
+        "path": "live_answer_acceptable_rate"
+      },
+      "scope": "同一人工确认 30 题分层黄金集、同一判据、同一三份固定材料、同一模型；题集与分母与改造前基线完全一致，仅系统输出侧改造。correct + partial；改造前后均为 17/26，未变化。"
+    },
+    {
+      "id": "agent_v18_revised_answer_judged_cases",
+      "label": "改造后答案判分题数",
+      "value": 26,
+      "unit": "count",
+      "status": "measured",
+      "tracked": true,
+      "source": {
+        "file": "docs/evaluation_agent_v1.8_revised_live.json",
+        "path": "live_answer_judged_cases"
+      },
+      "scope": "同一人工确认 30 题分层黄金集、同一判据、同一三份固定材料、同一模型；题集与分母与改造前基线完全一致，仅系统输出侧改造。S1 12 + S2-A 6 + S2-B 8 = 26；S2-C 4 题单列。"
+    },
+    {
+      "id": "agent_v18_revised_answer_faithfulness",
+      "label": "改造后答案忠实度",
+      "value": 0.875,
+      "unit": "ratio",
+      "status": "measured",
+      "tracked": true,
+      "source": {
+        "file": "docs/evaluation_agent_v1.8_revised_live.json",
+        "path": "answer_faithfulness"
+      },
+      "scope": "同一人工确认 30 题分层黄金集、同一判据、同一三份固定材料、同一模型；题集与分母与改造前基线完全一致，仅系统输出侧改造。分母 8；只检验禁止措辞与 SQL 越界，不检验答案正确性。"
+    },
+    {
+      "id": "agent_v18_revised_reject_correctness",
+      "label": "改造后澄清／拒答正确性",
+      "value": 0.75,
+      "unit": "ratio",
+      "status": "measured",
+      "tracked": true,
+      "source": {
+        "file": "docs/evaluation_agent_v1.8_revised_live.json",
+        "path": "reject_correctness"
+      },
+      "scope": "同一人工确认 30 题分层黄金集、同一判据、同一三份固定材料、同一模型；题集与分母与改造前基线完全一致，仅系统输出侧改造。S2-C 4 题分母。"
+    },
+    {
+      "id": "agent_v18_revised_citation_accuracy",
+      "label": "改造后引用准确率",
+      "value": 1.0,
+      "unit": "ratio",
+      "status": "measured",
+      "tracked": true,
+      "source": {
+        "file": "docs/evaluation_agent_v1.8_revised_live.json",
+        "path": "citation_accuracy"
+      },
+      "scope": "同一人工确认 30 题分层黄金集、同一判据、同一三份固定材料、同一模型；题集与分母与改造前基线完全一致，仅系统输出侧改造。分母 7 例（改造前 1 例）；判据为人工确认 + 自动比对，不是逐题人工语义评分，不表述为「100% 引用准确率」。"
+    },
+    {
+      "id": "agent_v18_revised_citation_judged_cases",
+      "label": "改造后引用判分分母",
+      "value": 7,
+      "unit": "count",
+      "status": "measured",
+      "tracked": true,
+      "source": {
+        "file": "docs/evaluation_agent_v1.8_revised_live.json",
+        "path": "citation_judged_cases"
+      },
+      "scope": "同一人工确认 30 题分层黄金集、同一判据、同一三份固定材料、同一模型；题集与分母与改造前基线完全一致，仅系统输出侧改造。8 道文档事实题中给出引用线索的题数；改造前为 1。"
+    },
+    {
+      "id": "agent_v18_revised_citation_no_claim_cases",
+      "label": "改造后无引用线索题数",
+      "value": 1,
+      "unit": "count",
+      "status": "measured",
+      "tracked": true,
+      "source": {
+        "file": "docs/evaluation_agent_v1.8_revised_live.json",
+        "path": "citation_no_claim_cases"
+      },
+      "scope": "同一人工确认 30 题分层黄金集、同一判据、同一三份固定材料、同一模型；题集与分母与改造前基线完全一致，仅系统输出侧改造。no_claim 单列不进入分母；改造前为 7。"
+    },
+    {
+      "id": "agent_v18_revised_execution_success_rate",
+      "label": "改造后工具计划完成率",
+      "value": 0.7333333333333333,
+      "unit": "ratio",
+      "status": "measured",
+      "tracked": true,
+      "source": {
+        "file": "docs/evaluation_agent_v1.8_revised_live.json",
+        "path": "live_tool_plan_completion"
+      },
+      "scope": "同一人工确认 30 题分层黄金集、同一判据、同一三份固定材料、同一模型；题集与分母与改造前基线完全一致，仅系统输出侧改造。30 个执行用例中 success + partial_success 的比例；改造前为 0.633。"
+    },
+    {
+      "id": "agent_v18_revised_citation_structurally_valid_rate",
+      "label": "改造后引用结构有效率",
+      "value": 0.6333333333333333,
+      "unit": "ratio",
+      "status": "measured",
+      "tracked": true,
+      "source": {
+        "file": "docs/evaluation_agent_v1.8_revised_live.json",
+        "path": "live_citation_structurally_valid_rate"
+      },
+      "scope": "同一人工确认 30 题分层黄金集、同一判据、同一三份固定材料、同一模型；题集与分母与改造前基线完全一致，仅系统输出侧改造。30 题口径；改造前为 0.533。"
+    },
+    {
+      "id": "agent_v18_revised_answer_present_rate",
+      "label": "改造后答案产出率",
+      "value": 1.0,
+      "unit": "ratio",
+      "status": "measured",
+      "tracked": true,
+      "source": {
+        "file": "docs/evaluation_agent_v1.8_revised_live.json",
+        "path": "live_answer_present_rate"
+      },
+      "scope": "同一人工确认 30 题分层黄金集、同一判据、同一三份固定材料、同一模型；题集与分母与改造前基线完全一致，仅系统输出侧改造。30 题口径。"
+    },
+    {
+      "id": "agent_v18_revised_mean_latency_ms",
+      "label": "改造后含冷启动均值",
+      "value": 4460.6,
+      "unit": "ms",
+      "status": "measured",
+      "tracked": true,
+      "source": {
+        "file": "docs/evaluation_agent_v1.8_revised_live.json",
+        "path": "live_mean_latency_ms"
+      },
+      "scope": "同一人工确认 30 题分层黄金集、同一判据、同一三份固定材料、同一模型；题集与分母与改造前基线完全一致，仅系统输出侧改造。含冷启动，不作稳定均值；两次重跑间存在服务侧波动，不作改造效果结论。"
+    },
+    {
+      "id": "agent_v18_revised_all_p95_latency_ms",
+      "label": "改造后全量 P95",
+      "value": 5830,
+      "unit": "ms",
+      "status": "measured",
+      "tracked": true,
+      "source": {
+        "file": "docs/evaluation_agent_v1.8_revised_live.json",
+        "path": "live_p95_latency_ms"
+      },
+      "scope": "同一人工确认 30 题分层黄金集、同一判据、同一三份固定材料、同一模型；题集与分母与改造前基线完全一致，仅系统输出侧改造。30 例含冷启动口径。"
+    },
+    {
+      "id": "agent_v18_revised_cold_start_latency_ms",
+      "label": "改造后冷启动单例",
+      "value": 66107.0,
+      "unit": "ms",
+      "status": "measured",
+      "tracked": true,
+      "source": {
+        "file": "docs/evaluation_agent_v1.8_revised_live.json",
+        "path": "cold_start_latency_ms"
+      },
+      "scope": "同一人工确认 30 题分层黄金集、同一判据、同一三份固定材料、同一模型；题集与分母与改造前基线完全一致，仅系统输出侧改造。按执行序位判定，非精确归因，不可跨机器比较。"
+    },
+    {
+      "id": "agent_v18_revised_warm_mean_latency_ms",
+      "label": "改造后热态均值",
+      "value": 2334.86,
+      "unit": "ms",
+      "status": "measured",
+      "tracked": true,
+      "source": {
+        "file": "docs/evaluation_agent_v1.8_revised_live.json",
+        "path": "warm_mean_latency_ms"
+      },
+      "scope": "同一人工确认 30 题分层黄金集、同一判据、同一三份固定材料、同一模型；题集与分母与改造前基线完全一致，仅系统输出侧改造。剔除按序位判定的首例；不作改造效果结论。"
+    },
+    {
+      "id": "agent_v18_revised_warm_p50_latency_ms",
+      "label": "改造后热态 P50",
+      "value": 1523.0,
+      "unit": "ms",
+      "status": "measured",
+      "tracked": true,
+      "source": {
+        "file": "docs/evaluation_agent_v1.8_revised_live.json",
+        "path": "warm_p50_latency_ms"
+      },
+      "scope": "同一人工确认 30 题分层黄金集、同一判据、同一三份固定材料、同一模型；题集与分母与改造前基线完全一致，仅系统输出侧改造。沿用按排序索引取整的分位数口径。"
+    },
+    {
+      "id": "agent_v18_revised_warm_p95_latency_ms",
+      "label": "改造后热态 P95",
+      "value": 4266.0,
+      "unit": "ms",
+      "status": "measured",
+      "tracked": true,
+      "source": {
+        "file": "docs/evaluation_agent_v1.8_revised_live.json",
+        "path": "warm_p95_latency_ms"
+      },
+      "scope": "同一人工确认 30 题分层黄金集、同一判据、同一三份固定材料、同一模型；题集与分母与改造前基线完全一致，仅系统输出侧改造。不作改造效果结论。"
+    },
+    {
+      "id": "agent_v18_revised_avg_llm_calls",
+      "label": "改造后平均每题 LLM 调用数",
+      "value": 2.03,
+      "unit": "count",
+      "status": "measured",
+      "tracked": true,
+      "source": {
+        "file": "docs/evaluation_agent_v1.8_revised_live.json",
+        "path": "live_avg_llm_calls"
+      },
+      "scope": "同一人工确认 30 题分层黄金集、同一判据、同一三份固定材料、同一模型；题集与分母与改造前基线完全一致，仅系统输出侧改造。按 30 个执行用例的逐例 llm_calls 统计。"
+    },
+    {
+      "id": "agent_v18_revised_api_requests",
+      "label": "改造后 LLM 请求数",
+      "value": 61,
+      "unit": "count",
+      "status": "measured",
+      "tracked": true,
+      "source": {
+        "file": "docs/evaluation_agent_v1.8_revised_live.json",
+        "path": "api_requests"
+      },
+      "scope": "同一人工确认 30 题分层黄金集、同一判据、同一三份固定材料、同一模型；题集与分母与改造前基线完全一致，仅系统输出侧改造。上限 300，未截断；含路由题调用，与逐例 llm_calls 分母不同，不可相除。"
+    },
+    {
+      "id": "agent_v18_revised_total_tokens",
+      "label": "改造后 token 总量",
+      "value": 63109,
+      "unit": "count",
+      "status": "measured",
+      "tracked": true,
+      "source": {
+        "file": "docs/evaluation_agent_v1.8_revised_live.json",
+        "path": "llm_usage.total_tokens"
+      },
+      "scope": "同一人工确认 30 题分层黄金集、同一判据、同一三份固定材料、同一模型；题集与分母与改造前基线完全一致，仅系统输出侧改造。提示 + 补全 token 合计。"
+    },
+    {
+      "id": "agent_v18_tool_plan_completion",
+      "label": "v1.8 基线工具计划完成率（30 题口径）",
+      "value": 0.6333333333333333,
+      "unit": "ratio",
+      "status": "measured",
+      "tracked": true,
+      "source": {
+        "file": "docs/evaluation_agent_v1.8_live.json",
+        "path": "live_tool_plan_completion"
+      },
+      "scope": "同一人工确认 30 题分层黄金集、同一判据、同一三份固定材料、同一模型；题集与分母与改造前基线完全一致，仅系统输出侧改造。改造前基线观测，与改造后同名口径条目并列留存。"
+    },
+    {
+      "id": "agent_v18_citation_structurally_valid_rate",
+      "label": "v1.8 基线引用结构有效率（30 题口径）",
+      "value": 0.5333333333333333,
+      "unit": "ratio",
+      "status": "measured",
+      "tracked": true,
+      "source": {
+        "file": "docs/evaluation_agent_v1.8_live.json",
+        "path": "live_citation_structurally_valid_rate"
+      },
+      "scope": "同一人工确认 30 题分层黄金集、同一判据、同一三份固定材料、同一模型；题集与分母与改造前基线完全一致，仅系统输出侧改造。改造前基线观测，与改造后同名口径条目并列留存。"
+    },
+    {
+      "id": "agent_contract_revised_baseline_accuracy",
+      "label": "修订口径改造前分层完整作答率",
+      "value": 0.423076923077,
+      "unit": "ratio",
+      "status": "measured",
+      "tracked": true,
+      "source": {
+        "file": "docs/evaluation_agent_revised_contract_regrade.json",
+        "path": "summary.revised_baseline_accuracy"
+      },
+      "scope": "离线重判两份已归档的 30 题真实执行结果，未重跑 LLM、未重执行工具、未改动人工确认黄金集、未覆盖原始结果文件；与原口径并列披露，不替换历史数值。"
+    },
+    {
+      "id": "agent_contract_revised_after_accuracy",
+      "label": "修订口径改造后分层完整作答率",
+      "value": 0.576923076923,
+      "unit": "ratio",
+      "status": "measured",
+      "tracked": true,
+      "source": {
+        "file": "docs/evaluation_agent_revised_contract_regrade.json",
+        "path": "summary.revised_after_accuracy"
+      },
+      "scope": "离线重判两份已归档的 30 题真实执行结果，未重跑 LLM、未重执行工具、未改动人工确认黄金集、未覆盖原始结果文件；与原口径并列披露，不替换历史数值。"
+    },
+    {
+      "id": "agent_contract_revised_baseline_correct_cases",
+      "label": "修订口径改造前 correct 题数",
+      "value": 11,
+      "unit": "count",
+      "status": "measured",
+      "tracked": true,
+      "source": {
+        "file": "docs/evaluation_agent_revised_contract_regrade.json",
+        "path": "summary.revised_baseline_correct_cases"
+      },
+      "scope": "离线重判两份已归档的 30 题真实执行结果，未重跑 LLM、未重执行工具、未改动人工确认黄金集、未覆盖原始结果文件；与原口径并列披露，不替换历史数值。"
+    },
+    {
+      "id": "agent_contract_revised_after_correct_cases",
+      "label": "修订口径改造后 correct 题数",
+      "value": 15,
+      "unit": "count",
+      "status": "measured",
+      "tracked": true,
+      "source": {
+        "file": "docs/evaluation_agent_revised_contract_regrade.json",
+        "path": "summary.revised_after_correct_cases"
+      },
+      "scope": "离线重判两份已归档的 30 题真实执行结果，未重跑 LLM、未重执行工具、未改动人工确认黄金集、未覆盖原始结果文件；与原口径并列披露，不替换历史数值。"
+    },
+    {
+      "id": "agent_contract_revised_affected_cases",
+      "label": "修订口径影响题数（纯数据库单源）",
+      "value": 6,
+      "unit": "count",
+      "status": "measured",
+      "tracked": true,
+      "source": {
+        "file": "docs/evaluation_agent_revised_contract_regrade.json",
+        "path": "summary.revised_affected_cases"
+      },
+      "scope": "离线重判两份已归档的 30 题真实执行结果，未重跑 LLM、未重执行工具、未改动人工确认黄金集、未覆盖原始结果文件；与原口径并列披露，不替换历史数值。"
     }
   ],
   "conflicts": [
@@ -1025,6 +1376,16 @@
       "id": "C7",
       "issue": "v1.7 的 12 题 live 答案准确率 0.5 与 v1.8 的 30 题分层结果 数值差异显著，容易被误读为能力下降或提升。",
       "resolution": "两者题集（12 / 26 分母）、材料（单份 OCR 标记 / 三份固定文本材料）、判分口径（含 S2-C / 排除 S2-C）与系统版本（语义约束前后）均不同，属非同口径测量。报告只并列呈现并逐项标注口径，禁止画趋势线、禁止跨轮挑选数字；v1.8 结果兼作下一轮 S1 改造的改造前基线。"
+    },
+    {
+      "id": "C8",
+      "issue": "同一 30 题黄金集的两次全量重跑（改造前 / 改造后）数值变化，容易被误读为普遍能力提升或性能优化。",
+      "resolution": "两次重跑题集、判据、材料、模型、分母与环境字段完全一致，故答案类与引用类指标可作同口径前后对比；判分器与人工确认黄金集均未改动。但延迟、token 与 LLM 请求数受云端服务波动影响，属非受控观测，不作为改造效果结论，亦不与 v1.7 或改造前延迟画趋势线。引用分母由 1 例恢复到 7 例属覆盖率改善，不是引用精度变化；1.000 仍受自动比对口径限制，不表述为「100% 引用准确率」；本条只限定两次 live 重跑的原口径对比，判分契约修订另见 C9。"
+    },
+    {
+      "id": "C9",
+      "issue": "同一 30 题黄金集在两套判分口径下给出不同的完整作答率（0.192／0.346 与 0.423／0.577），易被误读为事后抬高数值或系统能力提升。",
+      "resolution": "原口径对纯数据库单源事实题也一律要求答案出现文档侧说明，属评测设计瑕疵；修订口径仅剔除该无关条件，黄金判据、数值容差、名称包含判据、拒答与澄清判据、26 题分母以及两次原始结果文件均未改动，亦未重跑 LLM。双口径并列披露，历史数值原样保留；修订口径在改造前后两次重跑中的增量相同，只改善指标的构念效度，不构成能力提升证据，不得与 v1.7 或跨版本结果比较，也不得以修订口径数值替换原口径数值。"
     }
   ]
 }

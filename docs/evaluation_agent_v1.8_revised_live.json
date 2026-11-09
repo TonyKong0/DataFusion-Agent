@@ -1,0 +1,2288 @@
+{
+  "scope": "live routing, real tool execution, and golden-set answer grading",
+  "cases": {
+    "database": 30,
+    "document": 30,
+    "document_to_database": 15,
+    "database_to_document": 15,
+    "parallel": 10,
+    "formula": 5,
+    "clarification": 5
+  },
+  "environment": {
+    "mysql": true,
+    "indexed_documents": 21,
+    "model": "deepseek-chat",
+    "evaluation_materials": [
+      "07_store_faq.txt",
+      "08_chinook_data_dictionary.md",
+      "04_invoice_review_example.docx"
+    ],
+    "indexed_material_matches": [
+      "07_store_faq.txt",
+      "08_chinook_data_dictionary.md",
+      "04_invoice_review_example.docx"
+    ],
+    "fallback_document_id": "doc_6aca189a129f4aadb9032d0432afeb0b",
+    "document_selection_rule": "按 EVALUATION_MATERIALS 顺序固定选择已索引材料；每题优先用 golden case 的 target_document，其余回退到首份材料；数据库单源与澄清题不传材料。",
+    "excluded_materials_note": "02_service_policy_example.pdf 为无文字层 PDF（PyMuPDF 抽取为空），03_ocr-sign.png 索引内容仅一行 OCR 标记；两者不用于引用判分。"
+  },
+  "golden_set": {
+    "file": "golden_answers_v1.8.json",
+    "status": "human-confirmed",
+    "metrics_eligible": true,
+    "load_error": null,
+    "grading_note": "人工确认判据 + 自动比对，不是逐题人工语义评分；draft 状态的结果不得回填 metrics.json。"
+  },
+  "routed_cases": 110,
+  "routing_accuracy": 0.8636363636363636,
+  "routing_llm_fallback_rate": 0.0,
+  "plan_valid_rate": 1.0,
+  "routing_planning_mean_ms": 8.1,
+  "live_tool_plan_completion": 0.7333333333333333,
+  "live_citation_structurally_valid_rate": 0.6333333333333333,
+  "live_answer_present_rate": 1.0,
+  "live_execution_cases": 30,
+  "live_execution_status_counts": {
+    "success": 22,
+    "partial_success": 5,
+    "failed": 2,
+    "need_clarification": 1
+  },
+  "live_execution_note": "按 golden_answers_v1.8.json 四层分层抽样；每题按 target_document 选择材料，数据库/澄清题不传材料。",
+  "live_latency_note": "第 1 个执行用例按 cold 记录，BGE-M3 首次加载归入该例；live_mean_latency_ms 含冷启动，不作稳定均值，稳定口径请用 latency_breakdown.warm。",
+  "live_mean_latency_ms": 4460.6,
+  "live_p95_latency_ms": 5830,
+  "live_avg_llm_calls": 2.03,
+  "latency_breakdown": {
+    "all": {
+      "count": 30,
+      "mean_ms": 4460.6,
+      "p50_ms": 1523.0,
+      "p95_ms": 5830.0
+    },
+    "cold": {
+      "count": 1,
+      "mean_ms": 66107.0,
+      "p50_ms": 66107.0,
+      "p95_ms": 66107.0
+    },
+    "warm": {
+      "count": 29,
+      "mean_ms": 2334.86,
+      "p50_ms": 1523.0,
+      "p95_ms": 4266.0
+    },
+    "cold_start_latency_ms": 66107.0,
+    "cold_start_case": "文档规定的审核阈值是多少，数据库里有多少订单超过这个值？",
+    "note": "冷启动按执行序位判定：第 1 个执行用例承担 BGE-M3 首次加载；这是序位口径而非精确归因，热态统计不含该例。"
+  },
+  "cold_start_latency_ms": 66107.0,
+  "warm_mean_latency_ms": 2334.86,
+  "warm_p50_latency_ms": 1523.0,
+  "warm_p95_latency_ms": 4266.0,
+  "routing_rows": [
+    {
+      "category": "database",
+      "question": "数据库里有多少客户？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 15.917900018393993
+    },
+    {
+      "category": "database",
+      "question": "数据库里有多少员工？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 9.32519999332726
+    },
+    {
+      "category": "database",
+      "question": "数据库里有多少订单？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 8.522600051946938
+    },
+    {
+      "category": "database",
+      "question": "数据库里有多少歌曲？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 8.823300013318658
+    },
+    {
+      "category": "database",
+      "question": "数据库里有多少专辑？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 8.269199985079467
+    },
+    {
+      "category": "database",
+      "question": "数据库里有多少音乐类型？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 8.860199945047498
+    },
+    {
+      "category": "database",
+      "question": "数据库里有多少艺术家？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 8.420099969953299
+    },
+    {
+      "category": "database",
+      "question": "数据库里有多少曲目？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 8.265299955382943
+    },
+    {
+      "category": "database",
+      "question": "数据库里有多少发票？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 8.683499996550381
+    },
+    {
+      "category": "database",
+      "question": "数据库里有多少歌手？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 8.326200069859624
+    },
+    {
+      "category": "database",
+      "question": "列出数据库里的客户。",
+      "route_ok": false,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 7.603699923492968
+    },
+    {
+      "category": "database",
+      "question": "列出数据库里的员工。",
+      "route_ok": false,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 7.472399971447885
+    },
+    {
+      "category": "database",
+      "question": "列出数据库里的订单。",
+      "route_ok": false,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 7.492700009606779
+    },
+    {
+      "category": "database",
+      "question": "列出数据库里的歌曲。",
+      "route_ok": false,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 7.316699950024486
+    },
+    {
+      "category": "database",
+      "question": "列出数据库里的专辑。",
+      "route_ok": false,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 7.4081000639125705
+    },
+    {
+      "category": "database",
+      "question": "列出数据库里的音乐类型。",
+      "route_ok": false,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 7.389600039459765
+    },
+    {
+      "category": "database",
+      "question": "列出数据库里的艺术家。",
+      "route_ok": false,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 7.176900049671531
+    },
+    {
+      "category": "database",
+      "question": "列出数据库里的曲目。",
+      "route_ok": false,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 7.290299981832504
+    },
+    {
+      "category": "database",
+      "question": "列出数据库里的发票。",
+      "route_ok": false,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 7.061699987389147
+    },
+    {
+      "category": "database",
+      "question": "列出数据库里的歌手。",
+      "route_ok": false,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 7.588999927975237
+    },
+    {
+      "category": "database",
+      "question": "数据库里客户的数量是多少？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 8.346399990841746
+    },
+    {
+      "category": "database",
+      "question": "数据库里员工的数量是多少？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 8.886500028893352
+    },
+    {
+      "category": "database",
+      "question": "数据库里订单的数量是多少？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 8.691399940289557
+    },
+    {
+      "category": "database",
+      "question": "数据库里歌曲的数量是多少？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 8.560899994336069
+    },
+    {
+      "category": "database",
+      "question": "数据库里专辑的数量是多少？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 8.635899983346462
+    },
+    {
+      "category": "database",
+      "question": "数据库里音乐类型的数量是多少？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 8.473100024275482
+    },
+    {
+      "category": "database",
+      "question": "数据库里艺术家的数量是多少？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 8.485400001518428
+    },
+    {
+      "category": "database",
+      "question": "数据库里曲目的数量是多少？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 8.274600026197731
+    },
+    {
+      "category": "database",
+      "question": "数据库里发票的数量是多少？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 8.657900034449995
+    },
+    {
+      "category": "database",
+      "question": "数据库里歌手的数量是多少？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 8.791600004769862
+    },
+    {
+      "category": "document",
+      "question": "文档中的摘要是什么？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 7.112700026482344
+    },
+    {
+      "category": "document",
+      "question": "文档中的作者是什么？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 6.912400014698505
+    },
+    {
+      "category": "document",
+      "question": "文档中的背景是什么？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 7.531599956564605
+    },
+    {
+      "category": "document",
+      "question": "文档中的结论是什么？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 7.1564000099897385
+    },
+    {
+      "category": "document",
+      "question": "文档中的第一章是什么？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 7.721800007857382
+    },
+    {
+      "category": "document",
+      "question": "文档中的目录是什么？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 7.4723000871017575
+    },
+    {
+      "category": "document",
+      "question": "文档中的目的是什么？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 7.681400049477816
+    },
+    {
+      "category": "document",
+      "question": "文档中的方法是什么？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 7.611599983647466
+    },
+    {
+      "category": "document",
+      "question": "文档中的术语是什么？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 7.656599977053702
+    },
+    {
+      "category": "document",
+      "question": "文档中的公式是什么？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 7.5508999871090055
+    },
+    {
+      "category": "document",
+      "question": "请概括文档里的摘要。",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 7.431400008499622
+    },
+    {
+      "category": "document",
+      "question": "请概括文档里的作者。",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 8.01679992582649
+    },
+    {
+      "category": "document",
+      "question": "请概括文档里的背景。",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 7.337599992752075
+    },
+    {
+      "category": "document",
+      "question": "请概括文档里的结论。",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 7.132100057788193
+    },
+    {
+      "category": "document",
+      "question": "请概括文档里的第一章。",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 6.8397000432014465
+    },
+    {
+      "category": "document",
+      "question": "请概括文档里的目录。",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 7.66590004786849
+    },
+    {
+      "category": "document",
+      "question": "请概括文档里的目的。",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 6.845000083558261
+    },
+    {
+      "category": "document",
+      "question": "请概括文档里的方法。",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 7.217599893920124
+    },
+    {
+      "category": "document",
+      "question": "请概括文档里的术语。",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 6.963100051507354
+    },
+    {
+      "category": "document",
+      "question": "请概括文档里的公式。",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 7.264900021255016
+    },
+    {
+      "category": "document",
+      "question": "文档如何解释摘要？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 7.287800079211593
+    },
+    {
+      "category": "document",
+      "question": "文档如何解释作者？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 7.263499894179404
+    },
+    {
+      "category": "document",
+      "question": "文档如何解释背景？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 7.05550005659461
+    },
+    {
+      "category": "document",
+      "question": "文档如何解释结论？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 7.162499940022826
+    },
+    {
+      "category": "document",
+      "question": "文档如何解释第一章？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 6.944500026293099
+    },
+    {
+      "category": "document",
+      "question": "文档如何解释目录？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 6.92650000564754
+    },
+    {
+      "category": "document",
+      "question": "文档如何解释目的？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 7.08520004991442
+    },
+    {
+      "category": "document",
+      "question": "文档如何解释方法？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 7.000799989327788
+    },
+    {
+      "category": "document",
+      "question": "文档如何解释术语？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 7.2249999502673745
+    },
+    {
+      "category": "document",
+      "question": "文档如何解释公式？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 6.733100046403706
+    },
+    {
+      "category": "document_to_database",
+      "question": "文档规定的审核阈值是多少，数据库里有多少订单超过这个值？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 10.097499936819077
+    },
+    {
+      "category": "document_to_database",
+      "question": "文档规定的金额上限是多少，数据库里有多少订单超过这个值？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 9.12669999524951
+    },
+    {
+      "category": "document_to_database",
+      "question": "文档规定的预算值是多少，数据库里有多少订单超过这个值？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 9.047699975781143
+    },
+    {
+      "category": "document_to_database",
+      "question": "文档规定的目标值是多少，数据库里有多少订单超过这个值？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 9.344000020064414
+    },
+    {
+      "category": "document_to_database",
+      "question": "文档规定的单笔限额是多少，数据库里有多少订单超过这个值？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 8.965799934230745
+    },
+    {
+      "category": "document_to_database",
+      "question": "文档规定的基准值是多少，数据库里有多少订单超过这个值？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 9.232599986717105
+    },
+    {
+      "category": "document_to_database",
+      "question": "文档规定的参考值是多少，数据库里有多少订单超过这个值？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 8.930700016207993
+    },
+    {
+      "category": "document_to_database",
+      "question": "文档规定的风险值是多少，数据库里有多少订单超过这个值？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 9.095299988985062
+    },
+    {
+      "category": "document_to_database",
+      "question": "文档规定的触发值是多少，数据库里有多少订单超过这个值？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 8.993299910798669
+    },
+    {
+      "category": "document_to_database",
+      "question": "文档规定的标准值是多少，数据库里有多少订单超过这个值？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 8.815100067295134
+    },
+    {
+      "category": "document_to_database",
+      "question": "文档规定的告警值是多少，数据库里有多少订单超过这个值？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 8.981499937362969
+    },
+    {
+      "category": "document_to_database",
+      "question": "文档规定的合同限额是多少，数据库里有多少订单超过这个值？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 8.820999995805323
+    },
+    {
+      "category": "document_to_database",
+      "question": "文档规定的审批线是多少，数据库里有多少订单超过这个值？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 9.232699987478554
+    },
+    {
+      "category": "document_to_database",
+      "question": "文档规定的报销上限是多少，数据库里有多少订单超过这个值？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 8.947200025431812
+    },
+    {
+      "category": "document_to_database",
+      "question": "文档规定的采购上限是多少，数据库里有多少订单超过这个值？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 10.434700059704483
+    },
+    {
+      "category": "database_to_document",
+      "question": "数据库中销量最高的音乐类型是什么，文档里如何描述它？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 9.475099970586598
+    },
+    {
+      "category": "database_to_document",
+      "question": "数据库中销量最高的歌曲是什么，文档里如何描述它？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 9.018699987791479
+    },
+    {
+      "category": "database_to_document",
+      "question": "数据库中销量最高的专辑是什么，文档里如何描述它？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 9.168999968096614
+    },
+    {
+      "category": "database_to_document",
+      "question": "数据库中销量最高的曲目是什么，文档里如何描述它？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 8.843400049954653
+    },
+    {
+      "category": "database_to_document",
+      "question": "数据库中销量最高的流派是什么，文档里如何描述它？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 9.274400072172284
+    },
+    {
+      "category": "database_to_document",
+      "question": "数据库中销量最高的艺术家是什么，文档里如何描述它？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 8.759499993175268
+    },
+    {
+      "category": "database_to_document",
+      "question": "数据库中销量最高的类型是什么，文档里如何描述它？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 8.75769997946918
+    },
+    {
+      "category": "database_to_document",
+      "question": "数据库中销量最高的歌手是什么，文档里如何描述它？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 8.909299969673157
+    },
+    {
+      "category": "database_to_document",
+      "question": "数据库中销量最高的作品是什么，文档里如何描述它？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 7.378399954177439
+    },
+    {
+      "category": "database_to_document",
+      "question": "数据库中销量最高的唱片是什么，文档里如何描述它？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 7.798300008289516
+    },
+    {
+      "category": "database_to_document",
+      "question": "数据库中销量最高的曲风是什么，文档里如何描述它？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 8.591199992224574
+    },
+    {
+      "category": "database_to_document",
+      "question": "数据库中销量最高的歌曲类型是什么，文档里如何描述它？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 9.839699952863157
+    },
+    {
+      "category": "database_to_document",
+      "question": "数据库中销量最高的音乐流派是什么，文档里如何描述它？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 8.293600054457784
+    },
+    {
+      "category": "database_to_document",
+      "question": "数据库中销量最高的热门曲目是什么，文档里如何描述它？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 8.866299991495907
+    },
+    {
+      "category": "database_to_document",
+      "question": "数据库中销量最高的畅销专辑是什么，文档里如何描述它？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 8.778400020673871
+    },
+    {
+      "category": "parallel",
+      "question": "数据库里有多少客户，文档里记录了多少？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 8.656200021505356
+    },
+    {
+      "category": "parallel",
+      "question": "数据库里有多少员工，文档里记录了多少？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 8.727199980057776
+    },
+    {
+      "category": "parallel",
+      "question": "数据库里有多少订单，文档里记录了多少？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 8.558599976822734
+    },
+    {
+      "category": "parallel",
+      "question": "数据库里有多少歌曲，文档里记录了多少？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 8.75769997946918
+    },
+    {
+      "category": "parallel",
+      "question": "数据库里有多少专辑，文档里记录了多少？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 8.62440001219511
+    },
+    {
+      "category": "parallel",
+      "question": "数据库里有多少音乐类型，文档里记录了多少？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 8.813600055873394
+    },
+    {
+      "category": "parallel",
+      "question": "数据库里有多少艺术家，文档里记录了多少？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 8.665199973620474
+    },
+    {
+      "category": "parallel",
+      "question": "数据库里有多少曲目，文档里记录了多少？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 8.78889998421073
+    },
+    {
+      "category": "parallel",
+      "question": "数据库里有多少发票，文档里记录了多少？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 8.759599993936718
+    },
+    {
+      "category": "parallel",
+      "question": "数据库里有多少歌手，文档里记录了多少？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 8.725599967874587
+    },
+    {
+      "category": "formula",
+      "question": "根据文档中的公式计算数据库销售额增长率？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 6.210400024428964
+    },
+    {
+      "category": "formula",
+      "question": "根据文档中的公式计算数据库订单增长率？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 7.715899962931871
+    },
+    {
+      "category": "formula",
+      "question": "根据文档中的公式计算数据库客户增长率？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 7.426599971950054
+    },
+    {
+      "category": "formula",
+      "question": "根据文档中的公式计算数据库销量增长率？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 6.197400041855872
+    },
+    {
+      "category": "formula",
+      "question": "根据文档中的公式计算数据库购买金额增长率？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 6.172700086608529
+    },
+    {
+      "category": "clarification",
+      "question": "帮我看看。",
+      "route_ok": false,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 6.1561999609693885
+    },
+    {
+      "category": "clarification",
+      "question": "这是什么意思？",
+      "route_ok": false,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 5.945999990217388
+    },
+    {
+      "category": "clarification",
+      "question": "再详细一点。",
+      "route_ok": false,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 5.932600004598498
+    },
+    {
+      "category": "clarification",
+      "question": "还有别的吗？",
+      "route_ok": false,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 6.158199976198375
+    },
+    {
+      "category": "clarification",
+      "question": "请继续。",
+      "route_ok": false,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 5.880299955606461
+    }
+  ],
+  "execution_rows": [
+    {
+      "category": "document_to_database",
+      "question": "文档规定的审核阈值是多少，数据库里有多少订单超过这个值？",
+      "layer": "S1",
+      "status": "success",
+      "completed": true,
+      "citation_structurally_valid": true,
+      "answer_present": true,
+      "answer": "所检索材料中未记载“文档规定的审核阈值”这一项目。材料中仅提到 Invoice.Total 大于 5 美元是示例手册里定义的复核筛选条件，并非退款批准阈值。\n\n数据库中共有 179笔订单。",
+      "evidence_preview": [
+        "{'evidence_id': 'ev_994feba6a8a64ca4961858421e5665b3', 'source_type': 'document', 'source_name': '07_store_faq.txt', 'content': '海风唱片商店知识库问答示例\\r\\n版本 1.0 | 演示资料\\",
+        "{'evidence_id': 'ev_4a04174e8c7b41e78f81fa57d9f3bc60', 'source_type': 'database', 'source_name': 'Chinook', 'content': {'columns': ['order_count'], 'rows': [[17"
+      ],
+      "claims": 2,
+      "evidence": 2,
+      "document_sources": [
+        {
+          "source_name": "07_store_faq.txt",
+          "page": 1,
+          "locator": {
+            "kind": "text"
+          },
+          "text": "海风唱片商店知识库问答示例\r\n版本 1.0 | 演示资料\r\n\r\n问：怎样确认曲目属于哪张专辑？\r\n答：先在 Track 表按 TrackId 定位，再用 AlbumId 关联 Album；艺人名称从 Album.ArtistId 关联 Artist。\r\n\r\n问：流派名称从哪里读取？\r\n答：使用 Track.GenreId 关联 Genre.GenreId，不要只凭曲目名称推断流派。\r\n\r\n问：Invoice.Total 大于 5 美元是否代表退款已批准？\r\n答：不是。这个阈值只是在本示例手册里定义的复核筛选条件，退款仍需独立核对订单明细和申请原因。\r\n\r\n问：没有 InvoiceId 时能否用其他订单代答？\r\n答：不能。应先向提问者索取订单编号，或明确说明当前证据不足。\r\n\r\n问：这些服务规则是真实门店政策吗？\r\n答：不是。业务规则为虚构示例；曲目、专辑、艺人和流派记录依据公开的 Chinook 示例数据库。"
+        }
+      ],
+      "sqls": [
+        "SELECT COUNT(*) AS `order_count` FROM invoice WHERE `invoice`.`Total` > ? LIMIT 100"
+      ],
+      "document_id": "doc_6aca189a129f4aadb9032d0432afeb0b",
+      "cold_start": true,
+      "phase": "cold",
+      "latency_ms": 66107,
+      "llm_calls": 3,
+      "error": null,
+      "golden_match": false,
+      "verdict": "wrong",
+      "verdict_reason": "应拒答但模型给出了具体答案",
+      "citation_judgement": {
+        "citation_supported": null,
+        "reason": "未标注应引用出处，不进入分母",
+        "cited_documents": []
+      },
+      "faithfulness_judgement": {
+        "faithful": true,
+        "matched_forbidden": [],
+        "sql_overreach": false,
+        "reason": "未出现越界结论",
+        "in_denominator": false
+      }
+    },
+    {
+      "category": "database",
+      "question": "数据库里有多少客户？",
+      "layer": "S2-A",
+      "status": "success",
+      "completed": true,
+      "citation_structurally_valid": true,
+      "answer_present": true,
+      "answer": "数据库中共有 59位客户。",
+      "evidence_preview": [
+        "{'evidence_id': 'ev_afb3206f327e442fbf5b7c9966f44830', 'source_type': 'database', 'source_name': 'Chinook', 'content': {'columns': ['customer_count'], 'rows': ["
+      ],
+      "claims": 1,
+      "evidence": 1,
+      "document_sources": [],
+      "sqls": [
+        "SELECT COUNT(*) AS `customer_count` FROM customer LIMIT 100"
+      ],
+      "document_id": null,
+      "cold_start": false,
+      "phase": "warm",
+      "latency_ms": 1763,
+      "llm_calls": 1,
+      "error": null,
+      "golden_match": false,
+      "verdict": "partial",
+      "verdict_reason": "数值正确但未说明文档侧情况",
+      "citation_judgement": {
+        "citation_supported": null,
+        "reason": "未标注应引用出处，不进入分母",
+        "cited_documents": []
+      },
+      "faithfulness_judgement": {
+        "faithful": true,
+        "matched_forbidden": [],
+        "sql_overreach": false,
+        "reason": "未出现越界结论",
+        "in_denominator": false
+      }
+    },
+    {
+      "category": "document",
+      "question": "示例手册中 Invoice.Total 大于多少美元的发票进入重点复核队列？",
+      "layer": "S2-B",
+      "status": "success",
+      "completed": true,
+      "citation_structurally_valid": true,
+      "answer_present": true,
+      "answer": "示例规则规定：Invoice.Total 大于 5 美元的发票进入重点复核队列。",
+      "evidence_preview": [
+        "{'evidence_id': 'ev_75c279435fa44ef3a2385f9e7356dc21', 'source_type': 'document', 'source_name': '04_invoice_review_example.docx', 'content': '月度订单核验与退款记录\\n海风唱片"
+      ],
+      "claims": 1,
+      "evidence": 1,
+      "document_sources": [
+        {
+          "source_name": "04_invoice_review_example.docx",
+          "page": 1,
+          "locator": {
+            "kind": "docx",
+            "section": "document"
+          },
+          "text": "月度订单核验与退款记录\n海风唱片商店 | FIN-03 | 版本 1.0 | 演示用流程\n核验目标\n本流程用于演示如何把发票金额和订单明细分开核查，并留下可追溯的处理结果。示例阈值和退款条件均为虚构，不代表 Chinook 数据库或真实商家的业务政策。\n字段与关系\n演示判读规则\n示例规则：Invoice.Total 大于 5 美元的发票进入重点复核队列。这个门槛只用于演示筛选与证据引用；进入队列不等于退款获批。\n记录示例\n处理结论\n回答顾客前，确认问题所指的 InvoiceId，并分别引用发票记录和订单明细。缺少编号或引用材料时，应说明尚缺的信息；不得用其他订单的金额代替当前订单证据。\n来源：Chinook Database 1.4.5 字段结构；金额及业务规则为虚构演示内容。\n[表格 1]\n用途 | 字段 | 关系\n发票金额 | Invoice.Total | 金额字段，按数据库数值读取。\n发票定位 | Invoice.InvoiceId | 作为订单核验主键。\n订单明细 | InvoiceLine.InvoiceId、TrackId | InvoiceLine.InvoiceId 关联发票；TrackId 定位曲目。\n曲目名称 | Track.TrackId、Name | 通过 InvoiceLine.TrackId 关联 Track。\n[表格 2]\n项目 | 样例值 | 说明\n发票编号 | 301 | 虚构记录，仅展示表单填写方式。\n发票金额 | $11.94 | 虚构金额，不是 Chinook 实际订单数据。\n核验状态 | 待复核 | 需要检查 InvoiceLine 明细和申请原因。"
+        }
+      ],
+      "sqls": [],
+      "document_id": "doc_786a031037494c08b1862570e73c0692",
+      "cold_start": false,
+      "phase": "warm",
+      "latency_ms": 1276,
+      "llm_calls": 1,
+      "error": null,
+      "golden_match": false,
+      "verdict": "partial",
+      "verdict_reason": "数值正确但未说明文档侧情况",
+      "citation_judgement": {
+        "citation_supported": true,
+        "matched_document": true,
+        "expected_documents": [
+          "04_invoice_review_example.docx"
+        ],
+        "cited_documents": [
+          "04_invoice_review_example.docx"
+        ],
+        "fact_hits": [
+          "Invoice.Total",
+          "5 美元",
+          "重点复核队列"
+        ],
+        "reason": "引用指向应引用材料且原文含对应事实"
+      },
+      "faithfulness_judgement": {
+        "faithful": true,
+        "matched_forbidden": [],
+        "sql_overreach": false,
+        "reason": "未出现越界结论",
+        "in_denominator": true
+      }
+    },
+    {
+      "category": "clarification",
+      "question": "帮我看看。",
+      "layer": "S2-C",
+      "status": "success",
+      "completed": true,
+      "citation_structurally_valid": false,
+      "answer_present": true,
+      "answer": "请补充或改写有歧义的条件。",
+      "evidence_preview": [],
+      "claims": 0,
+      "evidence": 0,
+      "document_sources": [],
+      "sqls": [],
+      "document_id": null,
+      "cold_start": false,
+      "phase": "warm",
+      "latency_ms": 812,
+      "llm_calls": 1,
+      "error": null,
+      "golden_match": true,
+      "verdict": "correct",
+      "verdict_reason": "应澄清且回答含澄清语义",
+      "citation_judgement": {
+        "citation_supported": null,
+        "reason": "未标注应引用出处，不进入分母",
+        "cited_documents": []
+      },
+      "faithfulness_judgement": {
+        "faithful": true,
+        "matched_forbidden": [],
+        "sql_overreach": false,
+        "reason": "未出现越界结论",
+        "in_denominator": false
+      }
+    },
+    {
+      "category": "database_to_document",
+      "question": "数据库中销量最高的音乐类型是什么，文档里如何描述它？",
+      "layer": "S1",
+      "status": "success",
+      "completed": true,
+      "citation_structurally_valid": true,
+      "answer_present": true,
+      "answer": "数据库查询结果：名称：Rock；total quantity：835.0。\n\n所检索材料中未记载「如何描述它」的文档侧依据，文档侧证据不足，无法据此形成文档结论；以上结论仅来自数据库，不代表材料中的记载。",
+      "evidence_preview": [
+        "{'evidence_id': 'ev_27d520217d3947f4b0ec2df88115a4c9', 'source_type': 'database', 'source_name': 'Chinook', 'content': {'columns': ['Name', 'total_quantity'], '"
+      ],
+      "claims": 1,
+      "evidence": 1,
+      "document_sources": [],
+      "sqls": [
+        "SELECT `t0`.`Name`, SUM(`t2`.`Quantity`) AS `total_quantity` FROM `genre` AS `t0` JOIN `track` AS `t1` ON `t0`.`GenreId` = `t1`.`GenreId` JOIN `invoiceline` AS `t2` ON `t1`.`TrackId` = `t2`.`TrackId` GROUP BY `t0`.`GenreId`, `t0`.`Name` ORDER BY `total_quantity` DESC, `t0`.`Name` ASC LIMIT 1"
+      ],
+      "document_id": "doc_6aca189a129f4aadb9032d0432afeb0b",
+      "cold_start": false,
+      "phase": "warm",
+      "latency_ms": 6548,
+      "llm_calls": 6,
+      "error": null,
+      "golden_match": true,
+      "verdict": "correct",
+      "verdict_reason": "名称与数值正确并说明文档无描述",
+      "citation_judgement": {
+        "citation_supported": null,
+        "reason": "未标注应引用出处，不进入分母",
+        "cited_documents": []
+      },
+      "faithfulness_judgement": {
+        "faithful": true,
+        "matched_forbidden": [],
+        "sql_overreach": false,
+        "reason": "未出现越界结论",
+        "in_denominator": false
+      }
+    },
+    {
+      "category": "database",
+      "question": "数据库里有多少员工？",
+      "layer": "S2-A",
+      "status": "success",
+      "completed": true,
+      "citation_structurally_valid": true,
+      "answer_present": true,
+      "answer": "数据库中共有 8位员工。",
+      "evidence_preview": [
+        "{'evidence_id': 'ev_d7214c56e1774e5abc50e9fc76eceb2d', 'source_type': 'database', 'source_name': 'Chinook', 'content': {'columns': ['employee_count'], 'rows': ["
+      ],
+      "claims": 1,
+      "evidence": 1,
+      "document_sources": [],
+      "sqls": [
+        "SELECT COUNT(*) AS `employee_count` FROM employee LIMIT 100"
+      ],
+      "document_id": null,
+      "cold_start": false,
+      "phase": "warm",
+      "latency_ms": 1224,
+      "llm_calls": 1,
+      "error": null,
+      "golden_match": false,
+      "verdict": "partial",
+      "verdict_reason": "数值正确但未说明文档侧情况",
+      "citation_judgement": {
+        "citation_supported": null,
+        "reason": "未标注应引用出处，不进入分母",
+        "cited_documents": []
+      },
+      "faithfulness_judgement": {
+        "faithful": true,
+        "matched_forbidden": [],
+        "sql_overreach": false,
+        "reason": "未出现越界结论",
+        "in_denominator": false
+      }
+    },
+    {
+      "category": "document",
+      "question": "发票金额超过 5 美元是否代表退款已批准？",
+      "layer": "S2-B",
+      "status": "success",
+      "completed": true,
+      "citation_structurally_valid": true,
+      "answer_present": true,
+      "answer": "不是。资料中明确说明：Invoice.Total 大于 5 美元只是本示例手册里定义的复核筛选条件，退款仍需独立核对订单明细和申请原因。",
+      "evidence_preview": [
+        "{'evidence_id': 'ev_3ed81aad03cb49d9b831693dcaf3d88f', 'source_type': 'document', 'source_name': '07_store_faq.txt', 'content': '海风唱片商店知识库问答示例\\r\\n版本 1.0 | 演示资料\\"
+      ],
+      "claims": 1,
+      "evidence": 1,
+      "document_sources": [
+        {
+          "source_name": "07_store_faq.txt",
+          "page": 1,
+          "locator": {
+            "kind": "text"
+          },
+          "text": "海风唱片商店知识库问答示例\r\n版本 1.0 | 演示资料\r\n\r\n问：怎样确认曲目属于哪张专辑？\r\n答：先在 Track 表按 TrackId 定位，再用 AlbumId 关联 Album；艺人名称从 Album.ArtistId 关联 Artist。\r\n\r\n问：流派名称从哪里读取？\r\n答：使用 Track.GenreId 关联 Genre.GenreId，不要只凭曲目名称推断流派。\r\n\r\n问：Invoice.Total 大于 5 美元是否代表退款已批准？\r\n答：不是。这个阈值只是在本示例手册里定义的复核筛选条件，退款仍需独立核对订单明细和申请原因。\r\n\r\n问：没有 InvoiceId 时能否用其他订单代答？\r\n答：不能。应先向提问者索取订单编号，或明确说明当前证据不足。\r\n\r\n问：这些服务规则是真实门店政策吗？\r\n答：不是。业务规则为虚构示例；曲目、专辑、艺人和流派记录依据公开的 Chinook 示例数据库。"
+        }
+      ],
+      "sqls": [],
+      "document_id": "doc_6aca189a129f4aadb9032d0432afeb0b",
+      "cold_start": false,
+      "phase": "warm",
+      "latency_ms": 1451,
+      "llm_calls": 1,
+      "error": null,
+      "golden_match": false,
+      "verdict": "wrong",
+      "verdict_reason": "答案未包含黄金名称 否；该阈值只是复核筛选条件，退款需独立核对明细与申请原因",
+      "citation_judgement": {
+        "citation_supported": true,
+        "matched_document": true,
+        "expected_documents": [
+          "07_store_faq.txt"
+        ],
+        "cited_documents": [
+          "07_store_faq.txt"
+        ],
+        "fact_hits": [
+          "复核筛选条件",
+          "退款仍需独立核对"
+        ],
+        "reason": "引用指向应引用材料且原文含对应事实"
+      },
+      "faithfulness_judgement": {
+        "faithful": true,
+        "matched_forbidden": [],
+        "sql_overreach": false,
+        "reason": "未出现越界结论",
+        "in_denominator": true
+      }
+    },
+    {
+      "category": "clarification",
+      "question": "这是什么意思？",
+      "layer": "S2-C",
+      "status": "success",
+      "completed": true,
+      "citation_structurally_valid": false,
+      "answer_present": true,
+      "answer": "请补充或改写有歧义的条件。",
+      "evidence_preview": [],
+      "claims": 0,
+      "evidence": 0,
+      "document_sources": [],
+      "sqls": [],
+      "document_id": null,
+      "cold_start": false,
+      "phase": "warm",
+      "latency_ms": 1042,
+      "llm_calls": 1,
+      "error": null,
+      "golden_match": true,
+      "verdict": "correct",
+      "verdict_reason": "应澄清且回答含澄清语义",
+      "citation_judgement": {
+        "citation_supported": null,
+        "reason": "未标注应引用出处，不进入分母",
+        "cited_documents": []
+      },
+      "faithfulness_judgement": {
+        "faithful": true,
+        "matched_forbidden": [],
+        "sql_overreach": false,
+        "reason": "未出现越界结论",
+        "in_denominator": false
+      }
+    },
+    {
+      "category": "parallel",
+      "question": "数据库里有多少客户，文档里记录了多少？",
+      "layer": "S1",
+      "status": "success",
+      "completed": true,
+      "citation_structurally_valid": true,
+      "answer_present": true,
+      "answer": "数据库中共有 59位客户。\n\n所检索材料中未记载「记录了多少」的文档侧依据，文档侧证据不足，无法据此形成文档结论；以上结论仅来自数据库，不代表材料中的记载。",
+      "evidence_preview": [
+        "{'evidence_id': 'ev_9b4d167c04434803b488fb028acb1bda', 'source_type': 'database', 'source_name': 'Chinook', 'content': {'columns': ['customer_count'], 'rows': ["
+      ],
+      "claims": 1,
+      "evidence": 1,
+      "document_sources": [],
+      "sqls": [
+        "SELECT COUNT(*) AS `customer_count` FROM customer LIMIT 100"
+      ],
+      "document_id": "doc_6aca189a129f4aadb9032d0432afeb0b",
+      "cold_start": false,
+      "phase": "warm",
+      "latency_ms": 4262,
+      "llm_calls": 4,
+      "error": null,
+      "golden_match": true,
+      "verdict": "correct",
+      "verdict_reason": "数值正确并说明文档未记录",
+      "citation_judgement": {
+        "citation_supported": null,
+        "reason": "未标注应引用出处，不进入分母",
+        "cited_documents": []
+      },
+      "faithfulness_judgement": {
+        "faithful": true,
+        "matched_forbidden": [],
+        "sql_overreach": false,
+        "reason": "未出现越界结论",
+        "in_denominator": false
+      }
+    },
+    {
+      "category": "database",
+      "question": "数据库里有多少订单？",
+      "layer": "S2-A",
+      "status": "success",
+      "completed": true,
+      "citation_structurally_valid": true,
+      "answer_present": true,
+      "answer": "数据库中共有 412笔订单。",
+      "evidence_preview": [
+        "{'evidence_id': 'ev_f4ea86e186574e5497df096c93754895', 'source_type': 'database', 'source_name': 'Chinook', 'content': {'columns': ['order_count'], 'rows': [[41"
+      ],
+      "claims": 1,
+      "evidence": 1,
+      "document_sources": [],
+      "sqls": [
+        "SELECT COUNT(*) AS `order_count` FROM invoice LIMIT 100"
+      ],
+      "document_id": null,
+      "cold_start": false,
+      "phase": "warm",
+      "latency_ms": 1929,
+      "llm_calls": 1,
+      "error": null,
+      "golden_match": false,
+      "verdict": "partial",
+      "verdict_reason": "数值正确但未说明文档侧情况",
+      "citation_judgement": {
+        "citation_supported": null,
+        "reason": "未标注应引用出处，不进入分母",
+        "cited_documents": []
+      },
+      "faithfulness_judgement": {
+        "faithful": true,
+        "matched_forbidden": [],
+        "sql_overreach": false,
+        "reason": "未出现越界结论",
+        "in_denominator": false
+      }
+    },
+    {
+      "category": "document",
+      "question": "这些服务规则是真实门店政策吗？",
+      "layer": "S2-B",
+      "status": "success",
+      "completed": true,
+      "citation_structurally_valid": true,
+      "answer_present": true,
+      "answer": "不是。资料明确说明：业务规则为虚构示例；曲目、专辑、艺人和流派记录依据公开的 Chinook 示例数据库。",
+      "evidence_preview": [
+        "{'evidence_id': 'ev_ac9ab2d1071f40fea971860b81260f11', 'source_type': 'document', 'source_name': '07_store_faq.txt', 'content': '海风唱片商店知识库问答示例\\r\\n版本 1.0 | 演示资料\\"
+      ],
+      "claims": 1,
+      "evidence": 1,
+      "document_sources": [
+        {
+          "source_name": "07_store_faq.txt",
+          "page": 1,
+          "locator": {
+            "kind": "text"
+          },
+          "text": "海风唱片商店知识库问答示例\r\n版本 1.0 | 演示资料\r\n\r\n问：怎样确认曲目属于哪张专辑？\r\n答：先在 Track 表按 TrackId 定位，再用 AlbumId 关联 Album；艺人名称从 Album.ArtistId 关联 Artist。\r\n\r\n问：流派名称从哪里读取？\r\n答：使用 Track.GenreId 关联 Genre.GenreId，不要只凭曲目名称推断流派。\r\n\r\n问：Invoice.Total 大于 5 美元是否代表退款已批准？\r\n答：不是。这个阈值只是在本示例手册里定义的复核筛选条件，退款仍需独立核对订单明细和申请原因。\r\n\r\n问：没有 InvoiceId 时能否用其他订单代答？\r\n答：不能。应先向提问者索取订单编号，或明确说明当前证据不足。\r\n\r\n问：这些服务规则是真实门店政策吗？\r\n答：不是。业务规则为虚构示例；曲目、专辑、艺人和流派记录依据公开的 Chinook 示例数据库。"
+        }
+      ],
+      "sqls": [],
+      "document_id": "doc_6aca189a129f4aadb9032d0432afeb0b",
+      "cold_start": false,
+      "phase": "warm",
+      "latency_ms": 1187,
+      "llm_calls": 1,
+      "error": null,
+      "golden_match": false,
+      "verdict": "wrong",
+      "verdict_reason": "答案未包含黄金名称 否，业务规则为虚构示例；曲目/专辑/艺人/流派依据公开 Chinook 库",
+      "citation_judgement": {
+        "citation_supported": true,
+        "matched_document": true,
+        "expected_documents": [
+          "07_store_faq.txt",
+          "08_chinook_data_dictionary.md"
+        ],
+        "cited_documents": [
+          "07_store_faq.txt"
+        ],
+        "fact_hits": [
+          "虚构示例",
+          "Chinook"
+        ],
+        "reason": "引用指向应引用材料且原文含对应事实"
+      },
+      "faithfulness_judgement": {
+        "faithful": true,
+        "matched_forbidden": [],
+        "sql_overreach": false,
+        "reason": "未出现越界结论",
+        "in_denominator": true
+      }
+    },
+    {
+      "category": "clarification",
+      "question": "再详细一点。",
+      "layer": "S2-C",
+      "status": "success",
+      "completed": true,
+      "citation_structurally_valid": false,
+      "answer_present": true,
+      "answer": "请补充或改写有歧义的条件。",
+      "evidence_preview": [],
+      "claims": 0,
+      "evidence": 0,
+      "document_sources": [],
+      "sqls": [],
+      "document_id": null,
+      "cold_start": false,
+      "phase": "warm",
+      "latency_ms": 634,
+      "llm_calls": 1,
+      "error": null,
+      "golden_match": true,
+      "verdict": "correct",
+      "verdict_reason": "应澄清且回答含澄清语义",
+      "citation_judgement": {
+        "citation_supported": null,
+        "reason": "未标注应引用出处，不进入分母",
+        "cited_documents": []
+      },
+      "faithfulness_judgement": {
+        "faithful": true,
+        "matched_forbidden": [],
+        "sql_overreach": false,
+        "reason": "未出现越界结论",
+        "in_denominator": false
+      }
+    },
+    {
+      "category": "formula",
+      "question": "根据文档中的公式计算数据库销售额增长率？",
+      "layer": "S1",
+      "status": "partial_success",
+      "completed": false,
+      "citation_structurally_valid": false,
+      "answer_present": true,
+      "answer": "所检索材料中未记载「公式计算数据库销售额增长率」的文档侧依据，文档侧证据不足，无法据此形成文档结论；本次未形成可引用的文档结论。",
+      "evidence_preview": [],
+      "claims": 0,
+      "evidence": 0,
+      "document_sources": [],
+      "sqls": [],
+      "document_id": "doc_6aca189a129f4aadb9032d0432afeb0b",
+      "cold_start": false,
+      "phase": "warm",
+      "latency_ms": 4075,
+      "llm_calls": 3,
+      "error": null,
+      "golden_match": true,
+      "verdict": "correct",
+      "verdict_reason": "应拒答且回答含拒答语义",
+      "citation_judgement": {
+        "citation_supported": null,
+        "reason": "未标注应引用出处，不进入分母",
+        "cited_documents": []
+      },
+      "faithfulness_judgement": {
+        "faithful": true,
+        "matched_forbidden": [],
+        "sql_overreach": false,
+        "reason": "未出现越界结论",
+        "in_denominator": false
+      }
+    },
+    {
+      "category": "database",
+      "question": "数据库里有多少专辑？",
+      "layer": "S2-A",
+      "status": "success",
+      "completed": true,
+      "citation_structurally_valid": true,
+      "answer_present": true,
+      "answer": "数据库中共有 347张专辑。",
+      "evidence_preview": [
+        "{'evidence_id': 'ev_07554d71909245a4af1f750eeb9a81d3', 'source_type': 'database', 'source_name': 'Chinook', 'content': {'columns': ['album_count'], 'rows': [[34"
+      ],
+      "claims": 1,
+      "evidence": 1,
+      "document_sources": [],
+      "sqls": [
+        "SELECT COUNT(*) AS `album_count` FROM album LIMIT 100"
+      ],
+      "document_id": null,
+      "cold_start": false,
+      "phase": "warm",
+      "latency_ms": 1493,
+      "llm_calls": 1,
+      "error": null,
+      "golden_match": false,
+      "verdict": "partial",
+      "verdict_reason": "数值正确但未说明文档侧情况",
+      "citation_judgement": {
+        "citation_supported": null,
+        "reason": "未标注应引用出处，不进入分母",
+        "cited_documents": []
+      },
+      "faithfulness_judgement": {
+        "faithful": true,
+        "matched_forbidden": [],
+        "sql_overreach": false,
+        "reason": "未出现越界结论",
+        "in_denominator": false
+      }
+    },
+    {
+      "category": "document",
+      "question": "没有 InvoiceId 时能否用其他订单代答？",
+      "layer": "S2-B",
+      "status": "success",
+      "completed": true,
+      "citation_structurally_valid": true,
+      "answer_present": true,
+      "answer": "不能。应先向提问者索取订单编号，或明确说明当前证据不足。",
+      "evidence_preview": [
+        "{'evidence_id': 'ev_01589b816e70460a917f1406e2631e57', 'source_type': 'document', 'source_name': '07_store_faq.txt', 'content': '海风唱片商店知识库问答示例\\r\\n版本 1.0 | 演示资料\\"
+      ],
+      "claims": 1,
+      "evidence": 1,
+      "document_sources": [
+        {
+          "source_name": "07_store_faq.txt",
+          "page": 1,
+          "locator": {
+            "kind": "text"
+          },
+          "text": "海风唱片商店知识库问答示例\r\n版本 1.0 | 演示资料\r\n\r\n问：怎样确认曲目属于哪张专辑？\r\n答：先在 Track 表按 TrackId 定位，再用 AlbumId 关联 Album；艺人名称从 Album.ArtistId 关联 Artist。\r\n\r\n问：流派名称从哪里读取？\r\n答：使用 Track.GenreId 关联 Genre.GenreId，不要只凭曲目名称推断流派。\r\n\r\n问：Invoice.Total 大于 5 美元是否代表退款已批准？\r\n答：不是。这个阈值只是在本示例手册里定义的复核筛选条件，退款仍需独立核对订单明细和申请原因。\r\n\r\n问：没有 InvoiceId 时能否用其他订单代答？\r\n答：不能。应先向提问者索取订单编号，或明确说明当前证据不足。\r\n\r\n问：这些服务规则是真实门店政策吗？\r\n答：不是。业务规则为虚构示例；曲目、专辑、艺人和流派记录依据公开的 Chinook 示例数据库。"
+        }
+      ],
+      "sqls": [],
+      "document_id": "doc_6aca189a129f4aadb9032d0432afeb0b",
+      "cold_start": false,
+      "phase": "warm",
+      "latency_ms": 1523,
+      "llm_calls": 1,
+      "error": null,
+      "golden_match": false,
+      "verdict": "wrong",
+      "verdict_reason": "答案未包含黄金名称 不能；应索取订单编号或明确说明证据不足",
+      "citation_judgement": {
+        "citation_supported": true,
+        "matched_document": true,
+        "expected_documents": [
+          "07_store_faq.txt"
+        ],
+        "cited_documents": [
+          "07_store_faq.txt"
+        ],
+        "fact_hits": [
+          "索取订单编号",
+          "证据不足"
+        ],
+        "reason": "引用指向应引用材料且原文含对应事实"
+      },
+      "faithfulness_judgement": {
+        "faithful": true,
+        "matched_forbidden": [],
+        "sql_overreach": false,
+        "reason": "未出现越界结论",
+        "in_denominator": true
+      }
+    },
+    {
+      "category": "document_to_database",
+      "question": "文档规定的退款审批人是谁，数据库里有多少笔订单由其批准？",
+      "layer": "S2-C",
+      "status": "failed",
+      "completed": false,
+      "citation_structurally_valid": false,
+      "answer_present": true,
+      "answer": "请先选择 1–10 份已索引材料",
+      "evidence_preview": [],
+      "claims": 0,
+      "evidence": 0,
+      "document_sources": [],
+      "sqls": [],
+      "document_id": null,
+      "cold_start": false,
+      "phase": "warm",
+      "latency_ms": 58,
+      "llm_calls": 0,
+      "error": null,
+      "golden_match": false,
+      "verdict": "wrong",
+      "verdict_reason": "应拒答但模型给出了具体答案",
+      "citation_judgement": {
+        "citation_supported": null,
+        "reason": "未标注应引用出处，不进入分母",
+        "cited_documents": []
+      },
+      "faithfulness_judgement": {
+        "faithful": true,
+        "matched_forbidden": [],
+        "sql_overreach": false,
+        "reason": "未出现越界结论",
+        "in_denominator": false
+      }
+    },
+    {
+      "category": "document_to_database",
+      "question": "文档规定的金额上限是多少，数据库里有多少订单超过这个值？",
+      "layer": "S1",
+      "status": "partial_success",
+      "completed": false,
+      "citation_structurally_valid": false,
+      "answer_present": true,
+      "answer": "所检索材料中未记载「金额上限」的文档侧依据，文档侧证据不足，无法据此形成文档结论；本次未形成可引用的文档结论。",
+      "evidence_preview": [],
+      "claims": 0,
+      "evidence": 0,
+      "document_sources": [],
+      "sqls": [],
+      "document_id": "doc_6aca189a129f4aadb9032d0432afeb0b",
+      "cold_start": false,
+      "phase": "warm",
+      "latency_ms": 3738,
+      "llm_calls": 3,
+      "error": null,
+      "golden_match": true,
+      "verdict": "correct",
+      "verdict_reason": "应拒答且回答含拒答语义",
+      "citation_judgement": {
+        "citation_supported": null,
+        "reason": "未标注应引用出处，不进入分母",
+        "cited_documents": []
+      },
+      "faithfulness_judgement": {
+        "faithful": true,
+        "matched_forbidden": [],
+        "sql_overreach": false,
+        "reason": "未出现越界结论",
+        "in_denominator": false
+      }
+    },
+    {
+      "category": "database",
+      "question": "数据库里有多少曲目？",
+      "layer": "S2-A",
+      "status": "success",
+      "completed": true,
+      "citation_structurally_valid": true,
+      "answer_present": true,
+      "answer": "数据库中共有 3503首歌曲。",
+      "evidence_preview": [
+        "{'evidence_id': 'ev_14962aeb8e48441cb6d236f5c781a8c2', 'source_type': 'database', 'source_name': 'Chinook', 'content': {'columns': ['track_count'], 'rows': [[35"
+      ],
+      "claims": 1,
+      "evidence": 1,
+      "document_sources": [],
+      "sqls": [
+        "SELECT COUNT(*) AS `track_count` FROM track LIMIT 100"
+      ],
+      "document_id": null,
+      "cold_start": false,
+      "phase": "warm",
+      "latency_ms": 1643,
+      "llm_calls": 1,
+      "error": null,
+      "golden_match": false,
+      "verdict": "partial",
+      "verdict_reason": "数值正确但未说明文档侧情况",
+      "citation_judgement": {
+        "citation_supported": null,
+        "reason": "未标注应引用出处，不进入分母",
+        "cited_documents": []
+      },
+      "faithfulness_judgement": {
+        "faithful": true,
+        "matched_forbidden": [],
+        "sql_overreach": false,
+        "reason": "未出现越界结论",
+        "in_denominator": false
+      }
+    },
+    {
+      "category": "document",
+      "question": "曲目属于哪张专辑应沿什么字段关联？",
+      "layer": "S2-B",
+      "status": "success",
+      "completed": true,
+      "citation_structurally_valid": true,
+      "answer_present": true,
+      "answer": "应先在 Track 表按 TrackId 定位，再用 AlbumId 关联 Album。",
+      "evidence_preview": [
+        "{'evidence_id': 'ev_83202821eaf645dba376f4d4e543f3fb', 'source_type': 'document', 'source_name': '07_store_faq.txt', 'content': '海风唱片商店知识库问答示例\\r\\n版本 1.0 | 演示资料\\"
+      ],
+      "claims": 1,
+      "evidence": 1,
+      "document_sources": [
+        {
+          "source_name": "07_store_faq.txt",
+          "page": 1,
+          "locator": {
+            "kind": "text"
+          },
+          "text": "海风唱片商店知识库问答示例\r\n版本 1.0 | 演示资料\r\n\r\n问：怎样确认曲目属于哪张专辑？\r\n答：先在 Track 表按 TrackId 定位，再用 AlbumId 关联 Album；艺人名称从 Album.ArtistId 关联 Artist。\r\n\r\n问：流派名称从哪里读取？\r\n答：使用 Track.GenreId 关联 Genre.GenreId，不要只凭曲目名称推断流派。\r\n\r\n问：Invoice.Total 大于 5 美元是否代表退款已批准？\r\n答：不是。这个阈值只是在本示例手册里定义的复核筛选条件，退款仍需独立核对订单明细和申请原因。\r\n\r\n问：没有 InvoiceId 时能否用其他订单代答？\r\n答：不能。应先向提问者索取订单编号，或明确说明当前证据不足。\r\n\r\n问：这些服务规则是真实门店政策吗？\r\n答：不是。业务规则为虚构示例；曲目、专辑、艺人和流派记录依据公开的 Chinook 示例数据库。"
+        }
+      ],
+      "sqls": [],
+      "document_id": "doc_6aca189a129f4aadb9032d0432afeb0b",
+      "cold_start": false,
+      "phase": "warm",
+      "latency_ms": 1050,
+      "llm_calls": 1,
+      "error": null,
+      "golden_match": false,
+      "verdict": "wrong",
+      "verdict_reason": "答案未包含黄金名称 先在 Track 按 TrackId 定位，再用 AlbumId 关联 Album；艺人名称从 Album.ArtistId 关联 Artist",
+      "citation_judgement": {
+        "citation_supported": true,
+        "matched_document": true,
+        "expected_documents": [
+          "07_store_faq.txt"
+        ],
+        "cited_documents": [
+          "07_store_faq.txt"
+        ],
+        "fact_hits": [
+          "TrackId",
+          "AlbumId",
+          "ArtistId"
+        ],
+        "reason": "引用指向应引用材料且原文含对应事实"
+      },
+      "faithfulness_judgement": {
+        "faithful": true,
+        "matched_forbidden": [],
+        "sql_overreach": false,
+        "reason": "未出现越界结论",
+        "in_denominator": true
+      }
+    },
+    {
+      "category": "database_to_document",
+      "question": "数据库中销量最高的歌曲是什么，文档里如何描述它？",
+      "layer": "S1",
+      "status": "failed",
+      "completed": false,
+      "citation_structurally_valid": false,
+      "answer_present": true,
+      "answer": "本次查询未完成：结构化查询不符合当前 Schema 或安全规则\n\n所检索材料中未记载「如何描述它」的文档侧依据，文档侧证据不足，无法据此形成文档结论；本次未形成可引用的文档结论。",
+      "evidence_preview": [],
+      "claims": 0,
+      "evidence": 0,
+      "document_sources": [],
+      "sqls": [],
+      "document_id": "doc_6aca189a129f4aadb9032d0432afeb0b",
+      "cold_start": false,
+      "phase": "warm",
+      "latency_ms": 3972,
+      "llm_calls": 3,
+      "error": null,
+      "golden_match": false,
+      "verdict": "wrong",
+      "verdict_reason": "答案未包含黄金名称 Dazed and Confused",
+      "citation_judgement": {
+        "citation_supported": null,
+        "reason": "未标注应引用出处，不进入分母",
+        "cited_documents": []
+      },
+      "faithfulness_judgement": {
+        "faithful": null,
+        "reason": "无禁止措辞判据且无 SQL 语义证据，不进入分母",
+        "matched_forbidden": [],
+        "sql_overreach": false,
+        "in_denominator": false
+      }
+    },
+    {
+      "category": "database",
+      "question": "数据库里有多少音乐类型？",
+      "layer": "S2-A",
+      "status": "success",
+      "completed": true,
+      "citation_structurally_valid": true,
+      "answer_present": true,
+      "answer": "数据库中共有 25种音乐类型。",
+      "evidence_preview": [
+        "{'evidence_id': 'ev_4f7bb1ea48fc4fbe81b9a0fc20b67af6', 'source_type': 'database', 'source_name': 'Chinook', 'content': {'columns': ['genre_count'], 'rows': [[25"
+      ],
+      "claims": 1,
+      "evidence": 1,
+      "document_sources": [],
+      "sqls": [
+        "SELECT COUNT(*) AS `genre_count` FROM genre LIMIT 100"
+      ],
+      "document_id": null,
+      "cold_start": false,
+      "phase": "warm",
+      "latency_ms": 1265,
+      "llm_calls": 1,
+      "error": null,
+      "golden_match": false,
+      "verdict": "partial",
+      "verdict_reason": "数值正确但未说明文档侧情况",
+      "citation_judgement": {
+        "citation_supported": null,
+        "reason": "未标注应引用出处，不进入分母",
+        "cited_documents": []
+      },
+      "faithfulness_judgement": {
+        "faithful": true,
+        "matched_forbidden": [],
+        "sql_overreach": false,
+        "reason": "未出现越界结论",
+        "in_denominator": false
+      }
+    },
+    {
+      "category": "document",
+      "question": "流派名称从哪里读取？",
+      "layer": "S2-B",
+      "status": "success",
+      "completed": true,
+      "citation_structurally_valid": true,
+      "answer_present": true,
+      "answer": "使用 Track.GenreId 关联 Genre.GenreId 读取流派名称，不要只凭曲目名称推断流派。",
+      "evidence_preview": [
+        "{'evidence_id': 'ev_bb92656069b74945b19692b840139eef', 'source_type': 'document', 'source_name': '07_store_faq.txt', 'content': '海风唱片商店知识库问答示例\\r\\n版本 1.0 | 演示资料\\"
+      ],
+      "claims": 1,
+      "evidence": 1,
+      "document_sources": [
+        {
+          "source_name": "07_store_faq.txt",
+          "page": 1,
+          "locator": {
+            "kind": "text"
+          },
+          "text": "海风唱片商店知识库问答示例\r\n版本 1.0 | 演示资料\r\n\r\n问：怎样确认曲目属于哪张专辑？\r\n答：先在 Track 表按 TrackId 定位，再用 AlbumId 关联 Album；艺人名称从 Album.ArtistId 关联 Artist。\r\n\r\n问：流派名称从哪里读取？\r\n答：使用 Track.GenreId 关联 Genre.GenreId，不要只凭曲目名称推断流派。\r\n\r\n问：Invoice.Total 大于 5 美元是否代表退款已批准？\r\n答：不是。这个阈值只是在本示例手册里定义的复核筛选条件，退款仍需独立核对订单明细和申请原因。\r\n\r\n问：没有 InvoiceId 时能否用其他订单代答？\r\n答：不能。应先向提问者索取订单编号，或明确说明当前证据不足。\r\n\r\n问：这些服务规则是真实门店政策吗？\r\n答：不是。业务规则为虚构示例；曲目、专辑、艺人和流派记录依据公开的 Chinook 示例数据库。"
+        }
+      ],
+      "sqls": [],
+      "document_id": "doc_6aca189a129f4aadb9032d0432afeb0b",
+      "cold_start": false,
+      "phase": "warm",
+      "latency_ms": 1174,
+      "llm_calls": 1,
+      "error": null,
+      "golden_match": false,
+      "verdict": "wrong",
+      "verdict_reason": "答案未包含黄金名称 使用 Track.GenreId 关联 Genre.GenreId，不凭曲目名称推断",
+      "citation_judgement": {
+        "citation_supported": true,
+        "matched_document": true,
+        "expected_documents": [
+          "07_store_faq.txt"
+        ],
+        "cited_documents": [
+          "07_store_faq.txt"
+        ],
+        "fact_hits": [
+          "Track.GenreId",
+          "推断流派"
+        ],
+        "reason": "引用指向应引用材料且原文含对应事实"
+      },
+      "faithfulness_judgement": {
+        "faithful": true,
+        "matched_forbidden": [],
+        "sql_overreach": false,
+        "reason": "未出现越界结论",
+        "in_denominator": true
+      }
+    },
+    {
+      "category": "parallel",
+      "question": "数据库里有多少员工，文档里记录了多少？",
+      "layer": "S1",
+      "status": "success",
+      "completed": true,
+      "citation_structurally_valid": true,
+      "answer_present": true,
+      "answer": "数据库中共有 8位员工。\n\n所检索材料中未记载「记录了多少」的文档侧依据，文档侧证据不足，无法据此形成文档结论；以上结论仅来自数据库，不代表材料中的记载。",
+      "evidence_preview": [
+        "{'evidence_id': 'ev_bc38e65b556148b9b97493907f292454', 'source_type': 'database', 'source_name': 'Chinook', 'content': {'columns': ['employee_count'], 'rows': ["
+      ],
+      "claims": 1,
+      "evidence": 1,
+      "document_sources": [],
+      "sqls": [
+        "SELECT COUNT(*) AS `employee_count` FROM employee LIMIT 100"
+      ],
+      "document_id": "doc_6aca189a129f4aadb9032d0432afeb0b",
+      "cold_start": false,
+      "phase": "warm",
+      "latency_ms": 4266,
+      "llm_calls": 4,
+      "error": null,
+      "golden_match": true,
+      "verdict": "correct",
+      "verdict_reason": "数值正确并说明文档未记录",
+      "citation_judgement": {
+        "citation_supported": null,
+        "reason": "未标注应引用出处，不进入分母",
+        "cited_documents": []
+      },
+      "faithfulness_judgement": {
+        "faithful": true,
+        "matched_forbidden": [],
+        "sql_overreach": false,
+        "reason": "未出现越界结论",
+        "in_denominator": false
+      }
+    },
+    {
+      "category": "document",
+      "question": "数据字典中的 5 美元门槛是不是数据库约束？",
+      "layer": "S2-B",
+      "status": "success",
+      "completed": true,
+      "citation_structurally_valid": true,
+      "answer_present": true,
+      "answer": "不是。资料明确说明：“演示政策中的 5 美元门槛是虚构规则，不是数据库约束。”",
+      "evidence_preview": [
+        "{'evidence_id': 'ev_15819b82c71e48b89b638cf7c2335bae', 'source_type': 'document', 'source_name': '08_chinook_data_dictionary.md', 'content': '# Chinook 示例数据库数据字"
+      ],
+      "claims": 1,
+      "evidence": 1,
+      "document_sources": [
+        {
+          "source_name": "08_chinook_data_dictionary.md",
+          "page": 1,
+          "locator": {
+            "kind": "markdown"
+          },
+          "text": "# Chinook 示例数据库数据字典\r\n\r\n本文用于解释演示目录中的主要字段。数据结构来自 Chinook Database 1.4.5；业务解释仅覆盖本示例。\r\n\r\n## 目录实体\r\n\r\n| 表 | 主键 | 说明 |\r\n| --- | --- | --- |\r\n| Artist | ArtistId | 艺人名称目录。 |\r\n| Album | AlbumId | 专辑目录；ArtistId 指向 Artist。 |\r\n| Genre | GenreId | 流派名称目录。 |\r\n| Track | TrackId | 曲目目录；AlbumId 和 GenreId 分别关联专辑与流派。 |\r\n\r\n## 订单实体\r\n\r\n| 表 | 主键 | 关系 |\r\n| --- | --- | --- |\r\n| Invoice | InvoiceId | CustomerId 关联客户；Total 表示发票金额。 |\r\n| InvoiceLine | InvoiceLineId | InvoiceId 关联发票，TrackId 关联曲目。 |\r\n\r\n## 查询口径\r\n\r\n目录查询应沿真实外键连接。订单金额问题读取 Invoice.Total；商品明细问题连接 InvoiceLine 和 Track。演示政策中的 5 美元门槛是虚构规则，不是数据库约束。\r\n\r\n来源：项目内 `database/Chinook_MySql.sql`，Chinook Database 1.4.5。许可见包内 `SOURCES_AND_LICENSES.md`。"
+        }
+      ],
+      "sqls": [],
+      "document_id": "doc_87bfb2f13bd44712b9612de173644648",
+      "cold_start": false,
+      "phase": "warm",
+      "latency_ms": 1259,
+      "llm_calls": 1,
+      "error": null,
+      "golden_match": false,
+      "verdict": "wrong",
+      "verdict_reason": "答案未包含黄金名称 不是；是虚构演示规则，不是数据库约束",
+      "citation_judgement": {
+        "citation_supported": true,
+        "matched_document": true,
+        "expected_documents": [
+          "08_chinook_data_dictionary.md"
+        ],
+        "cited_documents": [
+          "08_chinook_data_dictionary.md"
+        ],
+        "fact_hits": [
+          "虚构规则",
+          "不是数据库约束"
+        ],
+        "reason": "引用指向应引用材料且原文含对应事实"
+      },
+      "faithfulness_judgement": {
+        "faithful": true,
+        "matched_forbidden": [],
+        "sql_overreach": false,
+        "reason": "未出现越界结论",
+        "in_denominator": true
+      }
+    },
+    {
+      "category": "formula",
+      "question": "根据文档中的公式计算数据库订单增长率？",
+      "layer": "S1",
+      "status": "partial_success",
+      "completed": false,
+      "citation_structurally_valid": false,
+      "answer_present": true,
+      "answer": "所检索材料中未记载「公式计算数据库订单增长率」的文档侧依据，文档侧证据不足，无法据此形成文档结论；本次未形成可引用的文档结论。",
+      "evidence_preview": [],
+      "claims": 0,
+      "evidence": 0,
+      "document_sources": [],
+      "sqls": [],
+      "document_id": "doc_6aca189a129f4aadb9032d0432afeb0b",
+      "cold_start": false,
+      "phase": "warm",
+      "latency_ms": 3109,
+      "llm_calls": 3,
+      "error": null,
+      "golden_match": true,
+      "verdict": "correct",
+      "verdict_reason": "应拒答且回答含拒答语义",
+      "citation_judgement": {
+        "citation_supported": null,
+        "reason": "未标注应引用出处，不进入分母",
+        "cited_documents": []
+      },
+      "faithfulness_judgement": {
+        "faithful": true,
+        "matched_forbidden": [],
+        "sql_overreach": false,
+        "reason": "未出现越界结论",
+        "in_denominator": false
+      }
+    },
+    {
+      "category": "document",
+      "question": "发票核验示例中的样例发票编号与金额是多少，是否为真实订单？",
+      "layer": "S2-B",
+      "status": "need_clarification",
+      "completed": false,
+      "citation_structurally_valid": false,
+      "answer_present": true,
+      "answer": "本次查询未完成：问题中的“发票核验示例”“样例发票编号与金额”指向未提供的示例数据，且“是否为真实订单”需要外部核验信息，无法仅凭单表查询确定。请提供具体发票编号或明确查询条件（如按 InvoiceId 或日期范围查询 invoice 表）。",
+      "evidence_preview": [],
+      "claims": 0,
+      "evidence": 0,
+      "document_sources": [],
+      "sqls": [],
+      "document_id": "doc_786a031037494c08b1862570e73c0692",
+      "cold_start": false,
+      "phase": "warm",
+      "latency_ms": 1234,
+      "llm_calls": 1,
+      "error": null,
+      "golden_match": false,
+      "verdict": "wrong",
+      "verdict_reason": "答案未包含黄金名称 编号 301、金额 $11.94，均为虚构记录、非 Chinook 实际订单",
+      "citation_judgement": {
+        "citation_supported": "no_claim",
+        "reason": "回答未给出任何引用线索",
+        "cited_documents": []
+      },
+      "faithfulness_judgement": {
+        "faithful": false,
+        "matched_forbidden": [
+          "真实订单"
+        ],
+        "sql_overreach": false,
+        "reason": "命中禁止措辞 ['真实订单']",
+        "in_denominator": true
+      }
+    },
+    {
+      "category": "document_to_database",
+      "question": "文档规定的预算值是多少，数据库里有多少订单超过这个值？",
+      "layer": "S1",
+      "status": "partial_success",
+      "completed": false,
+      "citation_structurally_valid": false,
+      "answer_present": true,
+      "answer": "所检索材料中未记载「预算值」的文档侧依据，文档侧证据不足，无法据此形成文档结论；本次未形成可引用的文档结论。",
+      "evidence_preview": [],
+      "claims": 0,
+      "evidence": 0,
+      "document_sources": [],
+      "sqls": [],
+      "document_id": "doc_6aca189a129f4aadb9032d0432afeb0b",
+      "cold_start": false,
+      "phase": "warm",
+      "latency_ms": 2972,
+      "llm_calls": 3,
+      "error": null,
+      "golden_match": true,
+      "verdict": "correct",
+      "verdict_reason": "应拒答且回答含拒答语义",
+      "citation_judgement": {
+        "citation_supported": null,
+        "reason": "未标注应引用出处，不进入分母",
+        "cited_documents": []
+      },
+      "faithfulness_judgement": {
+        "faithful": true,
+        "matched_forbidden": [],
+        "sql_overreach": false,
+        "reason": "未出现越界结论",
+        "in_denominator": false
+      }
+    },
+    {
+      "category": "database_to_document",
+      "question": "数据库中销量最高的专辑是什么，文档里如何描述它？",
+      "layer": "S1",
+      "status": "success",
+      "completed": true,
+      "citation_structurally_valid": true,
+      "answer_present": true,
+      "answer": "数据库查询结果：标题：Minha Historia；total quantity：27.0。\n\n所检索材料中未记载「如何描述它」的文档侧依据，文档侧证据不足，无法据此形成文档结论；以上结论仅来自数据库，不代表材料中的记载。",
+      "evidence_preview": [
+        "{'evidence_id': 'ev_ced1d1d49729462e9f9fc81a217c32cf', 'source_type': 'database', 'source_name': 'Chinook', 'content': {'columns': ['Title', 'total_quantity'], "
+      ],
+      "claims": 1,
+      "evidence": 1,
+      "document_sources": [],
+      "sqls": [
+        "SELECT `t0`.`Title`, SUM(`t2`.`Quantity`) AS `total_quantity` FROM `album` AS `t0` JOIN `track` AS `t1` ON `t0`.`AlbumId` = `t1`.`AlbumId` JOIN `invoiceline` AS `t2` ON `t1`.`TrackId` = `t2`.`TrackId` GROUP BY `t0`.`AlbumId`, `t0`.`Title` ORDER BY `total_quantity` DESC, `t0`.`Title` ASC LIMIT 1"
+      ],
+      "document_id": "doc_6aca189a129f4aadb9032d0432afeb0b",
+      "cold_start": false,
+      "phase": "warm",
+      "latency_ms": 5830,
+      "llm_calls": 5,
+      "error": null,
+      "golden_match": false,
+      "verdict": "partial",
+      "verdict_reason": "名称正确但数值与黄金值不符",
+      "citation_judgement": {
+        "citation_supported": null,
+        "reason": "未标注应引用出处，不进入分母",
+        "cited_documents": []
+      },
+      "faithfulness_judgement": {
+        "faithful": true,
+        "matched_forbidden": [],
+        "sql_overreach": false,
+        "reason": "未出现越界结论",
+        "in_denominator": false
+      }
+    },
+    {
+      "category": "parallel",
+      "question": "数据库里有多少订单，文档里记录了多少？",
+      "layer": "S1",
+      "status": "success",
+      "completed": true,
+      "citation_structurally_valid": true,
+      "answer_present": true,
+      "answer": "数据库中共有 412笔订单。\n\n所检索材料中未记载「记录了多少」的文档侧依据，文档侧证据不足，无法据此形成文档结论；以上结论仅来自数据库，不代表材料中的记载。",
+      "evidence_preview": [
+        "{'evidence_id': 'ev_c9996cac06144c70a2ae8a043b1d656e', 'source_type': 'database', 'source_name': 'Chinook', 'content': {'columns': ['order_count'], 'rows': [[41"
+      ],
+      "claims": 1,
+      "evidence": 1,
+      "document_sources": [],
+      "sqls": [
+        "SELECT COUNT(*) AS `order_count` FROM invoice LIMIT 100"
+      ],
+      "document_id": "doc_6aca189a129f4aadb9032d0432afeb0b",
+      "cold_start": false,
+      "phase": "warm",
+      "latency_ms": 3926,
+      "llm_calls": 4,
+      "error": null,
+      "golden_match": true,
+      "verdict": "correct",
+      "verdict_reason": "数值正确并说明文档未记录",
+      "citation_judgement": {
+        "citation_supported": null,
+        "reason": "未标注应引用出处，不进入分母",
+        "cited_documents": []
+      },
+      "faithfulness_judgement": {
+        "faithful": true,
+        "matched_forbidden": [],
+        "sql_overreach": false,
+        "reason": "未出现越界结论",
+        "in_denominator": false
+      }
+    },
+    {
+      "category": "formula",
+      "question": "根据文档中的公式计算数据库客户增长率？",
+      "layer": "S1",
+      "status": "partial_success",
+      "completed": false,
+      "citation_structurally_valid": false,
+      "answer_present": true,
+      "answer": "所检索材料中未记载「公式计算数据库客户增长率」的文档侧依据，文档侧证据不足，无法据此形成文档结论；本次未形成可引用的文档结论。",
+      "evidence_preview": [],
+      "claims": 0,
+      "evidence": 0,
+      "document_sources": [],
+      "sqls": [],
+      "document_id": "doc_6aca189a129f4aadb9032d0432afeb0b",
+      "cold_start": false,
+      "phase": "warm",
+      "latency_ms": 2996,
+      "llm_calls": 3,
+      "error": null,
+      "golden_match": true,
+      "verdict": "correct",
+      "verdict_reason": "应拒答且回答含拒答语义",
+      "citation_judgement": {
+        "citation_supported": null,
+        "reason": "未标注应引用出处，不进入分母",
+        "cited_documents": []
+      },
+      "faithfulness_judgement": {
+        "faithful": true,
+        "matched_forbidden": [],
+        "sql_overreach": false,
+        "reason": "未出现越界结论",
+        "in_denominator": false
+      }
+    }
+  ],
+  "live_answer_accuracy": 0.34615384615384615,
+  "live_answer_acceptable_rate": 0.6538461538461539,
+  "live_answer_judged_cases": 26,
+  "live_answer_verdict_counts": {
+    "wrong": 10,
+    "partial": 8,
+    "correct": 12
+  },
+  "citation_accuracy": 1.0,
+  "citation_judged_cases": 7,
+  "citation_no_claim_cases": 1,
+  "answer_faithfulness": 0.875,
+  "faithfulness_judged_cases": 8,
+  "reject_correctness": 0.75,
+  "reject_judged_cases": 4,
+  "metric_scope_note": "引用准确率与答案忠实度由人工确认的判据自动比对得出：分母只含标注了 expected_citation 的文档事实题（设计 8 题）；无引用计 no_claim 单列；数据库单源题的 SQL 语义越界检查只写入逐题明细，用于验证语义约束，不并入指标分母。",
+  "live_answer_accuracy_note": "对照人工确认的黄金集 golden_answers_v1.8.json 自动判分：correct=答案含黄金事实并说明文档侧；partial=数值/名称正确但文档侧未说明；wrong=与黄金事实不符或应拒答而未拒答。accuracy 只计 correct。",
+  "mode": "live",
+  "api_requests": 61,
+  "api_request_cap": 300,
+  "llm_usage": {
+    "api_requests": 61,
+    "reported_requests": 61,
+    "prompt_tokens": 59515,
+    "completion_tokens": 3594,
+    "total_tokens": 63109
+  },
+  "truncated": false,
+  "output": "..\\docs\\evaluation_agent_v1.8_revised_live.json"
+}

@@ -1,6 +1,9 @@
 import re
 from decimal import Decimal, InvalidOperation
 from app.agent.citation_guard import guard_claims
+from app.agent.material_coverage import (
+    GENERIC_INSUFFICIENT, material_coverage_note, needs_material_coverage,
+)
 
 
 COUNT_SUBJECTS = (
@@ -105,8 +108,18 @@ def _database_result_text(content: dict, question: str, sql: str) -> str:
     return f'数据库查询返回 {row_count} 行，以下是前 {len(mapped)} 行：\n{details}'
 
 
+def _question_from_tools(tool_results: dict | None) -> str:
+    """Recover the user question from a tool payload when the caller omits it."""
+    for result in (tool_results or {}).values():
+        data = getattr(result, 'data', None) or {}
+        question = data.get('question') if isinstance(data, dict) else None
+        if isinstance(question, str) and question.strip():
+            return question.strip()
+    return ''
+
+
 def compose_answer(evidence: list[dict], fusion: dict, tool_results: dict | None = None,
-                   cross_source_link: dict | None = None) -> dict:
+                   cross_source_link: dict | None = None, question: str = '') -> dict:
     claims = []
     if cross_source_link and cross_source_link.get('status') == 'linked':
         claims.append({'text': cross_source_link['summary'], 'evidence_ids': cross_source_link['evidence_ids']})
@@ -172,6 +185,13 @@ def compose_answer(evidence: list[dict], fusion: dict, tool_results: dict | None
             answer = '材料回答中的数字未通过来源核对，暂不展示该结论。请查看引用原文。'
         else:
             answer = '当前证据不足，无法确认答案。'
+    if needs_material_coverage(fusion, answer):
+        note = material_coverage_note(question or _question_from_tools(tool_results),
+                                      has_claims=bool(accepted))
+        if answer and answer != GENERIC_INSUFFICIENT:
+            answer = f'{answer}\n\n{note}'
+        else:
+            answer = note
     sql = [item['provenance']['sql'] for item in evidence if item['source_type'] == 'database']
     return {'answer': answer, 'claims': accepted, 'sources': evidence, 'sql': sql,
             'warnings': warnings, 'conflicts': fusion.get('conflicts', [])}

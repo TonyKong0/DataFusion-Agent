@@ -50,6 +50,11 @@ def route_query(question: str, *, allow_llm: bool = True,
         question,
     ))
     database_action = database_action or document_criteria_for_database
+    # A material selected for this turn is itself an explicit source cue.  A
+    # concept/policy question without a database action word (“是否代表…”,
+    # “从哪里读取”, “应沿什么字段关联”) asks about what the material says, not
+    # for a table scan, even when it contains domain words such as 曲目/流派.
+    material_context = selected_document_count > 0 and not database_action
     if database_source and document and database_action:
         route, confidence = 'CROSS_SOURCE', .94
     elif (database and document and database_position < document_position and database_action):
@@ -58,6 +63,9 @@ def route_query(question: str, *, allow_llm: bool = True,
         # A domain term such as “订单” can appear inside a document-only
         # policy question; it does not request a database lookup by itself.
         route, confidence = 'DOCUMENT_ONLY', .95
+    elif material_context:
+        route, confidence = 'DOCUMENT_ONLY', .9
+        reasons.append('已选材料且问题未要求数据库操作，按材料语境作答')
     elif database:
         route, confidence = 'DATABASE_ONLY', .95
     else:

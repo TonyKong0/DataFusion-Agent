@@ -13,6 +13,10 @@ from app.services.rag_retrieval import retrieve_candidates
 
 UNKNOWN = '根据当前文档无法确定。'
 UNKNOWN_SELECTED = '根据所选文档无法确定。'
+# An explicit absence statement names the missing item; keep it instead of
+# collapsing it back into the generic UNKNOWN refusal.  It carries no citation
+# claim, so sources stays empty.
+MATERIAL_ABSENCE = re.compile(r'(?:所检索材料|文档|材料)[^。]{0,24}未(?:记载|记录|提到|包含)')
 INDEXING_STATES = {'uploaded', 'parsing', 'chunking', 'embedding', 'persisting'}
 OVERVIEW_PATTERN = re.compile(r'主要内容|关键内容|主要观点|核心观点|主旨|中心思想|思想感情|主要表达|表达.{0,8}(?:思想|情感|观点)|讲述什么|讲(?:的|了)?(?:是)?(?:啥|什么)|概括|概要|总结|大意|主题|关于什么')
 AUTHOR_PATTERN = AUTHOR_QUESTION
@@ -321,7 +325,10 @@ def query(document_id: str, question: str, top_k: int, *, _allow_rewrite: bool =
         sources = [hit for hit in hits if hit['chunk_id'] in set(claimed)]
         answer = output['answer'].strip()
         if not sources or not answer or is_unknown_answer(answer):
-            answer, sources = UNKNOWN, []
+            if answer and MATERIAL_ABSENCE.search(answer) and not is_unknown_answer(answer):
+                sources = []
+            else:
+                answer, sources = UNKNOWN, []
         if not sources and _allow_rewrite:
             correction = step('question_rewrite', lambda: model_correction(understood, [document], chat_json))
             if correction:

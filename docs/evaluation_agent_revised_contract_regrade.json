@@ -1,0 +1,179 @@
+{
+  "scope": "对两份已归档的 30 题真实执行结果离线重判，检验修订判分口径的影响；未重跑 LLM、未重执行工具、未修改黄金判据、未覆盖任何原始结果文件。",
+  "generated_by": "backend/scripts/regrade_revised_contract.py",
+  "grading_contract": {
+    "legacy": "对全部 numeric / contains 型题目一律要求答案出现文档侧说明（含「文档／材料」与「未／无／不」）才计 correct，为历史口径。",
+    "revised": "仅当人工确认判据显示题目涉及文档侧（target_document、expected_citation，或题面含文档／材料）时保留该条件；纯数据库单源题按黄金事实正确性计 correct。",
+    "rule_source": "backend/scripts/evaluate_agent_v5.py::_document_side_expected",
+    "unchanged": [
+      "黄金判据文件",
+      "数值容差",
+      "名称包含判据",
+      "拒答／澄清判据",
+      "26 题分母",
+      "引用／忠实度判分",
+      "两份原始结果文件"
+    ],
+    "disclosure": "两套口径并列披露，原口径数值不替换、不删除；修订口径作用于两次重跑的幅度相同，不构成系统能力提升证据。"
+  },
+  "golden_set": {
+    "file": "backend/tests/golden_answers_v1.8.json",
+    "status": "human-confirmed",
+    "cases": 30
+  },
+  "runs": {
+    "baseline": {
+      "source_file": "docs/evaluation_agent_v1.8_live.json",
+      "source_sha256": "0d7f041de6d73e88b6dd3e83a35b8b0221fe80bb978589d4ecf06d8c5c3ff002",
+      "legacy": {
+        "judged_cases": 26,
+        "verdict_counts": {
+          "correct": 5,
+          "partial": 12,
+          "wrong": 9
+        },
+        "answer_accuracy": 0.192307692308,
+        "acceptable_rate": 0.653846153846
+      },
+      "revised": {
+        "judged_cases": 26,
+        "verdict_counts": {
+          "correct": 11,
+          "partial": 6,
+          "wrong": 9
+        },
+        "answer_accuracy": 0.423076923077,
+        "acceptable_rate": 0.653846153846
+      },
+      "verdict_changes": [
+        {
+          "question": "数据库里有多少客户？",
+          "layer": "S2-A",
+          "legacy_verdict": "partial",
+          "revised_verdict": "correct",
+          "document_side_expected": false
+        },
+        {
+          "question": "数据库里有多少员工？",
+          "layer": "S2-A",
+          "legacy_verdict": "partial",
+          "revised_verdict": "correct",
+          "document_side_expected": false
+        },
+        {
+          "question": "数据库里有多少订单？",
+          "layer": "S2-A",
+          "legacy_verdict": "partial",
+          "revised_verdict": "correct",
+          "document_side_expected": false
+        },
+        {
+          "question": "数据库里有多少专辑？",
+          "layer": "S2-A",
+          "legacy_verdict": "partial",
+          "revised_verdict": "correct",
+          "document_side_expected": false
+        },
+        {
+          "question": "数据库里有多少曲目？",
+          "layer": "S2-A",
+          "legacy_verdict": "partial",
+          "revised_verdict": "correct",
+          "document_side_expected": false
+        },
+        {
+          "question": "数据库里有多少音乐类型？",
+          "layer": "S2-A",
+          "legacy_verdict": "partial",
+          "revised_verdict": "correct",
+          "document_side_expected": false
+        }
+      ],
+      "regressions": []
+    },
+    "after": {
+      "source_file": "docs/evaluation_agent_v1.8_revised_live.json",
+      "source_sha256": "f16f1f5b029676c24140b168b1ce9154ee289d2ee3a34d20ff9bdaad7e319bf4",
+      "legacy": {
+        "judged_cases": 26,
+        "verdict_counts": {
+          "correct": 9,
+          "partial": 8,
+          "wrong": 9
+        },
+        "answer_accuracy": 0.346153846154,
+        "acceptable_rate": 0.653846153846
+      },
+      "revised": {
+        "judged_cases": 26,
+        "verdict_counts": {
+          "correct": 15,
+          "partial": 2,
+          "wrong": 9
+        },
+        "answer_accuracy": 0.576923076923,
+        "acceptable_rate": 0.653846153846
+      },
+      "verdict_changes": [
+        {
+          "question": "数据库里有多少客户？",
+          "layer": "S2-A",
+          "legacy_verdict": "partial",
+          "revised_verdict": "correct",
+          "document_side_expected": false
+        },
+        {
+          "question": "数据库里有多少员工？",
+          "layer": "S2-A",
+          "legacy_verdict": "partial",
+          "revised_verdict": "correct",
+          "document_side_expected": false
+        },
+        {
+          "question": "数据库里有多少订单？",
+          "layer": "S2-A",
+          "legacy_verdict": "partial",
+          "revised_verdict": "correct",
+          "document_side_expected": false
+        },
+        {
+          "question": "数据库里有多少专辑？",
+          "layer": "S2-A",
+          "legacy_verdict": "partial",
+          "revised_verdict": "correct",
+          "document_side_expected": false
+        },
+        {
+          "question": "数据库里有多少曲目？",
+          "layer": "S2-A",
+          "legacy_verdict": "partial",
+          "revised_verdict": "correct",
+          "document_side_expected": false
+        },
+        {
+          "question": "数据库里有多少音乐类型？",
+          "layer": "S2-A",
+          "legacy_verdict": "partial",
+          "revised_verdict": "correct",
+          "document_side_expected": false
+        }
+      ],
+      "regressions": []
+    }
+  },
+  "summary": {
+    "golden_set_cases": 30,
+    "judged_cases": 26,
+    "revised_affected_cases": 6,
+    "legacy_baseline_accuracy": 0.192307692308,
+    "legacy_after_accuracy": 0.346153846154,
+    "revised_baseline_accuracy": 0.423076923077,
+    "revised_after_accuracy": 0.576923076923,
+    "revised_baseline_correct_cases": 11,
+    "revised_after_correct_cases": 15,
+    "contract_delta_baseline": 0.230769230769,
+    "contract_delta_after": 0.230769230769,
+    "delta_is_constant": true,
+    "acceptable_rate_unchanged": true
+  }
+}

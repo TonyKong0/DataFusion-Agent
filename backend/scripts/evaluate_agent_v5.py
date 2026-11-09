@@ -111,8 +111,30 @@ def _asks_for_clarification(answer: str) -> bool:
     return any(marker in answer for marker in CLARIFY_MARKERS)
 
 
-def judge_answer(answer: str, case: dict) -> dict:
-    """Grade one answer against its golden case; returns verdict / matched / reason."""
+def _document_side_expected(case: dict) -> bool:
+    """Whether the case legitimately involves the document side.
+
+    Derived only from human-confirmed golden fields, never from the model's
+    answer: an explicit target document / expected citation, or a question
+    mentioning 文档 / 材料.  Pure database single-source questions (S2-A)
+    carry none of these, so requiring a document-side note for them is a
+    grading-contract defect rather than a system defect.
+    """
+    question = str(case.get('question') or '')
+    return bool(case.get('target_document') or case.get('expected_citation')
+                or '文档' in question or '材料' in question)
+
+
+def judge_answer(answer: str, case: dict, contract: str = 'legacy') -> dict:
+    """Grade one answer against its golden case; returns verdict / matched / reason.
+
+    ``contract='legacy'`` reproduces every historical result byte-for-byte.
+    ``contract='revised'`` lifts the document-side note condition for cases
+    whose confirmed criteria show no document involvement (see 4.11 in the
+    report); all other grading rules, and the golden set itself, are unchanged.
+    """
+    if contract not in ('legacy', 'revised'):
+        raise ValueError(f'unknown grading contract: {contract}')
     match_type = case.get('match_type')
     if match_type in ('reject*', 'clarify'):
         clarified = _asks_for_clarification(answer)
@@ -124,13 +146,17 @@ def judge_answer(answer: str, case: dict) -> dict:
                 'reason': '应拒答且回答含拒答语义' if refused else '应拒答但模型给出了具体答案'}
     if not answer.strip():
         return {'verdict': 'wrong', 'matched': False, 'reason': '空回答'}
+    doc_required = (contract != 'revised' or _document_side_expected(case))
     doc_absence = _mentions_document_absence(answer)
+    doc_note_ok = doc_absence or not doc_required
     if match_type == 'numeric':
         golden = case.get('golden_numeric')
         if not _numeric_matched(answer, golden):
             return {'verdict': 'wrong', 'matched': False, 'reason': f'数值与黄金值 {golden} 不符'}
-        if doc_absence:
-            return {'verdict': 'correct', 'matched': True, 'reason': '数值正确并说明文档未记录'}
+        if doc_note_ok:
+            reason = ('数值正确并说明文档未记录' if doc_required else
+                      '数值正确；判据显示本题不涉及文档侧，按事实正确性计分')
+            return {'verdict': 'correct', 'matched': True, 'reason': reason}
         return {'verdict': 'partial', 'matched': False, 'reason': '数值正确但未说明文档侧情况'}
     if match_type == 'contains':
         accepted = [case['golden']] + ([case['golden_alt']] if case.get('golden_alt') else [])
@@ -140,8 +166,10 @@ def judge_answer(answer: str, case: dict) -> dict:
         numeric_ok = _numeric_matched(answer, case.get('golden_numeric'))
         if not numeric_ok:
             return {'verdict': 'partial', 'matched': False, 'reason': '名称正确但数值与黄金值不符'}
-        if doc_absence:
-            return {'verdict': 'correct', 'matched': True, 'reason': '名称与数值正确并说明文档无描述'}
+        if doc_note_ok:
+            reason = ('名称与数值正确并说明文档无描述' if doc_required else
+                      '名称与数值正确；判据显示本题不涉及文档侧，按事实正确性计分')
+            return {'verdict': 'correct', 'matched': True, 'reason': reason}
         return {'verdict': 'partial', 'matched': False, 'reason': '名称与数值正确但未说明文档侧情况'}
     return {'verdict': 'wrong', 'matched': False, 'reason': f'未知 match_type: {match_type}'}
 
@@ -404,7 +432,8 @@ def _answer_accuracy_rows(execution_rows: list[dict]) -> list[dict]:
 
 
 def run_live(max_api_requests: int, live_cases: int = DEFAULT_LIVE_CASES,
-             golden_path: Path | None = None) -> dict:
+             golden_path: Path | None = None,
+             grading_contract: str = 'legacy') -> dict:
     if max_api_requests <= 0:
         raise ValueError('live measurement requires --max-api-requests > 0')
     settings = get_settings()
@@ -527,7 +556,7 @@ def run_live(max_api_requests: int, live_cases: int = DEFAULT_LIVE_CASES,
         if case is None:
             row.update({'golden_match': None, 'verdict': None, 'verdict_reason': '无对应黄金条目'})
             continue
-        judged = judge_answer(row.get('answer') or '', case)
+        judged = judge_answer(row.get('answer') or '', case, contract=grading_contract)
         row.update({'golden_match': judged['matched'], 'verdict': judged['verdict'],
                     'verdict_reason': judged['reason']})
         verdict_counts[judged['verdict']] = verdict_counts.get(judged['verdict'], 0) + 1
@@ -571,6 +600,11 @@ def run_live(max_api_requests: int, live_cases: int = DEFAULT_LIVE_CASES,
                        'load_error': golden_error,
                        'grading_note': ('人工确认判据 + 自动比对，不是逐题人工语义评分；'
                                         'draft 状态的结果不得回填 metrics.json。')},
+        'grading_contract': grading_contract,
+        'grading_contract_note': (
+            'legacy：对全部数值／包含型题目一律要求答案出现文档侧说明，为历史口径；'
+            'revised：仅对判据显示涉及文档侧的题目保留该条件，纯数据库单源题按事实正确性计分。'
+            '两套口径并列披露，黄金判据文件本身未改动。'),
         'routed_cases': len(routed_rows),
         'routing_accuracy': (sum(row['route_ok'] for row in routed_rows) / len(routed_rows)
                              if routed_rows else None),
@@ -626,9 +660,12 @@ def run_live(max_api_requests: int, live_cases: int = DEFAULT_LIVE_CASES,
             '无引用计 no_claim 单列；数据库单源题的 SQL 语义越界检查只写入逐题明细，'
             '用于验证语义约束，不并入指标分母。'),
         'live_answer_accuracy_note': (
-            f'对照人工确认的黄金集 {golden_name} 自动判分：'
-            'correct=答案含黄金事实并说明文档侧；partial=数值/名称正确但文档侧未说明；'
-            'wrong=与黄金事实不符或应拒答而未拒答。accuracy 只计 correct。'
+            f'对照人工确认的黄金集 {golden_name} 自动判分（契约 {grading_contract}）：'
+            + ('correct=答案含黄金事实并说明文档侧；partial=数值/名称正确但文档侧未说明；'
+               if grading_contract == 'legacy' else
+               'correct=答案含黄金事实，且仅对判据显示涉及文档侧的题目另要求文档侧说明；'
+               'partial=数值/名称正确但文档侧未说明；')
+            + 'wrong=与黄金事实不符或应拒答而未拒答。accuracy 只计 correct。'
             + (f'（黄金文件加载失败：{golden_error}）' if golden_error else '')),
     }
     result['mode'] = 'live'
@@ -654,6 +691,8 @@ def build_parser() -> argparse.ArgumentParser:
                         help=f'number of real execution cases in live mode (default {DEFAULT_LIVE_CASES})')
     parser.add_argument('--golden', type=Path, default=None,
                         help='layered golden set path; a non-human-confirmed set is flagged as draft')
+    parser.add_argument('--grading-contract', choices=('legacy', 'revised'), default='legacy',
+                        help='answer-grading contract; legacy reproduces historical results')
     return parser
 
 
@@ -663,7 +702,8 @@ def main(argv=None) -> dict:
     if args.live and args.max_api_requests <= 0:
         parser.error('--live requires --max-api-requests > 0')
     if args.live:
-        result = run_live(args.max_api_requests, args.live_cases, args.golden)
+        result = run_live(args.max_api_requests, args.live_cases, args.golden,
+                          grading_contract=args.grading_contract)
     else:
         result = run()
         result['mode'] = 'controlled_offline'

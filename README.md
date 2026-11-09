@@ -117,6 +117,10 @@ npm run build
 
 更多资料：[架构](docs/architecture.md) · [五张架构图](docs/architecture_diagrams.md) · [API](docs/api.md) · [演示问题](docs/demo_cases.md) · [V7 多模态演示](docs/multimodal_demo_cases.md) · [比赛报告](docs/competition_report.md) · [答辩提纲](docs/defense_notes.md) · [失败分析](docs/failure_analysis_phase55.md) · [阶段记录](docs/phases/README.md)。当前限制：原文档问答路由一次只检索一份 PDF，多模态工作台可跨 PDF；跨源公式参数绑定较严格，BGE-M3 首次加载可能慢；不同版本评测题集不同，不能把百分比直接作同口径趋势。所有 SQL 均经只读安全校验，凭据和上传资料不应进入 Git。
 
+## 仓库说明
+
+项目开发自始在 Gitee 主仓库完成，保留完整提交历史与过程记录；本 GitHub 仓库是按白名单生成的脱敏公开副本，仅收录代码、文档与必要的界面截图，不继承开发历史与提交材料。
+
 ## 实机界面
 
 界面截图取自 v1.8.0 本地运行实例，未作界面修饰；图中的结论、SQL 与耗时均为该次运行的实际输出。

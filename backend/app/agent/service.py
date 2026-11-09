@@ -163,7 +163,8 @@ def _query(question: str, document_id: str | None = None, formula_id: str | None
     fusion['sufficient'] = fusion['sufficient'] and not fusion['missing']
     fusion_ms = round((perf_counter() - mark) * 1000)
     mark = perf_counter()
-    composed = compose_answer(evidence, fusion, execution.step_results, cross_source_link)
+    composed = compose_answer(evidence, fusion, execution.step_results, cross_source_link,
+                              question=question)
     selection_error = next((result.error.get('message') for result in execution.step_results.values()
                             if result.tool == 'document_search' and result.error and
                             result.error.get('code') == 'DOCUMENT_SELECTION_REQUIRED'), None)
