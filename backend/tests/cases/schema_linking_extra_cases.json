@@ -1,0 +1,22 @@
+[
+  {"question":"客户电子邮件","tables":["customer"],"columns":["customer.Email"]},
+  {"question":"顾客所在国家","tables":["customer"],"columns":["customer.Country"]},
+  {"question":"客户姓名","tables":["customer"],"columns":["customer.FirstName"]},
+  {"question":"员工名字","tables":["employee"],"columns":["employee.FirstName"]},
+  {"question":"员工姓氏","tables":["employee"],"columns":["employee.LastName"]},
+  {"question":"员工邮箱","tables":["employee"],"columns":["employee.Email"]},
+  {"question":"订单的购买日期","tables":["invoice"],"columns":["invoice.InvoiceDate"]},
+  {"question":"账单国家","tables":["invoice"],"columns":["invoice.BillingCountry"]},
+  {"question":"订单总金额","tables":["invoice"],"columns":["invoice.Total"]},
+  {"question":"销售明细数量","tables":["invoiceline"],"columns":["invoiceline.Quantity"]},
+  {"question":"曲目售价","tables":["track"],"columns":["track.UnitPrice"]},
+  {"question":"音轨作曲者","tables":["track"],"columns":["track.Composer"]},
+  {"question":"歌曲播放时长","tables":["track"],"columns":["track.Milliseconds"]},
+  {"question":"艺术家名字","tables":["artist"],"columns":["artist.Name"]},
+  {"question":"唱片标题","tables":["album"],"columns":["album.Title"]},
+  {"question":"曲风名称","tables":["genre"],"columns":["genre.Name"]},
+  {"question":"文件类型名称","tables":["mediatype"],"columns":["mediatype.Name"]},
+  {"question":"播放列表名称","tables":["playlist"],"columns":["playlist.Name"]},
+  {"question":"每个客户消费总额","tables":["customer","invoice"],"columns":["invoice.Total"]},
+  {"question":"音乐类型卖出数量","tables":["genre","track","invoiceline"],"columns":["invoiceline.Quantity"]}
+]

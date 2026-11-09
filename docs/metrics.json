@@ -1,0 +1,1030 @@
+{
+  "app_version": "1.8.0",
+  "compiled_on": "2026-11-08",
+  "policy": "对外数字只从本文件读取。每条指标必须给出 source.file 与 source.path，并由 backend/tests/test_metrics_truth_table.py 复核；无直接测量值的指标标为 unmeasured，不用近似值顶替。",
+  "metrics": [
+    {
+      "id": "retail_bench_1k_cases",
+      "label": "零售 1k 子集评测用例数",
+      "value": 30,
+      "unit": "count",
+      "status": "measured",
+      "tracked": true,
+      "source": {
+        "file": "docs/evaluation_retail_benchmark.json",
+        "path": "summaries.retail_bench_1k.cases"
+      },
+      "scope": "10 个独立问题 × 3 次重复，重复只观察波动、不增加覆盖面"
+    },
+    {
+      "id": "retail_bench_1k_accuracy",
+      "label": "零售 1k 子集执行准确率",
+      "value": 1.0,
+      "unit": "ratio",
+      "status": "measured",
+      "tracked": true,
+      "source": {
+        "file": "docs/evaluation_retail_benchmark.json",
+        "path": "summaries.retail_bench_1k.accuracy"
+      },
+      "scope": "执行结果与期望一致；不等于开放域泛化准确率"
+    },
+    {
+      "id": "retail_bench_1k_mean_ms",
+      "label": "零售 1k 平均响应时间",
+      "value": 1376.4,
+      "unit": "ms",
+      "status": "measured",
+      "tracked": true,
+      "source": {
+        "file": "docs/evaluation_retail_benchmark.json",
+        "path": "summaries.retail_bench_1k.mean_ms"
+      },
+      "scope": "服务端计时，本机 CPU 环境"
+    },
+    {
+      "id": "retail_bench_1k_p50_ms",
+      "label": "零售 1k P50 响应时间",
+      "value": 1353,
+      "unit": "ms",
+      "status": "measured",
+      "tracked": true,
+      "source": {
+        "file": "docs/evaluation_retail_benchmark.json",
+        "path": "summaries.retail_bench_1k.p50_ms"
+      },
+      "scope": "服务端计时，本机 CPU 环境"
+    },
+    {
+      "id": "retail_bench_1k_p95_ms",
+      "label": "零售 1k P95 响应时间",
+      "value": 2439,
+      "unit": "ms",
+      "status": "measured",
+      "tracked": true,
+      "source": {
+        "file": "docs/evaluation_retail_benchmark.json",
+        "path": "summaries.retail_bench_1k.p95_ms"
+      },
+      "scope": "服务端计时，本机 CPU 环境"
+    },
+    {
+      "id": "retail_bench_10k_accuracy",
+      "label": "零售 10k 子集执行准确率",
+      "value": 1.0,
+      "unit": "ratio",
+      "status": "measured",
+      "tracked": true,
+      "source": {
+        "file": "docs/evaluation_retail_benchmark.json",
+        "path": "summaries.retail_bench_10k.accuracy"
+      },
+      "scope": "同上 10 题 × 3 次"
+    },
+    {
+      "id": "retail_bench_10k_mean_ms",
+      "label": "零售 10k 平均响应时间",
+      "value": 1329.4,
+      "unit": "ms",
+      "status": "measured",
+      "tracked": true,
+      "source": {
+        "file": "docs/evaluation_retail_benchmark.json",
+        "path": "summaries.retail_bench_10k.mean_ms"
+      },
+      "scope": "服务端计时，本机 CPU 环境"
+    },
+    {
+      "id": "retail_bench_10k_p50_ms",
+      "label": "零售 10k P50 响应时间",
+      "value": 1322,
+      "unit": "ms",
+      "status": "measured",
+      "tracked": true,
+      "source": {
+        "file": "docs/evaluation_retail_benchmark.json",
+        "path": "summaries.retail_bench_10k.p50_ms"
+      },
+      "scope": "服务端计时，本机 CPU 环境"
+    },
+    {
+      "id": "retail_bench_10k_p95_ms",
+      "label": "零售 10k P95 响应时间",
+      "value": 2245,
+      "unit": "ms",
+      "status": "measured",
+      "tracked": true,
+      "source": {
+        "file": "docs/evaluation_retail_benchmark.json",
+        "path": "summaries.retail_bench_10k.p95_ms"
+      },
+      "scope": "服务端计时，本机 CPU 环境"
+    },
+    {
+      "id": "retail_llm_api_requests",
+      "label": "零售评测 LLM 调用次数",
+      "value": 60,
+      "unit": "requests",
+      "status": "measured",
+      "tracked": true,
+      "source": {
+        "file": "docs/evaluation_retail_benchmark.json",
+        "path": "llm_usage.api_requests"
+      },
+      "scope": "两个规模合计，约 1.0 次/题"
+    },
+    {
+      "id": "retail_llm_total_tokens",
+      "label": "零售评测消耗 token",
+      "value": 21824,
+      "unit": "tokens",
+      "status": "measured",
+      "tracked": true,
+      "source": {
+        "file": "docs/evaluation_retail_benchmark.json",
+        "path": "llm_usage.total_tokens"
+      },
+      "scope": "供应商回报值"
+    },
+    {
+      "id": "multitable_cases",
+      "label": "Chinook 多表评测题量",
+      "value": 50,
+      "unit": "count",
+      "status": "measured",
+      "tracked": true,
+      "source": {
+        "file": "docs/evaluation_multitable_v3_live.json",
+        "path": "cases"
+      },
+      "scope": "两表 20 / 三表 15 / 聚合 10 / 复杂 5"
+    },
+    {
+      "id": "multitable_execution_correct",
+      "label": "多表 SQL 执行成功率",
+      "value": 1.0,
+      "unit": "ratio",
+      "status": "measured",
+      "tracked": true,
+      "source": {
+        "file": "docs/evaluation_multitable_v3_live.json",
+        "path": "metrics.execution_correct"
+      },
+      "scope": "执行成功 50/50；不等于答案正确"
+    },
+    {
+      "id": "multitable_result_correct",
+      "label": "多表严格行比对正确率（稳定版口径）",
+      "value": 0.76,
+      "unit": "ratio",
+      "status": "measured",
+      "tracked": true,
+      "source": {
+        "file": "docs/evaluation_multitable_v3_live.json",
+        "path": "metrics.result_correct"
+      },
+      "scope": "38/50；稳定 v1.6/v1.7 主链路口径，对外只用此值"
+    },
+    {
+      "id": "multitable_aggregate_value_correct",
+      "label": "多表聚合数值正确率",
+      "value": 0.92,
+      "unit": "ratio",
+      "status": "measured",
+      "tracked": true,
+      "source": {
+        "file": "docs/evaluation_multitable_v3_live.json",
+        "path": "metrics.aggregate_value_correct"
+      },
+      "scope": "聚合值口径，与严格行比对分开"
+    },
+    {
+      "id": "datapath_chinook_result_correct",
+      "label": "多表严格行比对正确率（受控 DSL 实验分支）",
+      "value": 0.86,
+      "unit": "ratio",
+      "status": "measured",
+      "tracked": true,
+      "source": {
+        "file": "docs/evaluation_datapath_chinook.json",
+        "path": "metrics.result_correct"
+      },
+      "scope": "43/50；仅限 experiment/datapath-query-compiler 分支，禁止与稳定版 0.76 混用"
+    },
+    {
+      "id": "datapath_chinook_mean_ms",
+      "label": "DSL 实验分支多表平均响应时间",
+      "value": 2113.6,
+      "unit": "ms",
+      "status": "measured",
+      "tracked": true,
+      "source": {
+        "file": "docs/evaluation_datapath_chinook.json",
+        "path": "latency_ms.mean"
+      },
+      "scope": "DSL 实验分支；未证明更快"
+    },
+    {
+      "id": "datapath_chinook_api_requests",
+      "label": "DSL 实验分支 LLM 调用次数",
+      "value": 100,
+      "unit": "requests",
+      "status": "measured",
+      "tracked": true,
+      "source": {
+        "file": "docs/evaluation_datapath_chinook.json",
+        "path": "llm_usage.api_requests"
+      },
+      "scope": "50 题 × 2 次尝试"
+    },
+    {
+      "id": "schema_linking_table_recall_at_5",
+      "label": "Schema Linking 表召回@5",
+      "value": 1.0,
+      "unit": "ratio",
+      "status": "measured",
+      "tracked": true,
+      "source": {
+        "file": "docs/evaluation_schema_linking_results.json",
+        "path": "metrics.table_recall_at_5"
+      },
+      "scope": "50 题"
+    },
+    {
+      "id": "schema_linking_column_recall_at_10",
+      "label": "Schema Linking 列召回@10",
+      "value": 0.92,
+      "unit": "ratio",
+      "status": "measured",
+      "tracked": true,
+      "source": {
+        "file": "docs/evaluation_schema_linking_results.json",
+        "path": "metrics.column_recall_at_10"
+      },
+      "scope": "50 题"
+    },
+    {
+      "id": "document_v4_cases",
+      "label": "文档问答 V4 用例数",
+      "value": 10,
+      "unit": "count",
+      "status": "measured",
+      "tracked": true,
+      "source": {
+        "file": "docs/evaluation_document_v4_live.json",
+        "path": "rag_live.cases",
+        "aggregate": {
+          "op": "length"
+        }
+      },
+      "scope": "单轮 10 题、预先选定文档范围"
+    },
+    {
+      "id": "document_v4_hit_ratio",
+      "label": "文档问答检索命中率",
+      "value": 1.0,
+      "unit": "ratio",
+      "status": "measured",
+      "tracked": true,
+      "source": {
+        "file": "docs/evaluation_document_v4_live.json",
+        "path": "rag_live.cases",
+        "aggregate": {
+          "op": "ratio_true",
+          "field": "v4.hit"
+        }
+      },
+      "scope": "10/10；受控英文合成 PDF"
+    },
+    {
+      "id": "document_v4_answer_ratio",
+      "label": "文档问答答案准确率",
+      "value": 1.0,
+      "unit": "ratio",
+      "status": "measured",
+      "tracked": true,
+      "source": {
+        "file": "docs/evaluation_document_v4_live.json",
+        "path": "rag_live.cases",
+        "aggregate": {
+          "op": "ratio_true",
+          "field": "v4.answer_correct"
+        }
+      },
+      "scope": "10/10；受控英文合成 PDF"
+    },
+    {
+      "id": "document_v4_source_ratio",
+      "label": "文档问答来源准确率",
+      "value": 1.0,
+      "unit": "ratio",
+      "status": "measured",
+      "tracked": true,
+      "source": {
+        "file": "docs/evaluation_document_v4_live.json",
+        "path": "rag_live.cases",
+        "aggregate": {
+          "op": "ratio_true",
+          "field": "v4.source_correct"
+        }
+      },
+      "scope": "10/10；来源定位正确"
+    },
+    {
+      "id": "document_v4_mean_ms",
+      "label": "文档问答平均响应时间",
+      "value": 1590.8,
+      "unit": "ms",
+      "status": "measured",
+      "tracked": true,
+      "source": {
+        "file": "docs/evaluation_document_v4_live.json",
+        "path": "rag_live.cases",
+        "aggregate": {
+          "op": "mean",
+          "field": "v4.latency_ms"
+        }
+      },
+      "scope": "服务端计时，不含浏览器渲染与完整会话 HTTP 链路"
+    },
+    {
+      "id": "multimodal_v7_table_qa_accuracy",
+      "label": "多模态评测表格问答准确率",
+      "value": 1.0,
+      "unit": "ratio",
+      "status": "measured",
+      "tracked": true,
+      "source": {
+        "file": "docs/evaluation_v7_multimodal_results.json",
+        "path": "metrics.table_qa_accuracy"
+      },
+      "scope": "controlled_offline_real_pdf，样本多样性低（distinct_charts=1）"
+    },
+    {
+      "id": "multimodal_v7_chart_qa_accuracy",
+      "label": "多模态评测图表问答准确率",
+      "value": 1.0,
+      "unit": "ratio",
+      "status": "measured",
+      "tracked": true,
+      "source": {
+        "file": "docs/evaluation_v7_multimodal_results.json",
+        "path": "metrics.chart_qa_accuracy"
+      },
+      "scope": "controlled_offline_real_pdf，仅支持带可读文字标签的图表"
+    },
+    {
+      "id": "multimodal_v7_image_qa_accuracy",
+      "label": "多模态评测图片问答准确率",
+      "value": 1.0,
+      "unit": "ratio",
+      "status": "measured",
+      "tracked": true,
+      "source": {
+        "file": "docs/evaluation_v7_multimodal_results.json",
+        "path": "metrics.image_qa_accuracy"
+      },
+      "scope": "OCR 关键词链路，无视觉模型"
+    },
+    {
+      "id": "agent_offline_routing_accuracy",
+      "label": "路由准确率（受控离线）",
+      "value": 1.0,
+      "unit": "ratio",
+      "status": "measured",
+      "tracked": false,
+      "source": {
+        "file": "backend/data/evaluation/agent-offline-check.json",
+        "path": "routing_accuracy"
+      },
+      "reproduce": "cd backend && python scripts/evaluate_agent_v5.py",
+      "scope": "110 题规则集、allow_llm=False、api_requests=0；源文件所在目录被 .gitignore 忽略"
+    },
+    {
+      "id": "agent_offline_plan_valid_rate",
+      "label": "计划有效率（受控离线）",
+      "value": 1.0,
+      "unit": "ratio",
+      "status": "measured",
+      "tracked": false,
+      "source": {
+        "file": "backend/data/evaluation/agent-offline-check.json",
+        "path": "plan_valid_rate"
+      },
+      "reproduce": "cd backend && python scripts/evaluate_agent_v5.py",
+      "scope": "纯规则计划器，无 LLM 编排"
+    },
+    {
+      "id": "agent_offline_synthetic_tool_plan_completion",
+      "label": "合成工具计划完成率",
+      "value": 1.0,
+      "unit": "ratio",
+      "status": "measured",
+      "tracked": false,
+      "source": {
+        "file": "backend/data/evaluation/agent-offline-check.json",
+        "path": "synthetic_tool_plan_completion"
+      },
+      "reproduce": "cd backend && python scripts/evaluate_agent_v5.py",
+      "scope": "工具调用被 patch 为假实现"
+    },
+    {
+      "id": "agent_offline_synthetic_citation_valid_rate",
+      "label": "合成引用合法率",
+      "value": 1.0,
+      "unit": "ratio",
+      "status": "measured",
+      "tracked": false,
+      "source": {
+        "file": "backend/data/evaluation/agent-offline-check.json",
+        "path": "synthetic_citation_valid_rate"
+      },
+      "reproduce": "cd backend && python scripts/evaluate_agent_v5.py",
+      "scope": "合成证据、无人工标注，不能冒充引用准确率"
+    },
+    {
+      "id": "agent_offline_api_requests",
+      "label": "离线 agent 评测 LLM 调用次数",
+      "value": 0,
+      "unit": "requests",
+      "status": "measured",
+      "tracked": false,
+      "source": {
+        "file": "backend/data/evaluation/agent-offline-check.json",
+        "path": "api_requests"
+      },
+      "reproduce": "cd backend && python scripts/evaluate_agent_v5.py",
+      "scope": "0 表示完全没有真实 LLM 编排"
+    },
+    {
+      "id": "agent_live_routing_accuracy",
+      "label": "路由准确率（真实 LLM 兜底开启）",
+      "value": 1.0,
+      "unit": "ratio",
+      "status": "measured",
+      "tracked": true,
+      "source": {
+        "file": "docs/evaluation_agent_v1.7_live.json",
+        "path": "routing_accuracy"
+      },
+      "scope": "110 题、allow_llm=True；与离线口径题集相同，差别在于允许真实 LLM 兜底"
+    },
+    {
+      "id": "agent_live_routing_llm_fallback_rate",
+      "label": "路由触发真实 LLM 兜底的比例",
+      "value": 0.045454545454545456,
+      "unit": "ratio",
+      "status": "measured",
+      "tracked": true,
+      "source": {
+        "file": "docs/evaluation_agent_v1.7_live.json",
+        "path": "routing_llm_fallback_rate"
+      },
+      "scope": "5/110；规则层已覆盖绝大多数问题，说明路由仍以确定性规则为主"
+    },
+    {
+      "id": "agent_live_plan_valid_rate",
+      "label": "计划有效率（真实路由下）",
+      "value": 1.0,
+      "unit": "ratio",
+      "status": "measured",
+      "tracked": true,
+      "source": {
+        "file": "docs/evaluation_agent_v1.7_live.json",
+        "path": "plan_valid_rate"
+      },
+      "scope": "计划器本身仍是规则实现，此项不等于 LLM 规划能力"
+    },
+    {
+      "id": "agent_live_tool_plan_completion",
+      "label": "真实工具执行完成率",
+      "value": 0.5,
+      "unit": "ratio",
+      "status": "measured",
+      "tracked": true,
+      "source": {
+        "file": "docs/evaluation_agent_v1.7_live.json",
+        "path": "live_tool_plan_completion"
+      },
+      "scope": "12 例真实执行：6 success、6 partial_success；不含人工判定的答案正确性"
+    },
+    {
+      "id": "agent_live_citation_structurally_valid_rate",
+      "label": "引用结构性合法率（真实执行）",
+      "value": 0.5,
+      "unit": "ratio",
+      "status": "measured",
+      "tracked": true,
+      "source": {
+        "file": "docs/evaluation_agent_v1.7_live.json",
+        "path": "live_citation_structurally_valid_rate"
+      },
+      "scope": "partial_success 用例没有产出 claims，因此计为不合法；这不是引用准确率"
+    },
+    {
+      "id": "agent_live_api_requests",
+      "label": "真实测量实际 LLM 调用次数",
+      "value": 50,
+      "unit": "requests",
+      "status": "measured",
+      "tracked": true,
+      "source": {
+        "file": "docs/evaluation_agent_v1.7_live.json",
+        "path": "api_requests"
+      },
+      "scope": "上限 220 次，未触发截断"
+    },
+    {
+      "id": "agent_live_mean_latency_ms",
+      "label": "真实测量单例平均耗时",
+      "value": 7522.5,
+      "unit": "ms",
+      "status": "measured",
+      "tracked": true,
+      "source": {
+        "file": "docs/evaluation_agent_v1.7_live.json",
+        "path": "live_mean_latency_ms"
+      },
+      "scope": "含首个用例的 BGE-M3 冷启动（约 54.6 s），不能当稳定均值"
+    },
+    {
+      "id": "agent_live_answer_accuracy",
+      "label": "真实执行答案准确率（黄金集判分）",
+      "value": 0.5,
+      "unit": "ratio",
+      "status": "measured",
+      "tracked": true,
+      "source": {
+        "file": "docs/evaluation_agent_v1.7_live.json",
+        "path": "live_answer_accuracy"
+      },
+      "scope": "12 例对照人工确认黄金集（tests/golden_answers_v1.7.json）自动判分：correct 6 / partial 5 / wrong 1；accuracy 只计 correct"
+    },
+    {
+      "id": "agent_live_answer_acceptable_rate",
+      "label": "真实执行答案可接受率（correct+partial）",
+      "value": 0.9166666666666666,
+      "unit": "ratio",
+      "status": "measured",
+      "tracked": true,
+      "source": {
+        "file": "docs/evaluation_agent_v1.7_live.json",
+        "path": "live_answer_acceptable_rate"
+      },
+      "scope": "partial = 数值/名称正确但未说明文档侧；wrong = 与库中事实不符（歌曲题）"
+    },
+    {
+      "id": "table_structure_cell_accuracy",
+      "label": "扫描表格单元格还原准确率",
+      "value": 1.0,
+      "unit": "ratio",
+      "status": "measured",
+      "tracked": true,
+      "source": {
+        "file": "docs/evaluation_table_structure.json",
+        "path": "cell_accuracy"
+      },
+      "scope": "53/53，4 个栅格化无文字层版面（含 1 个真空单元格负向对照）+ 真实 OCR；结构驱动空白格补检恢复 7 格，恢复格置信度 0.241~0.665 属低置信。版面为干净合成样本，不外推到倾斜、噪声、合并单元格或手写体。"
+    },
+    {
+      "id": "table_structure_exact_match_rate",
+      "label": "扫描表格整表完全还原率",
+      "value": 1.0,
+      "unit": "ratio",
+      "status": "measured",
+      "tracked": true,
+      "source": {
+        "file": "docs/evaluation_table_structure.json",
+        "path": "exact_table_match_rate"
+      },
+      "scope": "4/4；同批 4 个 fixture 关闭补检时为 1/4，A/B 见下表基线条目"
+    },
+    {
+      "id": "table_structure_cell_accuracy_without_recovery",
+      "label": "扫描表格单元格准确率（关闭空白格补检的 A/B 基线）",
+      "value": 0.8679,
+      "unit": "ratio",
+      "status": "measured",
+      "tracked": true,
+      "source": {
+        "file": "docs/evaluation_table_structure_baseline.json",
+        "path": "cell_accuracy"
+      },
+      "scope": "46/53；与上条为同一批 4 个 fixture，仅关闭 --recovery，用于隔离补检带来的增量"
+    },
+    {
+      "id": "table_structure_recovered_cells",
+      "label": "扫描表格补检恢复的单元格数",
+      "value": 7,
+      "unit": "count",
+      "status": "measured",
+      "tracked": true,
+      "source": {
+        "file": "docs/evaluation_table_structure.json",
+        "path": "recovered_cells"
+      },
+      "scope": "整页 OCR 检测阶段漏检的短数字；恢复结果保留低置信标记，回答命中时会给出告警"
+    },
+    {
+      "id": "citation_accuracy",
+      "label": "引用准确率（人工标注）",
+      "value": 1.0,
+      "unit": "ratio",
+      "status": "measured",
+      "tracked": true,
+      "source": {
+        "file": "docs/evaluation_agent_v1.8_live.json",
+        "path": "citation_accuracy"
+      },
+      "scope": "30 题分层黄金集实测；分母仅 1 例，另有 7 例回答未给出任何引用线索（no_claim）单列。该值只说明有引用线索的 1 例可核，不构成引用准确率的可外推估计；口径为人工确认判据 + 自动比对，不是逐题人工语义评分。"
+    },
+    {
+      "id": "answer_faithfulness",
+      "label": "答案忠实度",
+      "value": 0.875,
+      "unit": "ratio",
+      "status": "measured",
+      "tracked": true,
+      "source": {
+        "file": "docs/evaluation_agent_v1.8_live.json",
+        "path": "answer_faithfulness"
+      },
+      "scope": "分母 8 例（S2-B 文档事实题）；只检验是否命中禁止措辞与 SQL 行级比较被说成聚合级，不检验答案是否正确。执行失败或需澄清的用例因未出现越界措辞仍计入分母，属效度边界。口径为人工确认判据 + 自动比对。"
+    },
+    {
+      "id": "agent_v18_execution_cases",
+      "label": "v1.8 真实执行用例数",
+      "value": 30,
+      "unit": "count",
+      "status": "measured",
+      "tracked": true,
+      "source": {
+        "file": "docs/evaluation_agent_v1.8_live.json",
+        "path": "live_execution_cases"
+      },
+      "scope": "v1.8 分层黄金集（30 题、human-confirmed、三份固定文本材料、deepseek-chat）；与 v1.7 的 12 题结果题集、材料、分母均不同，禁止画趋势线或混用。"
+    },
+    {
+      "id": "agent_v18_answer_accuracy",
+      "label": "v1.8 答案准确率（26 题分母）",
+      "value": 0.19230769230769232,
+      "unit": "ratio",
+      "status": "measured",
+      "tracked": true,
+      "source": {
+        "file": "docs/evaluation_agent_v1.8_live.json",
+        "path": "live_answer_accuracy"
+      },
+      "scope": "分母 26 题（排除 S2-C 4 题澄清题）；accuracy 只计 correct，partial 主要来自「数值/名称正确但未说明文档侧情况」。v1.8 分层黄金集（30 题、human-confirmed、三份固定文本材料、deepseek-chat）；与 v1.7 的 12 题结果题集、材料、分母均不同，禁止画趋势线或混用。"
+    },
+    {
+      "id": "agent_v18_answer_acceptable_rate",
+      "label": "v1.8 答案可接受率（26 题分母）",
+      "value": 0.6538461538461539,
+      "unit": "ratio",
+      "status": "measured",
+      "tracked": true,
+      "source": {
+        "file": "docs/evaluation_agent_v1.8_live.json",
+        "path": "live_answer_acceptable_rate"
+      },
+      "scope": "correct + partial 占分母 26 题的比例。v1.8 分层黄金集（30 题、human-confirmed、三份固定文本材料、deepseek-chat）；与 v1.7 的 12 题结果题集、材料、分母均不同，禁止画趋势线或混用。"
+    },
+    {
+      "id": "agent_v18_answer_judged_cases",
+      "label": "v1.8 答案判分题数",
+      "value": 26,
+      "unit": "count",
+      "status": "measured",
+      "tracked": true,
+      "source": {
+        "file": "docs/evaluation_agent_v1.8_live.json",
+        "path": "live_answer_judged_cases"
+      },
+      "scope": "S1 12 + S2-A 6 + S2-B 8 = 26；S2-C 4 题单列 reject_correctness。"
+    },
+    {
+      "id": "agent_v18_reject_correctness",
+      "label": "v1.8 澄清/拒答正确性（4 题分母）",
+      "value": 0.75,
+      "unit": "ratio",
+      "status": "measured",
+      "tracked": true,
+      "source": {
+        "file": "docs/evaluation_agent_v1.8_live.json",
+        "path": "reject_correctness"
+      },
+      "scope": "S2-C 4 题；要求回答含澄清语义，单纯拒答不计正确。"
+    },
+    {
+      "id": "agent_v18_reject_judged_cases",
+      "label": "v1.8 澄清/拒答题数",
+      "value": 4,
+      "unit": "count",
+      "status": "measured",
+      "tracked": true,
+      "source": {
+        "file": "docs/evaluation_agent_v1.8_live.json",
+        "path": "reject_judged_cases"
+      },
+      "scope": "S2-C 层 4 题。"
+    },
+    {
+      "id": "agent_v18_citation_judged_cases",
+      "label": "v1.8 引用判分分母",
+      "value": 1,
+      "unit": "count",
+      "status": "measured",
+      "tracked": true,
+      "source": {
+        "file": "docs/evaluation_agent_v1.8_live.json",
+        "path": "citation_judged_cases"
+      },
+      "scope": "仅给出引用线索并标注 expected_citation 的用例；设计 8 题，实测 1 题。"
+    },
+    {
+      "id": "agent_v18_citation_no_claim_cases",
+      "label": "v1.8 无引用线索题数",
+      "value": 7,
+      "unit": "count",
+      "status": "measured",
+      "tracked": true,
+      "source": {
+        "file": "docs/evaluation_agent_v1.8_live.json",
+        "path": "citation_no_claim_cases"
+      },
+      "scope": "回答未给出任何引用线索，单列统计，不并入引用准确率分母。"
+    },
+    {
+      "id": "agent_v18_faithfulness_judged_cases",
+      "label": "v1.8 忠实度判分分母",
+      "value": 8,
+      "unit": "count",
+      "status": "measured",
+      "tracked": true,
+      "source": {
+        "file": "docs/evaluation_agent_v1.8_live.json",
+        "path": "faithfulness_judged_cases"
+      },
+      "scope": "标注了应引用出处的 S2-B 题；执行失败者因无越界措辞仍计入。"
+    },
+    {
+      "id": "agent_v18_warm_mean_latency_ms",
+      "label": "v1.8 热态平均延迟",
+      "value": 6337.0,
+      "unit": "ms",
+      "status": "measured",
+      "tracked": true,
+      "source": {
+        "file": "docs/evaluation_agent_v1.8_live.json",
+        "path": "warm_mean_latency_ms"
+      },
+      "scope": "剔除第 1 个冷启动用例后的 29 例均值；与含冷启动的 live_mean_latency_ms 分开。"
+    },
+    {
+      "id": "agent_v18_warm_p50_latency_ms",
+      "label": "v1.8 热态 P50 延迟",
+      "value": 1768.0,
+      "unit": "ms",
+      "status": "measured",
+      "tracked": true,
+      "source": {
+        "file": "docs/evaluation_agent_v1.8_live.json",
+        "path": "warm_p50_latency_ms"
+      },
+      "scope": "29 例热态样本，沿用 int(.95*(n-1)) 分位口径。"
+    },
+    {
+      "id": "agent_v18_warm_p95_latency_ms",
+      "label": "v1.8 热态 P95 延迟",
+      "value": 6228.0,
+      "unit": "ms",
+      "status": "measured",
+      "tracked": true,
+      "source": {
+        "file": "docs/evaluation_agent_v1.8_live.json",
+        "path": "warm_p95_latency_ms"
+      },
+      "scope": "29 例热态样本；均值大于 P95 是少数极慢样本拉高均值所致。"
+    },
+    {
+      "id": "agent_v18_cold_start_latency_ms",
+      "label": "v1.8 冷启动单例延迟",
+      "value": 120036.0,
+      "unit": "ms",
+      "status": "measured",
+      "tracked": true,
+      "source": {
+        "file": "docs/evaluation_agent_v1.8_live.json",
+        "path": "cold_start_latency_ms"
+      },
+      "scope": "按执行序位判定的第 1 例，承担 BGE-M3 首次加载；序位口径而非精确归因，不可跨机器比较。"
+    },
+    {
+      "id": "agent_v18_api_requests",
+      "label": "v1.8 live 评测 LLM 请求数",
+      "value": 71,
+      "unit": "count",
+      "status": "measured",
+      "tracked": true,
+      "source": {
+        "file": "docs/evaluation_agent_v1.8_live.json",
+        "path": "api_requests"
+      },
+      "scope": "110 道路由题 + 30 道执行用例，上限 300，未截断。"
+    },
+    {
+      "id": "agent_v18_total_tokens",
+      "label": "v1.8 live 评测 token 总量",
+      "value": 70544,
+      "unit": "tokens",
+      "status": "measured",
+      "tracked": true,
+      "source": {
+        "file": "docs/evaluation_agent_v1.8_live.json",
+        "path": "llm_usage.total_tokens"
+      },
+      "scope": "prompt + completion，由 collect_usage 汇总。"
+    },
+    {
+      "id": "agent_v18_execution_success_rate",
+      "label": "v1.8 执行成功率",
+      "value": 0.6333333333333333,
+      "unit": "ratio",
+      "status": "measured",
+      "tracked": true,
+      "source": {
+        "file": "docs/evaluation_agent_v1.8_live.json",
+        "path": "live_tool_plan_completion"
+      },
+      "scope": "execution.status == success 的比例；failed / partial_success / need_clarification 分别单列。"
+    },
+    {
+      "id": "agent_v18_status_success",
+      "label": "v1.8 执行成功题数",
+      "value": 19,
+      "unit": "count",
+      "status": "measured",
+      "tracked": true,
+      "source": {
+        "file": "docs/evaluation_agent_v1.8_live.json",
+        "path": "live_execution_status_counts.success"
+      },
+      "scope": "execution.status == success。"
+    },
+    {
+      "id": "agent_v18_status_partial_success",
+      "label": "v1.8 部分成功题数",
+      "value": 5,
+      "unit": "count",
+      "status": "measured",
+      "tracked": true,
+      "source": {
+        "file": "docs/evaluation_agent_v1.8_live.json",
+        "path": "live_execution_status_counts.partial_success"
+      },
+      "scope": "execution.status == partial_success。"
+    },
+    {
+      "id": "agent_v18_status_need_clarification",
+      "label": "v1.8 需澄清题数",
+      "value": 4,
+      "unit": "count",
+      "status": "measured",
+      "tracked": true,
+      "source": {
+        "file": "docs/evaluation_agent_v1.8_live.json",
+        "path": "live_execution_status_counts.need_clarification"
+      },
+      "scope": "execution.status == need_clarification。"
+    },
+    {
+      "id": "agent_v18_status_failed",
+      "label": "v1.8 执行失败题数",
+      "value": 2,
+      "unit": "count",
+      "status": "measured",
+      "tracked": true,
+      "source": {
+        "file": "docs/evaluation_agent_v1.8_live.json",
+        "path": "live_execution_status_counts.failed"
+      },
+      "scope": "execution.status == failed；含首例工具执行超时。"
+    },
+    {
+      "id": "agent_v18_verdict_correct",
+      "label": "v1.8 判为 correct 的题数（30 题全量）",
+      "value": 8,
+      "unit": "count",
+      "status": "measured",
+      "tracked": true,
+      "source": {
+        "file": "docs/evaluation_agent_v1.8_live.json",
+        "path": "live_answer_verdict_counts.correct"
+      },
+      "scope": "含 S2-C 3 题；26 题准确率分母需排除 S2-C。"
+    },
+    {
+      "id": "agent_v18_verdict_partial",
+      "label": "v1.8 判为 partial 的题数（30 题全量）",
+      "value": 12,
+      "unit": "count",
+      "status": "measured",
+      "tracked": true,
+      "source": {
+        "file": "docs/evaluation_agent_v1.8_live.json",
+        "path": "live_answer_verdict_counts.partial"
+      },
+      "scope": "多为数值/名称正确但未说明文档侧情况。"
+    },
+    {
+      "id": "agent_v18_verdict_wrong",
+      "label": "v1.8 判为 wrong 的题数（30 题全量）",
+      "value": 10,
+      "unit": "count",
+      "status": "measured",
+      "tracked": true,
+      "source": {
+        "file": "docs/evaluation_agent_v1.8_live.json",
+        "path": "live_answer_verdict_counts.wrong"
+      },
+      "scope": "含 S2-C 1 题。"
+    },
+    {
+      "id": "agent_v18_mean_latency_ms",
+      "label": "v1.8 含冷启动均值",
+      "value": 10126.97,
+      "unit": "ms",
+      "status": "measured",
+      "tracked": true,
+      "source": {
+        "file": "docs/evaluation_agent_v1.8_live.json",
+        "path": "live_mean_latency_ms"
+      },
+      "scope": "30 例均值，含冷启动单例；不作稳定均值，稳定口径用热态均值。"
+    },
+    {
+      "id": "agent_v18_all_p95_latency_ms",
+      "label": "v1.8 全量 P95 延迟",
+      "value": 11045,
+      "unit": "ms",
+      "status": "measured",
+      "tracked": true,
+      "source": {
+        "file": "docs/evaluation_agent_v1.8_live.json",
+        "path": "live_p95_latency_ms"
+      },
+      "scope": "30 例，含冷启动；与热态 P95 分开。"
+    },
+    {
+      "id": "agent_v18_avg_llm_calls",
+      "label": "v1.8 平均每题 LLM 调用数",
+      "value": 2.07,
+      "unit": "count",
+      "status": "measured",
+      "tracked": true,
+      "source": {
+        "file": "docs/evaluation_agent_v1.8_live.json",
+        "path": "live_avg_llm_calls"
+      },
+      "scope": "按 30 个执行用例的 llm_calls 求均值。"
+    }
+  ],
+  "conflicts": [
+    {
+      "id": "C1",
+      "issue": "零售延迟在三份 JSON 中不同：1376/1353/2439、1367/1296/2468、1567/1518/2886",
+      "resolution": "以 docs/evaluation_retail_benchmark.json 为唯一对外口径（1376.4/1353/2439，tokens 21,824）。docs/evaluation_datapath_retail.json 属 DSL 实验分支同批评测（tokens 33,482），backend/data/evaluation/retail-benchmark.json 属更早一轮且未随库分发。三份准确率一致，差异只在延迟与 token。"
+    },
+    {
+      "id": "C2",
+      "issue": "docs/evaluation-methodology.md 记录 1,547/3,060 ms 与 21,812 tokens，与任何 JSON 不符",
+      "resolution": "该段为过期文本，已在文中标注以本真值表为准。"
+    },
+    {
+      "id": "C3",
+      "issue": "多表严格行比对对外写 38/50（76%），实验 JSON 为 43/50（86%）",
+      "resolution": "稳定版口径 0.76（multitable_result_correct）；0.86 属 experiment/datapath-query-compiler 分支（datapath_chinook_result_correct）。两者题量相同但链路不同，禁止混用。"
+    },
+    {
+      "id": "C4",
+      "issue": "文档正文的模型名与 JSON 不一致",
+      "resolution": "统一为 deepseek-chat，与所有评测 JSON 及 backend/.env.example 一致。"
+    },
+    {
+      "id": "C5",
+      "issue": "答辩演示数字取自不同复测轮次",
+      "resolution": "演示稿与报告中的数字一律取本文件条目，不得跨轮次挑选。"
+    },
+    {
+      "id": "C6",
+      "issue": "RAG 计时口径一处称含浏览器渲染与完整会话 HTTP、另一处称不含",
+      "resolution": "本文件 document_v4_mean_ms 为服务端计时（1,590.8 ms），不含浏览器渲染；如需引用端到端口径必须单独标注来源。"
+    },
+    {
+      "id": "C7",
+      "issue": "v1.7 的 12 题 live 答案准确率 0.5 与 v1.8 的 30 题分层结果 数值差异显著，容易被误读为能力下降或提升。",
+      "resolution": "两者题集（12 / 26 分母）、材料（单份 OCR 标记 / 三份固定文本材料）、判分口径（含 S2-C / 排除 S2-C）与系统版本（语义约束前后）均不同，属非同口径测量。报告只并列呈现并逐项标注口径，禁止画趋势线、禁止跨轮挑选数字；v1.8 结果兼作下一轮 S1 改造的改造前基线。"
+    }
+  ]
+}

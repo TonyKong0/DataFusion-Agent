@@ -1,0 +1,31 @@
+# secrets
+.env
+*.local
+
+# python
+.venv/
+venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+backend/data/
+
+# node
+node_modules/
+dist/
+dist-ssr/
+
+# local artefacts
+logs/
+tmp/
+*.log
+output/
+reports/
+samples.zip
+*.zip
+
+# editor
+.vscode/*
+!.vscode/extensions.json
+.idea/
+.DS_Store

@@ -1,0 +1,6 @@
+page_weight: 0.15
+scan_weight: 0.30
+image_weight: 0.12
+formula_weight: 0.18
+heading_weight: 0.15
+layout_weight: 0.10

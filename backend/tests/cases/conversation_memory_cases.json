@@ -1,0 +1,23 @@
+{
+  "database": [
+    {"question": "列出所有音乐类型。", "oracle": "all_genres"},
+    {"question": "只看其中名称以 R 开头的音乐类型。", "oracle": "r_genres"},
+    {"question": "把这些按名称升序排列，显示前五个。", "oracle": "r_genres_top5"},
+    {"question": "这个筛选后一共有多少种？", "oracle": "r_genres_count"},
+    {"question": "刚才前五种里，名称排在最前的是哪一种？", "oracle": "r_genres_first"}
+  ],
+  "rag": [
+    {"question": "基础版提供哪两种能力？", "page": 1, "keywords": ["单表", "PDF"]},
+    {"question": "其中的文档问答支持什么样的文件？", "page": 1, "keywords": ["PDF"]},
+    {"question": "刚才这个 PDF 文件的大小上限和页数上限分别是多少？", "page": 4, "keywords": ["20", "100"]},
+    {"question": "这个 SQL 查询最多返回多少行？", "page": 3, "keywords": ["100"]},
+    {"question": "回到检索部分，向量检索使用什么模型和索引？", "page": 6, "keywords": ["bge-m3", "FAISS"]}
+  ],
+  "agent": [
+    {"question": "数据库里有多少种音乐类型？", "sources": ["database"], "keywords": ["25"], "source_keywords": {"database": ["25"]}, "database_oracle": "all_genres_count"},
+    {"question": "PDF 里 SQL 最多返回多少行？", "sources": ["document"], "page": 3, "keywords": ["100"], "source_keywords": {"document": ["100"]}},
+    {"question": "请重新核对刚才的音乐类型数量和 SQL 行数上限，分别标注数据库和 PDF 来源。", "sources": ["database", "document"], "page": 3, "keywords": ["25", "100"], "source_keywords": {"database": ["25"], "document": ["100"]}, "database_oracle": "all_genres_count"},
+    {"question": "请再从两个来源各自核实这两个值，不要只复述上一轮。", "sources": ["database", "document"], "page": 3, "keywords": ["25", "100"], "source_keywords": {"database": ["25"], "document": ["100"]}, "database_oracle": "all_genres_count"},
+    {"question": "在数据库中重新数音乐类型，并从 PDF 第三页重新查 SQL 返回行数限制，分别给出引用。", "sources": ["database", "document"], "page": 3, "keywords": ["25", "100"], "source_keywords": {"database": ["25"], "document": ["100"]}, "database_oracle": "all_genres_count"}
+  ]
+}

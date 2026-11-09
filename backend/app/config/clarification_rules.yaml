@@ -1,0 +1,8 @@
+rules:
+  ttl_seconds: 1800
+  max_sessions: 200
+  entity_choices: [客户, 员工, 艺术家, 歌曲, 专辑, 音乐类型, 订单]
+  time_prompt: 请补充时间范围，例如“2020年”或“2020年至2022年”。
+  entity_prompt: 你想查询哪一类对象？
+  confirm_prompt: 我对这个问题的理解置信度较低，是否按当前理解继续？
+  free_text_prompt: 请补充或改写有歧义的条件。

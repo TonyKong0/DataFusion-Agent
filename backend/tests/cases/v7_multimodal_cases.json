@@ -1,0 +1,647 @@
+[
+  {
+    "category": "multi_document",
+    "question": "模块A01负责什么？",
+    "expected_document": "report_a.pdf",
+    "expected_route": "MULTI_DOCUMENT"
+  },
+  {
+    "category": "multi_document",
+    "question": "模块A02负责什么？",
+    "expected_document": "report_a.pdf",
+    "expected_route": "MULTI_DOCUMENT"
+  },
+  {
+    "category": "multi_document",
+    "question": "模块A03负责什么？",
+    "expected_document": "report_a.pdf",
+    "expected_route": "MULTI_DOCUMENT"
+  },
+  {
+    "category": "multi_document",
+    "question": "模块A04负责什么？",
+    "expected_document": "report_a.pdf",
+    "expected_route": "MULTI_DOCUMENT"
+  },
+  {
+    "category": "multi_document",
+    "question": "模块A05负责什么？",
+    "expected_document": "report_a.pdf",
+    "expected_route": "MULTI_DOCUMENT"
+  },
+  {
+    "category": "multi_document",
+    "question": "模块A06负责什么？",
+    "expected_document": "report_a.pdf",
+    "expected_route": "MULTI_DOCUMENT"
+  },
+  {
+    "category": "multi_document",
+    "question": "模块A07负责什么？",
+    "expected_document": "report_a.pdf",
+    "expected_route": "MULTI_DOCUMENT"
+  },
+  {
+    "category": "multi_document",
+    "question": "模块A08负责什么？",
+    "expected_document": "report_a.pdf",
+    "expected_route": "MULTI_DOCUMENT"
+  },
+  {
+    "category": "multi_document",
+    "question": "模块A09负责什么？",
+    "expected_document": "report_a.pdf",
+    "expected_route": "MULTI_DOCUMENT"
+  },
+  {
+    "category": "multi_document",
+    "question": "模块A10负责什么？",
+    "expected_document": "report_a.pdf",
+    "expected_route": "MULTI_DOCUMENT"
+  },
+  {
+    "category": "multi_document",
+    "question": "模块B01负责什么？",
+    "expected_document": "report_b.pdf",
+    "expected_route": "MULTI_DOCUMENT"
+  },
+  {
+    "category": "multi_document",
+    "question": "模块B02负责什么？",
+    "expected_document": "report_b.pdf",
+    "expected_route": "MULTI_DOCUMENT"
+  },
+  {
+    "category": "multi_document",
+    "question": "模块B03负责什么？",
+    "expected_document": "report_b.pdf",
+    "expected_route": "MULTI_DOCUMENT"
+  },
+  {
+    "category": "multi_document",
+    "question": "模块B04负责什么？",
+    "expected_document": "report_b.pdf",
+    "expected_route": "MULTI_DOCUMENT"
+  },
+  {
+    "category": "multi_document",
+    "question": "模块B05负责什么？",
+    "expected_document": "report_b.pdf",
+    "expected_route": "MULTI_DOCUMENT"
+  },
+  {
+    "category": "multi_document",
+    "question": "模块B06负责什么？",
+    "expected_document": "report_b.pdf",
+    "expected_route": "MULTI_DOCUMENT"
+  },
+  {
+    "category": "multi_document",
+    "question": "模块B07负责什么？",
+    "expected_document": "report_b.pdf",
+    "expected_route": "MULTI_DOCUMENT"
+  },
+  {
+    "category": "multi_document",
+    "question": "模块B08负责什么？",
+    "expected_document": "report_b.pdf",
+    "expected_route": "MULTI_DOCUMENT"
+  },
+  {
+    "category": "multi_document",
+    "question": "模块B09负责什么？",
+    "expected_document": "report_b.pdf",
+    "expected_route": "MULTI_DOCUMENT"
+  },
+  {
+    "category": "multi_document",
+    "question": "模块B10负责什么？",
+    "expected_document": "report_b.pdf",
+    "expected_route": "MULTI_DOCUMENT"
+  },
+  {
+    "category": "version_compare",
+    "question": "第1种问法：新版相对旧版修改了哪些内容？",
+    "expected_route": "VERSION_COMPARE"
+  },
+  {
+    "category": "version_compare",
+    "question": "第2种问法：新版相对旧版修改了哪些内容？",
+    "expected_route": "VERSION_COMPARE"
+  },
+  {
+    "category": "version_compare",
+    "question": "第3种问法：新版相对旧版修改了哪些内容？",
+    "expected_route": "VERSION_COMPARE"
+  },
+  {
+    "category": "version_compare",
+    "question": "第4种问法：新版相对旧版修改了哪些内容？",
+    "expected_route": "VERSION_COMPARE"
+  },
+  {
+    "category": "version_compare",
+    "question": "第5种问法：新版相对旧版修改了哪些内容？",
+    "expected_route": "VERSION_COMPARE"
+  },
+  {
+    "category": "version_compare",
+    "question": "第6种问法：新版相对旧版修改了哪些内容？",
+    "expected_route": "VERSION_COMPARE"
+  },
+  {
+    "category": "version_compare",
+    "question": "第7种问法：新版相对旧版修改了哪些内容？",
+    "expected_route": "VERSION_COMPARE"
+  },
+  {
+    "category": "version_compare",
+    "question": "第8种问法：新版相对旧版修改了哪些内容？",
+    "expected_route": "VERSION_COMPARE"
+  },
+  {
+    "category": "version_compare",
+    "question": "第9种问法：新版相对旧版修改了哪些内容？",
+    "expected_route": "VERSION_COMPARE"
+  },
+  {
+    "category": "version_compare",
+    "question": "第10种问法：新版相对旧版修改了哪些内容？",
+    "expected_route": "VERSION_COMPARE"
+  },
+  {
+    "category": "version_compare",
+    "question": "第11种问法：新版相对旧版修改了哪些内容？",
+    "expected_route": "VERSION_COMPARE"
+  },
+  {
+    "category": "version_compare",
+    "question": "第12种问法：新版相对旧版修改了哪些内容？",
+    "expected_route": "VERSION_COMPARE"
+  },
+  {
+    "category": "version_compare",
+    "question": "第13种问法：新版相对旧版修改了哪些内容？",
+    "expected_route": "VERSION_COMPARE"
+  },
+  {
+    "category": "version_compare",
+    "question": "第14种问法：新版相对旧版修改了哪些内容？",
+    "expected_route": "VERSION_COMPARE"
+  },
+  {
+    "category": "version_compare",
+    "question": "第15种问法：新版相对旧版修改了哪些内容？",
+    "expected_route": "VERSION_COMPARE"
+  },
+  {
+    "category": "table",
+    "question": "表格中2001年销售额是多少？",
+    "expected_value": "100",
+    "expected_route": "TABLE"
+  },
+  {
+    "category": "table",
+    "question": "表格中2002年销售额是多少？",
+    "expected_value": "110",
+    "expected_route": "TABLE"
+  },
+  {
+    "category": "table",
+    "question": "表格中2003年销售额是多少？",
+    "expected_value": "120",
+    "expected_route": "TABLE"
+  },
+  {
+    "category": "table",
+    "question": "表格中2004年销售额是多少？",
+    "expected_value": "130",
+    "expected_route": "TABLE"
+  },
+  {
+    "category": "table",
+    "question": "表格中2005年销售额是多少？",
+    "expected_value": "140",
+    "expected_route": "TABLE"
+  },
+  {
+    "category": "table",
+    "question": "表格中2006年销售额是多少？",
+    "expected_value": "150",
+    "expected_route": "TABLE"
+  },
+  {
+    "category": "table",
+    "question": "表格中2007年销售额是多少？",
+    "expected_value": "160",
+    "expected_route": "TABLE"
+  },
+  {
+    "category": "table",
+    "question": "表格中2008年销售额是多少？",
+    "expected_value": "170",
+    "expected_route": "TABLE"
+  },
+  {
+    "category": "table",
+    "question": "表格中2009年销售额是多少？",
+    "expected_value": "180",
+    "expected_route": "TABLE"
+  },
+  {
+    "category": "table",
+    "question": "表格中2010年销售额是多少？",
+    "expected_value": "190",
+    "expected_route": "TABLE"
+  },
+  {
+    "category": "table",
+    "question": "表格中2011年销售额是多少？",
+    "expected_value": "200",
+    "expected_route": "TABLE"
+  },
+  {
+    "category": "table",
+    "question": "表格中2012年销售额是多少？",
+    "expected_value": "210",
+    "expected_route": "TABLE"
+  },
+  {
+    "category": "table",
+    "question": "表格中2013年销售额是多少？",
+    "expected_value": "220",
+    "expected_route": "TABLE"
+  },
+  {
+    "category": "table",
+    "question": "表格中2014年销售额是多少？",
+    "expected_value": "230",
+    "expected_route": "TABLE"
+  },
+  {
+    "category": "table",
+    "question": "表格中2015年销售额是多少？",
+    "expected_value": "240",
+    "expected_route": "TABLE"
+  },
+  {
+    "category": "table",
+    "question": "表格中2016年销售额是多少？",
+    "expected_value": "250",
+    "expected_route": "TABLE"
+  },
+  {
+    "category": "table",
+    "question": "表格中2017年销售额是多少？",
+    "expected_value": "260",
+    "expected_route": "TABLE"
+  },
+  {
+    "category": "table",
+    "question": "表格中2018年销售额是多少？",
+    "expected_value": "270",
+    "expected_route": "TABLE"
+  },
+  {
+    "category": "table",
+    "question": "表格中2024年销售额是多少？",
+    "expected_value": "1000",
+    "expected_route": "TABLE"
+  },
+  {
+    "category": "table",
+    "question": "表格中2025年销售额是多少？",
+    "expected_value": "1200",
+    "expected_route": "TABLE"
+  },
+  {
+    "category": "chart",
+    "question": "问题1：折线图的最高是什么？",
+    "expected_text": "三月最大",
+    "expected_route": "CHART"
+  },
+  {
+    "category": "chart",
+    "question": "问题2：折线图的最低是什么？",
+    "expected_text": "一月最小",
+    "expected_route": "CHART"
+  },
+  {
+    "category": "chart",
+    "question": "问题3：折线图的增长最快是什么？",
+    "expected_text": "二月到三月增长最快",
+    "expected_route": "CHART"
+  },
+  {
+    "category": "chart",
+    "question": "问题4：折线图的趋势是什么？",
+    "expected_text": "总体上升",
+    "expected_route": "CHART"
+  },
+  {
+    "category": "chart",
+    "question": "问题5：折线图的数据点是什么？",
+    "expected_text": "3 个可读数据点",
+    "expected_route": "CHART"
+  },
+  {
+    "category": "chart",
+    "question": "问题6：折线图的最高是什么？",
+    "expected_text": "三月最大",
+    "expected_route": "CHART"
+  },
+  {
+    "category": "chart",
+    "question": "问题7：折线图的最低是什么？",
+    "expected_text": "一月最小",
+    "expected_route": "CHART"
+  },
+  {
+    "category": "chart",
+    "question": "问题8：折线图的增长最快是什么？",
+    "expected_text": "二月到三月增长最快",
+    "expected_route": "CHART"
+  },
+  {
+    "category": "chart",
+    "question": "问题9：折线图的趋势是什么？",
+    "expected_text": "总体上升",
+    "expected_route": "CHART"
+  },
+  {
+    "category": "chart",
+    "question": "问题10：折线图的数据点是什么？",
+    "expected_text": "3 个可读数据点",
+    "expected_route": "CHART"
+  },
+  {
+    "category": "chart",
+    "question": "问题11：折线图的最高是什么？",
+    "expected_text": "三月最大",
+    "expected_route": "CHART"
+  },
+  {
+    "category": "chart",
+    "question": "问题12：折线图的最低是什么？",
+    "expected_text": "一月最小",
+    "expected_route": "CHART"
+  },
+  {
+    "category": "chart",
+    "question": "问题13：折线图的增长最快是什么？",
+    "expected_text": "二月到三月增长最快",
+    "expected_route": "CHART"
+  },
+  {
+    "category": "chart",
+    "question": "问题14：折线图的趋势是什么？",
+    "expected_text": "总体上升",
+    "expected_route": "CHART"
+  },
+  {
+    "category": "chart",
+    "question": "问题15：折线图的数据点是什么？",
+    "expected_text": "3 个可读数据点",
+    "expected_route": "CHART"
+  },
+  {
+    "category": "image",
+    "question": "第3页架构图包含哪些模块？（问法1）",
+    "expected_entities": [
+      "Router",
+      "Planner",
+      "RAG"
+    ],
+    "expected_route": "IMAGE"
+  },
+  {
+    "category": "image",
+    "question": "第3页架构图包含哪些模块？（问法2）",
+    "expected_entities": [
+      "Router",
+      "Planner",
+      "RAG"
+    ],
+    "expected_route": "IMAGE"
+  },
+  {
+    "category": "image",
+    "question": "第3页架构图包含哪些模块？（问法3）",
+    "expected_entities": [
+      "Router",
+      "Planner",
+      "RAG"
+    ],
+    "expected_route": "IMAGE"
+  },
+  {
+    "category": "image",
+    "question": "第3页架构图包含哪些模块？（问法4）",
+    "expected_entities": [
+      "Router",
+      "Planner",
+      "RAG"
+    ],
+    "expected_route": "IMAGE"
+  },
+  {
+    "category": "image",
+    "question": "第3页架构图包含哪些模块？（问法5）",
+    "expected_entities": [
+      "Router",
+      "Planner",
+      "RAG"
+    ],
+    "expected_route": "IMAGE"
+  },
+  {
+    "category": "image",
+    "question": "第3页架构图包含哪些模块？（问法6）",
+    "expected_entities": [
+      "Router",
+      "Planner",
+      "RAG"
+    ],
+    "expected_route": "IMAGE"
+  },
+  {
+    "category": "image",
+    "question": "第3页架构图包含哪些模块？（问法7）",
+    "expected_entities": [
+      "Router",
+      "Planner",
+      "RAG"
+    ],
+    "expected_route": "IMAGE"
+  },
+  {
+    "category": "image",
+    "question": "第3页架构图包含哪些模块？（问法8）",
+    "expected_entities": [
+      "Router",
+      "Planner",
+      "RAG"
+    ],
+    "expected_route": "IMAGE"
+  },
+  {
+    "category": "image",
+    "question": "第3页架构图包含哪些模块？（问法9）",
+    "expected_entities": [
+      "Router",
+      "Planner",
+      "RAG"
+    ],
+    "expected_route": "IMAGE"
+  },
+  {
+    "category": "image",
+    "question": "第3页架构图包含哪些模块？（问法10）",
+    "expected_entities": [
+      "Router",
+      "Planner",
+      "RAG"
+    ],
+    "expected_route": "IMAGE"
+  },
+  {
+    "category": "image",
+    "question": "第3页架构图包含哪些模块？（问法11）",
+    "expected_entities": [
+      "Router",
+      "Planner",
+      "RAG"
+    ],
+    "expected_route": "IMAGE"
+  },
+  {
+    "category": "image",
+    "question": "第3页架构图包含哪些模块？（问法12）",
+    "expected_entities": [
+      "Router",
+      "Planner",
+      "RAG"
+    ],
+    "expected_route": "IMAGE"
+  },
+  {
+    "category": "image",
+    "question": "第3页架构图包含哪些模块？（问法13）",
+    "expected_entities": [
+      "Router",
+      "Planner",
+      "RAG"
+    ],
+    "expected_route": "IMAGE"
+  },
+  {
+    "category": "image",
+    "question": "第3页架构图包含哪些模块？（问法14）",
+    "expected_entities": [
+      "Router",
+      "Planner",
+      "RAG"
+    ],
+    "expected_route": "IMAGE"
+  },
+  {
+    "category": "image",
+    "question": "第3页架构图包含哪些模块？（问法15）",
+    "expected_entities": [
+      "Router",
+      "Planner",
+      "RAG"
+    ],
+    "expected_route": "IMAGE"
+  },
+  {
+    "category": "cross_modal",
+    "question": "正文和表格中的增长率是否一致？（样本1）",
+    "expected_conflict": true,
+    "expected_route": "MULTIMODAL"
+  },
+  {
+    "category": "cross_modal",
+    "question": "正文和表格中的增长率是否一致？（样本2）",
+    "expected_conflict": true,
+    "expected_route": "MULTIMODAL"
+  },
+  {
+    "category": "cross_modal",
+    "question": "正文和表格中的增长率是否一致？（样本3）",
+    "expected_conflict": true,
+    "expected_route": "MULTIMODAL"
+  },
+  {
+    "category": "cross_modal",
+    "question": "正文和表格中的增长率是否一致？（样本4）",
+    "expected_conflict": true,
+    "expected_route": "MULTIMODAL"
+  },
+  {
+    "category": "cross_modal",
+    "question": "正文和表格中的增长率是否一致？（样本5）",
+    "expected_conflict": true,
+    "expected_route": "MULTIMODAL"
+  },
+  {
+    "category": "cross_modal",
+    "question": "正文和表格中的增长率是否一致？（样本6）",
+    "expected_conflict": true,
+    "expected_route": "MULTIMODAL"
+  },
+  {
+    "category": "cross_modal",
+    "question": "正文和表格中的增长率是否一致？（样本7）",
+    "expected_conflict": true,
+    "expected_route": "MULTIMODAL"
+  },
+  {
+    "category": "cross_modal",
+    "question": "正文和表格中的增长率是否一致？（样本8）",
+    "expected_conflict": true,
+    "expected_route": "MULTIMODAL"
+  },
+  {
+    "category": "cross_modal",
+    "question": "正文和表格中的增长率是否一致？（样本9）",
+    "expected_conflict": true,
+    "expected_route": "MULTIMODAL"
+  },
+  {
+    "category": "cross_modal",
+    "question": "正文和表格中的增长率是否一致？（样本10）",
+    "expected_conflict": true,
+    "expected_route": "MULTIMODAL"
+  },
+  {
+    "category": "cross_modal",
+    "question": "正文和表格中的增长率是否一致？（样本11）",
+    "expected_conflict": true,
+    "expected_route": "MULTIMODAL"
+  },
+  {
+    "category": "cross_modal",
+    "question": "正文和表格中的增长率是否一致？（样本12）",
+    "expected_conflict": true,
+    "expected_route": "MULTIMODAL"
+  },
+  {
+    "category": "cross_modal",
+    "question": "正文和表格中的增长率是否一致？（样本13）",
+    "expected_conflict": true,
+    "expected_route": "MULTIMODAL"
+  },
+  {
+    "category": "cross_modal",
+    "question": "正文和表格中的增长率是否一致？（样本14）",
+    "expected_conflict": true,
+    "expected_route": "MULTIMODAL"
+  },
+  {
+    "category": "cross_modal",
+    "question": "正文和表格中的增长率是否一致？（样本15）",
+    "expected_conflict": true,
+    "expected_route": "MULTIMODAL"
+  }
+]

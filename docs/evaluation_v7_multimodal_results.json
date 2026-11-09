@@ -1,0 +1,1920 @@
+{
+  "mode": "controlled_offline_real_pdf",
+  "cases": 100,
+  "distribution": {
+    "multi_document": 20,
+    "version_compare": 15,
+    "table": 20,
+    "chart": 15,
+    "image": 15,
+    "cross_modal": 15
+  },
+  "distinct_pdf_fixtures": 5,
+  "distinct_charts": 1,
+  "distinct_images": 1,
+  "metrics": {
+    "multi_document_retrieval_recall": 1.0,
+    "multi_document_top1_source_accuracy": 1.0,
+    "change_detection_precision": 1.0,
+    "change_detection_recall": 1.0,
+    "table_extraction_accuracy": 1.0,
+    "table_qa_accuracy": 1.0,
+    "chart_type_accuracy": 1.0,
+    "chart_qa_accuracy": 1.0,
+    "image_qa_accuracy": 1.0,
+    "routing_accuracy": 1.0,
+    "evidence_source_accuracy": 1.0,
+    "conflict_detection_accuracy": 1.0,
+    "final_answer_accuracy": null
+  },
+  "ablations": [
+    {
+      "stage": "A Text-only",
+      "offline_task_success_rate": 0.35,
+      "source_accuracy": 0.35,
+      "unsupported_claim_rate": null,
+      "mean_tool_latency_ms": 184.7,
+      "llm_calls": 0,
+      "scope": "受控离线工具测试；关闭的模态按未覆盖计入 100 题分母"
+    },
+    {
+      "stage": "B Text+Table",
+      "offline_task_success_rate": 0.55,
+      "source_accuracy": 0.55,
+      "unsupported_claim_rate": null,
+      "mean_tool_latency_ms": 117.66,
+      "llm_calls": 0,
+      "scope": "受控离线工具测试；关闭的模态按未覆盖计入 100 题分母"
+    },
+    {
+      "stage": "C Text+Table+Chart",
+      "offline_task_success_rate": 0.7,
+      "source_accuracy": 0.7,
+      "unsupported_claim_rate": null,
+      "mean_tool_latency_ms": 92.98,
+      "llm_calls": 0,
+      "scope": "受控离线工具测试；关闭的模态按未覆盖计入 100 题分母"
+    },
+    {
+      "stage": "D Full",
+      "offline_task_success_rate": 1.0,
+      "source_accuracy": 1.0,
+      "unsupported_claim_rate": null,
+      "mean_tool_latency_ms": 114.31,
+      "llm_calls": 0,
+      "scope": "受控离线工具测试；关闭的模态按未覆盖计入 100 题分母"
+    }
+  ],
+  "results": [
+    {
+      "case_id": 1,
+      "category": "multi_document",
+      "question": "模块A01负责什么？",
+      "expected_document": "report_a.pdf",
+      "expected_route": "MULTI_DOCUMENT",
+      "passed": true,
+      "source_correct": true,
+      "route_correct": true,
+      "actual": {
+        "hit_documents": [
+          "report_a.pdf",
+          "report_b.pdf",
+          "multimodal.pdf"
+        ]
+      },
+      "error": null,
+      "latency_ms": 327.9,
+      "llm_calls": 0
+    },
+    {
+      "case_id": 2,
+      "category": "multi_document",
+      "question": "模块A02负责什么？",
+      "expected_document": "report_a.pdf",
+      "expected_route": "MULTI_DOCUMENT",
+      "passed": true,
+      "source_correct": true,
+      "route_correct": true,
+      "actual": {
+        "hit_documents": [
+          "report_a.pdf",
+          "report_b.pdf",
+          "multimodal.pdf"
+        ]
+      },
+      "error": null,
+      "latency_ms": 313.91,
+      "llm_calls": 0
+    },
+    {
+      "case_id": 3,
+      "category": "multi_document",
+      "question": "模块A03负责什么？",
+      "expected_document": "report_a.pdf",
+      "expected_route": "MULTI_DOCUMENT",
+      "passed": true,
+      "source_correct": true,
+      "route_correct": true,
+      "actual": {
+        "hit_documents": [
+          "report_a.pdf",
+          "report_b.pdf",
+          "multimodal.pdf"
+        ]
+      },
+      "error": null,
+      "latency_ms": 322.75,
+      "llm_calls": 0
+    },
+    {
+      "case_id": 4,
+      "category": "multi_document",
+      "question": "模块A04负责什么？",
+      "expected_document": "report_a.pdf",
+      "expected_route": "MULTI_DOCUMENT",
+      "passed": true,
+      "source_correct": true,
+      "route_correct": true,
+      "actual": {
+        "hit_documents": [
+          "report_a.pdf",
+          "report_b.pdf",
+          "multimodal.pdf"
+        ]
+      },
+      "error": null,
+      "latency_ms": 320.46,
+      "llm_calls": 0
+    },
+    {
+      "case_id": 5,
+      "category": "multi_document",
+      "question": "模块A05负责什么？",
+      "expected_document": "report_a.pdf",
+      "expected_route": "MULTI_DOCUMENT",
+      "passed": true,
+      "source_correct": true,
+      "route_correct": true,
+      "actual": {
+        "hit_documents": [
+          "report_a.pdf",
+          "report_b.pdf",
+          "multimodal.pdf"
+        ]
+      },
+      "error": null,
+      "latency_ms": 309.4,
+      "llm_calls": 0
+    },
+    {
+      "case_id": 6,
+      "category": "multi_document",
+      "question": "模块A06负责什么？",
+      "expected_document": "report_a.pdf",
+      "expected_route": "MULTI_DOCUMENT",
+      "passed": true,
+      "source_correct": true,
+      "route_correct": true,
+      "actual": {
+        "hit_documents": [
+          "report_a.pdf",
+          "report_b.pdf",
+          "multimodal.pdf"
+        ]
+      },
+      "error": null,
+      "latency_ms": 331.5,
+      "llm_calls": 0
+    },
+    {
+      "case_id": 7,
+      "category": "multi_document",
+      "question": "模块A07负责什么？",
+      "expected_document": "report_a.pdf",
+      "expected_route": "MULTI_DOCUMENT",
+      "passed": true,
+      "source_correct": true,
+      "route_correct": true,
+      "actual": {
+        "hit_documents": [
+          "report_a.pdf",
+          "report_b.pdf",
+          "multimodal.pdf"
+        ]
+      },
+      "error": null,
+      "latency_ms": 351.19,
+      "llm_calls": 0
+    },
+    {
+      "case_id": 8,
+      "category": "multi_document",
+      "question": "模块A08负责什么？",
+      "expected_document": "report_a.pdf",
+      "expected_route": "MULTI_DOCUMENT",
+      "passed": true,
+      "source_correct": true,
+      "route_correct": true,
+      "actual": {
+        "hit_documents": [
+          "report_a.pdf",
+          "report_b.pdf",
+          "multimodal.pdf"
+        ]
+      },
+      "error": null,
+      "latency_ms": 315.12,
+      "llm_calls": 0
+    },
+    {
+      "case_id": 9,
+      "category": "multi_document",
+      "question": "模块A09负责什么？",
+      "expected_document": "report_a.pdf",
+      "expected_route": "MULTI_DOCUMENT",
+      "passed": true,
+      "source_correct": true,
+      "route_correct": true,
+      "actual": {
+        "hit_documents": [
+          "report_a.pdf",
+          "report_b.pdf",
+          "multimodal.pdf"
+        ]
+      },
+      "error": null,
+      "latency_ms": 329.79,
+      "llm_calls": 0
+    },
+    {
+      "case_id": 10,
+      "category": "multi_document",
+      "question": "模块A10负责什么？",
+      "expected_document": "report_a.pdf",
+      "expected_route": "MULTI_DOCUMENT",
+      "passed": true,
+      "source_correct": true,
+      "route_correct": true,
+      "actual": {
+        "hit_documents": [
+          "report_a.pdf",
+          "report_b.pdf",
+          "multimodal.pdf"
+        ]
+      },
+      "error": null,
+      "latency_ms": 310.98,
+      "llm_calls": 0
+    },
+    {
+      "case_id": 11,
+      "category": "multi_document",
+      "question": "模块B01负责什么？",
+      "expected_document": "report_b.pdf",
+      "expected_route": "MULTI_DOCUMENT",
+      "passed": true,
+      "source_correct": true,
+      "route_correct": true,
+      "actual": {
+        "hit_documents": [
+          "report_b.pdf",
+          "report_a.pdf",
+          "multimodal.pdf"
+        ]
+      },
+      "error": null,
+      "latency_ms": 310.94,
+      "llm_calls": 0
+    },
+    {
+      "case_id": 12,
+      "category": "multi_document",
+      "question": "模块B02负责什么？",
+      "expected_document": "report_b.pdf",
+      "expected_route": "MULTI_DOCUMENT",
+      "passed": true,
+      "source_correct": true,
+      "route_correct": true,
+      "actual": {
+        "hit_documents": [
+          "report_b.pdf",
+          "report_a.pdf",
+          "multimodal.pdf"
+        ]
+      },
+      "error": null,
+      "latency_ms": 311.4,
+      "llm_calls": 0
+    },
+    {
+      "case_id": 13,
+      "category": "multi_document",
+      "question": "模块B03负责什么？",
+      "expected_document": "report_b.pdf",
+      "expected_route": "MULTI_DOCUMENT",
+      "passed": true,
+      "source_correct": true,
+      "route_correct": true,
+      "actual": {
+        "hit_documents": [
+          "report_b.pdf",
+          "report_a.pdf",
+          "multimodal.pdf"
+        ]
+      },
+      "error": null,
+      "latency_ms": 330.1,
+      "llm_calls": 0
+    },
+    {
+      "case_id": 14,
+      "category": "multi_document",
+      "question": "模块B04负责什么？",
+      "expected_document": "report_b.pdf",
+      "expected_route": "MULTI_DOCUMENT",
+      "passed": true,
+      "source_correct": true,
+      "route_correct": true,
+      "actual": {
+        "hit_documents": [
+          "report_b.pdf",
+          "report_a.pdf",
+          "multimodal.pdf"
+        ]
+      },
+      "error": null,
+      "latency_ms": 323.54,
+      "llm_calls": 0
+    },
+    {
+      "case_id": 15,
+      "category": "multi_document",
+      "question": "模块B05负责什么？",
+      "expected_document": "report_b.pdf",
+      "expected_route": "MULTI_DOCUMENT",
+      "passed": true,
+      "source_correct": true,
+      "route_correct": true,
+      "actual": {
+        "hit_documents": [
+          "report_b.pdf",
+          "report_a.pdf",
+          "multimodal.pdf"
+        ]
+      },
+      "error": null,
+      "latency_ms": 307.12,
+      "llm_calls": 0
+    },
+    {
+      "case_id": 16,
+      "category": "multi_document",
+      "question": "模块B06负责什么？",
+      "expected_document": "report_b.pdf",
+      "expected_route": "MULTI_DOCUMENT",
+      "passed": true,
+      "source_correct": true,
+      "route_correct": true,
+      "actual": {
+        "hit_documents": [
+          "report_b.pdf",
+          "report_a.pdf",
+          "multimodal.pdf"
+        ]
+      },
+      "error": null,
+      "latency_ms": 331.85,
+      "llm_calls": 0
+    },
+    {
+      "case_id": 17,
+      "category": "multi_document",
+      "question": "模块B07负责什么？",
+      "expected_document": "report_b.pdf",
+      "expected_route": "MULTI_DOCUMENT",
+      "passed": true,
+      "source_correct": true,
+      "route_correct": true,
+      "actual": {
+        "hit_documents": [
+          "report_b.pdf",
+          "report_a.pdf",
+          "multimodal.pdf"
+        ]
+      },
+      "error": null,
+      "latency_ms": 328.98,
+      "llm_calls": 0
+    },
+    {
+      "case_id": 18,
+      "category": "multi_document",
+      "question": "模块B08负责什么？",
+      "expected_document": "report_b.pdf",
+      "expected_route": "MULTI_DOCUMENT",
+      "passed": true,
+      "source_correct": true,
+      "route_correct": true,
+      "actual": {
+        "hit_documents": [
+          "report_b.pdf",
+          "report_a.pdf",
+          "multimodal.pdf"
+        ]
+      },
+      "error": null,
+      "latency_ms": 327.64,
+      "llm_calls": 0
+    },
+    {
+      "case_id": 19,
+      "category": "multi_document",
+      "question": "模块B09负责什么？",
+      "expected_document": "report_b.pdf",
+      "expected_route": "MULTI_DOCUMENT",
+      "passed": true,
+      "source_correct": true,
+      "route_correct": true,
+      "actual": {
+        "hit_documents": [
+          "report_b.pdf",
+          "report_a.pdf",
+          "multimodal.pdf"
+        ]
+      },
+      "error": null,
+      "latency_ms": 320.15,
+      "llm_calls": 0
+    },
+    {
+      "case_id": 20,
+      "category": "multi_document",
+      "question": "模块B10负责什么？",
+      "expected_document": "report_b.pdf",
+      "expected_route": "MULTI_DOCUMENT",
+      "passed": true,
+      "source_correct": true,
+      "route_correct": true,
+      "actual": {
+        "hit_documents": [
+          "report_b.pdf",
+          "report_a.pdf",
+          "multimodal.pdf"
+        ]
+      },
+      "error": null,
+      "latency_ms": 339.72,
+      "llm_calls": 0
+    },
+    {
+      "case_id": 21,
+      "category": "version_compare",
+      "question": "第1种问法：新版相对旧版修改了哪些内容？",
+      "expected_route": "VERSION_COMPARE",
+      "passed": true,
+      "source_correct": true,
+      "route_correct": true,
+      "actual": {
+        "changes": {
+          "added": 1,
+          "deleted": 1,
+          "modified": 1
+        }
+      },
+      "error": null,
+      "latency_ms": 0.02,
+      "llm_calls": 0
+    },
+    {
+      "case_id": 22,
+      "category": "version_compare",
+      "question": "第2种问法：新版相对旧版修改了哪些内容？",
+      "expected_route": "VERSION_COMPARE",
+      "passed": true,
+      "source_correct": true,
+      "route_correct": true,
+      "actual": {
+        "changes": {
+          "added": 1,
+          "deleted": 1,
+          "modified": 1
+        }
+      },
+      "error": null,
+      "latency_ms": 0.01,
+      "llm_calls": 0
+    },
+    {
+      "case_id": 23,
+      "category": "version_compare",
+      "question": "第3种问法：新版相对旧版修改了哪些内容？",
+      "expected_route": "VERSION_COMPARE",
+      "passed": true,
+      "source_correct": true,
+      "route_correct": true,
+      "actual": {
+        "changes": {
+          "added": 1,
+          "deleted": 1,
+          "modified": 1
+        }
+      },
+      "error": null,
+      "latency_ms": 0.01,
+      "llm_calls": 0
+    },
+    {
+      "case_id": 24,
+      "category": "version_compare",
+      "question": "第4种问法：新版相对旧版修改了哪些内容？",
+      "expected_route": "VERSION_COMPARE",
+      "passed": true,
+      "source_correct": true,
+      "route_correct": true,
+      "actual": {
+        "changes": {
+          "added": 1,
+          "deleted": 1,
+          "modified": 1
+        }
+      },
+      "error": null,
+      "latency_ms": 0.01,
+      "llm_calls": 0
+    },
+    {
+      "case_id": 25,
+      "category": "version_compare",
+      "question": "第5种问法：新版相对旧版修改了哪些内容？",
+      "expected_route": "VERSION_COMPARE",
+      "passed": true,
+      "source_correct": true,
+      "route_correct": true,
+      "actual": {
+        "changes": {
+          "added": 1,
+          "deleted": 1,
+          "modified": 1
+        }
+      },
+      "error": null,
+      "latency_ms": 0.01,
+      "llm_calls": 0
+    },
+    {
+      "case_id": 26,
+      "category": "version_compare",
+      "question": "第6种问法：新版相对旧版修改了哪些内容？",
+      "expected_route": "VERSION_COMPARE",
+      "passed": true,
+      "source_correct": true,
+      "route_correct": true,
+      "actual": {
+        "changes": {
+          "added": 1,
+          "deleted": 1,
+          "modified": 1
+        }
+      },
+      "error": null,
+      "latency_ms": 0.01,
+      "llm_calls": 0
+    },
+    {
+      "case_id": 27,
+      "category": "version_compare",
+      "question": "第7种问法：新版相对旧版修改了哪些内容？",
+      "expected_route": "VERSION_COMPARE",
+      "passed": true,
+      "source_correct": true,
+      "route_correct": true,
+      "actual": {
+        "changes": {
+          "added": 1,
+          "deleted": 1,
+          "modified": 1
+        }
+      },
+      "error": null,
+      "latency_ms": 0.01,
+      "llm_calls": 0
+    },
+    {
+      "case_id": 28,
+      "category": "version_compare",
+      "question": "第8种问法：新版相对旧版修改了哪些内容？",
+      "expected_route": "VERSION_COMPARE",
+      "passed": true,
+      "source_correct": true,
+      "route_correct": true,
+      "actual": {
+        "changes": {
+          "added": 1,
+          "deleted": 1,
+          "modified": 1
+        }
+      },
+      "error": null,
+      "latency_ms": 0.01,
+      "llm_calls": 0
+    },
+    {
+      "case_id": 29,
+      "category": "version_compare",
+      "question": "第9种问法：新版相对旧版修改了哪些内容？",
+      "expected_route": "VERSION_COMPARE",
+      "passed": true,
+      "source_correct": true,
+      "route_correct": true,
+      "actual": {
+        "changes": {
+          "added": 1,
+          "deleted": 1,
+          "modified": 1
+        }
+      },
+      "error": null,
+      "latency_ms": 0.01,
+      "llm_calls": 0
+    },
+    {
+      "case_id": 30,
+      "category": "version_compare",
+      "question": "第10种问法：新版相对旧版修改了哪些内容？",
+      "expected_route": "VERSION_COMPARE",
+      "passed": true,
+      "source_correct": true,
+      "route_correct": true,
+      "actual": {
+        "changes": {
+          "added": 1,
+          "deleted": 1,
+          "modified": 1
+        }
+      },
+      "error": null,
+      "latency_ms": 0.01,
+      "llm_calls": 0
+    },
+    {
+      "case_id": 31,
+      "category": "version_compare",
+      "question": "第11种问法：新版相对旧版修改了哪些内容？",
+      "expected_route": "VERSION_COMPARE",
+      "passed": true,
+      "source_correct": true,
+      "route_correct": true,
+      "actual": {
+        "changes": {
+          "added": 1,
+          "deleted": 1,
+          "modified": 1
+        }
+      },
+      "error": null,
+      "latency_ms": 0.01,
+      "llm_calls": 0
+    },
+    {
+      "case_id": 32,
+      "category": "version_compare",
+      "question": "第12种问法：新版相对旧版修改了哪些内容？",
+      "expected_route": "VERSION_COMPARE",
+      "passed": true,
+      "source_correct": true,
+      "route_correct": true,
+      "actual": {
+        "changes": {
+          "added": 1,
+          "deleted": 1,
+          "modified": 1
+        }
+      },
+      "error": null,
+      "latency_ms": 0.01,
+      "llm_calls": 0
+    },
+    {
+      "case_id": 33,
+      "category": "version_compare",
+      "question": "第13种问法：新版相对旧版修改了哪些内容？",
+      "expected_route": "VERSION_COMPARE",
+      "passed": true,
+      "source_correct": true,
+      "route_correct": true,
+      "actual": {
+        "changes": {
+          "added": 1,
+          "deleted": 1,
+          "modified": 1
+        }
+      },
+      "error": null,
+      "latency_ms": 0.01,
+      "llm_calls": 0
+    },
+    {
+      "case_id": 34,
+      "category": "version_compare",
+      "question": "第14种问法：新版相对旧版修改了哪些内容？",
+      "expected_route": "VERSION_COMPARE",
+      "passed": true,
+      "source_correct": true,
+      "route_correct": true,
+      "actual": {
+        "changes": {
+          "added": 1,
+          "deleted": 1,
+          "modified": 1
+        }
+      },
+      "error": null,
+      "latency_ms": 0.01,
+      "llm_calls": 0
+    },
+    {
+      "case_id": 35,
+      "category": "version_compare",
+      "question": "第15种问法：新版相对旧版修改了哪些内容？",
+      "expected_route": "VERSION_COMPARE",
+      "passed": true,
+      "source_correct": true,
+      "route_correct": true,
+      "actual": {
+        "changes": {
+          "added": 1,
+          "deleted": 1,
+          "modified": 1
+        }
+      },
+      "error": null,
+      "latency_ms": 0.01,
+      "llm_calls": 0
+    },
+    {
+      "case_id": 36,
+      "category": "table",
+      "question": "表格中2001年销售额是多少？",
+      "expected_value": "100",
+      "expected_route": "TABLE",
+      "passed": true,
+      "source_correct": true,
+      "route_correct": true,
+      "actual": {
+        "value": "100"
+      },
+      "error": null,
+      "latency_ms": 0.64,
+      "llm_calls": 0
+    },
+    {
+      "case_id": 37,
+      "category": "table",
+      "question": "表格中2002年销售额是多少？",
+      "expected_value": "110",
+      "expected_route": "TABLE",
+      "passed": true,
+      "source_correct": true,
+      "route_correct": true,
+      "actual": {
+        "value": "110"
+      },
+      "error": null,
+      "latency_ms": 0.37,
+      "llm_calls": 0
+    },
+    {
+      "case_id": 38,
+      "category": "table",
+      "question": "表格中2003年销售额是多少？",
+      "expected_value": "120",
+      "expected_route": "TABLE",
+      "passed": true,
+      "source_correct": true,
+      "route_correct": true,
+      "actual": {
+        "value": "120"
+      },
+      "error": null,
+      "latency_ms": 0.34,
+      "llm_calls": 0
+    },
+    {
+      "case_id": 39,
+      "category": "table",
+      "question": "表格中2004年销售额是多少？",
+      "expected_value": "130",
+      "expected_route": "TABLE",
+      "passed": true,
+      "source_correct": true,
+      "route_correct": true,
+      "actual": {
+        "value": "130"
+      },
+      "error": null,
+      "latency_ms": 0.33,
+      "llm_calls": 0
+    },
+    {
+      "case_id": 40,
+      "category": "table",
+      "question": "表格中2005年销售额是多少？",
+      "expected_value": "140",
+      "expected_route": "TABLE",
+      "passed": true,
+      "source_correct": true,
+      "route_correct": true,
+      "actual": {
+        "value": "140"
+      },
+      "error": null,
+      "latency_ms": 0.37,
+      "llm_calls": 0
+    },
+    {
+      "case_id": 41,
+      "category": "table",
+      "question": "表格中2006年销售额是多少？",
+      "expected_value": "150",
+      "expected_route": "TABLE",
+      "passed": true,
+      "source_correct": true,
+      "route_correct": true,
+      "actual": {
+        "value": "150"
+      },
+      "error": null,
+      "latency_ms": 0.34,
+      "llm_calls": 0
+    },
+    {
+      "case_id": 42,
+      "category": "table",
+      "question": "表格中2007年销售额是多少？",
+      "expected_value": "160",
+      "expected_route": "TABLE",
+      "passed": true,
+      "source_correct": true,
+      "route_correct": true,
+      "actual": {
+        "value": "160"
+      },
+      "error": null,
+      "latency_ms": 0.33,
+      "llm_calls": 0
+    },
+    {
+      "case_id": 43,
+      "category": "table",
+      "question": "表格中2008年销售额是多少？",
+      "expected_value": "170",
+      "expected_route": "TABLE",
+      "passed": true,
+      "source_correct": true,
+      "route_correct": true,
+      "actual": {
+        "value": "170"
+      },
+      "error": null,
+      "latency_ms": 0.34,
+      "llm_calls": 0
+    },
+    {
+      "case_id": 44,
+      "category": "table",
+      "question": "表格中2009年销售额是多少？",
+      "expected_value": "180",
+      "expected_route": "TABLE",
+      "passed": true,
+      "source_correct": true,
+      "route_correct": true,
+      "actual": {
+        "value": "180"
+      },
+      "error": null,
+      "latency_ms": 0.33,
+      "llm_calls": 0
+    },
+    {
+      "case_id": 45,
+      "category": "table",
+      "question": "表格中2010年销售额是多少？",
+      "expected_value": "190",
+      "expected_route": "TABLE",
+      "passed": true,
+      "source_correct": true,
+      "route_correct": true,
+      "actual": {
+        "value": "190"
+      },
+      "error": null,
+      "latency_ms": 0.33,
+      "llm_calls": 0
+    },
+    {
+      "case_id": 46,
+      "category": "table",
+      "question": "表格中2011年销售额是多少？",
+      "expected_value": "200",
+      "expected_route": "TABLE",
+      "passed": true,
+      "source_correct": true,
+      "route_correct": true,
+      "actual": {
+        "value": "200"
+      },
+      "error": null,
+      "latency_ms": 0.33,
+      "llm_calls": 0
+    },
+    {
+      "case_id": 47,
+      "category": "table",
+      "question": "表格中2012年销售额是多少？",
+      "expected_value": "210",
+      "expected_route": "TABLE",
+      "passed": true,
+      "source_correct": true,
+      "route_correct": true,
+      "actual": {
+        "value": "210"
+      },
+      "error": null,
+      "latency_ms": 0.33,
+      "llm_calls": 0
+    },
+    {
+      "case_id": 48,
+      "category": "table",
+      "question": "表格中2013年销售额是多少？",
+      "expected_value": "220",
+      "expected_route": "TABLE",
+      "passed": true,
+      "source_correct": true,
+      "route_correct": true,
+      "actual": {
+        "value": "220"
+      },
+      "error": null,
+      "latency_ms": 0.29,
+      "llm_calls": 0
+    },
+    {
+      "case_id": 49,
+      "category": "table",
+      "question": "表格中2014年销售额是多少？",
+      "expected_value": "230",
+      "expected_route": "TABLE",
+      "passed": true,
+      "source_correct": true,
+      "route_correct": true,
+      "actual": {
+        "value": "230"
+      },
+      "error": null,
+      "latency_ms": 0.29,
+      "llm_calls": 0
+    },
+    {
+      "case_id": 50,
+      "category": "table",
+      "question": "表格中2015年销售额是多少？",
+      "expected_value": "240",
+      "expected_route": "TABLE",
+      "passed": true,
+      "source_correct": true,
+      "route_correct": true,
+      "actual": {
+        "value": "240"
+      },
+      "error": null,
+      "latency_ms": 0.26,
+      "llm_calls": 0
+    },
+    {
+      "case_id": 51,
+      "category": "table",
+      "question": "表格中2016年销售额是多少？",
+      "expected_value": "250",
+      "expected_route": "TABLE",
+      "passed": true,
+      "source_correct": true,
+      "route_correct": true,
+      "actual": {
+        "value": "250"
+      },
+      "error": null,
+      "latency_ms": 0.28,
+      "llm_calls": 0
+    },
+    {
+      "case_id": 52,
+      "category": "table",
+      "question": "表格中2017年销售额是多少？",
+      "expected_value": "260",
+      "expected_route": "TABLE",
+      "passed": true,
+      "source_correct": true,
+      "route_correct": true,
+      "actual": {
+        "value": "260"
+      },
+      "error": null,
+      "latency_ms": 0.29,
+      "llm_calls": 0
+    },
+    {
+      "case_id": 53,
+      "category": "table",
+      "question": "表格中2018年销售额是多少？",
+      "expected_value": "270",
+      "expected_route": "TABLE",
+      "passed": true,
+      "source_correct": true,
+      "route_correct": true,
+      "actual": {
+        "value": "270"
+      },
+      "error": null,
+      "latency_ms": 0.27,
+      "llm_calls": 0
+    },
+    {
+      "case_id": 54,
+      "category": "table",
+      "question": "表格中2024年销售额是多少？",
+      "expected_value": "1000",
+      "expected_route": "TABLE",
+      "passed": true,
+      "source_correct": true,
+      "route_correct": true,
+      "actual": {
+        "value": "1000"
+      },
+      "error": null,
+      "latency_ms": 0.26,
+      "llm_calls": 0
+    },
+    {
+      "case_id": 55,
+      "category": "table",
+      "question": "表格中2025年销售额是多少？",
+      "expected_value": "1200",
+      "expected_route": "TABLE",
+      "passed": true,
+      "source_correct": true,
+      "route_correct": true,
+      "actual": {
+        "value": "1200"
+      },
+      "error": null,
+      "latency_ms": 0.25,
+      "llm_calls": 0
+    },
+    {
+      "case_id": 56,
+      "category": "chart",
+      "question": "问题1：折线图的最高是什么？",
+      "expected_text": "三月最大",
+      "expected_route": "CHART",
+      "passed": true,
+      "source_correct": true,
+      "route_correct": true,
+      "actual": {
+        "answer": "三月最大，值为 170。"
+      },
+      "error": null,
+      "latency_ms": 2.77,
+      "llm_calls": 0
+    },
+    {
+      "case_id": 57,
+      "category": "chart",
+      "question": "问题2：折线图的最低是什么？",
+      "expected_text": "一月最小",
+      "expected_route": "CHART",
+      "passed": true,
+      "source_correct": true,
+      "route_correct": true,
+      "actual": {
+        "answer": "一月最小，值为 100。"
+      },
+      "error": null,
+      "latency_ms": 2.81,
+      "llm_calls": 0
+    },
+    {
+      "case_id": 58,
+      "category": "chart",
+      "question": "问题3：折线图的增长最快是什么？",
+      "expected_text": "二月到三月增长最快",
+      "expected_route": "CHART",
+      "passed": true,
+      "source_correct": true,
+      "route_correct": true,
+      "actual": {
+        "answer": "二月到三月增长最快，增加 50。"
+      },
+      "error": null,
+      "latency_ms": 2.49,
+      "llm_calls": 0
+    },
+    {
+      "case_id": 59,
+      "category": "chart",
+      "question": "问题4：折线图的趋势是什么？",
+      "expected_text": "总体上升",
+      "expected_route": "CHART",
+      "passed": true,
+      "source_correct": true,
+      "route_correct": true,
+      "actual": {
+        "answer": "从一月到三月总体上升（100 → 170）。"
+      },
+      "error": null,
+      "latency_ms": 2.32,
+      "llm_calls": 0
+    },
+    {
+      "case_id": 60,
+      "category": "chart",
+      "question": "问题5：折线图的数据点是什么？",
+      "expected_text": "3 个可读数据点",
+      "expected_route": "CHART",
+      "passed": true,
+      "source_correct": true,
+      "route_correct": true,
+      "actual": {
+        "answer": "第 2 页月度增长折线图包含 3 个可读数据点。"
+      },
+      "error": null,
+      "latency_ms": 2.63,
+      "llm_calls": 0
+    },
+    {
+      "case_id": 61,
+      "category": "chart",
+      "question": "问题6：折线图的最高是什么？",
+      "expected_text": "三月最大",
+      "expected_route": "CHART",
+      "passed": true,
+      "source_correct": true,
+      "route_correct": true,
+      "actual": {
+        "answer": "三月最大，值为 170。"
+      },
+      "error": null,
+      "latency_ms": 3.02,
+      "llm_calls": 0
+    },
+    {
+      "case_id": 62,
+      "category": "chart",
+      "question": "问题7：折线图的最低是什么？",
+      "expected_text": "一月最小",
+      "expected_route": "CHART",
+      "passed": true,
+      "source_correct": true,
+      "route_correct": true,
+      "actual": {
+        "answer": "一月最小，值为 100。"
+      },
+      "error": null,
+      "latency_ms": 2.43,
+      "llm_calls": 0
+    },
+    {
+      "case_id": 63,
+      "category": "chart",
+      "question": "问题8：折线图的增长最快是什么？",
+      "expected_text": "二月到三月增长最快",
+      "expected_route": "CHART",
+      "passed": true,
+      "source_correct": true,
+      "route_correct": true,
+      "actual": {
+        "answer": "二月到三月增长最快，增加 50。"
+      },
+      "error": null,
+      "latency_ms": 2.45,
+      "llm_calls": 0
+    },
+    {
+      "case_id": 64,
+      "category": "chart",
+      "question": "问题9：折线图的趋势是什么？",
+      "expected_text": "总体上升",
+      "expected_route": "CHART",
+      "passed": true,
+      "source_correct": true,
+      "route_correct": true,
+      "actual": {
+        "answer": "从一月到三月总体上升（100 → 170）。"
+      },
+      "error": null,
+      "latency_ms": 2.32,
+      "llm_calls": 0
+    },
+    {
+      "case_id": 65,
+      "category": "chart",
+      "question": "问题10：折线图的数据点是什么？",
+      "expected_text": "3 个可读数据点",
+      "expected_route": "CHART",
+      "passed": true,
+      "source_correct": true,
+      "route_correct": true,
+      "actual": {
+        "answer": "第 2 页月度增长折线图包含 3 个可读数据点。"
+      },
+      "error": null,
+      "latency_ms": 2.38,
+      "llm_calls": 0
+    },
+    {
+      "case_id": 66,
+      "category": "chart",
+      "question": "问题11：折线图的最高是什么？",
+      "expected_text": "三月最大",
+      "expected_route": "CHART",
+      "passed": true,
+      "source_correct": true,
+      "route_correct": true,
+      "actual": {
+        "answer": "三月最大，值为 170。"
+      },
+      "error": null,
+      "latency_ms": 2.37,
+      "llm_calls": 0
+    },
+    {
+      "case_id": 67,
+      "category": "chart",
+      "question": "问题12：折线图的最低是什么？",
+      "expected_text": "一月最小",
+      "expected_route": "CHART",
+      "passed": true,
+      "source_correct": true,
+      "route_correct": true,
+      "actual": {
+        "answer": "一月最小，值为 100。"
+      },
+      "error": null,
+      "latency_ms": 2.37,
+      "llm_calls": 0
+    },
+    {
+      "case_id": 68,
+      "category": "chart",
+      "question": "问题13：折线图的增长最快是什么？",
+      "expected_text": "二月到三月增长最快",
+      "expected_route": "CHART",
+      "passed": true,
+      "source_correct": true,
+      "route_correct": true,
+      "actual": {
+        "answer": "二月到三月增长最快，增加 50。"
+      },
+      "error": null,
+      "latency_ms": 2.53,
+      "llm_calls": 0
+    },
+    {
+      "case_id": 69,
+      "category": "chart",
+      "question": "问题14：折线图的趋势是什么？",
+      "expected_text": "总体上升",
+      "expected_route": "CHART",
+      "passed": true,
+      "source_correct": true,
+      "route_correct": true,
+      "actual": {
+        "answer": "从一月到三月总体上升（100 → 170）。"
+      },
+      "error": null,
+      "latency_ms": 2.3,
+      "llm_calls": 0
+    },
+    {
+      "case_id": 70,
+      "category": "chart",
+      "question": "问题15：折线图的数据点是什么？",
+      "expected_text": "3 个可读数据点",
+      "expected_route": "CHART",
+      "passed": true,
+      "source_correct": true,
+      "route_correct": true,
+      "actual": {
+        "answer": "第 2 页月度增长折线图包含 3 个可读数据点。"
+      },
+      "error": null,
+      "latency_ms": 2.34,
+      "llm_calls": 0
+    },
+    {
+      "case_id": 71,
+      "category": "image",
+      "question": "第3页架构图包含哪些模块？（问法1）",
+      "expected_entities": [
+        "Router",
+        "Planner",
+        "RAG"
+      ],
+      "expected_route": "IMAGE",
+      "passed": true,
+      "source_correct": true,
+      "route_correct": true,
+      "actual": {
+        "entities": [
+          "Router",
+          "Planner",
+          "RAG"
+        ]
+      },
+      "error": null,
+      "latency_ms": 963.24,
+      "llm_calls": 0
+    },
+    {
+      "case_id": 72,
+      "category": "image",
+      "question": "第3页架构图包含哪些模块？（问法2）",
+      "expected_entities": [
+        "Router",
+        "Planner",
+        "RAG"
+      ],
+      "expected_route": "IMAGE",
+      "passed": true,
+      "source_correct": true,
+      "route_correct": true,
+      "actual": {
+        "entities": [
+          "Router",
+          "Planner",
+          "RAG"
+        ]
+      },
+      "error": null,
+      "latency_ms": 320.05,
+      "llm_calls": 0
+    },
+    {
+      "case_id": 73,
+      "category": "image",
+      "question": "第3页架构图包含哪些模块？（问法3）",
+      "expected_entities": [
+        "Router",
+        "Planner",
+        "RAG"
+      ],
+      "expected_route": "IMAGE",
+      "passed": true,
+      "source_correct": true,
+      "route_correct": true,
+      "actual": {
+        "entities": [
+          "Router",
+          "Planner",
+          "RAG"
+        ]
+      },
+      "error": null,
+      "latency_ms": 289.09,
+      "llm_calls": 0
+    },
+    {
+      "case_id": 74,
+      "category": "image",
+      "question": "第3页架构图包含哪些模块？（问法4）",
+      "expected_entities": [
+        "Router",
+        "Planner",
+        "RAG"
+      ],
+      "expected_route": "IMAGE",
+      "passed": true,
+      "source_correct": true,
+      "route_correct": true,
+      "actual": {
+        "entities": [
+          "Router",
+          "Planner",
+          "RAG"
+        ]
+      },
+      "error": null,
+      "latency_ms": 323.21,
+      "llm_calls": 0
+    },
+    {
+      "case_id": 75,
+      "category": "image",
+      "question": "第3页架构图包含哪些模块？（问法5）",
+      "expected_entities": [
+        "Router",
+        "Planner",
+        "RAG"
+      ],
+      "expected_route": "IMAGE",
+      "passed": true,
+      "source_correct": true,
+      "route_correct": true,
+      "actual": {
+        "entities": [
+          "Router",
+          "Planner",
+          "RAG"
+        ]
+      },
+      "error": null,
+      "latency_ms": 299.39,
+      "llm_calls": 0
+    },
+    {
+      "case_id": 76,
+      "category": "image",
+      "question": "第3页架构图包含哪些模块？（问法6）",
+      "expected_entities": [
+        "Router",
+        "Planner",
+        "RAG"
+      ],
+      "expected_route": "IMAGE",
+      "passed": true,
+      "source_correct": true,
+      "route_correct": true,
+      "actual": {
+        "entities": [
+          "Router",
+          "Planner",
+          "RAG"
+        ]
+      },
+      "error": null,
+      "latency_ms": 272.39,
+      "llm_calls": 0
+    },
+    {
+      "case_id": 77,
+      "category": "image",
+      "question": "第3页架构图包含哪些模块？（问法7）",
+      "expected_entities": [
+        "Router",
+        "Planner",
+        "RAG"
+      ],
+      "expected_route": "IMAGE",
+      "passed": true,
+      "source_correct": true,
+      "route_correct": true,
+      "actual": {
+        "entities": [
+          "Router",
+          "Planner",
+          "RAG"
+        ]
+      },
+      "error": null,
+      "latency_ms": 260.84,
+      "llm_calls": 0
+    },
+    {
+      "case_id": 78,
+      "category": "image",
+      "question": "第3页架构图包含哪些模块？（问法8）",
+      "expected_entities": [
+        "Router",
+        "Planner",
+        "RAG"
+      ],
+      "expected_route": "IMAGE",
+      "passed": true,
+      "source_correct": true,
+      "route_correct": true,
+      "actual": {
+        "entities": [
+          "Router",
+          "Planner",
+          "RAG"
+        ]
+      },
+      "error": null,
+      "latency_ms": 299.44,
+      "llm_calls": 0
+    },
+    {
+      "case_id": 79,
+      "category": "image",
+      "question": "第3页架构图包含哪些模块？（问法9）",
+      "expected_entities": [
+        "Router",
+        "Planner",
+        "RAG"
+      ],
+      "expected_route": "IMAGE",
+      "passed": true,
+      "source_correct": true,
+      "route_correct": true,
+      "actual": {
+        "entities": [
+          "Router",
+          "Planner",
+          "RAG"
+        ]
+      },
+      "error": null,
+      "latency_ms": 245.09,
+      "llm_calls": 0
+    },
+    {
+      "case_id": 80,
+      "category": "image",
+      "question": "第3页架构图包含哪些模块？（问法10）",
+      "expected_entities": [
+        "Router",
+        "Planner",
+        "RAG"
+      ],
+      "expected_route": "IMAGE",
+      "passed": true,
+      "source_correct": true,
+      "route_correct": true,
+      "actual": {
+        "entities": [
+          "Router",
+          "Planner",
+          "RAG"
+        ]
+      },
+      "error": null,
+      "latency_ms": 280.22,
+      "llm_calls": 0
+    },
+    {
+      "case_id": 81,
+      "category": "image",
+      "question": "第3页架构图包含哪些模块？（问法11）",
+      "expected_entities": [
+        "Router",
+        "Planner",
+        "RAG"
+      ],
+      "expected_route": "IMAGE",
+      "passed": true,
+      "source_correct": true,
+      "route_correct": true,
+      "actual": {
+        "entities": [
+          "Router",
+          "Planner",
+          "RAG"
+        ]
+      },
+      "error": null,
+      "latency_ms": 279.23,
+      "llm_calls": 0
+    },
+    {
+      "case_id": 82,
+      "category": "image",
+      "question": "第3页架构图包含哪些模块？（问法12）",
+      "expected_entities": [
+        "Router",
+        "Planner",
+        "RAG"
+      ],
+      "expected_route": "IMAGE",
+      "passed": true,
+      "source_correct": true,
+      "route_correct": true,
+      "actual": {
+        "entities": [
+          "Router",
+          "Planner",
+          "RAG"
+        ]
+      },
+      "error": null,
+      "latency_ms": 291.02,
+      "llm_calls": 0
+    },
+    {
+      "case_id": 83,
+      "category": "image",
+      "question": "第3页架构图包含哪些模块？（问法13）",
+      "expected_entities": [
+        "Router",
+        "Planner",
+        "RAG"
+      ],
+      "expected_route": "IMAGE",
+      "passed": true,
+      "source_correct": true,
+      "route_correct": true,
+      "actual": {
+        "entities": [
+          "Router",
+          "Planner",
+          "RAG"
+        ]
+      },
+      "error": null,
+      "latency_ms": 287.28,
+      "llm_calls": 0
+    },
+    {
+      "case_id": 84,
+      "category": "image",
+      "question": "第3页架构图包含哪些模块？（问法14）",
+      "expected_entities": [
+        "Router",
+        "Planner",
+        "RAG"
+      ],
+      "expected_route": "IMAGE",
+      "passed": true,
+      "source_correct": true,
+      "route_correct": true,
+      "actual": {
+        "entities": [
+          "Router",
+          "Planner",
+          "RAG"
+        ]
+      },
+      "error": null,
+      "latency_ms": 280.52,
+      "llm_calls": 0
+    },
+    {
+      "case_id": 85,
+      "category": "image",
+      "question": "第3页架构图包含哪些模块？（问法15）",
+      "expected_entities": [
+        "Router",
+        "Planner",
+        "RAG"
+      ],
+      "expected_route": "IMAGE",
+      "passed": true,
+      "source_correct": true,
+      "route_correct": true,
+      "actual": {
+        "entities": [
+          "Router",
+          "Planner",
+          "RAG"
+        ]
+      },
+      "error": null,
+      "latency_ms": 231.43,
+      "llm_calls": 0
+    },
+    {
+      "case_id": 86,
+      "category": "cross_modal",
+      "question": "正文和表格中的增长率是否一致？（样本1）",
+      "expected_conflict": true,
+      "expected_route": "MULTIMODAL",
+      "passed": true,
+      "source_correct": true,
+      "route_correct": true,
+      "actual": {
+        "conflict_count": 1
+      },
+      "error": null,
+      "latency_ms": 0.04,
+      "llm_calls": 0
+    },
+    {
+      "case_id": 87,
+      "category": "cross_modal",
+      "question": "正文和表格中的增长率是否一致？（样本2）",
+      "expected_conflict": true,
+      "expected_route": "MULTIMODAL",
+      "passed": true,
+      "source_correct": true,
+      "route_correct": true,
+      "actual": {
+        "conflict_count": 1
+      },
+      "error": null,
+      "latency_ms": 0.02,
+      "llm_calls": 0
+    },
+    {
+      "case_id": 88,
+      "category": "cross_modal",
+      "question": "正文和表格中的增长率是否一致？（样本3）",
+      "expected_conflict": true,
+      "expected_route": "MULTIMODAL",
+      "passed": true,
+      "source_correct": true,
+      "route_correct": true,
+      "actual": {
+        "conflict_count": 1
+      },
+      "error": null,
+      "latency_ms": 0.01,
+      "llm_calls": 0
+    },
+    {
+      "case_id": 89,
+      "category": "cross_modal",
+      "question": "正文和表格中的增长率是否一致？（样本4）",
+      "expected_conflict": true,
+      "expected_route": "MULTIMODAL",
+      "passed": true,
+      "source_correct": true,
+      "route_correct": true,
+      "actual": {
+        "conflict_count": 1
+      },
+      "error": null,
+      "latency_ms": 0.01,
+      "llm_calls": 0
+    },
+    {
+      "case_id": 90,
+      "category": "cross_modal",
+      "question": "正文和表格中的增长率是否一致？（样本5）",
+      "expected_conflict": true,
+      "expected_route": "MULTIMODAL",
+      "passed": true,
+      "source_correct": true,
+      "route_correct": true,
+      "actual": {
+        "conflict_count": 1
+      },
+      "error": null,
+      "latency_ms": 0.01,
+      "llm_calls": 0
+    },
+    {
+      "case_id": 91,
+      "category": "cross_modal",
+      "question": "正文和表格中的增长率是否一致？（样本6）",
+      "expected_conflict": true,
+      "expected_route": "MULTIMODAL",
+      "passed": true,
+      "source_correct": true,
+      "route_correct": true,
+      "actual": {
+        "conflict_count": 1
+      },
+      "error": null,
+      "latency_ms": 0.01,
+      "llm_calls": 0
+    },
+    {
+      "case_id": 92,
+      "category": "cross_modal",
+      "question": "正文和表格中的增长率是否一致？（样本7）",
+      "expected_conflict": true,
+      "expected_route": "MULTIMODAL",
+      "passed": true,
+      "source_correct": true,
+      "route_correct": true,
+      "actual": {
+        "conflict_count": 1
+      },
+      "error": null,
+      "latency_ms": 0.01,
+      "llm_calls": 0
+    },
+    {
+      "case_id": 93,
+      "category": "cross_modal",
+      "question": "正文和表格中的增长率是否一致？（样本8）",
+      "expected_conflict": true,
+      "expected_route": "MULTIMODAL",
+      "passed": true,
+      "source_correct": true,
+      "route_correct": true,
+      "actual": {
+        "conflict_count": 1
+      },
+      "error": null,
+      "latency_ms": 0.01,
+      "llm_calls": 0
+    },
+    {
+      "case_id": 94,
+      "category": "cross_modal",
+      "question": "正文和表格中的增长率是否一致？（样本9）",
+      "expected_conflict": true,
+      "expected_route": "MULTIMODAL",
+      "passed": true,
+      "source_correct": true,
+      "route_correct": true,
+      "actual": {
+        "conflict_count": 1
+      },
+      "error": null,
+      "latency_ms": 0.01,
+      "llm_calls": 0
+    },
+    {
+      "case_id": 95,
+      "category": "cross_modal",
+      "question": "正文和表格中的增长率是否一致？（样本10）",
+      "expected_conflict": true,
+      "expected_route": "MULTIMODAL",
+      "passed": true,
+      "source_correct": true,
+      "route_correct": true,
+      "actual": {
+        "conflict_count": 1
+      },
+      "error": null,
+      "latency_ms": 0.01,
+      "llm_calls": 0
+    },
+    {
+      "case_id": 96,
+      "category": "cross_modal",
+      "question": "正文和表格中的增长率是否一致？（样本11）",
+      "expected_conflict": true,
+      "expected_route": "MULTIMODAL",
+      "passed": true,
+      "source_correct": true,
+      "route_correct": true,
+      "actual": {
+        "conflict_count": 1
+      },
+      "error": null,
+      "latency_ms": 0.01,
+      "llm_calls": 0
+    },
+    {
+      "case_id": 97,
+      "category": "cross_modal",
+      "question": "正文和表格中的增长率是否一致？（样本12）",
+      "expected_conflict": true,
+      "expected_route": "MULTIMODAL",
+      "passed": true,
+      "source_correct": true,
+      "route_correct": true,
+      "actual": {
+        "conflict_count": 1
+      },
+      "error": null,
+      "latency_ms": 0.01,
+      "llm_calls": 0
+    },
+    {
+      "case_id": 98,
+      "category": "cross_modal",
+      "question": "正文和表格中的增长率是否一致？（样本13）",
+      "expected_conflict": true,
+      "expected_route": "MULTIMODAL",
+      "passed": true,
+      "source_correct": true,
+      "route_correct": true,
+      "actual": {
+        "conflict_count": 1
+      },
+      "error": null,
+      "latency_ms": 0.01,
+      "llm_calls": 0
+    },
+    {
+      "case_id": 99,
+      "category": "cross_modal",
+      "question": "正文和表格中的增长率是否一致？（样本14）",
+      "expected_conflict": true,
+      "expected_route": "MULTIMODAL",
+      "passed": true,
+      "source_correct": true,
+      "route_correct": true,
+      "actual": {
+        "conflict_count": 1
+      },
+      "error": null,
+      "latency_ms": 0.01,
+      "llm_calls": 0
+    },
+    {
+      "case_id": 100,
+      "category": "cross_modal",
+      "question": "正文和表格中的增长率是否一致？（样本15）",
+      "expected_conflict": true,
+      "expected_route": "MULTIMODAL",
+      "passed": true,
+      "source_correct": true,
+      "route_correct": true,
+      "actual": {
+        "conflict_count": 1
+      },
+      "error": null,
+      "latency_ms": 0.01,
+      "llm_calls": 0
+    }
+  ],
+  "limitations": [
+    "未调用 DeepSeek，不测最终生成答案准确率和无依据断言率",
+    "版本题复用同一对文档；图表题复用同一张图；图片题复用同一张架构图",
+    "跨模态冲突 15 题使用有来源字段的受控结构化证据"
+  ]
+}

@@ -1,0 +1,1032 @@
+{
+  "mode": "live",
+  "cases": 50,
+  "categories": {
+    "two_table": 20,
+    "three_table": 15,
+    "aggregation": 10,
+    "complex": 5
+  },
+  "metrics": {
+    "intent_detected": 1.0,
+    "v2_would_clarify": 0.86,
+    "table_selection_correct": 1.0,
+    "join_path_correct": 1.0,
+    "reference_valid": 1.0,
+    "syntax_correct": 1.0,
+    "execution_correct": 1.0,
+    "result_correct": 0.86,
+    "aggregate_value_correct": 1.0
+  },
+  "api_request_cap": null,
+  "api_attempt_ceiling": 400,
+  "token_budget": {
+    "maximum_tokens": 2000000,
+    "provider_reported_tokens": 102683,
+    "reserved_tokens_without_usage": 0,
+    "budgeted_tokens": 102683,
+    "remaining_tokens": 1897317,
+    "exceeded": false
+  },
+  "llm_usage": {
+    "api_requests": 100,
+    "reported_requests": 100,
+    "prompt_tokens": 94505,
+    "completion_tokens": 8178,
+    "total_tokens": 102683
+  },
+  "latency_ms": {
+    "p50": 2020,
+    "p95": 2680,
+    "mean": 2113.6
+  },
+  "budget_exhausted": false,
+  "complete": true,
+  "failures": [
+    {
+      "category": "three_table",
+      "question": "哪个客户的订单明细购买数量最多？",
+      "expected_tables": [
+        "customer",
+        "invoice",
+        "invoiceline"
+      ],
+      "selected_tables": [
+        "customer",
+        "invoice",
+        "invoiceline"
+      ],
+      "intent_detected": true,
+      "v2_would_clarify": true,
+      "table_selection_correct": true,
+      "join_path_correct": true,
+      "reference_valid": true,
+      "syntax_correct": true,
+      "execution_correct": true,
+      "result_correct": false,
+      "aggregate_value_correct": true,
+      "status_code": 200,
+      "latency_seconds": 2.02,
+      "error": null,
+      "sql": "SELECT `t0`.`FirstName`, `t0`.`LastName`, SUM(`t2`.`Quantity`) AS `total_quantity` FROM `customer` AS `t0` JOIN `invoice` AS `t1` ON `t0`.`CustomerId` = `t1`.`CustomerId` JOIN `invoiceline` AS `t2` ON `t1`.`InvoiceId` = `t2`.`InvoiceId` GROUP BY `t0`.`CustomerId`, `t0`.`FirstName`, `t0`.`LastName` ORDER BY `total_quantity` DESC LIMIT 1",
+      "columns": [
+        "FirstName",
+        "LastName",
+        "total_quantity"
+      ],
+      "actual_rows": [
+        [
+          "Luís",
+          "Gonçalves",
+          38.0
+        ]
+      ],
+      "repair_count": 0,
+      "expected_rows": [
+        [
+          1,
+          38.0
+        ]
+      ],
+      "api_requests": 2,
+      "reported_requests": 2,
+      "prompt_tokens": 2206,
+      "completion_tokens": 156,
+      "total_tokens": 2362
+    },
+    {
+      "category": "aggregation",
+      "question": "每个客户的消费总额分别是多少？",
+      "expected_tables": [
+        "customer",
+        "invoice"
+      ],
+      "selected_tables": [
+        "customer",
+        "invoice"
+      ],
+      "intent_detected": true,
+      "v2_would_clarify": false,
+      "table_selection_correct": true,
+      "join_path_correct": true,
+      "reference_valid": true,
+      "syntax_correct": true,
+      "execution_correct": true,
+      "result_correct": false,
+      "aggregate_value_correct": true,
+      "status_code": 200,
+      "latency_seconds": 3.73,
+      "error": null,
+      "sql": "SELECT `t0`.`FirstName`, `t0`.`LastName`, SUM(`t1`.`Total`) AS `total_spent` FROM `customer` AS `t0` JOIN `invoice` AS `t1` ON `t0`.`CustomerId` = `t1`.`CustomerId` GROUP BY `t0`.`CustomerId`, `t0`.`FirstName`, `t0`.`LastName` ORDER BY `t0`.`FirstName` ASC, `t0`.`LastName` ASC LIMIT 100",
+      "columns": [
+        "FirstName",
+        "LastName",
+        "total_spent"
+      ],
+      "actual_rows": [
+        [
+          "Aaron",
+          "Mitchell",
+          37.62
+        ],
+        [
+          "Alexandre",
+          "Rocha",
+          37.62
+        ],
+        [
+          "Astrid",
+          "Gruber",
+          42.62
+        ],
+        [
+          "Bjørn",
+          "Hansen",
+          39.62
+        ],
+        [
+          "Camille",
+          "Bernard",
+          38.62
+        ],
+        [
+          "Daan",
+          "Peeters",
+          37.62
+        ],
+        [
+          "Dan",
+          "Miller",
+          39.62
+        ],
+        [
+          "Diego",
+          "Gutiérrez",
+          37.62
+        ],
+        [
+          "Dominique",
+          "Lefebvre",
+          38.62
+        ],
+        [
+          "Eduardo",
+          "Martins",
+          37.62
+        ],
+        [
+          "Edward",
+          "Francis",
+          37.62
+        ],
+        [
+          "Ellie",
+          "Sullivan",
+          37.62
+        ],
+        [
+          "Emma",
+          "Jones",
+          37.62
+        ],
+        [
+          "Enrique",
+          "Muñoz",
+          37.62
+        ],
+        [
+          "Fernanda",
+          "Ramos",
+          37.62
+        ],
+        [
+          "François",
+          "Tremblay",
+          39.62
+        ],
+        [
+          "Frank",
+          "Harris",
+          37.62
+        ],
+        [
+          "Frank",
+          "Ralston",
+          43.62
+        ],
+        [
+          "František",
+          "Wichterlová",
+          40.62
+        ],
+        [
+          "Fynn",
+          "Zimmermann",
+          43.62
+        ],
+        [
+          "Hannah",
+          "Schneider",
+          37.62
+        ],
+        [
+          "Heather",
+          "Leacock",
+          39.62
+        ],
+        [
+          "Helena",
+          "Holý",
+          49.62
+        ],
+        [
+          "Hugh",
+          "O'Reilly",
+          45.62
+        ],
+        [
+          "Isabelle",
+          "Mercier",
+          40.62
+        ],
+        [
+          "Jack",
+          "Smith",
+          39.62
+        ],
+        [
+          "Jennifer",
+          "Peterson",
+          38.62
+        ],
+        [
+          "Joakim",
+          "Johansson",
+          38.62
+        ],
+        [
+          "João",
+          "Fernandes",
+          39.62
+        ],
+        [
+          "Johannes",
+          "Van der Berg",
+          40.62
+        ],
+        [
+          "John",
+          "Gordon",
+          37.62
+        ],
+        [
+          "Julia",
+          "Barnett",
+          43.62
+        ],
+        [
+          "Kara",
+          "Nielsen",
+          37.62
+        ],
+        [
+          "Kathy",
+          "Chase",
+          37.62
+        ],
+        [
+          "Ladislav",
+          "Kovács",
+          45.62
+        ],
+        [
+          "Leonie",
+          "Köhler",
+          37.62
+        ],
+        [
+          "Lucas",
+          "Mancini",
+          37.62
+        ],
+        [
+          "Luís",
+          "Gonçalves",
+          39.62
+        ],
+        [
+          "Luis",
+          "Rojas",
+          46.62
+        ],
+        [
+          "Madalena",
+          "Sampaio",
+          37.62
+        ],
+        [
+          "Manoj",
+          "Pareek",
+          38.62
+        ],
+        [
+          "Marc",
+          "Dubois",
+          37.62
+        ],
+        [
+          "Mark",
+          "Philips",
+          37.62
+        ],
+        [
+          "Mark",
+          "Taylor",
+          37.62
+        ],
+        [
+          "Martha",
+          "Silk",
+          37.62
+        ],
+        [
+          "Michelle",
+          "Brooks",
+          37.62
+        ],
+        [
+          "Niklas",
+          "Schröder",
+          37.62
+        ],
+        [
+          "Patrick",
+          "Gray",
+          37.62
+        ],
+        [
+          "Phil",
+          "Hughes",
+          37.62
+        ],
+        [
+          "Puja",
+          "Srivastava",
+          36.64
+        ],
+        [
+          "Richard",
+          "Cunningham",
+          47.62
+        ],
+        [
+          "Robert",
+          "Brown",
+          37.62
+        ],
+        [
+          "Roberto",
+          "Almeida",
+          37.62
+        ],
+        [
+          "Stanisław",
+          "Wójcik",
+          37.62
+        ],
+        [
+          "Steve",
+          "Murray",
+          37.62
+        ],
+        [
+          "Terhi",
+          "Hämäläinen",
+          41.62
+        ],
+        [
+          "Tim",
+          "Goyer",
+          38.62
+        ],
+        [
+          "Victor",
+          "Stevens",
+          42.62
+        ],
+        [
+          "Wyatt",
+          "Girard",
+          39.62
+        ]
+      ],
+      "repair_count": 0,
+      "expected_rows": [
+        [
+          1,
+          39.62
+        ],
+        [
+          2,
+          37.62
+        ],
+        [
+          3,
+          39.62
+        ],
+        [
+          4,
+          39.62
+        ],
+        [
+          5,
+          40.62
+        ],
+        [
+          6,
+          49.62
+        ],
+        [
+          7,
+          42.62
+        ],
+        [
+          8,
+          37.62
+        ],
+        [
+          9,
+          37.62
+        ],
+        [
+          10,
+          37.62
+        ],
+        [
+          11,
+          37.62
+        ],
+        [
+          12,
+          37.62
+        ],
+        [
+          13,
+          37.62
+        ],
+        [
+          14,
+          37.62
+        ],
+        [
+          15,
+          38.62
+        ],
+        [
+          16,
+          37.62
+        ],
+        [
+          17,
+          39.62
+        ],
+        [
+          18,
+          37.62
+        ],
+        [
+          19,
+          38.62
+        ],
+        [
+          20,
+          39.62
+        ],
+        [
+          21,
+          37.62
+        ],
+        [
+          22,
+          39.62
+        ],
+        [
+          23,
+          37.62
+        ],
+        [
+          24,
+          43.62
+        ],
+        [
+          25,
+          42.62
+        ],
+        [
+          26,
+          47.62
+        ],
+        [
+          27,
+          37.62
+        ],
+        [
+          28,
+          43.62
+        ],
+        [
+          29,
+          37.62
+        ],
+        [
+          30,
+          37.62
+        ],
+        [
+          31,
+          37.62
+        ],
+        [
+          32,
+          37.62
+        ],
+        [
+          33,
+          37.62
+        ],
+        [
+          34,
+          39.62
+        ],
+        [
+          35,
+          37.62
+        ],
+        [
+          36,
+          37.62
+        ],
+        [
+          37,
+          43.62
+        ],
+        [
+          38,
+          37.62
+        ],
+        [
+          39,
+          38.62
+        ],
+        [
+          40,
+          38.62
+        ],
+        [
+          41,
+          37.62
+        ],
+        [
+          42,
+          39.62
+        ],
+        [
+          43,
+          40.62
+        ],
+        [
+          44,
+          41.62
+        ],
+        [
+          45,
+          45.62
+        ],
+        [
+          46,
+          45.62
+        ],
+        [
+          47,
+          37.62
+        ],
+        [
+          48,
+          40.62
+        ],
+        [
+          49,
+          37.62
+        ],
+        [
+          50,
+          37.62
+        ],
+        [
+          51,
+          38.62
+        ],
+        [
+          52,
+          37.62
+        ],
+        [
+          53,
+          37.62
+        ],
+        [
+          54,
+          37.62
+        ],
+        [
+          55,
+          37.62
+        ],
+        [
+          56,
+          37.62
+        ],
+        [
+          57,
+          46.62
+        ],
+        [
+          58,
+          38.62
+        ],
+        [
+          59,
+          36.64
+        ]
+      ],
+      "api_requests": 2,
+      "reported_requests": 2,
+      "prompt_tokens": 2544,
+      "completion_tokens": 712,
+      "total_tokens": 3256
+    },
+    {
+      "category": "aggregation",
+      "question": "消费最多的客户是谁？",
+      "expected_tables": [
+        "customer",
+        "invoice"
+      ],
+      "selected_tables": [
+        "customer",
+        "invoice"
+      ],
+      "intent_detected": true,
+      "v2_would_clarify": false,
+      "table_selection_correct": true,
+      "join_path_correct": true,
+      "reference_valid": true,
+      "syntax_correct": true,
+      "execution_correct": true,
+      "result_correct": false,
+      "aggregate_value_correct": true,
+      "status_code": 200,
+      "latency_seconds": 2.02,
+      "error": null,
+      "sql": "SELECT `t0`.`FirstName`, `t0`.`LastName`, SUM(`t1`.`Total`) AS `total_spent` FROM `customer` AS `t0` JOIN `invoice` AS `t1` ON `t0`.`CustomerId` = `t1`.`CustomerId` GROUP BY `t0`.`CustomerId`, `t0`.`FirstName`, `t0`.`LastName` ORDER BY `total_spent` DESC LIMIT 1",
+      "columns": [
+        "FirstName",
+        "LastName",
+        "total_spent"
+      ],
+      "actual_rows": [
+        [
+          "Helena",
+          "Holý",
+          49.62
+        ]
+      ],
+      "repair_count": 0,
+      "expected_rows": [
+        [
+          6,
+          49.62
+        ]
+      ],
+      "api_requests": 2,
+      "reported_requests": 2,
+      "prompt_tokens": 1767,
+      "completion_tokens": 129,
+      "total_tokens": 1896
+    },
+    {
+      "category": "complex",
+      "question": "美国客户中消费最高的前 3 位是谁？",
+      "expected_tables": [
+        "customer",
+        "invoice"
+      ],
+      "selected_tables": [
+        "customer",
+        "invoice"
+      ],
+      "intent_detected": true,
+      "v2_would_clarify": false,
+      "table_selection_correct": true,
+      "join_path_correct": true,
+      "reference_valid": true,
+      "syntax_correct": true,
+      "execution_correct": true,
+      "result_correct": false,
+      "aggregate_value_correct": true,
+      "status_code": 200,
+      "latency_seconds": 1.97,
+      "error": null,
+      "sql": "SELECT `t0`.`FirstName`, `t0`.`LastName`, SUM(`t1`.`Total`) AS `total_spent` FROM `customer` AS `t0` JOIN `invoice` AS `t1` ON `t0`.`CustomerId` = `t1`.`CustomerId` WHERE `t0`.`Country` = ? GROUP BY `t0`.`CustomerId`, `t0`.`FirstName`, `t0`.`LastName` ORDER BY `total_spent` DESC LIMIT 3",
+      "columns": [
+        "FirstName",
+        "LastName",
+        "total_spent"
+      ],
+      "actual_rows": [
+        [
+          "Richard",
+          "Cunningham",
+          47.62
+        ],
+        [
+          "Julia",
+          "Barnett",
+          43.62
+        ],
+        [
+          "Frank",
+          "Ralston",
+          43.62
+        ]
+      ],
+      "repair_count": 0,
+      "expected_rows": [
+        [
+          26,
+          47.62
+        ],
+        [
+          28,
+          43.62
+        ],
+        [
+          24,
+          43.62
+        ]
+      ],
+      "api_requests": 2,
+      "reported_requests": 2,
+      "prompt_tokens": 1955,
+      "completion_tokens": 173,
+      "total_tokens": 2128
+    },
+    {
+      "category": "complex",
+      "question": "加拿大客户中订单最多的前 5 位是谁？",
+      "expected_tables": [
+        "customer",
+        "invoice"
+      ],
+      "selected_tables": [
+        "customer",
+        "invoice"
+      ],
+      "intent_detected": true,
+      "v2_would_clarify": true,
+      "table_selection_correct": true,
+      "join_path_correct": true,
+      "reference_valid": true,
+      "syntax_correct": true,
+      "execution_correct": true,
+      "result_correct": false,
+      "aggregate_value_correct": true,
+      "status_code": 200,
+      "latency_seconds": 2.38,
+      "error": null,
+      "sql": "SELECT `t0`.`FirstName`, `t0`.`LastName`, COUNT(`t1`.`InvoiceId`) AS `order_count` FROM `customer` AS `t0` JOIN `invoice` AS `t1` ON `t0`.`CustomerId` = `t1`.`CustomerId` WHERE `t0`.`Country` = ? GROUP BY `t0`.`CustomerId`, `t0`.`FirstName`, `t0`.`LastName` ORDER BY `order_count` DESC, `t0`.`CustomerId` ASC LIMIT 5",
+      "columns": [
+        "FirstName",
+        "LastName",
+        "order_count"
+      ],
+      "actual_rows": [
+        [
+          "François",
+          "Tremblay",
+          7
+        ],
+        [
+          "Mark",
+          "Philips",
+          7
+        ],
+        [
+          "Jennifer",
+          "Peterson",
+          7
+        ],
+        [
+          "Robert",
+          "Brown",
+          7
+        ],
+        [
+          "Edward",
+          "Francis",
+          7
+        ]
+      ],
+      "repair_count": 0,
+      "expected_rows": [
+        [
+          3,
+          7
+        ],
+        [
+          14,
+          7
+        ],
+        [
+          15,
+          7
+        ],
+        [
+          29,
+          7
+        ],
+        [
+          30,
+          7
+        ]
+      ],
+      "api_requests": 2,
+      "reported_requests": 2,
+      "prompt_tokens": 1970,
+      "completion_tokens": 247,
+      "total_tokens": 2217
+    },
+    {
+      "category": "complex",
+      "question": "Rock 类型销量最高的前 5 首歌曲是什么？",
+      "expected_tables": [
+        "genre",
+        "track",
+        "invoiceline"
+      ],
+      "selected_tables": [
+        "genre",
+        "track",
+        "invoiceline"
+      ],
+      "intent_detected": true,
+      "v2_would_clarify": true,
+      "table_selection_correct": true,
+      "join_path_correct": true,
+      "reference_valid": true,
+      "syntax_correct": true,
+      "execution_correct": true,
+      "result_correct": false,
+      "aggregate_value_correct": true,
+      "status_code": 200,
+      "latency_seconds": 2.59,
+      "error": null,
+      "sql": "SELECT `t1`.`Name`, SUM(`t2`.`Quantity`) AS `total_quantity` FROM `genre` AS `t0` JOIN `track` AS `t1` ON `t0`.`GenreId` = `t1`.`GenreId` JOIN `invoiceline` AS `t2` ON `t1`.`TrackId` = `t2`.`TrackId` WHERE `t0`.`Name` = ? GROUP BY `t1`.`TrackId`, `t1`.`Name` ORDER BY `total_quantity` DESC, `t1`.`Name` ASC LIMIT 5",
+      "columns": [
+        "Name",
+        "total_quantity"
+      ],
+      "actual_rows": [
+        [
+          "All Along The Watchtower",
+          2.0
+        ],
+        [
+          "Balls to the Wall",
+          2.0
+        ],
+        [
+          "Binky The Doormat",
+          2.0
+        ],
+        [
+          "Boris The Spider",
+          2.0
+        ],
+        [
+          "Bron-Y-Aur Stomp",
+          2.0
+        ]
+      ],
+      "repair_count": 0,
+      "expected_rows": [
+        [
+          "Balls to the Wall",
+          2.0
+        ],
+        [
+          "Overdose",
+          2.0
+        ],
+        [
+          "Snowballed",
+          2.0
+        ],
+        [
+          "Deuces Are Wild",
+          2.0
+        ],
+        [
+          "Inject The Venom",
+          2.0
+        ]
+      ],
+      "api_requests": 2,
+      "reported_requests": 2,
+      "prompt_tokens": 2025,
+      "completion_tokens": 259,
+      "total_tokens": 2284
+    },
+    {
+      "category": "complex",
+      "question": "Jazz 类型销量最高的前 5 首歌曲是什么？",
+      "expected_tables": [
+        "genre",
+        "track",
+        "invoiceline"
+      ],
+      "selected_tables": [
+        "genre",
+        "track",
+        "invoiceline"
+      ],
+      "intent_detected": true,
+      "v2_would_clarify": true,
+      "table_selection_correct": true,
+      "join_path_correct": true,
+      "reference_valid": true,
+      "syntax_correct": true,
+      "execution_correct": true,
+      "result_correct": false,
+      "aggregate_value_correct": true,
+      "status_code": 200,
+      "latency_seconds": 2.3,
+      "error": null,
+      "sql": "SELECT `t1`.`Name`, SUM(`t2`.`Quantity`) AS `total_quantity` FROM `genre` AS `t0` JOIN `track` AS `t1` ON `t0`.`GenreId` = `t1`.`GenreId` JOIN `invoiceline` AS `t2` ON `t1`.`TrackId` = `t2`.`TrackId` WHERE `t0`.`Name` = ? GROUP BY `t1`.`TrackId`, `t1`.`Name` ORDER BY `total_quantity` DESC, `t1`.`Name` ASC LIMIT 5",
+      "columns": [
+        "Name",
+        "total_quantity"
+      ],
+      "actual_rows": [
+        [
+          "Blue Rythm Fantasy",
+          2.0
+        ],
+        [
+          "Don't Take Your Love From Me",
+          2.0
+        ],
+        [
+          "Drum Boogie",
+          2.0
+        ],
+        [
+          "End Of Romanticism",
+          2.0
+        ],
+        [
+          "J Squared",
+          2.0
+        ]
+      ],
+      "repair_count": 0,
+      "expected_rows": [
+        [
+          "Por Causa De Você",
+          2.0
+        ],
+        [
+          "End Of Romanticism",
+          2.0
+        ],
+        [
+          "Blue Rythm Fantasy",
+          2.0
+        ],
+        [
+          "J Squared",
+          2.0
+        ],
+        [
+          "Drum Boogie",
+          2.0
+        ]
+      ],
+      "api_requests": 2,
+      "reported_requests": 2,
+      "prompt_tokens": 2024,
+      "completion_tokens": 242,
+      "total_tokens": 2266
+    }
+  ]
+}

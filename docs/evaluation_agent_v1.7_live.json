@@ -1,0 +1,1168 @@
+{
+  "scope": "live routing, real tool execution, and golden-set answer grading",
+  "cases": {
+    "database": 30,
+    "document": 30,
+    "document_to_database": 15,
+    "database_to_document": 15,
+    "parallel": 10,
+    "formula": 5,
+    "clarification": 5
+  },
+  "environment": {
+    "mysql": true,
+    "indexed_documents": 18,
+    "model": "deepseek-chat"
+  },
+  "routed_cases": 110,
+  "routing_accuracy": 1.0,
+  "routing_llm_fallback_rate": 0.045454545454545456,
+  "plan_valid_rate": 1.0,
+  "routing_planning_mean_ms": 48.06,
+  "live_tool_plan_completion": 0.5,
+  "live_citation_structurally_valid_rate": 0.5,
+  "live_answer_present_rate": 1.0,
+  "live_execution_cases": 12,
+  "live_execution_status_counts": {
+    "partial_success": 6,
+    "success": 6
+  },
+  "live_execution_note": null,
+  "live_latency_note": "第 1 个执行用例通常包含 BGE-M3 冷启动，单独看 P50/P95 时注意；均值会被首个用例拉高。",
+  "live_mean_latency_ms": 7522.5,
+  "live_p95_latency_ms": 5548,
+  "live_avg_llm_calls": 3.75,
+  "routing_rows": [
+    {
+      "category": "database",
+      "question": "数据库里有多少客户？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 29.07649998087436
+    },
+    {
+      "category": "database",
+      "question": "数据库里有多少员工？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 21.126999985426664
+    },
+    {
+      "category": "database",
+      "question": "数据库里有多少订单？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 10.659299907274544
+    },
+    {
+      "category": "database",
+      "question": "数据库里有多少歌曲？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 18.250899971462786
+    },
+    {
+      "category": "database",
+      "question": "数据库里有多少专辑？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 25.549500016495585
+    },
+    {
+      "category": "database",
+      "question": "数据库里有多少音乐类型？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 44.140800018794835
+    },
+    {
+      "category": "database",
+      "question": "数据库里有多少艺术家？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 160.37850000429899
+    },
+    {
+      "category": "database",
+      "question": "数据库里有多少曲目？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 16.40900003258139
+    },
+    {
+      "category": "database",
+      "question": "数据库里有多少发票？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 17.166099976748228
+    },
+    {
+      "category": "database",
+      "question": "数据库里有多少歌手？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 17.46019988786429
+    },
+    {
+      "category": "database",
+      "question": "列出数据库里的客户。",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 13.78919999115169
+    },
+    {
+      "category": "database",
+      "question": "列出数据库里的员工。",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 11.650300002656877
+    },
+    {
+      "category": "database",
+      "question": "列出数据库里的订单。",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 11.418999987654388
+    },
+    {
+      "category": "database",
+      "question": "列出数据库里的歌曲。",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 7.990699959918857
+    },
+    {
+      "category": "database",
+      "question": "列出数据库里的专辑。",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 13.541499967686832
+    },
+    {
+      "category": "database",
+      "question": "列出数据库里的音乐类型。",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 12.596399988979101
+    },
+    {
+      "category": "database",
+      "question": "列出数据库里的艺术家。",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 9.344399906694889
+    },
+    {
+      "category": "database",
+      "question": "列出数据库里的曲目。",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 11.33880007546395
+    },
+    {
+      "category": "database",
+      "question": "列出数据库里的发票。",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 10.03200002014637
+    },
+    {
+      "category": "database",
+      "question": "列出数据库里的歌手。",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 8.259100024588406
+    },
+    {
+      "category": "database",
+      "question": "数据库里客户的数量是多少？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 9.246000088751316
+    },
+    {
+      "category": "database",
+      "question": "数据库里员工的数量是多少？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 10.071499971672893
+    },
+    {
+      "category": "database",
+      "question": "数据库里订单的数量是多少？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 8.47169989719987
+    },
+    {
+      "category": "database",
+      "question": "数据库里歌曲的数量是多少？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 8.552900049835443
+    },
+    {
+      "category": "database",
+      "question": "数据库里专辑的数量是多少？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 11.056699906475842
+    },
+    {
+      "category": "database",
+      "question": "数据库里音乐类型的数量是多少？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 8.747900021262467
+    },
+    {
+      "category": "database",
+      "question": "数据库里艺术家的数量是多少？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 10.770899942144752
+    },
+    {
+      "category": "database",
+      "question": "数据库里曲目的数量是多少？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 11.044500046409667
+    },
+    {
+      "category": "database",
+      "question": "数据库里发票的数量是多少？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 10.458000004291534
+    },
+    {
+      "category": "database",
+      "question": "数据库里歌手的数量是多少？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 9.744200040586293
+    },
+    {
+      "category": "document",
+      "question": "文档中的摘要是什么？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 6.392600014805794
+    },
+    {
+      "category": "document",
+      "question": "文档中的作者是什么？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 6.7888000048696995
+    },
+    {
+      "category": "document",
+      "question": "文档中的背景是什么？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 8.772199973464012
+    },
+    {
+      "category": "document",
+      "question": "文档中的结论是什么？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 9.824999957345426
+    },
+    {
+      "category": "document",
+      "question": "文档中的第一章是什么？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 9.31350002065301
+    },
+    {
+      "category": "document",
+      "question": "文档中的目录是什么？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 10.551200015470386
+    },
+    {
+      "category": "document",
+      "question": "文档中的目的是什么？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 9.358300012536347
+    },
+    {
+      "category": "document",
+      "question": "文档中的方法是什么？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 12.001299997791648
+    },
+    {
+      "category": "document",
+      "question": "文档中的术语是什么？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 9.770700009539723
+    },
+    {
+      "category": "document",
+      "question": "文档中的公式是什么？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 8.940900093875825
+    },
+    {
+      "category": "document",
+      "question": "请概括文档里的摘要。",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 9.362100041471422
+    },
+    {
+      "category": "document",
+      "question": "请概括文档里的作者。",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 9.361299918964505
+    },
+    {
+      "category": "document",
+      "question": "请概括文档里的背景。",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 9.826199966482818
+    },
+    {
+      "category": "document",
+      "question": "请概括文档里的结论。",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 8.849799982272089
+    },
+    {
+      "category": "document",
+      "question": "请概括文档里的第一章。",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 13.15799995791167
+    },
+    {
+      "category": "document",
+      "question": "请概括文档里的目录。",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 15.630800044164062
+    },
+    {
+      "category": "document",
+      "question": "请概括文档里的目的。",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 15.021000057458878
+    },
+    {
+      "category": "document",
+      "question": "请概括文档里的方法。",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 10.291100014001131
+    },
+    {
+      "category": "document",
+      "question": "请概括文档里的术语。",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 12.051200028508902
+    },
+    {
+      "category": "document",
+      "question": "请概括文档里的公式。",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 13.866799999959767
+    },
+    {
+      "category": "document",
+      "question": "文档如何解释摘要？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 15.934200026094913
+    },
+    {
+      "category": "document",
+      "question": "文档如何解释作者？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 10.39339997805655
+    },
+    {
+      "category": "document",
+      "question": "文档如何解释背景？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 18.064299947582185
+    },
+    {
+      "category": "document",
+      "question": "文档如何解释结论？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 9.552999981679022
+    },
+    {
+      "category": "document",
+      "question": "文档如何解释第一章？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 17.00879994314164
+    },
+    {
+      "category": "document",
+      "question": "文档如何解释目录？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 7.228699978441
+    },
+    {
+      "category": "document",
+      "question": "文档如何解释目的？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 18.54399999137968
+    },
+    {
+      "category": "document",
+      "question": "文档如何解释方法？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 8.464000071398914
+    },
+    {
+      "category": "document",
+      "question": "文档如何解释术语？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 35.13329999987036
+    },
+    {
+      "category": "document",
+      "question": "文档如何解释公式？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 27.13719999883324
+    },
+    {
+      "category": "document_to_database",
+      "question": "文档规定的审核阈值是多少，数据库里有多少订单超过这个值？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 19.70699999947101
+    },
+    {
+      "category": "document_to_database",
+      "question": "文档规定的金额上限是多少，数据库里有多少订单超过这个值？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 66.563899978064
+    },
+    {
+      "category": "document_to_database",
+      "question": "文档规定的预算值是多少，数据库里有多少订单超过这个值？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 79.3893999652937
+    },
+    {
+      "category": "document_to_database",
+      "question": "文档规定的目标值是多少，数据库里有多少订单超过这个值？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 21.85629995074123
+    },
+    {
+      "category": "document_to_database",
+      "question": "文档规定的单笔限额是多少，数据库里有多少订单超过这个值？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 13.571199961006641
+    },
+    {
+      "category": "document_to_database",
+      "question": "文档规定的基准值是多少，数据库里有多少订单超过这个值？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 21.512600011192262
+    },
+    {
+      "category": "document_to_database",
+      "question": "文档规定的参考值是多少，数据库里有多少订单超过这个值？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 16.964000067673624
+    },
+    {
+      "category": "document_to_database",
+      "question": "文档规定的风险值是多少，数据库里有多少订单超过这个值？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 16.97729993611574
+    },
+    {
+      "category": "document_to_database",
+      "question": "文档规定的触发值是多少，数据库里有多少订单超过这个值？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 20.404899958521128
+    },
+    {
+      "category": "document_to_database",
+      "question": "文档规定的标准值是多少，数据库里有多少订单超过这个值？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 15.164999989792705
+    },
+    {
+      "category": "document_to_database",
+      "question": "文档规定的告警值是多少，数据库里有多少订单超过这个值？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 14.601900009438396
+    },
+    {
+      "category": "document_to_database",
+      "question": "文档规定的合同限额是多少，数据库里有多少订单超过这个值？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 15.73480002116412
+    },
+    {
+      "category": "document_to_database",
+      "question": "文档规定的审批线是多少，数据库里有多少订单超过这个值？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 11.544000008143485
+    },
+    {
+      "category": "document_to_database",
+      "question": "文档规定的报销上限是多少，数据库里有多少订单超过这个值？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 10.041599976830184
+    },
+    {
+      "category": "document_to_database",
+      "question": "文档规定的采购上限是多少，数据库里有多少订单超过这个值？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 11.261799954809248
+    },
+    {
+      "category": "database_to_document",
+      "question": "数据库中销量最高的音乐类型是什么，文档里如何描述它？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 8.903999929316342
+    },
+    {
+      "category": "database_to_document",
+      "question": "数据库中销量最高的歌曲是什么，文档里如何描述它？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 10.47800004016608
+    },
+    {
+      "category": "database_to_document",
+      "question": "数据库中销量最高的专辑是什么，文档里如何描述它？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 10.56949992198497
+    },
+    {
+      "category": "database_to_document",
+      "question": "数据库中销量最高的曲目是什么，文档里如何描述它？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 10.405200067907572
+    },
+    {
+      "category": "database_to_document",
+      "question": "数据库中销量最高的流派是什么，文档里如何描述它？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 10.298600071109831
+    },
+    {
+      "category": "database_to_document",
+      "question": "数据库中销量最高的艺术家是什么，文档里如何描述它？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 11.719799949787557
+    },
+    {
+      "category": "database_to_document",
+      "question": "数据库中销量最高的类型是什么，文档里如何描述它？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 12.979899998754263
+    },
+    {
+      "category": "database_to_document",
+      "question": "数据库中销量最高的歌手是什么，文档里如何描述它？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 12.18620000872761
+    },
+    {
+      "category": "database_to_document",
+      "question": "数据库中销量最高的作品是什么，文档里如何描述它？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 11.201500077731907
+    },
+    {
+      "category": "database_to_document",
+      "question": "数据库中销量最高的唱片是什么，文档里如何描述它？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 10.195000097155571
+    },
+    {
+      "category": "database_to_document",
+      "question": "数据库中销量最高的曲风是什么，文档里如何描述它？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 10.633400059305131
+    },
+    {
+      "category": "database_to_document",
+      "question": "数据库中销量最高的歌曲类型是什么，文档里如何描述它？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 16.628399956971407
+    },
+    {
+      "category": "database_to_document",
+      "question": "数据库中销量最高的音乐流派是什么，文档里如何描述它？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 14.95530002284795
+    },
+    {
+      "category": "database_to_document",
+      "question": "数据库中销量最高的热门曲目是什么，文档里如何描述它？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 11.876699980348349
+    },
+    {
+      "category": "database_to_document",
+      "question": "数据库中销量最高的畅销专辑是什么，文档里如何描述它？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 15.2977000689134
+    },
+    {
+      "category": "parallel",
+      "question": "数据库里有多少客户，文档里记录了多少？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 17.893900047056377
+    },
+    {
+      "category": "parallel",
+      "question": "数据库里有多少员工，文档里记录了多少？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 13.279899954795837
+    },
+    {
+      "category": "parallel",
+      "question": "数据库里有多少订单，文档里记录了多少？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 17.13629998266697
+    },
+    {
+      "category": "parallel",
+      "question": "数据库里有多少歌曲，文档里记录了多少？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 18.162099993787706
+    },
+    {
+      "category": "parallel",
+      "question": "数据库里有多少专辑，文档里记录了多少？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 17.682300065644085
+    },
+    {
+      "category": "parallel",
+      "question": "数据库里有多少音乐类型，文档里记录了多少？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 18.08719988912344
+    },
+    {
+      "category": "parallel",
+      "question": "数据库里有多少艺术家，文档里记录了多少？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 24.42849997896701
+    },
+    {
+      "category": "parallel",
+      "question": "数据库里有多少曲目，文档里记录了多少？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 15.297500067390501
+    },
+    {
+      "category": "parallel",
+      "question": "数据库里有多少发票，文档里记录了多少？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 17.454400076530874
+    },
+    {
+      "category": "parallel",
+      "question": "数据库里有多少歌手，文档里记录了多少？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 18.525300081819296
+    },
+    {
+      "category": "formula",
+      "question": "根据文档中的公式计算数据库销售额增长率？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 11.860699974931777
+    },
+    {
+      "category": "formula",
+      "question": "根据文档中的公式计算数据库订单增长率？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 16.381900059059262
+    },
+    {
+      "category": "formula",
+      "question": "根据文档中的公式计算数据库客户增长率？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 14.911800040863454
+    },
+    {
+      "category": "formula",
+      "question": "根据文档中的公式计算数据库销量增长率？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 11.86899992171675
+    },
+    {
+      "category": "formula",
+      "question": "根据文档中的公式计算数据库购买金额增长率？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": false,
+      "routing_planning_ms": 13.041500002145767
+    },
+    {
+      "category": "clarification",
+      "question": "帮我看看。",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": true,
+      "routing_planning_ms": 726.4186999527737
+    },
+    {
+      "category": "clarification",
+      "question": "这是什么意思？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": true,
+      "routing_planning_ms": 489.2296000616625
+    },
+    {
+      "category": "clarification",
+      "question": "再详细一点。",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": true,
+      "routing_planning_ms": 730.5550000164658
+    },
+    {
+      "category": "clarification",
+      "question": "还有别的吗？",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": true,
+      "routing_planning_ms": 896.8967000255361
+    },
+    {
+      "category": "clarification",
+      "question": "请继续。",
+      "route_ok": true,
+      "plan_valid": true,
+      "llm_fallback": true,
+      "routing_planning_ms": 719.1009999951348
+    }
+  ],
+  "execution_rows": [
+    {
+      "category": "document_to_database",
+      "question": "文档规定的审核阈值是多少，数据库里有多少订单超过这个值？",
+      "status": "partial_success",
+      "completed": false,
+      "citation_structurally_valid": false,
+      "answer_present": true,
+      "answer": "当前证据不足，无法确认答案。",
+      "evidence_preview": [],
+      "claims": 0,
+      "evidence": 0,
+      "latency_ms": 45855,
+      "llm_calls": 3,
+      "error": null,
+      "golden_match": true,
+      "verdict": "correct",
+      "verdict_reason": "应拒答且回答含拒答语义"
+    },
+    {
+      "category": "database_to_document",
+      "question": "数据库中销量最高的音乐类型是什么，文档里如何描述它？",
+      "status": "success",
+      "completed": true,
+      "citation_structurally_valid": true,
+      "answer_present": true,
+      "answer": "数据库查询结果：名称：Rock；total quantity：835.0。",
+      "evidence_preview": [
+        "{'evidence_id': 'ev_2a159905092e47ce931ef123441b93e6', 'source_type': 'database', 'source_name': 'Chinook', 'content': {'columns': ['Name', 'total_quantity'], '"
+      ],
+      "claims": 1,
+      "evidence": 1,
+      "latency_ms": 4844,
+      "llm_calls": 5,
+      "error": null,
+      "golden_match": false,
+      "verdict": "partial",
+      "verdict_reason": "名称与数值正确但未说明文档侧情况"
+    },
+    {
+      "category": "parallel",
+      "question": "数据库里有多少客户，文档里记录了多少？",
+      "status": "success",
+      "completed": true,
+      "citation_structurally_valid": true,
+      "answer_present": true,
+      "answer": "数据库中共有 59位客户。",
+      "evidence_preview": [
+        "{'evidence_id': 'ev_c33da8ab95d642438bf942df7f1fbbf1', 'source_type': 'database', 'source_name': 'Chinook', 'content': {'columns': ['customer_count'], 'rows': ["
+      ],
+      "claims": 1,
+      "evidence": 1,
+      "latency_ms": 4509,
+      "llm_calls": 4,
+      "error": null,
+      "golden_match": false,
+      "verdict": "partial",
+      "verdict_reason": "数值正确但未说明文档侧情况"
+    },
+    {
+      "category": "formula",
+      "question": "根据文档中的公式计算数据库销售额增长率？",
+      "status": "partial_success",
+      "completed": false,
+      "citation_structurally_valid": false,
+      "answer_present": true,
+      "answer": "当前证据不足，无法确认答案。",
+      "evidence_preview": [],
+      "claims": 0,
+      "evidence": 0,
+      "latency_ms": 3786,
+      "llm_calls": 3,
+      "error": null,
+      "golden_match": true,
+      "verdict": "correct",
+      "verdict_reason": "应拒答且回答含拒答语义"
+    },
+    {
+      "category": "document_to_database",
+      "question": "文档规定的金额上限是多少，数据库里有多少订单超过这个值？",
+      "status": "partial_success",
+      "completed": false,
+      "citation_structurally_valid": false,
+      "answer_present": true,
+      "answer": "当前证据不足，无法确认答案。",
+      "evidence_preview": [],
+      "claims": 0,
+      "evidence": 0,
+      "latency_ms": 2928,
+      "llm_calls": 3,
+      "error": null,
+      "golden_match": true,
+      "verdict": "correct",
+      "verdict_reason": "应拒答且回答含拒答语义"
+    },
+    {
+      "category": "database_to_document",
+      "question": "数据库中销量最高的歌曲是什么，文档里如何描述它？",
+      "status": "success",
+      "completed": true,
+      "citation_structurally_valid": true,
+      "answer_present": true,
+      "answer": "数据库查询结果：名称：A Cor Do Sol；total quantity：2.0。",
+      "evidence_preview": [
+        "{'evidence_id': 'ev_216b54864ebb4d62b6fddb6ad1dcb04a', 'source_type': 'database', 'source_name': 'Chinook', 'content': {'columns': ['Name', 'total_quantity'], '"
+      ],
+      "claims": 1,
+      "evidence": 1,
+      "latency_ms": 4775,
+      "llm_calls": 5,
+      "error": null,
+      "golden_match": false,
+      "verdict": "wrong",
+      "verdict_reason": "答案未包含黄金名称 Dazed and Confused"
+    },
+    {
+      "category": "parallel",
+      "question": "数据库里有多少员工，文档里记录了多少？",
+      "status": "success",
+      "completed": true,
+      "citation_structurally_valid": true,
+      "answer_present": true,
+      "answer": "数据库中共有 8位员工。",
+      "evidence_preview": [
+        "{'evidence_id': 'ev_5b01d7bf3ca24b71a3fded8cd6124414', 'source_type': 'database', 'source_name': 'Chinook', 'content': {'columns': ['employee_count'], 'rows': ["
+      ],
+      "claims": 1,
+      "evidence": 1,
+      "latency_ms": 3815,
+      "llm_calls": 4,
+      "error": null,
+      "golden_match": false,
+      "verdict": "partial",
+      "verdict_reason": "数值正确但未说明文档侧情况"
+    },
+    {
+      "category": "formula",
+      "question": "根据文档中的公式计算数据库订单增长率？",
+      "status": "partial_success",
+      "completed": false,
+      "citation_structurally_valid": false,
+      "answer_present": true,
+      "answer": "当前证据不足，无法确认答案。",
+      "evidence_preview": [],
+      "claims": 0,
+      "evidence": 0,
+      "latency_ms": 3489,
+      "llm_calls": 3,
+      "error": null,
+      "golden_match": true,
+      "verdict": "correct",
+      "verdict_reason": "应拒答且回答含拒答语义"
+    },
+    {
+      "category": "document_to_database",
+      "question": "文档规定的预算值是多少，数据库里有多少订单超过这个值？",
+      "status": "partial_success",
+      "completed": false,
+      "citation_structurally_valid": false,
+      "answer_present": true,
+      "answer": "当前证据不足，无法确认答案。",
+      "evidence_preview": [],
+      "claims": 0,
+      "evidence": 0,
+      "latency_ms": 2446,
+      "llm_calls": 3,
+      "error": null,
+      "golden_match": true,
+      "verdict": "correct",
+      "verdict_reason": "应拒答且回答含拒答语义"
+    },
+    {
+      "category": "database_to_document",
+      "question": "数据库中销量最高的专辑是什么，文档里如何描述它？",
+      "status": "success",
+      "completed": true,
+      "citation_structurally_valid": true,
+      "answer_present": true,
+      "answer": "数据库查询结果：标题：Minha Historia；total quantity：27.0。",
+      "evidence_preview": [
+        "{'evidence_id': 'ev_1c37e611138b4be1a9fd2367a59f7ba4', 'source_type': 'database', 'source_name': 'Chinook', 'content': {'columns': ['Title', 'total_quantity'], "
+      ],
+      "claims": 1,
+      "evidence": 1,
+      "latency_ms": 4522,
+      "llm_calls": 5,
+      "error": null,
+      "golden_match": false,
+      "verdict": "partial",
+      "verdict_reason": "名称正确但数值与黄金值不符"
+    },
+    {
+      "category": "parallel",
+      "question": "数据库里有多少订单，文档里记录了多少？",
+      "status": "success",
+      "completed": true,
+      "citation_structurally_valid": true,
+      "answer_present": true,
+      "answer": "数据库中共有 412笔订单。",
+      "evidence_preview": [
+        "{'evidence_id': 'ev_342590f840e24ef4ad1072320b2e1262', 'source_type': 'database', 'source_name': 'Chinook', 'content': {'columns': ['order_count'], 'rows': [[41"
+      ],
+      "claims": 1,
+      "evidence": 1,
+      "latency_ms": 5548,
+      "llm_calls": 4,
+      "error": null,
+      "golden_match": false,
+      "verdict": "partial",
+      "verdict_reason": "数值正确但未说明文档侧情况"
+    },
+    {
+      "category": "formula",
+      "question": "根据文档中的公式计算数据库客户增长率？",
+      "status": "partial_success",
+      "completed": false,
+      "citation_structurally_valid": false,
+      "answer_present": true,
+      "answer": "当前证据不足，无法确认答案。",
+      "evidence_preview": [],
+      "claims": 0,
+      "evidence": 0,
+      "latency_ms": 3753,
+      "llm_calls": 3,
+      "error": null,
+      "golden_match": true,
+      "verdict": "correct",
+      "verdict_reason": "应拒答且回答含拒答语义"
+    }
+  ],
+  "live_answer_accuracy": 0.5,
+  "live_answer_acceptable_rate": 0.9166666666666666,
+  "live_answer_judged_cases": 12,
+  "live_answer_verdict_counts": {
+    "correct": 6,
+    "partial": 5,
+    "wrong": 1
+  },
+  "live_answer_accuracy_note": "对照人工确认的黄金集 golden_answers_v1.7.json 自动判分：correct=答案含黄金事实并说明文档侧；partial=数值/名称正确但文档侧未说明；wrong=与黄金事实不符或应拒答而未拒答。accuracy 只计 correct。",
+  "mode": "live",
+  "api_requests": 50,
+  "api_request_cap": 220,
+  "llm_usage": {
+    "api_requests": 50,
+    "reported_requests": 50,
+    "prompt_tokens": 25058,
+    "completion_tokens": 1184,
+    "total_tokens": 26242
+  },
+  "truncated": false,
+  "output": "..\\docs\\evaluation_agent_v1.7_live.json"
+}

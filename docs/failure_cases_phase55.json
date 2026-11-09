@@ -1,0 +1,32 @@
+{
+  "observed_at": "2026-10-07",
+  "cases": [
+    {
+      "question": "销售数量最多的音乐类型是什么？",
+      "expected": "进入多表路径，按 InvoiceLine.Quantity 汇总音乐类型",
+      "actual_before_fix": "落入单表路径，返回不支持关联查询的提示",
+      "root_cause": "多表意图规则只覆盖‘销量’等词，没有覆盖‘销售数量’",
+      "fix": "将‘销售数量’和‘销售量’加入多表意图词，并保留真实外键 JOIN 校验",
+      "regression_test": "backend/tests/test_phase55_failures.py::test_sales_quantity_genre_requires_multitable_path",
+      "status": "verified_live"
+    },
+    {
+      "question": "在跨源智能体选择‘不使用 PDF’后询问‘文档讲什么？’",
+      "expected": "明确提示用户选择 PDF，不引用其他文档",
+      "actual_before_fix": "前端把空选项变成 null；知识库只有一份 PDF 时后端自动选中它",
+      "root_cause": "‘明确不使用’与‘未指定文档’被同一个空值表示",
+      "fix": "空字符串表示明确不使用；null 保持旧接口自动选单份 PDF 的兼容行为",
+      "regression_test": "backend/tests/test_phase55_failures.py::test_explicit_no_pdf_does_not_silently_select_library_document",
+      "status": "verified_in_test"
+    },
+    {
+      "question": "首次对 PDF 提问",
+      "expected": "可接受的响应时延",
+      "actual_before_fix": "一次真实冷启动请求耗时约 89.6 秒，随后热态约 1.263 秒",
+      "root_cause": "首次请求需要加载本地 BGE-M3，具体 CPU/磁盘分摊尚未分析",
+      "fix": "尚未修复；需要单独的冷启动性能预算与部署预热策略",
+      "regression_test": null,
+      "status": "open"
+    }
+  ]
+}

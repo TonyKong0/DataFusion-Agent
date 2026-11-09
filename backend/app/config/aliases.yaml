@@ -1,0 +1,27 @@
+country:
+  USA:
+    aliases: [美国, 美利坚, US, USA]
+  Canada:
+    aliases: [加拿大, Canada]
+  United Kingdom:
+    aliases: [英国, 英國, UK, United Kingdom]
+genre:
+  Rock:
+    aliases: [摇滚乐, 摇滚, rock]
+  Jazz:
+    aliases: [爵士乐, 爵士, jazz]
+phrase:
+  查询:
+    aliases: [给我瞅瞅, 瞅瞅, 给我看看, 帮我看看, 看看]
+  价格最高:
+    aliases: [最贵, 最高价]
+  价格最低:
+    aliases: [最便宜, 最低价]
+  歌曲:
+    aliases: [歌, 曲子, 歌儿]
+  客户:
+    aliases: [客戸]
+  艺术家:
+    aliases: [艺朮家]
+  音乐类型:
+    aliases: [音楽类型]

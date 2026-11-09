@@ -1,0 +1,340 @@
+{
+  "mode": "live",
+  "cases": 50,
+  "categories": {
+    "two_table": 20,
+    "three_table": 15,
+    "aggregation": 10,
+    "complex": 5
+  },
+  "metrics": {
+    "intent_detected": 1.0,
+    "v2_would_clarify": 0.86,
+    "table_selection_correct": 1.0,
+    "join_path_correct": 1.0,
+    "reference_valid": 1.0,
+    "syntax_correct": 1.0,
+    "execution_correct": 1.0,
+    "result_correct": 0.76,
+    "aggregate_value_correct": 0.92
+  },
+  "failures": [
+    {
+      "category": "two_table",
+      "question": "各艺术家分别有多少张专辑？",
+      "expected_tables": [
+        "artist",
+        "album"
+      ],
+      "selected_tables": [
+        "album",
+        "artist"
+      ],
+      "intent_detected": true,
+      "v2_would_clarify": true,
+      "table_selection_correct": true,
+      "join_path_correct": true,
+      "reference_valid": true,
+      "syntax_correct": true,
+      "execution_correct": true,
+      "result_correct": false,
+      "aggregate_value_correct": false,
+      "status_code": 200,
+      "latency_seconds": 5.68,
+      "error": null,
+      "sql": "SELECT artist.Name, COUNT(album.AlbumId) AS AlbumCount FROM album INNER JOIN artist ON album.ArtistId = artist.ArtistId GROUP BY artist.ArtistId, artist.Name LIMIT 100",
+      "repair_count": 0
+    },
+    {
+      "category": "two_table",
+      "question": "每位员工分别服务多少名客户？",
+      "expected_tables": [
+        "employee",
+        "customer"
+      ],
+      "selected_tables": [
+        "customer",
+        "employee"
+      ],
+      "intent_detected": true,
+      "v2_would_clarify": true,
+      "table_selection_correct": true,
+      "join_path_correct": true,
+      "reference_valid": true,
+      "syntax_correct": true,
+      "execution_correct": true,
+      "result_correct": false,
+      "aggregate_value_correct": true,
+      "status_code": 200,
+      "latency_seconds": 5.7,
+      "error": null,
+      "sql": "SELECT employee.EmployeeId, employee.FirstName, employee.LastName, COUNT(customer.CustomerId) AS CustomerCount FROM customer INNER JOIN employee ON customer.SupportRepId = employee.EmployeeId GROUP BY employee.EmployeeId, employee.FirstName, employee.LastName LIMIT 100",
+      "repair_count": 1
+    },
+    {
+      "category": "three_table",
+      "question": "每位艺术家的歌曲数量是多少？",
+      "expected_tables": [
+        "artist",
+        "album",
+        "track"
+      ],
+      "selected_tables": [
+        "artist",
+        "track"
+      ],
+      "intent_detected": true,
+      "v2_would_clarify": true,
+      "table_selection_correct": true,
+      "join_path_correct": true,
+      "reference_valid": true,
+      "syntax_correct": true,
+      "execution_correct": true,
+      "result_correct": false,
+      "aggregate_value_correct": false,
+      "status_code": 200,
+      "latency_seconds": 3.69,
+      "error": null,
+      "sql": "SELECT artist.Name, COUNT(track.TrackId) AS TrackCount FROM artist INNER JOIN album ON artist.ArtistId = album.ArtistId INNER JOIN track ON album.AlbumId = track.AlbumId GROUP BY artist.ArtistId, artist.Name LIMIT 100",
+      "repair_count": 0
+    },
+    {
+      "category": "three_table",
+      "question": "每张专辑卖出的歌曲数量是多少？",
+      "expected_tables": [
+        "album",
+        "track",
+        "invoiceline"
+      ],
+      "selected_tables": [
+        "album",
+        "track",
+        "invoiceline"
+      ],
+      "intent_detected": true,
+      "v2_would_clarify": true,
+      "table_selection_correct": true,
+      "join_path_correct": true,
+      "reference_valid": true,
+      "syntax_correct": true,
+      "execution_correct": true,
+      "result_correct": false,
+      "aggregate_value_correct": false,
+      "status_code": 200,
+      "latency_seconds": 6.48,
+      "error": null,
+      "sql": "SELECT album.Title, SUM(invoiceline.Quantity) AS TotalQuantity FROM album INNER JOIN track ON album.AlbumId = track.AlbumId INNER JOIN invoiceline ON track.TrackId = invoiceline.TrackId GROUP BY album.AlbumId, album.Title LIMIT 100",
+      "repair_count": 0
+    },
+    {
+      "category": "three_table",
+      "question": "哪个客户的订单明细购买数量最多？",
+      "expected_tables": [
+        "customer",
+        "invoice",
+        "invoiceline"
+      ],
+      "selected_tables": [
+        "customer",
+        "invoice",
+        "invoiceline"
+      ],
+      "intent_detected": true,
+      "v2_would_clarify": true,
+      "table_selection_correct": true,
+      "join_path_correct": true,
+      "reference_valid": true,
+      "syntax_correct": true,
+      "execution_correct": true,
+      "result_correct": false,
+      "aggregate_value_correct": true,
+      "status_code": 200,
+      "latency_seconds": 3.25,
+      "error": null,
+      "sql": "SELECT customer.CustomerId, customer.FirstName, customer.LastName, SUM(invoiceline.Quantity) AS TotalQuantity FROM customer INNER JOIN invoice ON customer.CustomerId = invoice.CustomerId INNER JOIN invoiceline ON invoice.InvoiceId = invoiceline.InvoiceId GROUP BY customer.CustomerId, customer.FirstName, customer.LastName ORDER BY TotalQuantity DESC LIMIT 1",
+      "repair_count": 0
+    },
+    {
+      "category": "aggregation",
+      "question": "每个客户的消费总额分别是多少？",
+      "expected_tables": [
+        "customer",
+        "invoice"
+      ],
+      "selected_tables": [
+        "customer",
+        "invoice"
+      ],
+      "intent_detected": true,
+      "v2_would_clarify": false,
+      "table_selection_correct": true,
+      "join_path_correct": true,
+      "reference_valid": true,
+      "syntax_correct": true,
+      "execution_correct": true,
+      "result_correct": false,
+      "aggregate_value_correct": true,
+      "status_code": 200,
+      "latency_seconds": 5.18,
+      "error": null,
+      "sql": "SELECT customer.CustomerId, customer.FirstName, customer.LastName, SUM(invoice.Total) AS TotalSpent FROM customer INNER JOIN invoice ON customer.CustomerId = invoice.CustomerId GROUP BY customer.CustomerId, customer.FirstName, customer.LastName LIMIT 100",
+      "repair_count": 0
+    },
+    {
+      "category": "aggregation",
+      "question": "消费最多的客户是谁？",
+      "expected_tables": [
+        "customer",
+        "invoice"
+      ],
+      "selected_tables": [
+        "customer",
+        "invoice"
+      ],
+      "intent_detected": true,
+      "v2_would_clarify": false,
+      "table_selection_correct": true,
+      "join_path_correct": true,
+      "reference_valid": true,
+      "syntax_correct": true,
+      "execution_correct": true,
+      "result_correct": false,
+      "aggregate_value_correct": true,
+      "status_code": 200,
+      "latency_seconds": 3.16,
+      "error": null,
+      "sql": "SELECT customer.CustomerId, customer.FirstName, customer.LastName, SUM(invoice.Total) AS TotalSpent FROM customer INNER JOIN invoice ON customer.CustomerId = invoice.CustomerId GROUP BY customer.CustomerId, customer.FirstName, customer.LastName ORDER BY TotalSpent DESC LIMIT 1",
+      "repair_count": 0
+    },
+    {
+      "category": "aggregation",
+      "question": "歌手的专辑数分别是多少？",
+      "expected_tables": [
+        "artist",
+        "album"
+      ],
+      "selected_tables": [
+        "album",
+        "artist"
+      ],
+      "intent_detected": true,
+      "v2_would_clarify": true,
+      "table_selection_correct": true,
+      "join_path_correct": true,
+      "reference_valid": true,
+      "syntax_correct": true,
+      "execution_correct": true,
+      "result_correct": false,
+      "aggregate_value_correct": false,
+      "status_code": 200,
+      "latency_seconds": 3.29,
+      "error": null,
+      "sql": "SELECT artist.Name, COUNT(album.AlbumId) AS AlbumCount FROM album INNER JOIN artist ON album.ArtistId = artist.ArtistId GROUP BY artist.ArtistId, artist.Name LIMIT 100",
+      "repair_count": 0
+    },
+    {
+      "category": "aggregation",
+      "question": "每位员工服务的客户数量是多少？",
+      "expected_tables": [
+        "employee",
+        "customer"
+      ],
+      "selected_tables": [
+        "customer",
+        "employee"
+      ],
+      "intent_detected": true,
+      "v2_would_clarify": true,
+      "table_selection_correct": true,
+      "join_path_correct": true,
+      "reference_valid": true,
+      "syntax_correct": true,
+      "execution_correct": true,
+      "result_correct": false,
+      "aggregate_value_correct": true,
+      "status_code": 200,
+      "latency_seconds": 3.46,
+      "error": null,
+      "sql": "SELECT employee.EmployeeId, employee.FirstName, employee.LastName, COUNT(customer.CustomerId) AS CustomerCount FROM customer INNER JOIN employee ON customer.SupportRepId = employee.EmployeeId GROUP BY employee.EmployeeId, employee.FirstName, employee.LastName LIMIT 100",
+      "repair_count": 0
+    },
+    {
+      "category": "aggregation",
+      "question": "哪位员工服务的客户最多？",
+      "expected_tables": [
+        "employee",
+        "customer"
+      ],
+      "selected_tables": [
+        "customer",
+        "employee"
+      ],
+      "intent_detected": true,
+      "v2_would_clarify": true,
+      "table_selection_correct": true,
+      "join_path_correct": true,
+      "reference_valid": true,
+      "syntax_correct": true,
+      "execution_correct": true,
+      "result_correct": false,
+      "aggregate_value_correct": true,
+      "status_code": 200,
+      "latency_seconds": 3.57,
+      "error": null,
+      "sql": "SELECT employee.EmployeeId, employee.FirstName, employee.LastName, COUNT(customer.CustomerId) AS customer_count FROM customer INNER JOIN employee ON customer.SupportRepId = employee.EmployeeId GROUP BY employee.EmployeeId, employee.FirstName, employee.LastName ORDER BY customer_count DESC LIMIT 1",
+      "repair_count": 0
+    },
+    {
+      "category": "complex",
+      "question": "美国客户中消费最高的前 3 位是谁？",
+      "expected_tables": [
+        "customer",
+        "invoice"
+      ],
+      "selected_tables": [
+        "customer",
+        "invoice"
+      ],
+      "intent_detected": true,
+      "v2_would_clarify": false,
+      "table_selection_correct": true,
+      "join_path_correct": true,
+      "reference_valid": true,
+      "syntax_correct": true,
+      "execution_correct": true,
+      "result_correct": false,
+      "aggregate_value_correct": true,
+      "status_code": 200,
+      "latency_seconds": 3.21,
+      "error": null,
+      "sql": "SELECT customer.CustomerId, customer.FirstName, customer.LastName, SUM(invoice.Total) AS TotalSpent FROM customer INNER JOIN invoice ON customer.CustomerId = invoice.CustomerId WHERE customer.Country = 'USA' GROUP BY customer.CustomerId, customer.FirstName, customer.LastName ORDER BY TotalSpent DESC LIMIT 3",
+      "repair_count": 0
+    },
+    {
+      "category": "complex",
+      "question": "加拿大客户中订单最多的前 5 位是谁？",
+      "expected_tables": [
+        "customer",
+        "invoice"
+      ],
+      "selected_tables": [
+        "customer",
+        "invoice"
+      ],
+      "intent_detected": true,
+      "v2_would_clarify": true,
+      "table_selection_correct": true,
+      "join_path_correct": true,
+      "reference_valid": true,
+      "syntax_correct": true,
+      "execution_correct": true,
+      "result_correct": false,
+      "aggregate_value_correct": true,
+      "status_code": 200,
+      "latency_seconds": 3.5,
+      "error": null,
+      "sql": "SELECT customer.CustomerId, customer.FirstName, customer.LastName, COUNT(invoice.InvoiceId) AS InvoiceCount FROM customer INNER JOIN invoice ON customer.CustomerId = invoice.CustomerId WHERE customer.Country = 'Canada' GROUP BY customer.CustomerId, customer.FirstName, customer.LastName ORDER BY InvoiceCount DESC LIMIT 5",
+      "repair_count": 0
+    }
+  ]
+}

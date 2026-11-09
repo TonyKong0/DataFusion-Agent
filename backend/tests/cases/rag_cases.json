@@ -1,0 +1,12 @@
+[
+  {"question":"这份文档的基础版提供哪两种能力？","expected_page":1,"expected_keywords":["单表","PDF"]},
+  {"question":"数据库使用什么示例数据和数据库？","expected_page":2,"expected_keywords":["MySQL","Chinook"]},
+  {"question":"SQL 最多返回多少行？","expected_page":3,"expected_keywords":["100"]},
+  {"question":"PDF 文件大小上限和页数上限是多少？","expected_page":4,"expected_keywords":["20","100"]},
+  {"question":"文本切片的 chunk_size 和 chunk_overlap 分别是多少？","expected_page":5,"expected_keywords":["800","120"]},
+  {"question":"向量检索使用哪个 Embedding 模型和索引？","expected_page":6,"expected_keywords":["bge-m3","FAISS"]},
+  {"question":"文档要求答案引用展示哪些来源信息？","expected_page":7,"expected_keywords":["文件","页码","原始文本"]},
+  {"question":"首页和核心 Demo 的路由分别是什么？","expected_page":8,"expected_keywords":["/","/data-agent"]},
+  {"question":"FastAPI 和 Vite 的默认端口分别是多少？","expected_page":9,"expected_keywords":["8000","5173"]},
+  {"question":"基础版每种测试至少准备多少个用例？","expected_page":10,"expected_keywords":["10"]}
+]

@@ -1,0 +1,12 @@
+# Phase 17 adds semantic validation rules here.
+rules:
+  min_confidence: 0.85
+  require_entity: true
+  require_time_for: [增长率, 同比, 环比]
+  single_table_filters:
+    Customer: [country]
+    Employee: [country]
+    Invoice: [country]
+    Genre: [genre]
+    RetailTransaction: [country]
+  price_sort_entities: [Track]

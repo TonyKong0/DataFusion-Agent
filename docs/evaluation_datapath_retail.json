@@ -1,0 +1,3705 @@
+{
+  "mode": "live",
+  "dataset": "UCI Online Retail II",
+  "dataset_license": "CC BY 4.0",
+  "dataset_doi": "10.24432/C5CG6D",
+  "dataset_url": "https://archive.ics.uci.edu/dataset/502/online+retail+ii",
+  "selection": "10,000 evenly spaced valid source rows; the 1,000-row subset is every tenth selected row",
+  "model": "deepseek-chat",
+  "repeat": 3,
+  "api_request_cap": null,
+  "api_attempt_ceiling": 480,
+  "api_requests_remaining": 420,
+  "llm_usage": {
+    "api_requests": 60,
+    "reported_requests": 60,
+    "prompt_tokens": 30213,
+    "completion_tokens": 3269,
+    "total_tokens": 33482
+  },
+  "token_budget": {
+    "maximum_tokens": 2000000,
+    "provider_reported_tokens": 33482,
+    "reserved_tokens_without_usage": 0,
+    "budgeted_tokens": 33482,
+    "remaining_tokens": 1966518,
+    "exceeded": false
+  },
+  "token_budget_exhausted": false,
+  "unreported_usage_requests": 0,
+  "summaries": {
+    "retail_bench_1k": {
+      "cases": 30,
+      "passed": 30,
+      "accuracy": 1.0,
+      "p50_ms": 1296,
+      "p95_ms": 2468,
+      "mean_ms": 1367.17
+    },
+    "retail_bench_10k": {
+      "cases": 30,
+      "passed": 30,
+      "accuracy": 1.0,
+      "p50_ms": 1227,
+      "p95_ms": 2501,
+      "mean_ms": 1361.47
+    }
+  },
+  "results": {
+    "retail_bench_1k": [
+      {
+        "category": "count",
+        "question": "一共有多少笔零售交易记录",
+        "database": "retail_bench_1k",
+        "repetition": 1,
+        "passed": true,
+        "sql": "SELECT COUNT(*) AS `total_records` FROM retail_transaction LIMIT 100",
+        "actual_rows": [
+          [
+            1000
+          ]
+        ],
+        "expected_rows": [
+          [
+            1000
+          ]
+        ],
+        "columns": [
+          "total_records"
+        ],
+        "latency_ms": 1319,
+        "service_latency_ms": 1303,
+        "llm_usage": {
+          "api_requests": 1,
+          "reported_requests": 1,
+          "prompt_tokens": 726,
+          "completion_tokens": 58,
+          "total_tokens": 784
+        },
+        "budget_requests": 1
+      },
+      {
+        "category": "count",
+        "question": "一共有多少笔零售交易记录",
+        "database": "retail_bench_1k",
+        "repetition": 2,
+        "passed": true,
+        "sql": "SELECT COUNT(*) AS `total_records` FROM retail_transaction LIMIT 100",
+        "actual_rows": [
+          [
+            1000
+          ]
+        ],
+        "expected_rows": [
+          [
+            1000
+          ]
+        ],
+        "columns": [
+          "total_records"
+        ],
+        "latency_ms": 1296,
+        "service_latency_ms": 1290,
+        "llm_usage": {
+          "api_requests": 1,
+          "reported_requests": 1,
+          "prompt_tokens": 726,
+          "completion_tokens": 58,
+          "total_tokens": 784
+        },
+        "budget_requests": 1
+      },
+      {
+        "category": "count",
+        "question": "一共有多少笔零售交易记录",
+        "database": "retail_bench_1k",
+        "repetition": 3,
+        "passed": true,
+        "sql": "SELECT COUNT(*) AS `total_records` FROM retail_transaction LIMIT 100",
+        "actual_rows": [
+          [
+            1000
+          ]
+        ],
+        "expected_rows": [
+          [
+            1000
+          ]
+        ],
+        "columns": [
+          "total_records"
+        ],
+        "latency_ms": 1351,
+        "service_latency_ms": 1346,
+        "llm_usage": {
+          "api_requests": 1,
+          "reported_requests": 1,
+          "prompt_tokens": 726,
+          "completion_tokens": 58,
+          "total_tokens": 784
+        },
+        "budget_requests": 1
+      },
+      {
+        "category": "country_filter",
+        "question": "英国有多少笔零售交易记录",
+        "database": "retail_bench_1k",
+        "repetition": 1,
+        "passed": true,
+        "sql": "SELECT COUNT(*) AS `count` FROM retail_transaction WHERE `retail_transaction`.`Country` = ? LIMIT 100",
+        "actual_rows": [
+          [
+            927
+          ]
+        ],
+        "expected_rows": [
+          [
+            927
+          ]
+        ],
+        "columns": [
+          "count"
+        ],
+        "latency_ms": 1272,
+        "service_latency_ms": 1264,
+        "llm_usage": {
+          "api_requests": 1,
+          "reported_requests": 1,
+          "prompt_tokens": 727,
+          "completion_tokens": 73,
+          "total_tokens": 800
+        },
+        "budget_requests": 1
+      },
+      {
+        "category": "country_filter",
+        "question": "英国有多少笔零售交易记录",
+        "database": "retail_bench_1k",
+        "repetition": 2,
+        "passed": true,
+        "sql": "SELECT COUNT(*) AS `count` FROM retail_transaction WHERE `retail_transaction`.`Country` = ? LIMIT 100",
+        "actual_rows": [
+          [
+            927
+          ]
+        ],
+        "expected_rows": [
+          [
+            927
+          ]
+        ],
+        "columns": [
+          "count"
+        ],
+        "latency_ms": 1336,
+        "service_latency_ms": 1330,
+        "llm_usage": {
+          "api_requests": 1,
+          "reported_requests": 1,
+          "prompt_tokens": 727,
+          "completion_tokens": 73,
+          "total_tokens": 800
+        },
+        "budget_requests": 1
+      },
+      {
+        "category": "country_filter",
+        "question": "英国有多少笔零售交易记录",
+        "database": "retail_bench_1k",
+        "repetition": 3,
+        "passed": true,
+        "sql": "SELECT COUNT(*) AS `count` FROM retail_transaction WHERE `retail_transaction`.`Country` = ? LIMIT 100",
+        "actual_rows": [
+          [
+            927
+          ]
+        ],
+        "expected_rows": [
+          [
+            927
+          ]
+        ],
+        "columns": [
+          "count"
+        ],
+        "latency_ms": 1276,
+        "service_latency_ms": 1267,
+        "llm_usage": {
+          "api_requests": 1,
+          "reported_requests": 1,
+          "prompt_tokens": 727,
+          "completion_tokens": 73,
+          "total_tokens": 800
+        },
+        "budget_requests": 1
+      },
+      {
+        "category": "sum",
+        "question": "零售交易中商品购买数量总和是多少",
+        "database": "retail_bench_1k",
+        "repetition": 1,
+        "passed": true,
+        "sql": "SELECT SUM(`retail_transaction`.`Quantity`) AS `total_quantity` FROM retail_transaction LIMIT 100",
+        "actual_rows": [
+          [
+            9797.0
+          ]
+        ],
+        "expected_rows": [
+          [
+            9797.0
+          ]
+        ],
+        "columns": [
+          "total_quantity"
+        ],
+        "latency_ms": 1921,
+        "service_latency_ms": 1915,
+        "llm_usage": {
+          "api_requests": 2,
+          "reported_requests": 2,
+          "prompt_tokens": 840,
+          "completion_tokens": 77,
+          "total_tokens": 917
+        },
+        "budget_requests": 2
+      },
+      {
+        "category": "sum",
+        "question": "零售交易中商品购买数量总和是多少",
+        "database": "retail_bench_1k",
+        "repetition": 2,
+        "passed": true,
+        "sql": "SELECT SUM(`retail_transaction`.`Quantity`) AS `total_quantity` FROM retail_transaction LIMIT 100",
+        "actual_rows": [
+          [
+            9797.0
+          ]
+        ],
+        "expected_rows": [
+          [
+            9797.0
+          ]
+        ],
+        "columns": [
+          "total_quantity"
+        ],
+        "latency_ms": 2185,
+        "service_latency_ms": 2177,
+        "llm_usage": {
+          "api_requests": 2,
+          "reported_requests": 2,
+          "prompt_tokens": 840,
+          "completion_tokens": 77,
+          "total_tokens": 917
+        },
+        "budget_requests": 2
+      },
+      {
+        "category": "sum",
+        "question": "零售交易中商品购买数量总和是多少",
+        "database": "retail_bench_1k",
+        "repetition": 3,
+        "passed": true,
+        "sql": "SELECT SUM(`retail_transaction`.`Quantity`) AS `total_quantity` FROM retail_transaction LIMIT 100",
+        "actual_rows": [
+          [
+            9797.0
+          ]
+        ],
+        "expected_rows": [
+          [
+            9797.0
+          ]
+        ],
+        "columns": [
+          "total_quantity"
+        ],
+        "latency_ms": 2176,
+        "service_latency_ms": 2169,
+        "llm_usage": {
+          "api_requests": 2,
+          "reported_requests": 2,
+          "prompt_tokens": 840,
+          "completion_tokens": 77,
+          "total_tokens": 917
+        },
+        "budget_requests": 2
+      },
+      {
+        "category": "average",
+        "question": "零售商品的平均单价是多少",
+        "database": "retail_bench_1k",
+        "repetition": 1,
+        "passed": true,
+        "sql": "SELECT AVG(`retail_transaction`.`UnitPrice`) AS `average_price` FROM retail_transaction LIMIT 100",
+        "actual_rows": [
+          [
+            4.19598
+          ]
+        ],
+        "expected_rows": [
+          [
+            4.19598
+          ]
+        ],
+        "columns": [
+          "average_price"
+        ],
+        "latency_ms": 498,
+        "service_latency_ms": 487,
+        "llm_usage": {
+          "api_requests": 0,
+          "reported_requests": 0,
+          "prompt_tokens": 0,
+          "completion_tokens": 0,
+          "total_tokens": 0
+        },
+        "budget_requests": 0
+      },
+      {
+        "category": "average",
+        "question": "零售商品的平均单价是多少",
+        "database": "retail_bench_1k",
+        "repetition": 2,
+        "passed": true,
+        "sql": "SELECT AVG(`retail_transaction`.`UnitPrice`) AS `average_price` FROM retail_transaction LIMIT 100",
+        "actual_rows": [
+          [
+            4.19598
+          ]
+        ],
+        "expected_rows": [
+          [
+            4.19598
+          ]
+        ],
+        "columns": [
+          "average_price"
+        ],
+        "latency_ms": 501,
+        "service_latency_ms": 494,
+        "llm_usage": {
+          "api_requests": 0,
+          "reported_requests": 0,
+          "prompt_tokens": 0,
+          "completion_tokens": 0,
+          "total_tokens": 0
+        },
+        "budget_requests": 0
+      },
+      {
+        "category": "average",
+        "question": "零售商品的平均单价是多少",
+        "database": "retail_bench_1k",
+        "repetition": 3,
+        "passed": true,
+        "sql": "SELECT AVG(`retail_transaction`.`UnitPrice`) AS `average_price` FROM retail_transaction LIMIT 100",
+        "actual_rows": [
+          [
+            4.19598
+          ]
+        ],
+        "expected_rows": [
+          [
+            4.19598
+          ]
+        ],
+        "columns": [
+          "average_price"
+        ],
+        "latency_ms": 526,
+        "service_latency_ms": 521,
+        "llm_usage": {
+          "api_requests": 0,
+          "reported_requests": 0,
+          "prompt_tokens": 0,
+          "completion_tokens": 0,
+          "total_tokens": 0
+        },
+        "budget_requests": 0
+      },
+      {
+        "category": "minimum_date",
+        "question": "最早一笔零售交易日期是什么时候",
+        "database": "retail_bench_1k",
+        "repetition": 1,
+        "passed": true,
+        "sql": "SELECT MIN(`retail_transaction`.`InvoiceDate`) AS `earliest_invoice_date` FROM retail_transaction LIMIT 100",
+        "actual_rows": [
+          [
+            "2009-12-01T07:45:00"
+          ]
+        ],
+        "expected_rows": [
+          [
+            "2009-12-01T07:45:00"
+          ]
+        ],
+        "columns": [
+          "earliest_invoice_date"
+        ],
+        "latency_ms": 2432,
+        "service_latency_ms": 2427,
+        "llm_usage": {
+          "api_requests": 2,
+          "reported_requests": 2,
+          "prompt_tokens": 853,
+          "completion_tokens": 88,
+          "total_tokens": 941
+        },
+        "budget_requests": 2
+      },
+      {
+        "category": "minimum_date",
+        "question": "最早一笔零售交易日期是什么时候",
+        "database": "retail_bench_1k",
+        "repetition": 2,
+        "passed": true,
+        "sql": "SELECT MIN(`retail_transaction`.`InvoiceDate`) AS `earliest_invoice_date` FROM retail_transaction LIMIT 100",
+        "actual_rows": [
+          [
+            "2009-12-01T07:45:00"
+          ]
+        ],
+        "expected_rows": [
+          [
+            "2009-12-01T07:45:00"
+          ]
+        ],
+        "columns": [
+          "earliest_invoice_date"
+        ],
+        "latency_ms": 2468,
+        "service_latency_ms": 2460,
+        "llm_usage": {
+          "api_requests": 2,
+          "reported_requests": 2,
+          "prompt_tokens": 853,
+          "completion_tokens": 88,
+          "total_tokens": 941
+        },
+        "budget_requests": 2
+      },
+      {
+        "category": "minimum_date",
+        "question": "最早一笔零售交易日期是什么时候",
+        "database": "retail_bench_1k",
+        "repetition": 3,
+        "passed": true,
+        "sql": "SELECT MIN(`retail_transaction`.`InvoiceDate`) AS `earliest_invoice_date` FROM retail_transaction LIMIT 100",
+        "actual_rows": [
+          [
+            "2009-12-01T07:45:00"
+          ]
+        ],
+        "expected_rows": [
+          [
+            "2009-12-01T07:45:00"
+          ]
+        ],
+        "columns": [
+          "earliest_invoice_date"
+        ],
+        "latency_ms": 1814,
+        "service_latency_ms": 1810,
+        "llm_usage": {
+          "api_requests": 2,
+          "reported_requests": 2,
+          "prompt_tokens": 853,
+          "completion_tokens": 88,
+          "total_tokens": 941
+        },
+        "budget_requests": 2
+      },
+      {
+        "category": "maximum_date",
+        "question": "最近一笔零售交易日期是什么时候",
+        "database": "retail_bench_1k",
+        "repetition": 1,
+        "passed": true,
+        "sql": "SELECT MAX(`retail_transaction`.`InvoiceDate`) AS `latest_invoice_date` FROM retail_transaction LIMIT 100",
+        "actual_rows": [
+          [
+            "2011-12-09T10:03:00"
+          ]
+        ],
+        "expected_rows": [
+          [
+            "2011-12-09T10:03:00"
+          ]
+        ],
+        "columns": [
+          "latest_invoice_date"
+        ],
+        "latency_ms": 2346,
+        "service_latency_ms": 2338,
+        "llm_usage": {
+          "api_requests": 2,
+          "reported_requests": 2,
+          "prompt_tokens": 851,
+          "completion_tokens": 87,
+          "total_tokens": 938
+        },
+        "budget_requests": 2
+      },
+      {
+        "category": "maximum_date",
+        "question": "最近一笔零售交易日期是什么时候",
+        "database": "retail_bench_1k",
+        "repetition": 2,
+        "passed": true,
+        "sql": "SELECT MAX(`retail_transaction`.`InvoiceDate`) AS `latest_invoice_date` FROM retail_transaction LIMIT 100",
+        "actual_rows": [
+          [
+            "2011-12-09T10:03:00"
+          ]
+        ],
+        "expected_rows": [
+          [
+            "2011-12-09T10:03:00"
+          ]
+        ],
+        "columns": [
+          "latest_invoice_date"
+        ],
+        "latency_ms": 2143,
+        "service_latency_ms": 2137,
+        "llm_usage": {
+          "api_requests": 2,
+          "reported_requests": 2,
+          "prompt_tokens": 851,
+          "completion_tokens": 87,
+          "total_tokens": 938
+        },
+        "budget_requests": 2
+      },
+      {
+        "category": "maximum_date",
+        "question": "最近一笔零售交易日期是什么时候",
+        "database": "retail_bench_1k",
+        "repetition": 3,
+        "passed": true,
+        "sql": "SELECT MAX(`retail_transaction`.`InvoiceDate`) AS `latest_invoice_date` FROM retail_transaction LIMIT 100",
+        "actual_rows": [
+          [
+            "2011-12-09T10:03:00"
+          ]
+        ],
+        "expected_rows": [
+          [
+            "2011-12-09T10:03:00"
+          ]
+        ],
+        "columns": [
+          "latest_invoice_date"
+        ],
+        "latency_ms": 2153,
+        "service_latency_ms": 2145,
+        "llm_usage": {
+          "api_requests": 2,
+          "reported_requests": 2,
+          "prompt_tokens": 851,
+          "completion_tokens": 87,
+          "total_tokens": 938
+        },
+        "budget_requests": 2
+      },
+      {
+        "category": "group_by",
+        "question": "按国家统计零售交易记录数量",
+        "database": "retail_bench_1k",
+        "repetition": 1,
+        "passed": true,
+        "sql": "SELECT `retail_transaction`.`Country`, COUNT(*) AS `record_count` FROM retail_transaction GROUP BY `retail_transaction`.`Country` LIMIT 100",
+        "actual_rows": [
+          [
+            "Australia",
+            3
+          ],
+          [
+            "Austria",
+            1
+          ],
+          [
+            "Channel Islands",
+            3
+          ],
+          [
+            "Cyprus",
+            1
+          ],
+          [
+            "Denmark",
+            1
+          ],
+          [
+            "EIRE",
+            12
+          ],
+          [
+            "Finland",
+            2
+          ],
+          [
+            "France",
+            14
+          ],
+          [
+            "Germany",
+            12
+          ],
+          [
+            "Greece",
+            1
+          ],
+          [
+            "Italy",
+            3
+          ],
+          [
+            "Japan",
+            1
+          ],
+          [
+            "Netherlands",
+            3
+          ],
+          [
+            "Norway",
+            1
+          ],
+          [
+            "Portugal",
+            2
+          ],
+          [
+            "RSA",
+            1
+          ],
+          [
+            "Spain",
+            6
+          ],
+          [
+            "Sweden",
+            1
+          ],
+          [
+            "Switzerland",
+            4
+          ],
+          [
+            "United Kingdom",
+            927
+          ],
+          [
+            "USA",
+            1
+          ]
+        ],
+        "expected_rows": [
+          [
+            "United Kingdom",
+            927
+          ],
+          [
+            "France",
+            14
+          ],
+          [
+            "EIRE",
+            12
+          ],
+          [
+            "Germany",
+            12
+          ],
+          [
+            "Spain",
+            6
+          ],
+          [
+            "Switzerland",
+            4
+          ],
+          [
+            "Australia",
+            3
+          ],
+          [
+            "Channel Islands",
+            3
+          ],
+          [
+            "Italy",
+            3
+          ],
+          [
+            "Netherlands",
+            3
+          ],
+          [
+            "Finland",
+            2
+          ],
+          [
+            "Portugal",
+            2
+          ],
+          [
+            "Austria",
+            1
+          ],
+          [
+            "Cyprus",
+            1
+          ],
+          [
+            "Denmark",
+            1
+          ],
+          [
+            "Greece",
+            1
+          ],
+          [
+            "Japan",
+            1
+          ],
+          [
+            "Norway",
+            1
+          ],
+          [
+            "RSA",
+            1
+          ],
+          [
+            "Sweden",
+            1
+          ],
+          [
+            "USA",
+            1
+          ]
+        ],
+        "columns": [
+          "Country",
+          "record_count"
+        ],
+        "latency_ms": 2416,
+        "service_latency_ms": 2411,
+        "llm_usage": {
+          "api_requests": 2,
+          "reported_requests": 2,
+          "prompt_tokens": 986,
+          "completion_tokens": 160,
+          "total_tokens": 1146
+        },
+        "budget_requests": 2
+      },
+      {
+        "category": "group_by",
+        "question": "按国家统计零售交易记录数量",
+        "database": "retail_bench_1k",
+        "repetition": 2,
+        "passed": true,
+        "sql": "SELECT `retail_transaction`.`Country`, COUNT(*) AS `record_count` FROM retail_transaction GROUP BY `retail_transaction`.`Country` LIMIT 100",
+        "actual_rows": [
+          [
+            "Australia",
+            3
+          ],
+          [
+            "Austria",
+            1
+          ],
+          [
+            "Channel Islands",
+            3
+          ],
+          [
+            "Cyprus",
+            1
+          ],
+          [
+            "Denmark",
+            1
+          ],
+          [
+            "EIRE",
+            12
+          ],
+          [
+            "Finland",
+            2
+          ],
+          [
+            "France",
+            14
+          ],
+          [
+            "Germany",
+            12
+          ],
+          [
+            "Greece",
+            1
+          ],
+          [
+            "Italy",
+            3
+          ],
+          [
+            "Japan",
+            1
+          ],
+          [
+            "Netherlands",
+            3
+          ],
+          [
+            "Norway",
+            1
+          ],
+          [
+            "Portugal",
+            2
+          ],
+          [
+            "RSA",
+            1
+          ],
+          [
+            "Spain",
+            6
+          ],
+          [
+            "Sweden",
+            1
+          ],
+          [
+            "Switzerland",
+            4
+          ],
+          [
+            "United Kingdom",
+            927
+          ],
+          [
+            "USA",
+            1
+          ]
+        ],
+        "expected_rows": [
+          [
+            "United Kingdom",
+            927
+          ],
+          [
+            "France",
+            14
+          ],
+          [
+            "EIRE",
+            12
+          ],
+          [
+            "Germany",
+            12
+          ],
+          [
+            "Spain",
+            6
+          ],
+          [
+            "Switzerland",
+            4
+          ],
+          [
+            "Australia",
+            3
+          ],
+          [
+            "Channel Islands",
+            3
+          ],
+          [
+            "Italy",
+            3
+          ],
+          [
+            "Netherlands",
+            3
+          ],
+          [
+            "Finland",
+            2
+          ],
+          [
+            "Portugal",
+            2
+          ],
+          [
+            "Austria",
+            1
+          ],
+          [
+            "Cyprus",
+            1
+          ],
+          [
+            "Denmark",
+            1
+          ],
+          [
+            "Greece",
+            1
+          ],
+          [
+            "Japan",
+            1
+          ],
+          [
+            "Norway",
+            1
+          ],
+          [
+            "RSA",
+            1
+          ],
+          [
+            "Sweden",
+            1
+          ],
+          [
+            "USA",
+            1
+          ]
+        ],
+        "columns": [
+          "Country",
+          "record_count"
+        ],
+        "latency_ms": 2607,
+        "service_latency_ms": 2598,
+        "llm_usage": {
+          "api_requests": 2,
+          "reported_requests": 2,
+          "prompt_tokens": 986,
+          "completion_tokens": 166,
+          "total_tokens": 1152
+        },
+        "budget_requests": 2
+      },
+      {
+        "category": "group_by",
+        "question": "按国家统计零售交易记录数量",
+        "database": "retail_bench_1k",
+        "repetition": 3,
+        "passed": true,
+        "sql": "SELECT `retail_transaction`.`Country`, COUNT(*) AS `record_count` FROM retail_transaction GROUP BY `retail_transaction`.`Country` LIMIT 100",
+        "actual_rows": [
+          [
+            "Australia",
+            3
+          ],
+          [
+            "Austria",
+            1
+          ],
+          [
+            "Channel Islands",
+            3
+          ],
+          [
+            "Cyprus",
+            1
+          ],
+          [
+            "Denmark",
+            1
+          ],
+          [
+            "EIRE",
+            12
+          ],
+          [
+            "Finland",
+            2
+          ],
+          [
+            "France",
+            14
+          ],
+          [
+            "Germany",
+            12
+          ],
+          [
+            "Greece",
+            1
+          ],
+          [
+            "Italy",
+            3
+          ],
+          [
+            "Japan",
+            1
+          ],
+          [
+            "Netherlands",
+            3
+          ],
+          [
+            "Norway",
+            1
+          ],
+          [
+            "Portugal",
+            2
+          ],
+          [
+            "RSA",
+            1
+          ],
+          [
+            "Spain",
+            6
+          ],
+          [
+            "Sweden",
+            1
+          ],
+          [
+            "Switzerland",
+            4
+          ],
+          [
+            "United Kingdom",
+            927
+          ],
+          [
+            "USA",
+            1
+          ]
+        ],
+        "expected_rows": [
+          [
+            "United Kingdom",
+            927
+          ],
+          [
+            "France",
+            14
+          ],
+          [
+            "EIRE",
+            12
+          ],
+          [
+            "Germany",
+            12
+          ],
+          [
+            "Spain",
+            6
+          ],
+          [
+            "Switzerland",
+            4
+          ],
+          [
+            "Australia",
+            3
+          ],
+          [
+            "Channel Islands",
+            3
+          ],
+          [
+            "Italy",
+            3
+          ],
+          [
+            "Netherlands",
+            3
+          ],
+          [
+            "Finland",
+            2
+          ],
+          [
+            "Portugal",
+            2
+          ],
+          [
+            "Austria",
+            1
+          ],
+          [
+            "Cyprus",
+            1
+          ],
+          [
+            "Denmark",
+            1
+          ],
+          [
+            "Greece",
+            1
+          ],
+          [
+            "Japan",
+            1
+          ],
+          [
+            "Norway",
+            1
+          ],
+          [
+            "RSA",
+            1
+          ],
+          [
+            "Sweden",
+            1
+          ],
+          [
+            "USA",
+            1
+          ]
+        ],
+        "columns": [
+          "Country",
+          "record_count"
+        ],
+        "latency_ms": 2331,
+        "service_latency_ms": 2325,
+        "llm_usage": {
+          "api_requests": 2,
+          "reported_requests": 2,
+          "prompt_tokens": 986,
+          "completion_tokens": 157,
+          "total_tokens": 1143
+        },
+        "budget_requests": 2
+      },
+      {
+        "category": "top_items",
+        "question": "零售交易中销量最高的10个商品编号是什么",
+        "database": "retail_bench_1k",
+        "repetition": 1,
+        "passed": true,
+        "sql": "SELECT `retail_transaction`.`StockCode`, SUM(`retail_transaction`.`Quantity`) AS `items_sold` FROM retail_transaction GROUP BY `retail_transaction`.`StockCode` ORDER BY `items_sold` DESC, `retail_transaction`.`StockCode` ASC LIMIT 10",
+        "actual_rows": [
+          [
+            "84077",
+            336.0
+          ],
+          [
+            "20713",
+            304.0
+          ],
+          [
+            "79164",
+            240.0
+          ],
+          [
+            "22386",
+            212.0
+          ],
+          [
+            "17038",
+            200.0
+          ],
+          [
+            "21244",
+            192.0
+          ],
+          [
+            "23439",
+            192.0
+          ],
+          [
+            "16235",
+            180.0
+          ],
+          [
+            "21212",
+            150.0
+          ],
+          [
+            "22866",
+            144.0
+          ]
+        ],
+        "expected_rows": [
+          [
+            "84077",
+            336.0
+          ],
+          [
+            "20713",
+            304.0
+          ],
+          [
+            "79164",
+            240.0
+          ],
+          [
+            "22386",
+            212.0
+          ],
+          [
+            "17038",
+            200.0
+          ],
+          [
+            "21244",
+            192.0
+          ],
+          [
+            "23439",
+            192.0
+          ],
+          [
+            "16235",
+            180.0
+          ],
+          [
+            "21212",
+            150.0
+          ],
+          [
+            "22866",
+            144.0
+          ]
+        ],
+        "columns": [
+          "StockCode",
+          "items_sold"
+        ],
+        "latency_ms": 523,
+        "service_latency_ms": 515,
+        "llm_usage": {
+          "api_requests": 0,
+          "reported_requests": 0,
+          "prompt_tokens": 0,
+          "completion_tokens": 0,
+          "total_tokens": 0
+        },
+        "budget_requests": 0
+      },
+      {
+        "category": "top_items",
+        "question": "零售交易中销量最高的10个商品编号是什么",
+        "database": "retail_bench_1k",
+        "repetition": 2,
+        "passed": true,
+        "sql": "SELECT `retail_transaction`.`StockCode`, SUM(`retail_transaction`.`Quantity`) AS `items_sold` FROM retail_transaction GROUP BY `retail_transaction`.`StockCode` ORDER BY `items_sold` DESC, `retail_transaction`.`StockCode` ASC LIMIT 10",
+        "actual_rows": [
+          [
+            "84077",
+            336.0
+          ],
+          [
+            "20713",
+            304.0
+          ],
+          [
+            "79164",
+            240.0
+          ],
+          [
+            "22386",
+            212.0
+          ],
+          [
+            "17038",
+            200.0
+          ],
+          [
+            "21244",
+            192.0
+          ],
+          [
+            "23439",
+            192.0
+          ],
+          [
+            "16235",
+            180.0
+          ],
+          [
+            "21212",
+            150.0
+          ],
+          [
+            "22866",
+            144.0
+          ]
+        ],
+        "expected_rows": [
+          [
+            "84077",
+            336.0
+          ],
+          [
+            "20713",
+            304.0
+          ],
+          [
+            "79164",
+            240.0
+          ],
+          [
+            "22386",
+            212.0
+          ],
+          [
+            "17038",
+            200.0
+          ],
+          [
+            "21244",
+            192.0
+          ],
+          [
+            "23439",
+            192.0
+          ],
+          [
+            "16235",
+            180.0
+          ],
+          [
+            "21212",
+            150.0
+          ],
+          [
+            "22866",
+            144.0
+          ]
+        ],
+        "columns": [
+          "StockCode",
+          "items_sold"
+        ],
+        "latency_ms": 522,
+        "service_latency_ms": 516,
+        "llm_usage": {
+          "api_requests": 0,
+          "reported_requests": 0,
+          "prompt_tokens": 0,
+          "completion_tokens": 0,
+          "total_tokens": 0
+        },
+        "budget_requests": 0
+      },
+      {
+        "category": "top_items",
+        "question": "零售交易中销量最高的10个商品编号是什么",
+        "database": "retail_bench_1k",
+        "repetition": 3,
+        "passed": true,
+        "sql": "SELECT `retail_transaction`.`StockCode`, SUM(`retail_transaction`.`Quantity`) AS `items_sold` FROM retail_transaction GROUP BY `retail_transaction`.`StockCode` ORDER BY `items_sold` DESC, `retail_transaction`.`StockCode` ASC LIMIT 10",
+        "actual_rows": [
+          [
+            "84077",
+            336.0
+          ],
+          [
+            "20713",
+            304.0
+          ],
+          [
+            "79164",
+            240.0
+          ],
+          [
+            "22386",
+            212.0
+          ],
+          [
+            "17038",
+            200.0
+          ],
+          [
+            "21244",
+            192.0
+          ],
+          [
+            "23439",
+            192.0
+          ],
+          [
+            "16235",
+            180.0
+          ],
+          [
+            "21212",
+            150.0
+          ],
+          [
+            "22866",
+            144.0
+          ]
+        ],
+        "expected_rows": [
+          [
+            "84077",
+            336.0
+          ],
+          [
+            "20713",
+            304.0
+          ],
+          [
+            "79164",
+            240.0
+          ],
+          [
+            "22386",
+            212.0
+          ],
+          [
+            "17038",
+            200.0
+          ],
+          [
+            "21244",
+            192.0
+          ],
+          [
+            "23439",
+            192.0
+          ],
+          [
+            "16235",
+            180.0
+          ],
+          [
+            "21212",
+            150.0
+          ],
+          [
+            "22866",
+            144.0
+          ]
+        ],
+        "columns": [
+          "StockCode",
+          "items_sold"
+        ],
+        "latency_ms": 524,
+        "service_latency_ms": 518,
+        "llm_usage": {
+          "api_requests": 0,
+          "reported_requests": 0,
+          "prompt_tokens": 0,
+          "completion_tokens": 0,
+          "total_tokens": 0
+        },
+        "budget_requests": 0
+      },
+      {
+        "category": "year_filter",
+        "question": "2010年有多少笔零售交易记录",
+        "database": "retail_bench_1k",
+        "repetition": 1,
+        "passed": true,
+        "sql": "SELECT COUNT(*) AS `total` FROM retail_transaction WHERE (`retail_transaction`.`InvoiceDate` >= ? AND `retail_transaction`.`InvoiceDate` < ?) LIMIT 100",
+        "actual_rows": [
+          [
+            490
+          ]
+        ],
+        "expected_rows": [
+          [
+            490
+          ]
+        ],
+        "columns": [
+          "total"
+        ],
+        "latency_ms": 507,
+        "service_latency_ms": 500,
+        "llm_usage": {
+          "api_requests": 0,
+          "reported_requests": 0,
+          "prompt_tokens": 0,
+          "completion_tokens": 0,
+          "total_tokens": 0
+        },
+        "budget_requests": 0
+      },
+      {
+        "category": "year_filter",
+        "question": "2010年有多少笔零售交易记录",
+        "database": "retail_bench_1k",
+        "repetition": 2,
+        "passed": true,
+        "sql": "SELECT COUNT(*) AS `total` FROM retail_transaction WHERE (`retail_transaction`.`InvoiceDate` >= ? AND `retail_transaction`.`InvoiceDate` < ?) LIMIT 100",
+        "actual_rows": [
+          [
+            490
+          ]
+        ],
+        "expected_rows": [
+          [
+            490
+          ]
+        ],
+        "columns": [
+          "total"
+        ],
+        "latency_ms": 522,
+        "service_latency_ms": 516,
+        "llm_usage": {
+          "api_requests": 0,
+          "reported_requests": 0,
+          "prompt_tokens": 0,
+          "completion_tokens": 0,
+          "total_tokens": 0
+        },
+        "budget_requests": 0
+      },
+      {
+        "category": "year_filter",
+        "question": "2010年有多少笔零售交易记录",
+        "database": "retail_bench_1k",
+        "repetition": 3,
+        "passed": true,
+        "sql": "SELECT COUNT(*) AS `total` FROM retail_transaction WHERE (`retail_transaction`.`InvoiceDate` >= ? AND `retail_transaction`.`InvoiceDate` < ?) LIMIT 100",
+        "actual_rows": [
+          [
+            490
+          ]
+        ],
+        "expected_rows": [
+          [
+            490
+          ]
+        ],
+        "columns": [
+          "total"
+        ],
+        "latency_ms": 508,
+        "service_latency_ms": 503,
+        "llm_usage": {
+          "api_requests": 0,
+          "reported_requests": 0,
+          "prompt_tokens": 0,
+          "completion_tokens": 0,
+          "total_tokens": 0
+        },
+        "budget_requests": 0
+      },
+      {
+        "category": "negative_quantity",
+        "question": "退货记录中的商品数量总和是多少",
+        "database": "retail_bench_1k",
+        "repetition": 1,
+        "passed": true,
+        "sql": "SELECT SUM(`retail_transaction`.`Quantity`) AS `returned_quantity` FROM retail_transaction WHERE `retail_transaction`.`Quantity` < ? LIMIT 100",
+        "actual_rows": [
+          [
+            -157.0
+          ]
+        ],
+        "expected_rows": [
+          [
+            -157.0
+          ]
+        ],
+        "columns": [
+          "returned_quantity"
+        ],
+        "latency_ms": 520,
+        "service_latency_ms": 516,
+        "llm_usage": {
+          "api_requests": 0,
+          "reported_requests": 0,
+          "prompt_tokens": 0,
+          "completion_tokens": 0,
+          "total_tokens": 0
+        },
+        "budget_requests": 0
+      },
+      {
+        "category": "negative_quantity",
+        "question": "退货记录中的商品数量总和是多少",
+        "database": "retail_bench_1k",
+        "repetition": 2,
+        "passed": true,
+        "sql": "SELECT SUM(`retail_transaction`.`Quantity`) AS `returned_quantity` FROM retail_transaction WHERE `retail_transaction`.`Quantity` < ? LIMIT 100",
+        "actual_rows": [
+          [
+            -157.0
+          ]
+        ],
+        "expected_rows": [
+          [
+            -157.0
+          ]
+        ],
+        "columns": [
+          "returned_quantity"
+        ],
+        "latency_ms": 520,
+        "service_latency_ms": 515,
+        "llm_usage": {
+          "api_requests": 0,
+          "reported_requests": 0,
+          "prompt_tokens": 0,
+          "completion_tokens": 0,
+          "total_tokens": 0
+        },
+        "budget_requests": 0
+      },
+      {
+        "category": "negative_quantity",
+        "question": "退货记录中的商品数量总和是多少",
+        "database": "retail_bench_1k",
+        "repetition": 3,
+        "passed": true,
+        "sql": "SELECT SUM(`retail_transaction`.`Quantity`) AS `returned_quantity` FROM retail_transaction WHERE `retail_transaction`.`Quantity` < ? LIMIT 100",
+        "actual_rows": [
+          [
+            -157.0
+          ]
+        ],
+        "expected_rows": [
+          [
+            -157.0
+          ]
+        ],
+        "columns": [
+          "returned_quantity"
+        ],
+        "latency_ms": 502,
+        "service_latency_ms": 497,
+        "llm_usage": {
+          "api_requests": 0,
+          "reported_requests": 0,
+          "prompt_tokens": 0,
+          "completion_tokens": 0,
+          "total_tokens": 0
+        },
+        "budget_requests": 0
+      }
+    ],
+    "retail_bench_10k": [
+      {
+        "category": "count",
+        "question": "一共有多少笔零售交易记录",
+        "database": "retail_bench_10k",
+        "repetition": 1,
+        "passed": true,
+        "sql": "SELECT COUNT(*) AS `total_records` FROM retail_transaction LIMIT 100",
+        "actual_rows": [
+          [
+            10000
+          ]
+        ],
+        "expected_rows": [
+          [
+            10000
+          ]
+        ],
+        "columns": [
+          "total_records"
+        ],
+        "latency_ms": 1195,
+        "service_latency_ms": 1190,
+        "llm_usage": {
+          "api_requests": 1,
+          "reported_requests": 1,
+          "prompt_tokens": 726,
+          "completion_tokens": 58,
+          "total_tokens": 784
+        },
+        "budget_requests": 1
+      },
+      {
+        "category": "count",
+        "question": "一共有多少笔零售交易记录",
+        "database": "retail_bench_10k",
+        "repetition": 2,
+        "passed": true,
+        "sql": "SELECT COUNT(*) AS `total_records` FROM retail_transaction LIMIT 100",
+        "actual_rows": [
+          [
+            10000
+          ]
+        ],
+        "expected_rows": [
+          [
+            10000
+          ]
+        ],
+        "columns": [
+          "total_records"
+        ],
+        "latency_ms": 1124,
+        "service_latency_ms": 1117,
+        "llm_usage": {
+          "api_requests": 1,
+          "reported_requests": 1,
+          "prompt_tokens": 726,
+          "completion_tokens": 58,
+          "total_tokens": 784
+        },
+        "budget_requests": 1
+      },
+      {
+        "category": "count",
+        "question": "一共有多少笔零售交易记录",
+        "database": "retail_bench_10k",
+        "repetition": 3,
+        "passed": true,
+        "sql": "SELECT COUNT(*) AS `total_records` FROM retail_transaction LIMIT 100",
+        "actual_rows": [
+          [
+            10000
+          ]
+        ],
+        "expected_rows": [
+          [
+            10000
+          ]
+        ],
+        "columns": [
+          "total_records"
+        ],
+        "latency_ms": 1409,
+        "service_latency_ms": 1403,
+        "llm_usage": {
+          "api_requests": 1,
+          "reported_requests": 1,
+          "prompt_tokens": 726,
+          "completion_tokens": 58,
+          "total_tokens": 784
+        },
+        "budget_requests": 1
+      },
+      {
+        "category": "country_filter",
+        "question": "英国有多少笔零售交易记录",
+        "database": "retail_bench_10k",
+        "repetition": 1,
+        "passed": true,
+        "sql": "SELECT COUNT(*) AS `count` FROM retail_transaction WHERE `retail_transaction`.`Country` = ? LIMIT 100",
+        "actual_rows": [
+          [
+            9199
+          ]
+        ],
+        "expected_rows": [
+          [
+            9199
+          ]
+        ],
+        "columns": [
+          "count"
+        ],
+        "latency_ms": 1227,
+        "service_latency_ms": 1219,
+        "llm_usage": {
+          "api_requests": 1,
+          "reported_requests": 1,
+          "prompt_tokens": 727,
+          "completion_tokens": 73,
+          "total_tokens": 800
+        },
+        "budget_requests": 1
+      },
+      {
+        "category": "country_filter",
+        "question": "英国有多少笔零售交易记录",
+        "database": "retail_bench_10k",
+        "repetition": 2,
+        "passed": true,
+        "sql": "SELECT COUNT(*) AS `count` FROM retail_transaction WHERE `retail_transaction`.`Country` = ? LIMIT 100",
+        "actual_rows": [
+          [
+            9199
+          ]
+        ],
+        "expected_rows": [
+          [
+            9199
+          ]
+        ],
+        "columns": [
+          "count"
+        ],
+        "latency_ms": 1282,
+        "service_latency_ms": 1275,
+        "llm_usage": {
+          "api_requests": 1,
+          "reported_requests": 1,
+          "prompt_tokens": 727,
+          "completion_tokens": 73,
+          "total_tokens": 800
+        },
+        "budget_requests": 1
+      },
+      {
+        "category": "country_filter",
+        "question": "英国有多少笔零售交易记录",
+        "database": "retail_bench_10k",
+        "repetition": 3,
+        "passed": true,
+        "sql": "SELECT COUNT(*) AS `count` FROM retail_transaction WHERE `retail_transaction`.`Country` = ? LIMIT 100",
+        "actual_rows": [
+          [
+            9199
+          ]
+        ],
+        "expected_rows": [
+          [
+            9199
+          ]
+        ],
+        "columns": [
+          "count"
+        ],
+        "latency_ms": 1277,
+        "service_latency_ms": 1268,
+        "llm_usage": {
+          "api_requests": 1,
+          "reported_requests": 1,
+          "prompt_tokens": 727,
+          "completion_tokens": 73,
+          "total_tokens": 800
+        },
+        "budget_requests": 1
+      },
+      {
+        "category": "sum",
+        "question": "零售交易中商品购买数量总和是多少",
+        "database": "retail_bench_10k",
+        "repetition": 1,
+        "passed": true,
+        "sql": "SELECT SUM(`retail_transaction`.`Quantity`) AS `total_quantity` FROM retail_transaction LIMIT 100",
+        "actual_rows": [
+          [
+            98106.0
+          ]
+        ],
+        "expected_rows": [
+          [
+            98106.0
+          ]
+        ],
+        "columns": [
+          "total_quantity"
+        ],
+        "latency_ms": 1863,
+        "service_latency_ms": 1858,
+        "llm_usage": {
+          "api_requests": 2,
+          "reported_requests": 2,
+          "prompt_tokens": 840,
+          "completion_tokens": 78,
+          "total_tokens": 918
+        },
+        "budget_requests": 2
+      },
+      {
+        "category": "sum",
+        "question": "零售交易中商品购买数量总和是多少",
+        "database": "retail_bench_10k",
+        "repetition": 2,
+        "passed": true,
+        "sql": "SELECT SUM(`retail_transaction`.`Quantity`) AS `total_quantity` FROM retail_transaction LIMIT 100",
+        "actual_rows": [
+          [
+            98106.0
+          ]
+        ],
+        "expected_rows": [
+          [
+            98106.0
+          ]
+        ],
+        "columns": [
+          "total_quantity"
+        ],
+        "latency_ms": 1992,
+        "service_latency_ms": 1984,
+        "llm_usage": {
+          "api_requests": 2,
+          "reported_requests": 2,
+          "prompt_tokens": 840,
+          "completion_tokens": 78,
+          "total_tokens": 918
+        },
+        "budget_requests": 2
+      },
+      {
+        "category": "sum",
+        "question": "零售交易中商品购买数量总和是多少",
+        "database": "retail_bench_10k",
+        "repetition": 3,
+        "passed": true,
+        "sql": "SELECT SUM(`retail_transaction`.`Quantity`) AS `total_quantity` FROM retail_transaction LIMIT 100",
+        "actual_rows": [
+          [
+            98106.0
+          ]
+        ],
+        "expected_rows": [
+          [
+            98106.0
+          ]
+        ],
+        "columns": [
+          "total_quantity"
+        ],
+        "latency_ms": 2221,
+        "service_latency_ms": 2215,
+        "llm_usage": {
+          "api_requests": 2,
+          "reported_requests": 2,
+          "prompt_tokens": 840,
+          "completion_tokens": 78,
+          "total_tokens": 918
+        },
+        "budget_requests": 2
+      },
+      {
+        "category": "average",
+        "question": "零售商品的平均单价是多少",
+        "database": "retail_bench_10k",
+        "repetition": 1,
+        "passed": true,
+        "sql": "SELECT AVG(`retail_transaction`.`UnitPrice`) AS `average_price` FROM retail_transaction LIMIT 100",
+        "actual_rows": [
+          [
+            5.282529
+          ]
+        ],
+        "expected_rows": [
+          [
+            5.282529
+          ]
+        ],
+        "columns": [
+          "average_price"
+        ],
+        "latency_ms": 523,
+        "service_latency_ms": 512,
+        "llm_usage": {
+          "api_requests": 0,
+          "reported_requests": 0,
+          "prompt_tokens": 0,
+          "completion_tokens": 0,
+          "total_tokens": 0
+        },
+        "budget_requests": 0
+      },
+      {
+        "category": "average",
+        "question": "零售商品的平均单价是多少",
+        "database": "retail_bench_10k",
+        "repetition": 2,
+        "passed": true,
+        "sql": "SELECT AVG(`retail_transaction`.`UnitPrice`) AS `average_price` FROM retail_transaction LIMIT 100",
+        "actual_rows": [
+          [
+            5.282529
+          ]
+        ],
+        "expected_rows": [
+          [
+            5.282529
+          ]
+        ],
+        "columns": [
+          "average_price"
+        ],
+        "latency_ms": 520,
+        "service_latency_ms": 516,
+        "llm_usage": {
+          "api_requests": 0,
+          "reported_requests": 0,
+          "prompt_tokens": 0,
+          "completion_tokens": 0,
+          "total_tokens": 0
+        },
+        "budget_requests": 0
+      },
+      {
+        "category": "average",
+        "question": "零售商品的平均单价是多少",
+        "database": "retail_bench_10k",
+        "repetition": 3,
+        "passed": true,
+        "sql": "SELECT AVG(`retail_transaction`.`UnitPrice`) AS `average_price` FROM retail_transaction LIMIT 100",
+        "actual_rows": [
+          [
+            5.282529
+          ]
+        ],
+        "expected_rows": [
+          [
+            5.282529
+          ]
+        ],
+        "columns": [
+          "average_price"
+        ],
+        "latency_ms": 521,
+        "service_latency_ms": 516,
+        "llm_usage": {
+          "api_requests": 0,
+          "reported_requests": 0,
+          "prompt_tokens": 0,
+          "completion_tokens": 0,
+          "total_tokens": 0
+        },
+        "budget_requests": 0
+      },
+      {
+        "category": "minimum_date",
+        "question": "最早一笔零售交易日期是什么时候",
+        "database": "retail_bench_10k",
+        "repetition": 1,
+        "passed": true,
+        "sql": "SELECT MIN(`retail_transaction`.`InvoiceDate`) AS `earliest_invoice_date` FROM retail_transaction LIMIT 100",
+        "actual_rows": [
+          [
+            "2009-12-01T07:45:00"
+          ]
+        ],
+        "expected_rows": [
+          [
+            "2009-12-01T07:45:00"
+          ]
+        ],
+        "columns": [
+          "earliest_invoice_date"
+        ],
+        "latency_ms": 2084,
+        "service_latency_ms": 2080,
+        "llm_usage": {
+          "api_requests": 2,
+          "reported_requests": 2,
+          "prompt_tokens": 853,
+          "completion_tokens": 88,
+          "total_tokens": 941
+        },
+        "budget_requests": 2
+      },
+      {
+        "category": "minimum_date",
+        "question": "最早一笔零售交易日期是什么时候",
+        "database": "retail_bench_10k",
+        "repetition": 2,
+        "passed": true,
+        "sql": "SELECT MIN(`retail_transaction`.`InvoiceDate`) AS `earliest_invoice_date` FROM retail_transaction LIMIT 100",
+        "actual_rows": [
+          [
+            "2009-12-01T07:45:00"
+          ]
+        ],
+        "expected_rows": [
+          [
+            "2009-12-01T07:45:00"
+          ]
+        ],
+        "columns": [
+          "earliest_invoice_date"
+        ],
+        "latency_ms": 1968,
+        "service_latency_ms": 1961,
+        "llm_usage": {
+          "api_requests": 2,
+          "reported_requests": 2,
+          "prompt_tokens": 853,
+          "completion_tokens": 88,
+          "total_tokens": 941
+        },
+        "budget_requests": 2
+      },
+      {
+        "category": "minimum_date",
+        "question": "最早一笔零售交易日期是什么时候",
+        "database": "retail_bench_10k",
+        "repetition": 3,
+        "passed": true,
+        "sql": "SELECT MIN(`retail_transaction`.`InvoiceDate`) AS `earliest_invoice_date` FROM retail_transaction LIMIT 100",
+        "actual_rows": [
+          [
+            "2009-12-01T07:45:00"
+          ]
+        ],
+        "expected_rows": [
+          [
+            "2009-12-01T07:45:00"
+          ]
+        ],
+        "columns": [
+          "earliest_invoice_date"
+        ],
+        "latency_ms": 1977,
+        "service_latency_ms": 1972,
+        "llm_usage": {
+          "api_requests": 2,
+          "reported_requests": 2,
+          "prompt_tokens": 853,
+          "completion_tokens": 88,
+          "total_tokens": 941
+        },
+        "budget_requests": 2
+      },
+      {
+        "category": "maximum_date",
+        "question": "最近一笔零售交易日期是什么时候",
+        "database": "retail_bench_10k",
+        "repetition": 1,
+        "passed": true,
+        "sql": "SELECT MAX(`retail_transaction`.`InvoiceDate`) AS `latest_invoice_date` FROM retail_transaction LIMIT 100",
+        "actual_rows": [
+          [
+            "2011-12-09T12:50:00"
+          ]
+        ],
+        "expected_rows": [
+          [
+            "2011-12-09T12:50:00"
+          ]
+        ],
+        "columns": [
+          "latest_invoice_date"
+        ],
+        "latency_ms": 2312,
+        "service_latency_ms": 2300,
+        "llm_usage": {
+          "api_requests": 2,
+          "reported_requests": 2,
+          "prompt_tokens": 851,
+          "completion_tokens": 87,
+          "total_tokens": 938
+        },
+        "budget_requests": 2
+      },
+      {
+        "category": "maximum_date",
+        "question": "最近一笔零售交易日期是什么时候",
+        "database": "retail_bench_10k",
+        "repetition": 2,
+        "passed": true,
+        "sql": "SELECT MAX(`retail_transaction`.`InvoiceDate`) AS `latest_invoice_date` FROM retail_transaction LIMIT 100",
+        "actual_rows": [
+          [
+            "2011-12-09T12:50:00"
+          ]
+        ],
+        "expected_rows": [
+          [
+            "2011-12-09T12:50:00"
+          ]
+        ],
+        "columns": [
+          "latest_invoice_date"
+        ],
+        "latency_ms": 2092,
+        "service_latency_ms": 2086,
+        "llm_usage": {
+          "api_requests": 2,
+          "reported_requests": 2,
+          "prompt_tokens": 851,
+          "completion_tokens": 87,
+          "total_tokens": 938
+        },
+        "budget_requests": 2
+      },
+      {
+        "category": "maximum_date",
+        "question": "最近一笔零售交易日期是什么时候",
+        "database": "retail_bench_10k",
+        "repetition": 3,
+        "passed": true,
+        "sql": "SELECT MAX(`retail_transaction`.`InvoiceDate`) AS `latest_invoice_date` FROM retail_transaction LIMIT 100",
+        "actual_rows": [
+          [
+            "2011-12-09T12:50:00"
+          ]
+        ],
+        "expected_rows": [
+          [
+            "2011-12-09T12:50:00"
+          ]
+        ],
+        "columns": [
+          "latest_invoice_date"
+        ],
+        "latency_ms": 2206,
+        "service_latency_ms": 2198,
+        "llm_usage": {
+          "api_requests": 2,
+          "reported_requests": 2,
+          "prompt_tokens": 851,
+          "completion_tokens": 87,
+          "total_tokens": 938
+        },
+        "budget_requests": 2
+      },
+      {
+        "category": "group_by",
+        "question": "按国家统计零售交易记录数量",
+        "database": "retail_bench_10k",
+        "repetition": 1,
+        "passed": true,
+        "sql": "SELECT `retail_transaction`.`Country`, COUNT(*) AS `record_count` FROM retail_transaction GROUP BY `retail_transaction`.`Country` LIMIT 100",
+        "actual_rows": [
+          [
+            "Australia",
+            17
+          ],
+          [
+            "Austria",
+            7
+          ],
+          [
+            "Belgium",
+            21
+          ],
+          [
+            "Canada",
+            1
+          ],
+          [
+            "Channel Islands",
+            13
+          ],
+          [
+            "Cyprus",
+            12
+          ],
+          [
+            "Czech Republic",
+            1
+          ],
+          [
+            "Denmark",
+            11
+          ],
+          [
+            "EIRE",
+            160
+          ],
+          [
+            "European Community",
+            1
+          ],
+          [
+            "Finland",
+            7
+          ],
+          [
+            "France",
+            144
+          ],
+          [
+            "Germany",
+            160
+          ],
+          [
+            "Greece",
+            9
+          ],
+          [
+            "Hong Kong",
+            5
+          ],
+          [
+            "Iceland",
+            2
+          ],
+          [
+            "Israel",
+            2
+          ],
+          [
+            "Italy",
+            18
+          ],
+          [
+            "Japan",
+            11
+          ],
+          [
+            "Malta",
+            3
+          ],
+          [
+            "Netherlands",
+            57
+          ],
+          [
+            "Nigeria",
+            1
+          ],
+          [
+            "Norway",
+            11
+          ],
+          [
+            "Poland",
+            4
+          ],
+          [
+            "Portugal",
+            32
+          ],
+          [
+            "RSA",
+            2
+          ],
+          [
+            "Singapore",
+            3
+          ],
+          [
+            "Spain",
+            30
+          ],
+          [
+            "Sweden",
+            11
+          ],
+          [
+            "Switzerland",
+            28
+          ],
+          [
+            "Thailand",
+            2
+          ],
+          [
+            "United Arab Emirates",
+            6
+          ],
+          [
+            "United Kingdom",
+            9199
+          ],
+          [
+            "Unspecified",
+            5
+          ],
+          [
+            "USA",
+            3
+          ],
+          [
+            "West Indies",
+            1
+          ]
+        ],
+        "expected_rows": [
+          [
+            "United Kingdom",
+            9199
+          ],
+          [
+            "EIRE",
+            160
+          ],
+          [
+            "Germany",
+            160
+          ],
+          [
+            "France",
+            144
+          ],
+          [
+            "Netherlands",
+            57
+          ],
+          [
+            "Portugal",
+            32
+          ],
+          [
+            "Spain",
+            30
+          ],
+          [
+            "Switzerland",
+            28
+          ],
+          [
+            "Belgium",
+            21
+          ],
+          [
+            "Italy",
+            18
+          ],
+          [
+            "Australia",
+            17
+          ],
+          [
+            "Channel Islands",
+            13
+          ],
+          [
+            "Cyprus",
+            12
+          ],
+          [
+            "Denmark",
+            11
+          ],
+          [
+            "Japan",
+            11
+          ],
+          [
+            "Norway",
+            11
+          ],
+          [
+            "Sweden",
+            11
+          ],
+          [
+            "Greece",
+            9
+          ],
+          [
+            "Austria",
+            7
+          ],
+          [
+            "Finland",
+            7
+          ],
+          [
+            "United Arab Emirates",
+            6
+          ],
+          [
+            "Hong Kong",
+            5
+          ],
+          [
+            "Unspecified",
+            5
+          ],
+          [
+            "Poland",
+            4
+          ],
+          [
+            "Malta",
+            3
+          ],
+          [
+            "Singapore",
+            3
+          ],
+          [
+            "USA",
+            3
+          ],
+          [
+            "Iceland",
+            2
+          ],
+          [
+            "Israel",
+            2
+          ],
+          [
+            "RSA",
+            2
+          ],
+          [
+            "Thailand",
+            2
+          ],
+          [
+            "Canada",
+            1
+          ],
+          [
+            "Czech Republic",
+            1
+          ],
+          [
+            "European Community",
+            1
+          ],
+          [
+            "Nigeria",
+            1
+          ],
+          [
+            "West Indies",
+            1
+          ]
+        ],
+        "columns": [
+          "Country",
+          "record_count"
+        ],
+        "latency_ms": 2580,
+        "service_latency_ms": 2574,
+        "llm_usage": {
+          "api_requests": 2,
+          "reported_requests": 2,
+          "prompt_tokens": 1091,
+          "completion_tokens": 161,
+          "total_tokens": 1252
+        },
+        "budget_requests": 2
+      },
+      {
+        "category": "group_by",
+        "question": "按国家统计零售交易记录数量",
+        "database": "retail_bench_10k",
+        "repetition": 2,
+        "passed": true,
+        "sql": "SELECT `retail_transaction`.`Country`, COUNT(*) AS `record_count` FROM retail_transaction GROUP BY `retail_transaction`.`Country` LIMIT 100",
+        "actual_rows": [
+          [
+            "Australia",
+            17
+          ],
+          [
+            "Austria",
+            7
+          ],
+          [
+            "Belgium",
+            21
+          ],
+          [
+            "Canada",
+            1
+          ],
+          [
+            "Channel Islands",
+            13
+          ],
+          [
+            "Cyprus",
+            12
+          ],
+          [
+            "Czech Republic",
+            1
+          ],
+          [
+            "Denmark",
+            11
+          ],
+          [
+            "EIRE",
+            160
+          ],
+          [
+            "European Community",
+            1
+          ],
+          [
+            "Finland",
+            7
+          ],
+          [
+            "France",
+            144
+          ],
+          [
+            "Germany",
+            160
+          ],
+          [
+            "Greece",
+            9
+          ],
+          [
+            "Hong Kong",
+            5
+          ],
+          [
+            "Iceland",
+            2
+          ],
+          [
+            "Israel",
+            2
+          ],
+          [
+            "Italy",
+            18
+          ],
+          [
+            "Japan",
+            11
+          ],
+          [
+            "Malta",
+            3
+          ],
+          [
+            "Netherlands",
+            57
+          ],
+          [
+            "Nigeria",
+            1
+          ],
+          [
+            "Norway",
+            11
+          ],
+          [
+            "Poland",
+            4
+          ],
+          [
+            "Portugal",
+            32
+          ],
+          [
+            "RSA",
+            2
+          ],
+          [
+            "Singapore",
+            3
+          ],
+          [
+            "Spain",
+            30
+          ],
+          [
+            "Sweden",
+            11
+          ],
+          [
+            "Switzerland",
+            28
+          ],
+          [
+            "Thailand",
+            2
+          ],
+          [
+            "United Arab Emirates",
+            6
+          ],
+          [
+            "United Kingdom",
+            9199
+          ],
+          [
+            "Unspecified",
+            5
+          ],
+          [
+            "USA",
+            3
+          ],
+          [
+            "West Indies",
+            1
+          ]
+        ],
+        "expected_rows": [
+          [
+            "United Kingdom",
+            9199
+          ],
+          [
+            "EIRE",
+            160
+          ],
+          [
+            "Germany",
+            160
+          ],
+          [
+            "France",
+            144
+          ],
+          [
+            "Netherlands",
+            57
+          ],
+          [
+            "Portugal",
+            32
+          ],
+          [
+            "Spain",
+            30
+          ],
+          [
+            "Switzerland",
+            28
+          ],
+          [
+            "Belgium",
+            21
+          ],
+          [
+            "Italy",
+            18
+          ],
+          [
+            "Australia",
+            17
+          ],
+          [
+            "Channel Islands",
+            13
+          ],
+          [
+            "Cyprus",
+            12
+          ],
+          [
+            "Denmark",
+            11
+          ],
+          [
+            "Japan",
+            11
+          ],
+          [
+            "Norway",
+            11
+          ],
+          [
+            "Sweden",
+            11
+          ],
+          [
+            "Greece",
+            9
+          ],
+          [
+            "Austria",
+            7
+          ],
+          [
+            "Finland",
+            7
+          ],
+          [
+            "United Arab Emirates",
+            6
+          ],
+          [
+            "Hong Kong",
+            5
+          ],
+          [
+            "Unspecified",
+            5
+          ],
+          [
+            "Poland",
+            4
+          ],
+          [
+            "Malta",
+            3
+          ],
+          [
+            "Singapore",
+            3
+          ],
+          [
+            "USA",
+            3
+          ],
+          [
+            "Iceland",
+            2
+          ],
+          [
+            "Israel",
+            2
+          ],
+          [
+            "RSA",
+            2
+          ],
+          [
+            "Thailand",
+            2
+          ],
+          [
+            "Canada",
+            1
+          ],
+          [
+            "Czech Republic",
+            1
+          ],
+          [
+            "European Community",
+            1
+          ],
+          [
+            "Nigeria",
+            1
+          ],
+          [
+            "West Indies",
+            1
+          ]
+        ],
+        "columns": [
+          "Country",
+          "record_count"
+        ],
+        "latency_ms": 2501,
+        "service_latency_ms": 2491,
+        "llm_usage": {
+          "api_requests": 2,
+          "reported_requests": 2,
+          "prompt_tokens": 1091,
+          "completion_tokens": 155,
+          "total_tokens": 1246
+        },
+        "budget_requests": 2
+      },
+      {
+        "category": "group_by",
+        "question": "按国家统计零售交易记录数量",
+        "database": "retail_bench_10k",
+        "repetition": 3,
+        "passed": true,
+        "sql": "SELECT `retail_transaction`.`Country`, COUNT(*) AS `record_count` FROM retail_transaction GROUP BY `retail_transaction`.`Country` LIMIT 100",
+        "actual_rows": [
+          [
+            "Australia",
+            17
+          ],
+          [
+            "Austria",
+            7
+          ],
+          [
+            "Belgium",
+            21
+          ],
+          [
+            "Canada",
+            1
+          ],
+          [
+            "Channel Islands",
+            13
+          ],
+          [
+            "Cyprus",
+            12
+          ],
+          [
+            "Czech Republic",
+            1
+          ],
+          [
+            "Denmark",
+            11
+          ],
+          [
+            "EIRE",
+            160
+          ],
+          [
+            "European Community",
+            1
+          ],
+          [
+            "Finland",
+            7
+          ],
+          [
+            "France",
+            144
+          ],
+          [
+            "Germany",
+            160
+          ],
+          [
+            "Greece",
+            9
+          ],
+          [
+            "Hong Kong",
+            5
+          ],
+          [
+            "Iceland",
+            2
+          ],
+          [
+            "Israel",
+            2
+          ],
+          [
+            "Italy",
+            18
+          ],
+          [
+            "Japan",
+            11
+          ],
+          [
+            "Malta",
+            3
+          ],
+          [
+            "Netherlands",
+            57
+          ],
+          [
+            "Nigeria",
+            1
+          ],
+          [
+            "Norway",
+            11
+          ],
+          [
+            "Poland",
+            4
+          ],
+          [
+            "Portugal",
+            32
+          ],
+          [
+            "RSA",
+            2
+          ],
+          [
+            "Singapore",
+            3
+          ],
+          [
+            "Spain",
+            30
+          ],
+          [
+            "Sweden",
+            11
+          ],
+          [
+            "Switzerland",
+            28
+          ],
+          [
+            "Thailand",
+            2
+          ],
+          [
+            "United Arab Emirates",
+            6
+          ],
+          [
+            "United Kingdom",
+            9199
+          ],
+          [
+            "Unspecified",
+            5
+          ],
+          [
+            "USA",
+            3
+          ],
+          [
+            "West Indies",
+            1
+          ]
+        ],
+        "expected_rows": [
+          [
+            "United Kingdom",
+            9199
+          ],
+          [
+            "EIRE",
+            160
+          ],
+          [
+            "Germany",
+            160
+          ],
+          [
+            "France",
+            144
+          ],
+          [
+            "Netherlands",
+            57
+          ],
+          [
+            "Portugal",
+            32
+          ],
+          [
+            "Spain",
+            30
+          ],
+          [
+            "Switzerland",
+            28
+          ],
+          [
+            "Belgium",
+            21
+          ],
+          [
+            "Italy",
+            18
+          ],
+          [
+            "Australia",
+            17
+          ],
+          [
+            "Channel Islands",
+            13
+          ],
+          [
+            "Cyprus",
+            12
+          ],
+          [
+            "Denmark",
+            11
+          ],
+          [
+            "Japan",
+            11
+          ],
+          [
+            "Norway",
+            11
+          ],
+          [
+            "Sweden",
+            11
+          ],
+          [
+            "Greece",
+            9
+          ],
+          [
+            "Austria",
+            7
+          ],
+          [
+            "Finland",
+            7
+          ],
+          [
+            "United Arab Emirates",
+            6
+          ],
+          [
+            "Hong Kong",
+            5
+          ],
+          [
+            "Unspecified",
+            5
+          ],
+          [
+            "Poland",
+            4
+          ],
+          [
+            "Malta",
+            3
+          ],
+          [
+            "Singapore",
+            3
+          ],
+          [
+            "USA",
+            3
+          ],
+          [
+            "Iceland",
+            2
+          ],
+          [
+            "Israel",
+            2
+          ],
+          [
+            "RSA",
+            2
+          ],
+          [
+            "Thailand",
+            2
+          ],
+          [
+            "Canada",
+            1
+          ],
+          [
+            "Czech Republic",
+            1
+          ],
+          [
+            "European Community",
+            1
+          ],
+          [
+            "Nigeria",
+            1
+          ],
+          [
+            "West Indies",
+            1
+          ]
+        ],
+        "columns": [
+          "Country",
+          "record_count"
+        ],
+        "latency_ms": 2293,
+        "service_latency_ms": 2287,
+        "llm_usage": {
+          "api_requests": 2,
+          "reported_requests": 2,
+          "prompt_tokens": 1091,
+          "completion_tokens": 169,
+          "total_tokens": 1260
+        },
+        "budget_requests": 2
+      },
+      {
+        "category": "top_items",
+        "question": "零售交易中销量最高的10个商品编号是什么",
+        "database": "retail_bench_10k",
+        "repetition": 1,
+        "passed": true,
+        "sql": "SELECT `retail_transaction`.`StockCode`, SUM(`retail_transaction`.`Quantity`) AS `items_sold` FROM retail_transaction GROUP BY `retail_transaction`.`StockCode` ORDER BY `items_sold` DESC, `retail_transaction`.`StockCode` ASC LIMIT 10",
+        "actual_rows": [
+          [
+            "84879",
+            1960.0
+          ],
+          [
+            "22386",
+            1705.0
+          ],
+          [
+            "84991",
+            1583.0
+          ],
+          [
+            "16014",
+            1520.0
+          ],
+          [
+            "84077",
+            1200.0
+          ],
+          [
+            "85099F",
+            1166.0
+          ],
+          [
+            "20993",
+            960.0
+          ],
+          [
+            "84598",
+            874.0
+          ],
+          [
+            "84270",
+            810.0
+          ],
+          [
+            "22616",
+            809.0
+          ]
+        ],
+        "expected_rows": [
+          [
+            "84879",
+            1960.0
+          ],
+          [
+            "22386",
+            1705.0
+          ],
+          [
+            "84991",
+            1583.0
+          ],
+          [
+            "16014",
+            1520.0
+          ],
+          [
+            "84077",
+            1200.0
+          ],
+          [
+            "85099F",
+            1166.0
+          ],
+          [
+            "20993",
+            960.0
+          ],
+          [
+            "84598",
+            874.0
+          ],
+          [
+            "84270",
+            810.0
+          ],
+          [
+            "22616",
+            809.0
+          ]
+        ],
+        "columns": [
+          "StockCode",
+          "items_sold"
+        ],
+        "latency_ms": 524,
+        "service_latency_ms": 519,
+        "llm_usage": {
+          "api_requests": 0,
+          "reported_requests": 0,
+          "prompt_tokens": 0,
+          "completion_tokens": 0,
+          "total_tokens": 0
+        },
+        "budget_requests": 0
+      },
+      {
+        "category": "top_items",
+        "question": "零售交易中销量最高的10个商品编号是什么",
+        "database": "retail_bench_10k",
+        "repetition": 2,
+        "passed": true,
+        "sql": "SELECT `retail_transaction`.`StockCode`, SUM(`retail_transaction`.`Quantity`) AS `items_sold` FROM retail_transaction GROUP BY `retail_transaction`.`StockCode` ORDER BY `items_sold` DESC, `retail_transaction`.`StockCode` ASC LIMIT 10",
+        "actual_rows": [
+          [
+            "84879",
+            1960.0
+          ],
+          [
+            "22386",
+            1705.0
+          ],
+          [
+            "84991",
+            1583.0
+          ],
+          [
+            "16014",
+            1520.0
+          ],
+          [
+            "84077",
+            1200.0
+          ],
+          [
+            "85099F",
+            1166.0
+          ],
+          [
+            "20993",
+            960.0
+          ],
+          [
+            "84598",
+            874.0
+          ],
+          [
+            "84270",
+            810.0
+          ],
+          [
+            "22616",
+            809.0
+          ]
+        ],
+        "expected_rows": [
+          [
+            "84879",
+            1960.0
+          ],
+          [
+            "22386",
+            1705.0
+          ],
+          [
+            "84991",
+            1583.0
+          ],
+          [
+            "16014",
+            1520.0
+          ],
+          [
+            "84077",
+            1200.0
+          ],
+          [
+            "85099F",
+            1166.0
+          ],
+          [
+            "20993",
+            960.0
+          ],
+          [
+            "84598",
+            874.0
+          ],
+          [
+            "84270",
+            810.0
+          ],
+          [
+            "22616",
+            809.0
+          ]
+        ],
+        "columns": [
+          "StockCode",
+          "items_sold"
+        ],
+        "latency_ms": 558,
+        "service_latency_ms": 552,
+        "llm_usage": {
+          "api_requests": 0,
+          "reported_requests": 0,
+          "prompt_tokens": 0,
+          "completion_tokens": 0,
+          "total_tokens": 0
+        },
+        "budget_requests": 0
+      },
+      {
+        "category": "top_items",
+        "question": "零售交易中销量最高的10个商品编号是什么",
+        "database": "retail_bench_10k",
+        "repetition": 3,
+        "passed": true,
+        "sql": "SELECT `retail_transaction`.`StockCode`, SUM(`retail_transaction`.`Quantity`) AS `items_sold` FROM retail_transaction GROUP BY `retail_transaction`.`StockCode` ORDER BY `items_sold` DESC, `retail_transaction`.`StockCode` ASC LIMIT 10",
+        "actual_rows": [
+          [
+            "84879",
+            1960.0
+          ],
+          [
+            "22386",
+            1705.0
+          ],
+          [
+            "84991",
+            1583.0
+          ],
+          [
+            "16014",
+            1520.0
+          ],
+          [
+            "84077",
+            1200.0
+          ],
+          [
+            "85099F",
+            1166.0
+          ],
+          [
+            "20993",
+            960.0
+          ],
+          [
+            "84598",
+            874.0
+          ],
+          [
+            "84270",
+            810.0
+          ],
+          [
+            "22616",
+            809.0
+          ]
+        ],
+        "expected_rows": [
+          [
+            "84879",
+            1960.0
+          ],
+          [
+            "22386",
+            1705.0
+          ],
+          [
+            "84991",
+            1583.0
+          ],
+          [
+            "16014",
+            1520.0
+          ],
+          [
+            "84077",
+            1200.0
+          ],
+          [
+            "85099F",
+            1166.0
+          ],
+          [
+            "20993",
+            960.0
+          ],
+          [
+            "84598",
+            874.0
+          ],
+          [
+            "84270",
+            810.0
+          ],
+          [
+            "22616",
+            809.0
+          ]
+        ],
+        "columns": [
+          "StockCode",
+          "items_sold"
+        ],
+        "latency_ms": 586,
+        "service_latency_ms": 580,
+        "llm_usage": {
+          "api_requests": 0,
+          "reported_requests": 0,
+          "prompt_tokens": 0,
+          "completion_tokens": 0,
+          "total_tokens": 0
+        },
+        "budget_requests": 0
+      },
+      {
+        "category": "year_filter",
+        "question": "2010年有多少笔零售交易记录",
+        "database": "retail_bench_10k",
+        "repetition": 1,
+        "passed": true,
+        "sql": "SELECT COUNT(*) AS `total` FROM retail_transaction WHERE (`retail_transaction`.`InvoiceDate` >= ? AND `retail_transaction`.`InvoiceDate` < ?) LIMIT 100",
+        "actual_rows": [
+          [
+            4897
+          ]
+        ],
+        "expected_rows": [
+          [
+            4897
+          ]
+        ],
+        "columns": [
+          "total"
+        ],
+        "latency_ms": 747,
+        "service_latency_ms": 737,
+        "llm_usage": {
+          "api_requests": 0,
+          "reported_requests": 0,
+          "prompt_tokens": 0,
+          "completion_tokens": 0,
+          "total_tokens": 0
+        },
+        "budget_requests": 0
+      },
+      {
+        "category": "year_filter",
+        "question": "2010年有多少笔零售交易记录",
+        "database": "retail_bench_10k",
+        "repetition": 2,
+        "passed": true,
+        "sql": "SELECT COUNT(*) AS `total` FROM retail_transaction WHERE (`retail_transaction`.`InvoiceDate` >= ? AND `retail_transaction`.`InvoiceDate` < ?) LIMIT 100",
+        "actual_rows": [
+          [
+            4897
+          ]
+        ],
+        "expected_rows": [
+          [
+            4897
+          ]
+        ],
+        "columns": [
+          "total"
+        ],
+        "latency_ms": 709,
+        "service_latency_ms": 696,
+        "llm_usage": {
+          "api_requests": 0,
+          "reported_requests": 0,
+          "prompt_tokens": 0,
+          "completion_tokens": 0,
+          "total_tokens": 0
+        },
+        "budget_requests": 0
+      },
+      {
+        "category": "year_filter",
+        "question": "2010年有多少笔零售交易记录",
+        "database": "retail_bench_10k",
+        "repetition": 3,
+        "passed": true,
+        "sql": "SELECT COUNT(*) AS `total` FROM retail_transaction WHERE (`retail_transaction`.`InvoiceDate` >= ? AND `retail_transaction`.`InvoiceDate` < ?) LIMIT 100",
+        "actual_rows": [
+          [
+            4897
+          ]
+        ],
+        "expected_rows": [
+          [
+            4897
+          ]
+        ],
+        "columns": [
+          "total"
+        ],
+        "latency_ms": 589,
+        "service_latency_ms": 582,
+        "llm_usage": {
+          "api_requests": 0,
+          "reported_requests": 0,
+          "prompt_tokens": 0,
+          "completion_tokens": 0,
+          "total_tokens": 0
+        },
+        "budget_requests": 0
+      },
+      {
+        "category": "negative_quantity",
+        "question": "退货记录中的商品数量总和是多少",
+        "database": "retail_bench_10k",
+        "repetition": 1,
+        "passed": true,
+        "sql": "SELECT SUM(`retail_transaction`.`Quantity`) AS `returned_quantity` FROM retail_transaction WHERE `retail_transaction`.`Quantity` < ? LIMIT 100",
+        "actual_rows": [
+          [
+            -6250.0
+          ]
+        ],
+        "expected_rows": [
+          [
+            -6250.0
+          ]
+        ],
+        "columns": [
+          "returned_quantity"
+        ],
+        "latency_ms": 720,
+        "service_latency_ms": 703,
+        "llm_usage": {
+          "api_requests": 0,
+          "reported_requests": 0,
+          "prompt_tokens": 0,
+          "completion_tokens": 0,
+          "total_tokens": 0
+        },
+        "budget_requests": 0
+      },
+      {
+        "category": "negative_quantity",
+        "question": "退货记录中的商品数量总和是多少",
+        "database": "retail_bench_10k",
+        "repetition": 2,
+        "passed": true,
+        "sql": "SELECT SUM(`retail_transaction`.`Quantity`) AS `returned_quantity` FROM retail_transaction WHERE `retail_transaction`.`Quantity` < ? LIMIT 100",
+        "actual_rows": [
+          [
+            -6250.0
+          ]
+        ],
+        "expected_rows": [
+          [
+            -6250.0
+          ]
+        ],
+        "columns": [
+          "returned_quantity"
+        ],
+        "latency_ms": 608,
+        "service_latency_ms": 604,
+        "llm_usage": {
+          "api_requests": 0,
+          "reported_requests": 0,
+          "prompt_tokens": 0,
+          "completion_tokens": 0,
+          "total_tokens": 0
+        },
+        "budget_requests": 0
+      },
+      {
+        "category": "negative_quantity",
+        "question": "退货记录中的商品数量总和是多少",
+        "database": "retail_bench_10k",
+        "repetition": 3,
+        "passed": true,
+        "sql": "SELECT SUM(`retail_transaction`.`Quantity`) AS `returned_quantity` FROM retail_transaction WHERE `retail_transaction`.`Quantity` < ? LIMIT 100",
+        "actual_rows": [
+          [
+            -6250.0
+          ]
+        ],
+        "expected_rows": [
+          [
+            -6250.0
+          ]
+        ],
+        "columns": [
+          "returned_quantity"
+        ],
+        "latency_ms": 636,
+        "service_latency_ms": 629,
+        "llm_usage": {
+          "api_requests": 0,
+          "reported_requests": 0,
+          "prompt_tokens": 0,
+          "completion_tokens": 0,
+          "total_tokens": 0
+        },
+        "budget_requests": 0
+      }
+    ]
+  },
+  "complete": true,
+  "estimated_cost_usd": null,
+  "cost_note": "No provider price inferred; use token counts with the account/model rate."
+}

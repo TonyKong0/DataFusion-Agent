@@ -1,0 +1,592 @@
+{
+  "database": "chinook",
+  "tables": [
+    {
+      "table_name": "album",
+      "columns": [
+        {
+          "name": "AlbumId",
+          "type": "int",
+          "primary_key": true,
+          "nullable": false,
+          "comment": null
+        },
+        {
+          "name": "Title",
+          "type": "varchar(160)",
+          "primary_key": false,
+          "nullable": false,
+          "comment": null
+        },
+        {
+          "name": "ArtistId",
+          "type": "int",
+          "primary_key": false,
+          "nullable": false,
+          "comment": null
+        }
+      ],
+      "foreign_keys": [
+        {
+          "constraint_name": "FK_AlbumArtistId",
+          "column": "ArtistId",
+          "references_table": "artist",
+          "references_column": "ArtistId"
+        }
+      ]
+    },
+    {
+      "table_name": "artist",
+      "columns": [
+        {
+          "name": "ArtistId",
+          "type": "int",
+          "primary_key": true,
+          "nullable": false,
+          "comment": null
+        },
+        {
+          "name": "Name",
+          "type": "varchar(120)",
+          "primary_key": false,
+          "nullable": true,
+          "comment": null
+        }
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table_name": "customer",
+      "columns": [
+        {
+          "name": "CustomerId",
+          "type": "int",
+          "primary_key": true,
+          "nullable": false,
+          "comment": null
+        },
+        {
+          "name": "FirstName",
+          "type": "varchar(40)",
+          "primary_key": false,
+          "nullable": false,
+          "comment": null
+        },
+        {
+          "name": "LastName",
+          "type": "varchar(20)",
+          "primary_key": false,
+          "nullable": false,
+          "comment": null
+        },
+        {
+          "name": "Company",
+          "type": "varchar(80)",
+          "primary_key": false,
+          "nullable": true,
+          "comment": null
+        },
+        {
+          "name": "Address",
+          "type": "varchar(70)",
+          "primary_key": false,
+          "nullable": true,
+          "comment": null
+        },
+        {
+          "name": "City",
+          "type": "varchar(40)",
+          "primary_key": false,
+          "nullable": true,
+          "comment": null
+        },
+        {
+          "name": "State",
+          "type": "varchar(40)",
+          "primary_key": false,
+          "nullable": true,
+          "comment": null
+        },
+        {
+          "name": "Country",
+          "type": "varchar(40)",
+          "primary_key": false,
+          "nullable": true,
+          "comment": null
+        },
+        {
+          "name": "PostalCode",
+          "type": "varchar(10)",
+          "primary_key": false,
+          "nullable": true,
+          "comment": null
+        },
+        {
+          "name": "Phone",
+          "type": "varchar(24)",
+          "primary_key": false,
+          "nullable": true,
+          "comment": null
+        },
+        {
+          "name": "Fax",
+          "type": "varchar(24)",
+          "primary_key": false,
+          "nullable": true,
+          "comment": null
+        },
+        {
+          "name": "Email",
+          "type": "varchar(60)",
+          "primary_key": false,
+          "nullable": false,
+          "comment": null
+        },
+        {
+          "name": "SupportRepId",
+          "type": "int",
+          "primary_key": false,
+          "nullable": true,
+          "comment": null
+        }
+      ],
+      "foreign_keys": [
+        {
+          "constraint_name": "FK_CustomerSupportRepId",
+          "column": "SupportRepId",
+          "references_table": "employee",
+          "references_column": "EmployeeId"
+        }
+      ]
+    },
+    {
+      "table_name": "employee",
+      "columns": [
+        {
+          "name": "EmployeeId",
+          "type": "int",
+          "primary_key": true,
+          "nullable": false,
+          "comment": null
+        },
+        {
+          "name": "LastName",
+          "type": "varchar(20)",
+          "primary_key": false,
+          "nullable": false,
+          "comment": null
+        },
+        {
+          "name": "FirstName",
+          "type": "varchar(20)",
+          "primary_key": false,
+          "nullable": false,
+          "comment": null
+        },
+        {
+          "name": "Title",
+          "type": "varchar(30)",
+          "primary_key": false,
+          "nullable": true,
+          "comment": null
+        },
+        {
+          "name": "ReportsTo",
+          "type": "int",
+          "primary_key": false,
+          "nullable": true,
+          "comment": null
+        },
+        {
+          "name": "BirthDate",
+          "type": "datetime",
+          "primary_key": false,
+          "nullable": true,
+          "comment": null
+        },
+        {
+          "name": "HireDate",
+          "type": "datetime",
+          "primary_key": false,
+          "nullable": true,
+          "comment": null
+        },
+        {
+          "name": "Address",
+          "type": "varchar(70)",
+          "primary_key": false,
+          "nullable": true,
+          "comment": null
+        },
+        {
+          "name": "City",
+          "type": "varchar(40)",
+          "primary_key": false,
+          "nullable": true,
+          "comment": null
+        },
+        {
+          "name": "State",
+          "type": "varchar(40)",
+          "primary_key": false,
+          "nullable": true,
+          "comment": null
+        },
+        {
+          "name": "Country",
+          "type": "varchar(40)",
+          "primary_key": false,
+          "nullable": true,
+          "comment": null
+        },
+        {
+          "name": "PostalCode",
+          "type": "varchar(10)",
+          "primary_key": false,
+          "nullable": true,
+          "comment": null
+        },
+        {
+          "name": "Phone",
+          "type": "varchar(24)",
+          "primary_key": false,
+          "nullable": true,
+          "comment": null
+        },
+        {
+          "name": "Fax",
+          "type": "varchar(24)",
+          "primary_key": false,
+          "nullable": true,
+          "comment": null
+        },
+        {
+          "name": "Email",
+          "type": "varchar(60)",
+          "primary_key": false,
+          "nullable": true,
+          "comment": null
+        }
+      ],
+      "foreign_keys": [
+        {
+          "constraint_name": "FK_EmployeeReportsTo",
+          "column": "ReportsTo",
+          "references_table": "employee",
+          "references_column": "EmployeeId"
+        }
+      ]
+    },
+    {
+      "table_name": "genre",
+      "columns": [
+        {
+          "name": "GenreId",
+          "type": "int",
+          "primary_key": true,
+          "nullable": false,
+          "comment": null
+        },
+        {
+          "name": "Name",
+          "type": "varchar(120)",
+          "primary_key": false,
+          "nullable": true,
+          "comment": null
+        }
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table_name": "invoice",
+      "columns": [
+        {
+          "name": "InvoiceId",
+          "type": "int",
+          "primary_key": true,
+          "nullable": false,
+          "comment": null
+        },
+        {
+          "name": "CustomerId",
+          "type": "int",
+          "primary_key": false,
+          "nullable": false,
+          "comment": null
+        },
+        {
+          "name": "InvoiceDate",
+          "type": "datetime",
+          "primary_key": false,
+          "nullable": false,
+          "comment": null
+        },
+        {
+          "name": "BillingAddress",
+          "type": "varchar(70)",
+          "primary_key": false,
+          "nullable": true,
+          "comment": null
+        },
+        {
+          "name": "BillingCity",
+          "type": "varchar(40)",
+          "primary_key": false,
+          "nullable": true,
+          "comment": null
+        },
+        {
+          "name": "BillingState",
+          "type": "varchar(40)",
+          "primary_key": false,
+          "nullable": true,
+          "comment": null
+        },
+        {
+          "name": "BillingCountry",
+          "type": "varchar(40)",
+          "primary_key": false,
+          "nullable": true,
+          "comment": null
+        },
+        {
+          "name": "BillingPostalCode",
+          "type": "varchar(10)",
+          "primary_key": false,
+          "nullable": true,
+          "comment": null
+        },
+        {
+          "name": "Total",
+          "type": "decimal(10,2)",
+          "primary_key": false,
+          "nullable": false,
+          "comment": null
+        }
+      ],
+      "foreign_keys": [
+        {
+          "constraint_name": "FK_InvoiceCustomerId",
+          "column": "CustomerId",
+          "references_table": "customer",
+          "references_column": "CustomerId"
+        }
+      ]
+    },
+    {
+      "table_name": "invoiceline",
+      "columns": [
+        {
+          "name": "InvoiceLineId",
+          "type": "int",
+          "primary_key": true,
+          "nullable": false,
+          "comment": null
+        },
+        {
+          "name": "InvoiceId",
+          "type": "int",
+          "primary_key": false,
+          "nullable": false,
+          "comment": null
+        },
+        {
+          "name": "TrackId",
+          "type": "int",
+          "primary_key": false,
+          "nullable": false,
+          "comment": null
+        },
+        {
+          "name": "UnitPrice",
+          "type": "decimal(10,2)",
+          "primary_key": false,
+          "nullable": false,
+          "comment": null
+        },
+        {
+          "name": "Quantity",
+          "type": "int",
+          "primary_key": false,
+          "nullable": false,
+          "comment": null
+        }
+      ],
+      "foreign_keys": [
+        {
+          "constraint_name": "FK_InvoiceLineInvoiceId",
+          "column": "InvoiceId",
+          "references_table": "invoice",
+          "references_column": "InvoiceId"
+        },
+        {
+          "constraint_name": "FK_InvoiceLineTrackId",
+          "column": "TrackId",
+          "references_table": "track",
+          "references_column": "TrackId"
+        }
+      ]
+    },
+    {
+      "table_name": "mediatype",
+      "columns": [
+        {
+          "name": "MediaTypeId",
+          "type": "int",
+          "primary_key": true,
+          "nullable": false,
+          "comment": null
+        },
+        {
+          "name": "Name",
+          "type": "varchar(120)",
+          "primary_key": false,
+          "nullable": true,
+          "comment": null
+        }
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table_name": "playlist",
+      "columns": [
+        {
+          "name": "PlaylistId",
+          "type": "int",
+          "primary_key": true,
+          "nullable": false,
+          "comment": null
+        },
+        {
+          "name": "Name",
+          "type": "varchar(120)",
+          "primary_key": false,
+          "nullable": true,
+          "comment": null
+        }
+      ],
+      "foreign_keys": []
+    },
+    {
+      "table_name": "playlisttrack",
+      "columns": [
+        {
+          "name": "PlaylistId",
+          "type": "int",
+          "primary_key": true,
+          "nullable": false,
+          "comment": null
+        },
+        {
+          "name": "TrackId",
+          "type": "int",
+          "primary_key": true,
+          "nullable": false,
+          "comment": null
+        }
+      ],
+      "foreign_keys": [
+        {
+          "constraint_name": "FK_PlaylistTrackPlaylistId",
+          "column": "PlaylistId",
+          "references_table": "playlist",
+          "references_column": "PlaylistId"
+        },
+        {
+          "constraint_name": "FK_PlaylistTrackTrackId",
+          "column": "TrackId",
+          "references_table": "track",
+          "references_column": "TrackId"
+        }
+      ]
+    },
+    {
+      "table_name": "track",
+      "columns": [
+        {
+          "name": "TrackId",
+          "type": "int",
+          "primary_key": true,
+          "nullable": false,
+          "comment": null
+        },
+        {
+          "name": "Name",
+          "type": "varchar(200)",
+          "primary_key": false,
+          "nullable": false,
+          "comment": null
+        },
+        {
+          "name": "AlbumId",
+          "type": "int",
+          "primary_key": false,
+          "nullable": true,
+          "comment": null
+        },
+        {
+          "name": "MediaTypeId",
+          "type": "int",
+          "primary_key": false,
+          "nullable": false,
+          "comment": null
+        },
+        {
+          "name": "GenreId",
+          "type": "int",
+          "primary_key": false,
+          "nullable": true,
+          "comment": null
+        },
+        {
+          "name": "Composer",
+          "type": "varchar(220)",
+          "primary_key": false,
+          "nullable": true,
+          "comment": null
+        },
+        {
+          "name": "Milliseconds",
+          "type": "int",
+          "primary_key": false,
+          "nullable": false,
+          "comment": null
+        },
+        {
+          "name": "Bytes",
+          "type": "int",
+          "primary_key": false,
+          "nullable": true,
+          "comment": null
+        },
+        {
+          "name": "UnitPrice",
+          "type": "decimal(10,2)",
+          "primary_key": false,
+          "nullable": false,
+          "comment": null
+        }
+      ],
+      "foreign_keys": [
+        {
+          "constraint_name": "FK_TrackAlbumId",
+          "column": "AlbumId",
+          "references_table": "album",
+          "references_column": "AlbumId"
+        },
+        {
+          "constraint_name": "FK_TrackGenreId",
+          "column": "GenreId",
+          "references_table": "genre",
+          "references_column": "GenreId"
+        },
+        {
+          "constraint_name": "FK_TrackMediaTypeId",
+          "column": "MediaTypeId",
+          "references_table": "mediatype",
+          "references_column": "MediaTypeId"
+        }
+      ]
+    }
+  ]
+}

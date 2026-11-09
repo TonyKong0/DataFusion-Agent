@@ -1,0 +1,12 @@
+[
+  {"question":"列出所有音乐类型","expected_table":"genre","expected_min_rows":25},
+  {"question":"一共有多少个艺术家","expected_table":"artist","expected_min_rows":1},
+  {"question":"显示前10个艺术家","expected_table":"artist","expected_min_rows":10},
+  {"question":"查找名字中包含 Rock 的播放列表","expected_table":"playlist","expected_min_rows":0},
+  {"question":"一共有多少首歌曲","expected_table":"track","expected_min_rows":1},
+  {"question":"显示价格最高的10首歌曲","expected_table":"track","expected_min_rows":10},
+  {"question":"有哪些国家的客户","expected_table":"customer","expected_min_rows":1},
+  {"question":"美国有多少客户","expected_table":"customer","expected_min_rows":1},
+  {"question":"显示发票金额最高的10条记录","expected_table":"invoice","expected_min_rows":10},
+  {"question":"一共有多少员工","expected_table":"employee","expected_min_rows":1}
+]

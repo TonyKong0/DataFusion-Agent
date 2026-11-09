@@ -1,0 +1,22 @@
+{
+  "mode": "offline",
+  "cases": 50,
+  "categories": {
+    "two_table": 20,
+    "three_table": 15,
+    "aggregation": 10,
+    "complex": 5
+  },
+  "metrics": {
+    "intent_detected": 1.0,
+    "v2_would_clarify": 0.86,
+    "table_selection_correct": 1.0,
+    "join_path_correct": 1.0,
+    "reference_valid": 1.0,
+    "syntax_correct": 0.0,
+    "execution_correct": 0.0,
+    "result_correct": 0.0,
+    "aggregate_value_correct": 0.0
+  },
+  "failures": []
+}

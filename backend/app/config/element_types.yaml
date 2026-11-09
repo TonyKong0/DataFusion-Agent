@@ -1,0 +1,14 @@
+# Phase 13 defines the element types; Phase 11 only verifies this file loads.
+elements:
+  entity:
+    description: 查询对象
+  filter:
+    description: 过滤条件
+  metric:
+    description: 查询指标
+  sort:
+    description: 排序条件
+  limit:
+    description: 返回数量
+  time:
+    description: 时间范围

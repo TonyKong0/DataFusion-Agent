@@ -1,0 +1,292 @@
+{
+  "version": "1.8-draft",
+  "status": "pending_human_confirmation",
+  "annotator": null,
+  "annotated_at": null,
+  "source_annotation": "docs/golden_answers_annotation_v1.8.md",
+  "warning": "本文件是 AI 依据 MySQL 直查与材料原文预填的候选判据，不是黄金答案。人工标注只能由用户完成，AI 自标自测不算数。评测脚本检测到 status != human-confirmed 时会把结果标为 draft、metrics_eligible=false，禁止回填 metrics.json 或写入报告。用户逐行确认后，须另存为 golden_answers_v1.8.json，把 status 改为 human-confirmed 并填写 annotator / annotated_at。",
+  "environment": {
+    "database": "chinook",
+    "db_ground_truth_source": "2026-11-07 直查 MySQL：Customer 59 / Employee 8 / Invoice 412 / Album 347 / Track 3503 / Genre 25 / Artist 275",
+    "materials": ["07_store_faq.txt", "08_chinook_data_dictionary.md", "04_invoice_review_example.docx"],
+    "excluded": "02_service_policy_example.pdf 无文字层；03_ocr-sign.png 索引仅一行 OCR 标记",
+    "note": "samples/ 按 .gitignore 不入库，本机须保证三份材料已索引"
+  },
+  "layers": {
+    "S1": "12 道 v1.7 题面锚点。注意：题面复用，不是结果锚点；v1.8 换了材料，expected_verdict 仅为 v1.7 历史值，重跑以实际判分为准，不作断言。",
+    "S2-A": "6 道数据库单源事实，进 answer_accuracy 分母；SQL 语义越界检查只写入逐题明细，不并入忠实度分母。",
+    "S2-B": "8 道文档事实，是 citation_accuracy 与 answer_faithfulness 的设计分母（8 题、3 份材料、单模型单环境）。",
+    "S2-C": "4 道澄清/拒答边界，单列 reject_correctness。"
+  },
+  "grading_contract": {
+    "answer_accuracy_denominator": 26,
+    "citation_faithfulness_denominator": 8,
+    "reject_denominator": 4,
+    "method": "人工确认判据 + 自动比对，不是逐题人工语义评分",
+    "comparability": "题集扩大后与 v1.7 的 0.5 非同口径，不得画趋势线"
+  },
+  "cases": [
+    {
+      "question": "文档规定的审核阈值是多少，数据库里有多少订单超过这个值？",
+      "category": "document_to_database", "layer": "S1",
+      "golden": "应拒答：文档不含审核阈值", "match_type": "reject",
+      "expected_verdict": "correct", "expected_citation": null,
+      "citation_facts": [], "forbidden_claims": ["编造阈值数字"],
+      "target_document": null,
+      "annotation_origin": "v1.7 human-confirmed (2026-11-05) 题面转录；expected_verdict 为历史值"
+    },
+    {
+      "question": "数据库中销量最高的音乐类型是什么，文档里如何描述它？",
+      "category": "database_to_document", "layer": "S1",
+      "golden": "Rock", "golden_numeric": 835, "match_type": "contains",
+      "expected_verdict": "partial", "expected_citation": null,
+      "citation_facts": [], "forbidden_claims": [], "target_document": null,
+      "annotation_origin": "v1.7 human-confirmed (2026-11-05) 题面转录；expected_verdict 为历史值"
+    },
+    {
+      "question": "数据库里有多少客户，文档里记录了多少？",
+      "category": "parallel", "layer": "S1",
+      "golden": "59", "golden_numeric": 59, "match_type": "numeric",
+      "expected_verdict": "partial", "expected_citation": null,
+      "citation_facts": [], "forbidden_claims": [], "target_document": null,
+      "annotation_origin": "v1.7 human-confirmed (2026-11-05) 题面转录；expected_verdict 为历史值"
+    },
+    {
+      "question": "根据文档中的公式计算数据库销售额增长率？",
+      "category": "formula", "layer": "S1",
+      "golden": "应拒答：文档不含公式", "match_type": "reject",
+      "expected_verdict": "correct", "expected_citation": null,
+      "citation_facts": [], "forbidden_claims": ["编造增长率数值"],
+      "target_document": null,
+      "annotation_origin": "v1.7 human-confirmed (2026-11-05) 题面转录；expected_verdict 为历史值"
+    },
+    {
+      "question": "文档规定的金额上限是多少，数据库里有多少订单超过这个值？",
+      "category": "document_to_database", "layer": "S1",
+      "golden": "应拒答：文档不含金额上限", "match_type": "reject",
+      "expected_verdict": "correct", "expected_citation": null,
+      "citation_facts": [], "forbidden_claims": ["编造上限数字"],
+      "target_document": null,
+      "annotation_origin": "v1.7 human-confirmed (2026-11-05) 题面转录；expected_verdict 为历史值"
+    },
+    {
+      "question": "数据库中销量最高的歌曲是什么，文档里如何描述它？",
+      "category": "database_to_document", "layer": "S1",
+      "golden": "Dazed and Confused", "golden_alt": "The Trooper",
+      "golden_numeric": 5, "match_type": "contains",
+      "expected_verdict": "wrong", "expected_citation": null,
+      "citation_facts": [], "forbidden_claims": [], "target_document": null,
+      "annotation_origin": "v1.7 human-confirmed (2026-11-05) 题面转录；expected_verdict 为历史值"
+    },
+    {
+      "question": "数据库里有多少员工，文档里记录了多少？",
+      "category": "parallel", "layer": "S1",
+      "golden": "8", "golden_numeric": 8, "match_type": "numeric",
+      "expected_verdict": "partial", "expected_citation": null,
+      "citation_facts": [], "forbidden_claims": [], "target_document": null,
+      "annotation_origin": "v1.7 human-confirmed (2026-11-05) 题面转录；expected_verdict 为历史值"
+    },
+    {
+      "question": "根据文档中的公式计算数据库订单增长率？",
+      "category": "formula", "layer": "S1",
+      "golden": "应拒答：文档不含公式", "match_type": "reject",
+      "expected_verdict": "correct", "expected_citation": null,
+      "citation_facts": [], "forbidden_claims": ["编造增长率数值"],
+      "target_document": null,
+      "annotation_origin": "v1.7 human-confirmed (2026-11-05) 题面转录；expected_verdict 为历史值"
+    },
+    {
+      "question": "文档规定的预算值是多少，数据库里有多少订单超过这个值？",
+      "category": "document_to_database", "layer": "S1",
+      "golden": "应拒答：文档不含预算值", "match_type": "reject",
+      "expected_verdict": "correct", "expected_citation": null,
+      "citation_facts": [], "forbidden_claims": ["编造预算数字"],
+      "target_document": null,
+      "annotation_origin": "v1.7 human-confirmed (2026-11-05) 题面转录；expected_verdict 为历史值"
+    },
+    {
+      "question": "数据库中销量最高的专辑是什么，文档里如何描述它？",
+      "category": "database_to_document", "layer": "S1",
+      "golden": "Minha Historia", "golden_numeric": 35, "match_type": "contains",
+      "expected_verdict": "partial", "expected_citation": null,
+      "citation_facts": [], "forbidden_claims": [], "target_document": null,
+      "annotation_origin": "v1.7 human-confirmed (2026-11-05) 题面转录；expected_verdict 为历史值"
+    },
+    {
+      "question": "数据库里有多少订单，文档里记录了多少？",
+      "category": "parallel", "layer": "S1",
+      "golden": "412", "golden_numeric": 412, "match_type": "numeric",
+      "expected_verdict": "partial", "expected_citation": null,
+      "citation_facts": [], "forbidden_claims": [], "target_document": null,
+      "annotation_origin": "v1.7 human-confirmed (2026-11-05) 题面转录；expected_verdict 为历史值"
+    },
+    {
+      "question": "根据文档中的公式计算数据库客户增长率？",
+      "category": "formula", "layer": "S1",
+      "golden": "应拒答：文档不含公式", "match_type": "reject",
+      "expected_verdict": "correct", "expected_citation": null,
+      "citation_facts": [], "forbidden_claims": ["编造增长率数值"],
+      "target_document": null,
+      "annotation_origin": "v1.7 human-confirmed (2026-11-05) 题面转录；expected_verdict 为历史值"
+    },
+    {
+      "question": "数据库里有多少客户？", "category": "database", "layer": "S2-A",
+      "golden": "59", "golden_numeric": 59, "match_type": "numeric",
+      "expected_verdict": null, "expected_citation": null, "citation_facts": [],
+      "forbidden_claims": ["把 COUNT 说成金额或比率"], "target_document": null,
+      "annotation_origin": "AI 预填候选，待用户确认（MySQL 直查 2026-11-07）"
+    },
+    {
+      "question": "数据库里有多少员工？", "category": "database", "layer": "S2-A",
+      "golden": "8", "golden_numeric": 8, "match_type": "numeric",
+      "expected_verdict": null, "expected_citation": null, "citation_facts": [],
+      "forbidden_claims": ["把 COUNT 说成金额或比率"], "target_document": null,
+      "annotation_origin": "AI 预填候选，待用户确认（MySQL 直查 2026-11-07）"
+    },
+    {
+      "question": "数据库里有多少订单？", "category": "database", "layer": "S2-A",
+      "golden": "412", "golden_numeric": 412, "match_type": "numeric",
+      "expected_verdict": null, "expected_citation": null, "citation_facts": [],
+      "forbidden_claims": ["把 COUNT 说成金额或比率"], "target_document": null,
+      "annotation_origin": "AI 预填候选，待用户确认（MySQL 直查 2026-11-07）"
+    },
+    {
+      "question": "数据库里有多少专辑？", "category": "database", "layer": "S2-A",
+      "golden": "347", "golden_numeric": 347, "match_type": "numeric",
+      "expected_verdict": null, "expected_citation": null, "citation_facts": [],
+      "forbidden_claims": ["把 COUNT 说成金额或比率"], "target_document": null,
+      "annotation_origin": "AI 预填候选，待用户确认（MySQL 直查 2026-11-07）"
+    },
+    {
+      "question": "数据库里有多少曲目？", "category": "database", "layer": "S2-A",
+      "golden": "3503", "golden_numeric": 3503, "match_type": "numeric",
+      "expected_verdict": null, "expected_citation": null, "citation_facts": [],
+      "forbidden_claims": ["把 COUNT 说成金额或比率"], "target_document": null,
+      "annotation_origin": "AI 预填候选，待用户确认（MySQL 直查 2026-11-07）"
+    },
+    {
+      "question": "数据库里有多少音乐类型？", "category": "database", "layer": "S2-A",
+      "golden": "25", "golden_numeric": 25, "match_type": "numeric",
+      "expected_verdict": null, "expected_citation": null, "citation_facts": [],
+      "forbidden_claims": ["把 COUNT 说成金额或比率"], "target_document": null,
+      "annotation_origin": "AI 预填候选，待用户确认（MySQL 直查 2026-11-07）"
+    },
+    {
+      "question": "示例手册中 Invoice.Total 大于多少美元的发票进入重点复核队列？",
+      "category": "document", "layer": "S2-B",
+      "golden": "5 美元", "golden_numeric": 5, "match_type": "numeric",
+      "expected_verdict": null,
+      "expected_citation": "04_invoice_review_example.docx 字段与关系演示判读规则段",
+      "citation_facts": ["Invoice.Total", "5 美元", "重点复核队列"],
+      "forbidden_claims": ["退款已批准", "已退款"],
+      "target_document": "04_invoice_review_example.docx",
+      "annotation_origin": "AI 预填候选，待用户确认（材料原文）"
+    },
+    {
+      "question": "发票金额超过 5 美元是否代表退款已批准？",
+      "category": "document", "layer": "S2-B",
+      "golden": "否；该阈值只是复核筛选条件，退款需独立核对明细与申请原因",
+      "match_type": "contains", "expected_verdict": null,
+      "expected_citation": "07_store_faq.txt 第 3 问",
+      "citation_facts": ["复核筛选条件", "退款仍需独立核对"],
+      "forbidden_claims": ["代表退款批准", "自动退款", "无需再核验"],
+      "target_document": "07_store_faq.txt",
+      "annotation_origin": "AI 预填候选，待用户确认（材料原文）"
+    },
+    {
+      "question": "这些服务规则是真实门店政策吗？",
+      "category": "document", "layer": "S2-B",
+      "golden": "否，业务规则为虚构示例；曲目/专辑/艺人/流派依据公开 Chinook 库",
+      "match_type": "contains", "expected_verdict": null,
+      "expected_citation": "07_store_faq.txt 第 5 问 或 08_chinook_data_dictionary.md 查询口径",
+      "citation_facts": ["虚构示例", "Chinook"],
+      "forbidden_claims": ["真实门店政策", "数据库约束", "官方规则"],
+      "target_document": "07_store_faq.txt",
+      "annotation_origin": "AI 预填候选，待用户确认（材料原文）"
+    },
+    {
+      "question": "没有 InvoiceId 时能否用其他订单代答？",
+      "category": "document", "layer": "S2-B",
+      "golden": "不能；应索取订单编号或明确说明证据不足",
+      "match_type": "contains", "expected_verdict": null,
+      "expected_citation": "07_store_faq.txt 第 4 问",
+      "citation_facts": ["索取订单编号", "证据不足"],
+      "forbidden_claims": ["可用相近订单代替", "按平均金额估算"],
+      "target_document": "07_store_faq.txt",
+      "annotation_origin": "AI 预填候选，待用户确认（材料原文）"
+    },
+    {
+      "question": "曲目属于哪张专辑应沿什么字段关联？",
+      "category": "document", "layer": "S2-B",
+      "golden": "先在 Track 按 TrackId 定位，再用 AlbumId 关联 Album；艺人名称从 Album.ArtistId 关联 Artist",
+      "match_type": "contains", "expected_verdict": null,
+      "expected_citation": "07_store_faq.txt 第 1 问",
+      "citation_facts": ["TrackId", "AlbumId", "ArtistId"],
+      "forbidden_claims": ["按曲目名称推断", "直接用 GenreId 关联专辑"],
+      "target_document": "07_store_faq.txt",
+      "annotation_origin": "AI 预填候选，待用户确认（材料原文）"
+    },
+    {
+      "question": "流派名称从哪里读取？",
+      "category": "document", "layer": "S2-B",
+      "golden": "使用 Track.GenreId 关联 Genre.GenreId，不凭曲目名称推断",
+      "match_type": "contains", "expected_verdict": null,
+      "expected_citation": "07_store_faq.txt 第 2 问",
+      "citation_facts": ["Track.GenreId", "推断流派"],
+      "forbidden_claims": ["凭名称推断流派"],
+      "target_document": "07_store_faq.txt",
+      "annotation_origin": "AI 预填候选，待用户确认（材料原文）"
+    },
+    {
+      "question": "数据字典中的 5 美元门槛是不是数据库约束？",
+      "category": "document", "layer": "S2-B",
+      "golden": "不是；是虚构演示规则，不是数据库约束",
+      "match_type": "contains", "expected_verdict": null,
+      "expected_citation": "08_chinook_data_dictionary.md 查询口径",
+      "citation_facts": ["虚构规则", "不是数据库约束"],
+      "forbidden_claims": ["数据库 CHECK 约束", "系统强制规则"],
+      "target_document": "08_chinook_data_dictionary.md",
+      "annotation_origin": "AI 预填候选，待用户确认（材料原文）"
+    },
+    {
+      "question": "发票核验示例中的样例发票编号与金额是多少，是否为真实订单？",
+      "category": "document", "layer": "S2-B",
+      "golden": "编号 301、金额 $11.94，均为虚构记录、非 Chinook 实际订单",
+      "match_type": "contains", "expected_verdict": null,
+      "expected_citation": "04_invoice_review_example.docx 记录示例表",
+      "citation_facts": ["301", "$11.94", "虚构记录"],
+      "forbidden_claims": ["真实订单", "实际发票金额", "Chinook 订单 301"],
+      "target_document": "04_invoice_review_example.docx",
+      "annotation_origin": "AI 预填候选，待用户确认（材料原文）"
+    },
+    {
+      "question": "帮我看看。", "category": "clarification", "layer": "S2-C",
+      "golden": "应澄清：要求明确数据源或材料范围", "match_type": "reject*",
+      "expected_verdict": null, "expected_citation": null, "citation_facts": [],
+      "forbidden_claims": ["直接给出具体数值或结论"], "target_document": null,
+      "annotation_origin": "AI 预填候选，待用户确认"
+    },
+    {
+      "question": "这是什么意思？", "category": "clarification", "layer": "S2-C",
+      "golden": "应澄清：要求明确数据源或材料范围", "match_type": "reject*",
+      "expected_verdict": null, "expected_citation": null, "citation_facts": [],
+      "forbidden_claims": ["直接给出具体数值或结论"], "target_document": null,
+      "annotation_origin": "AI 预填候选，待用户确认"
+    },
+    {
+      "question": "再详细一点。", "category": "clarification", "layer": "S2-C",
+      "golden": "应澄清：要求明确数据源或材料范围", "match_type": "reject*",
+      "expected_verdict": null, "expected_citation": null, "citation_facts": [],
+      "forbidden_claims": ["直接给出具体数值或结论"], "target_document": null,
+      "annotation_origin": "AI 预填候选，待用户确认"
+    },
+    {
+      "question": "文档规定的退款审批人是谁，数据库里有多少笔订单由其批准？",
+      "category": "document_to_database", "layer": "S2-C",
+      "golden": "应拒答：材料未记载审批人，数据库无批准人字段", "match_type": "reject",
+      "expected_verdict": null, "expected_citation": null, "citation_facts": [],
+      "forbidden_claims": ["编造审批人姓名或批准笔数"], "target_document": null,
+      "annotation_origin": "AI 预填候选，待用户确认"
+    }
+  ]
+}

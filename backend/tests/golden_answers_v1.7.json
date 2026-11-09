@@ -1,0 +1,103 @@
+{
+  "version": "1.7",
+  "annotated_at": "2026-11-05",
+  "annotator": "human-confirmed (12/12 rows approved)",
+  "environment": {
+    "database": "chinook",
+    "document": "03_ocr-sign.png (indexed content is a single OCR marker line; document-side questions are structurally unanswerable)",
+    "db_ground_truth_source": "direct MySQL queries on 2026-11-04"
+  },
+  "cases": [
+    {
+      "question": "文档规定的审核阈值是多少，数据库里有多少订单超过这个值？",
+      "category": "document_to_database",
+      "golden": "应拒答：文档不含审核阈值",
+      "match_type": "reject",
+      "expected_verdict": "correct"
+    },
+    {
+      "question": "数据库中销量最高的音乐类型是什么，文档里如何描述它？",
+      "category": "database_to_document",
+      "golden": "Rock",
+      "golden_numeric": 835,
+      "match_type": "contains",
+      "expected_verdict": "partial"
+    },
+    {
+      "question": "数据库里有多少客户，文档里记录了多少？",
+      "category": "parallel",
+      "golden": "59",
+      "golden_numeric": 59,
+      "match_type": "numeric",
+      "expected_verdict": "partial"
+    },
+    {
+      "question": "根据文档中的公式计算数据库销售额增长率？",
+      "category": "formula",
+      "golden": "应拒答：文档不含公式",
+      "match_type": "reject",
+      "expected_verdict": "correct"
+    },
+    {
+      "question": "文档规定的金额上限是多少，数据库里有多少订单超过这个值？",
+      "category": "document_to_database",
+      "golden": "应拒答：文档不含金额上限",
+      "match_type": "reject",
+      "expected_verdict": "correct"
+    },
+    {
+      "question": "数据库中销量最高的歌曲是什么，文档里如何描述它？",
+      "category": "database_to_document",
+      "golden": "Dazed and Confused",
+      "golden_alt": "The Trooper",
+      "golden_numeric": 5,
+      "match_type": "contains",
+      "expected_verdict": "wrong"
+    },
+    {
+      "question": "数据库里有多少员工，文档里记录了多少？",
+      "category": "parallel",
+      "golden": "8",
+      "golden_numeric": 8,
+      "match_type": "numeric",
+      "expected_verdict": "partial"
+    },
+    {
+      "question": "根据文档中的公式计算数据库订单增长率？",
+      "category": "formula",
+      "golden": "应拒答：文档不含公式",
+      "match_type": "reject",
+      "expected_verdict": "correct"
+    },
+    {
+      "question": "文档规定的预算值是多少，数据库里有多少订单超过这个值？",
+      "category": "document_to_database",
+      "golden": "应拒答：文档不含预算值",
+      "match_type": "reject",
+      "expected_verdict": "correct"
+    },
+    {
+      "question": "数据库中销量最高的专辑是什么，文档里如何描述它？",
+      "category": "database_to_document",
+      "golden": "Minha Historia",
+      "golden_numeric": 35,
+      "match_type": "contains",
+      "expected_verdict": "partial"
+    },
+    {
+      "question": "数据库里有多少订单，文档里记录了多少？",
+      "category": "parallel",
+      "golden": "412",
+      "golden_numeric": 412,
+      "match_type": "numeric",
+      "expected_verdict": "partial"
+    },
+    {
+      "question": "根据文档中的公式计算数据库客户增长率？",
+      "category": "formula",
+      "golden": "应拒答：文档不含公式",
+      "match_type": "reject",
+      "expected_verdict": "correct"
+    }
+  ]
+}

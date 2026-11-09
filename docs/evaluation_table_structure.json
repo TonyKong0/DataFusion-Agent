@@ -1,0 +1,131 @@
+{
+  "mode": "rendered_fixtures_real_ocr",
+  "scope": "rasterized text-free pages with clean synthetic layouts; no skew, noise or merged cells. Includes a blank-cell negative control.",
+  "recovery_enabled": true,
+  "fixtures": 4,
+  "recovered_cells": 7,
+  "cell_accuracy": 1.0,
+  "exact_table_match_rate": 1.0,
+  "results": [
+    {
+      "fixture": "three_by_three",
+      "expected_rows": 3,
+      "expected_columns": 3,
+      "restored": true,
+      "restored_rows": 3,
+      "restored_columns": 3,
+      "cells_expected": 9,
+      "cells_matched": 9,
+      "cell_accuracy": 1.0,
+      "exact_table_match": true,
+      "mean_confidence": 0.711,
+      "low_confidence_cells": 1,
+      "recovered_cells": 0,
+      "recovery_details": [],
+      "markdown": "| Year | Revenue | Profit |\n| --- | --- | --- |\n| 2023 | 120 | 15 |\n| 2024 | 150 | 18 |"
+    },
+    {
+      "fixture": "five_rows_four_columns",
+      "expected_rows": 5,
+      "expected_columns": 4,
+      "restored": true,
+      "restored_rows": 5,
+      "restored_columns": 4,
+      "cells_expected": 20,
+      "cells_matched": 20,
+      "cell_accuracy": 1.0,
+      "exact_table_match": true,
+      "mean_confidence": 0.663,
+      "low_confidence_cells": 11,
+      "recovered_cells": 5,
+      "recovery_details": [
+        {
+          "row": 2,
+          "column": 1,
+          "text": "9",
+          "confidence": 0.293,
+          "method": "rec_only"
+        },
+        {
+          "row": 3,
+          "column": 1,
+          "text": "8",
+          "confidence": 0.381,
+          "method": "agreed"
+        },
+        {
+          "row": 4,
+          "column": 1,
+          "text": "7",
+          "confidence": 0.241,
+          "method": "rec_only"
+        },
+        {
+          "row": 4,
+          "column": 2,
+          "text": "9",
+          "confidence": 0.319,
+          "method": "rec_only"
+        },
+        {
+          "row": 4,
+          "column": 3,
+          "text": "11",
+          "confidence": 0.425,
+          "method": "rec_only"
+        }
+      ],
+      "markdown": "| Region | Q1 | Q2 | Q3 |\n| --- | --- | --- | --- |\n| North | 10 | 12 | 14 |\n| South | 9 | 11 | 13 |\n| East | 8 | 10 | 12 |\n| West | 7 | 9 | 11 |"
+    },
+    {
+      "fixture": "mixed_text_and_numbers",
+      "expected_rows": 4,
+      "expected_columns": 3,
+      "restored": true,
+      "restored_rows": 4,
+      "restored_columns": 3,
+      "cells_expected": 12,
+      "cells_matched": 12,
+      "cell_accuracy": 1.0,
+      "exact_table_match": true,
+      "mean_confidence": 0.716,
+      "low_confidence_cells": 2,
+      "recovered_cells": 1,
+      "recovery_details": [
+        {
+          "row": 1,
+          "column": 1,
+          "text": "5",
+          "confidence": 0.453,
+          "method": "agreed"
+        }
+      ],
+      "markdown": "| Item | Count | Unit Price |\n| --- | --- | --- |\n| Widget | 5 | 19.9 |\n| Gadget | 12 | 4.5 |\n| Cable | 40 | 1.2 |"
+    },
+    {
+      "fixture": "sparse_with_blank_cells",
+      "expected_rows": 4,
+      "expected_columns": 3,
+      "restored": true,
+      "restored_rows": 4,
+      "restored_columns": 3,
+      "cells_expected": 12,
+      "cells_matched": 12,
+      "cell_accuracy": 1.0,
+      "exact_table_match": true,
+      "mean_confidence": 0.681,
+      "low_confidence_cells": 1,
+      "recovered_cells": 1,
+      "recovery_details": [
+        {
+          "row": 2,
+          "column": 2,
+          "text": "20",
+          "confidence": 0.665,
+          "method": "agreed"
+        }
+      ],
+      "markdown": "| Item | Q1 | Q2 |\n| --- | --- | --- |\n| Alpha | 10 |   |\n| Beta |   | 20 |\n| Gamma | 30 | 40 |"
+    }
+  ]
+}

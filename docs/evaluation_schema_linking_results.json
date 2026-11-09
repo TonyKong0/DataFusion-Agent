@@ -1,0 +1,11 @@
+{
+  "cases": 50,
+  "metrics": {
+    "table_recall_at_5": 1.0,
+    "column_recall_at_10": 0.92,
+    "table_accuracy": 1.0,
+    "column_accuracy": 1.0,
+    "exact_match": 1.0
+  },
+  "failures": []
+}

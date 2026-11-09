@@ -1,0 +1,154 @@
+{
+  "summary": {
+    "v1": {
+      "cases": 6,
+      "accuracy": 1.0,
+      "wrong_sql": 0,
+      "wrong_entity": 0,
+      "wrong_execution": 0,
+      "avg_latency_ms": 3361
+    },
+    "v2": {
+      "cases": 6,
+      "accuracy": 1.0,
+      "wrong_sql": 0,
+      "wrong_entity": 0,
+      "wrong_execution": 0,
+      "avg_latency_ms": 2680
+    }
+  },
+  "details": [
+    {
+      "question": "一共有多少个艺术家",
+      "expected_table": "artist",
+      "v1": {
+        "correct": true,
+        "table": "artist",
+        "sql": "SELECT COUNT(*) AS artist_count FROM artist LIMIT 100",
+        "executed": true,
+        "clarified": false,
+        "latency_ms": 3898,
+        "error": null
+      },
+      "v2": {
+        "correct": true,
+        "table": "artist",
+        "sql": "SELECT COUNT(*) AS artist_count FROM artist LIMIT 100",
+        "executed": true,
+        "clarified": false,
+        "latency_ms": 3492,
+        "error": null
+      }
+    },
+    {
+      "question": "列出所有音乐类型",
+      "expected_table": "genre",
+      "v1": {
+        "correct": true,
+        "table": "genre",
+        "sql": "SELECT * FROM genre LIMIT 100",
+        "executed": true,
+        "clarified": false,
+        "latency_ms": 4161,
+        "error": null
+      },
+      "v2": {
+        "correct": true,
+        "table": "genre",
+        "sql": "SELECT * FROM genre LIMIT 100",
+        "executed": true,
+        "clarified": false,
+        "latency_ms": 3700,
+        "error": null
+      }
+    },
+    {
+      "question": "给我瞅瞅美国的客户",
+      "expected_table": "customer",
+      "v1": {
+        "correct": true,
+        "table": "customer",
+        "sql": "SELECT * FROM customer WHERE Country = 'USA' LIMIT 100",
+        "executed": true,
+        "clarified": false,
+        "latency_ms": 4193,
+        "error": null
+      },
+      "v2": {
+        "correct": true,
+        "table": "customer",
+        "sql": "SELECT * FROM customer WHERE Country = 'USA' LIMIT 100",
+        "executed": true,
+        "clarified": false,
+        "latency_ms": 4345,
+        "error": null
+      }
+    },
+    {
+      "question": "显示价格最高的10首歌曲",
+      "expected_table": "track",
+      "v1": {
+        "correct": true,
+        "table": "track",
+        "sql": "SELECT TrackId, Name, UnitPrice FROM track ORDER BY UnitPrice DESC LIMIT 10",
+        "executed": true,
+        "clarified": false,
+        "latency_ms": 3694,
+        "error": null
+      },
+      "v2": {
+        "correct": true,
+        "table": "track",
+        "sql": "SELECT TrackId, Name, UnitPrice FROM track ORDER BY UnitPrice DESC LIMIT 10",
+        "executed": true,
+        "clarified": false,
+        "latency_ms": 4521,
+        "error": null
+      }
+    },
+    {
+      "question": "客户和员工",
+      "expected_table": null,
+      "v1": {
+        "correct": true,
+        "table": null,
+        "sql": null,
+        "executed": false,
+        "clarified": true,
+        "latency_ms": 2170,
+        "error": null
+      },
+      "v2": {
+        "correct": true,
+        "table": null,
+        "sql": null,
+        "executed": false,
+        "clarified": true,
+        "latency_ms": 12,
+        "error": null
+      }
+    },
+    {
+      "question": "客户增长率是多少",
+      "expected_table": null,
+      "v1": {
+        "correct": true,
+        "table": null,
+        "sql": null,
+        "executed": false,
+        "clarified": true,
+        "latency_ms": 2050,
+        "error": null
+      },
+      "v2": {
+        "correct": true,
+        "table": null,
+        "sql": null,
+        "executed": false,
+        "clarified": true,
+        "latency_ms": 9,
+        "error": null
+      }
+    }
+  ]
+}

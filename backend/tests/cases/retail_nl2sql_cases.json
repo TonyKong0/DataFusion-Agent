@@ -1,0 +1,12 @@
+[
+  {"category":"count","question":"一共有多少笔零售交易记录","reference_sql":"SELECT COUNT(*) AS total FROM retail_transaction","expected_table":"retail_transaction"},
+  {"category":"country_filter","question":"英国有多少笔零售交易记录","reference_sql":"SELECT COUNT(*) AS total FROM retail_transaction WHERE Country = 'United Kingdom'","expected_table":"retail_transaction"},
+  {"category":"sum","question":"零售交易中商品购买数量总和是多少","reference_sql":"SELECT SUM(Quantity) AS total_quantity FROM retail_transaction","expected_table":"retail_transaction"},
+  {"category":"average","question":"零售商品的平均单价是多少","reference_sql":"SELECT AVG(UnitPrice) AS average_price FROM retail_transaction","expected_table":"retail_transaction"},
+  {"category":"minimum_date","question":"最早一笔零售交易日期是什么时候","reference_sql":"SELECT MIN(InvoiceDate) AS first_date FROM retail_transaction","expected_table":"retail_transaction"},
+  {"category":"maximum_date","question":"最近一笔零售交易日期是什么时候","reference_sql":"SELECT MAX(InvoiceDate) AS last_date FROM retail_transaction","expected_table":"retail_transaction"},
+  {"category":"group_by","question":"按国家统计零售交易记录数量","reference_sql":"SELECT Country, COUNT(*) AS transaction_count FROM retail_transaction GROUP BY Country ORDER BY transaction_count DESC, Country ASC LIMIT 100","expected_table":"retail_transaction"},
+  {"category":"top_items","question":"零售交易中按购买数量合计销量最高的10个商品编号是什么？若销量相同，按商品编号升序排列","reference_sql":"SELECT StockCode, SUM(Quantity) AS items_sold FROM retail_transaction GROUP BY StockCode ORDER BY items_sold DESC, StockCode ASC LIMIT 10","expected_table":"retail_transaction","order_matters":true},
+  {"category":"year_filter","question":"2010年有多少笔零售交易记录","reference_sql":"SELECT COUNT(*) AS total FROM retail_transaction WHERE YEAR(InvoiceDate) = 2010","expected_table":"retail_transaction"},
+  {"category":"negative_quantity","question":"退货记录中的商品数量总和是多少","reference_sql":"SELECT SUM(Quantity) AS returned_quantity FROM retail_transaction WHERE Quantity < 0","expected_table":"retail_transaction"}
+]
