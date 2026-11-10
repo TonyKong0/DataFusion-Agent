@@ -1095,7 +1095,7 @@
     },
     {
       "id": "agent_v18_revised_execution_success_rate",
-      "label": "改造后工具计划完成率",
+      "label": "改造后执行成功率（仅 success）",
       "value": 0.7333333333333333,
       "unit": "ratio",
       "status": "measured",
@@ -1104,7 +1104,7 @@
         "file": "docs/evaluation_agent_v1.8_revised_live.json",
         "path": "live_tool_plan_completion"
       },
-      "scope": "同一人工确认 30 题分层黄金集、同一判据、同一三份固定材料、同一模型；题集与分母与改造前基线完全一致，仅系统输出侧改造。30 个执行用例中 success + partial_success 的比例；改造前为 0.633。"
+      "scope": "同一人工确认 30 题分层黄金集、同一判据、同一三份固定材料、同一模型；题集与分母与改造前基线完全一致，仅系统输出侧改造。30 个执行用例中 execution.status == success 的比例；partial_success、need_clarification 与 failed 均单列、不计入分子；改造前为 0.633。"
     },
     {
       "id": "agent_v18_revised_citation_structurally_valid_rate",
@@ -1251,7 +1251,7 @@
     },
     {
       "id": "agent_v18_tool_plan_completion",
-      "label": "v1.8 基线工具计划完成率（30 题口径）",
+      "label": "v1.8 基线执行成功率（30 题口径，仅 success）",
       "value": 0.6333333333333333,
       "unit": "ratio",
       "status": "measured",
